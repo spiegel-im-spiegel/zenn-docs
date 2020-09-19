@@ -1,6 +1,6 @@
 # [zenn-docs] -- Document environment dor [zenn.dev][Zenn]
 
-Repogitory for https://zenn.dev/spiegel in [Zenn].
+Repogitory for https://zenn.dev/spiegel (powered by [Zenn])
 
 ## Links
 
