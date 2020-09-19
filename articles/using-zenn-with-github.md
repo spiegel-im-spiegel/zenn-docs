@@ -20,6 +20,16 @@ published: true # 公開設定（false にすると下書き）
 
 まぁ，この辺はしょうがないだろう。今後に期待しておく。
 
+## 【追記】
+
+自ブログサイトに今回の作業メモを上げておいた。
+
+- [近ごろ流行りらしい “Zenn” のアカウントを作ってみた — しっぽのさきっちょ | text.Baldanders.info](https://text.baldanders.info/remark/2020/09/using-zenn-with-github/)
+
+[Zenn] では記事のライセンスを設定できないが，[リポジトリの方で CC BY-SA ライセンスを付与](https://github.com/spiegel-im-spiegel/zenn-docs/blob/main/LICENSE)している。
+
+ということで再利用は（条件の範囲内で）ご自由にどうぞ。
+
 ## 参照記事
 
 - [Zenn CLIをインストールする | Zenn](https://zenn.dev/zenn/articles/install-zenn-cli)
