@@ -8,7 +8,7 @@ published: true # 公開設定（true で公開）
 
 ついクセで Facebook や Twitter で脊髄反射のオン書きをしてしまうが，今後はこちらでポエムを発散することで自重しようと思っている。
 
-ところで， Twitter の [@zenn_dev](https://twitter.com/zenn_dev) で結城浩さんの「本」が紹介されていた。
+ところで， Twitter の [@zenn_dev](https://twitter.com/zenn_dev) で結城浩さんの「本」が[紹介](https://twitter.com/zenn_dev/status/1307804227071246336)されていた。
 
 @[tweet](https://twitter.com/zenn_dev/status/1307804227071246336)
 
