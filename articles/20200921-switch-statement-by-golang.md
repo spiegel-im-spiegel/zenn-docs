@@ -76,7 +76,7 @@ func main() {
 
 と整形される。これなら分かりやすいよね。
 
-というわけで [Go] のコードを書いたらこまめに整形して確認しましょう。まぁ，最近のエディタは保存するタイミングでちゃんと整形してくれるものもあるけど。
+というわけで [Go] のコードを書いたらこまめに整形して確認しましょう。まぁ，最近のエディタは自動で整形してくれるものもあるけど。
 
 [Go]: https://golang.org/ "The Go Programming Language"
 [Go Spec]: https://golang.org/ref/spec "The Go Programming Language Specification - The Go Programming Language"
