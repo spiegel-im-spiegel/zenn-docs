@@ -6,6 +6,10 @@ topics: ["editor"] # タグ。["markdown", "rust", "aws"] のように指定す�
 published: true # 公開設定（true で公開）
 ---
 
+:::message
+この[記事は Qiita から](https://qiita.com/spiegel-im-spiegel/items/a1b4d1ad2a6693ae33e4)移行・再構成したものです。
+:::
+
 [EditorConfig] はテキストエディタや IDE (Integrated Development Environment; 統合開発環境) などで文字コードやインデントや改行コードなどの設定を共有するための仕組みで，メジャーなエディタや IDE なら既定で組み込まれているか拡張機能で導入することができる。これによって開発環境や個人設定の差異によるコーデイング・スタイルの混乱を抑えることができる。
 
 ## [EditorConfig] による設定
