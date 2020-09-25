@@ -35,7 +35,7 @@ published: true # 公開設定（false にすると下書き）
 - [Zenn CLIをインストールする | Zenn](https://zenn.dev/zenn/articles/install-zenn-cli)
 - [Zenn CLIを使ってコンテンツを作成する | Zenn](https://zenn.dev/zenn/articles/zenn-cli-guide)
 - [ZennのMarkdown記法 | Zenn](https://zenn.dev/zenn/articles/markdown-guide)
-
+    - [Supported Functions · KaTeX](https://katex.org/docs/supported.html) : [Zenn] で数式として使える表現
 - [Ubuntu/Debianに最新のNode.jsをインストールする一番良い方法 | LFI](https://linuxfan.info/install_nodejs_on_ubuntu_debian)
 - [Twemoji](https://twemoji.twitter.com/) : [Zenn] は Twitter Emoji を使っているらしい
     - [twitter/twemoji: Emoji for everyone. https://twemoji.twitter.com/](https://github.com/twitter/twemoji)
