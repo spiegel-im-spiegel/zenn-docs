@@ -48,9 +48,9 @@ $$
 他に公開鍵暗号の特徴は以下の通り。
 
 - 公開鍵は第三者に知られても構わない。秘密鍵は**誰にも**知られてはならない
-- 暗号化・復号の処理速度が遅い
+- 暗号化・復号の処理速度が共通鍵暗号に比べて遅い
 - 平文に対して暗号文のサイズが巨大になる（概ね倍以上）
-- 共通鍵暗号の鍵と比べると鍵長が巨大になる（アルゴリズムにもよるが，2倍から数十倍）
+- 鍵長が同じ暗号強度の共通鍵暗号に比べて巨大になる（アルゴリズムにもよるが，2倍から数十倍）
 
 ## ハイブリッド暗号
 
@@ -68,7 +68,7 @@ $$
 
 このように送信者の鍵は一切使う必要がないことが分かるだろう。
 
-「これだと暗号文の送信者は復号できないぢゃん」と思う人もいるかもしれないが，セッション鍵を送信者と受診者の2つの公開鍵で暗号すれば問題ない。
+「これだと暗号文の送信者は復号できないぢゃん」と思う人もいるかもしれないが，セッション鍵を送信者と受診者の2つの公開鍵で暗号化すれば問題ない。
 
 たとえば OpenPGP 実装のひとつである GnuPG では
 
@@ -86,7 +86,7 @@ wY/NB5Nl6o7oJ51Yo12mflHKx6NOM6r9ruI=
 -----END PGP MESSAGE-----
 ```
 
-のように `alice` と `bob` 2つの公開鍵を使ってメッセージ `hello, world` を暗号化できる。ちなみに拙作の [gpgpdump] を使って可視化すると
+のように複数の公開鍵を使ってメッセージ `hello, world` を暗号化できる。ちなみに拙作の [gpgpdump] を使って可視化すると
 
 ```
 $ echo hello, world | gpg -ea -r alice -r bob | gpgpdump
@@ -106,7 +106,7 @@ Sym. Encrypted Integrity Protected Data Packet (tag 18) (72 bytes)
 	Encrypted data (plain text + MDC SHA1(20 bytes); sym alg is specified in pub-key encrypted session key)
 ```
 
-のように暗号化されたセッション鍵パケットが2つくっついてることが分かる。
+のように暗号化されたセッション鍵パケットが複数あることが分かるだろう。
 
 ちなみに `gpg.conf` ファイルに
 
@@ -144,15 +144,13 @@ gpg: 256-ビットECDH鍵, ID 500D00D654A13332, 日付2020-09-25に暗号化さ�
 hello, world
 ```
 
-のように，パスフレーズを訊かれることもなく，秘密鍵なしで復号できる。
+のように，パスフレーズを訊かれることなく，秘密鍵なしで復号できる。
 
-この機能は捜査当局から公開鍵暗号の秘密鍵を要求された際に捜査に必要な暗号文だけを復号できるよう，公開鍵暗号の秘密鍵ではなく，セッション鍵のみを渡すためのオプションである。
+この機能は捜査当局等から秘密鍵を要求された際に，捜査に必要な暗号文だけを復号できるよう，セッション鍵のみを渡すためのオプションである。
 
 ## だからね
 
 公開鍵暗号の秘密鍵は絶対に渡しちゃダメ。フリじゃないよ！
-
-[gpgpdump]: https://text.baldanders.info/release/gpgpdump/ "OpenPGP パケットを可視化する gpgpdump — リリース情報 | text.Baldanders.info"
 
 ## 参考文献
 
@@ -169,3 +167,5 @@ hello, world
 - [GnuPG チートシート（簡易版）](./20200920-gnupg-cheat-sheet)
 - [OpenPGP の電子署名は「ユーザーの身元を保証し」ない — OpenPGP の実装 | text.Baldanders.info](https://text.baldanders.info/openpgp/web-of-trust/)
 - [経路の暗号化とデータの暗号化では要件が異なる — しっぽのさきっちょ | text.Baldanders.info](https://text.baldanders.info/remark/2020/07/requirement-for-encryption/)
+
+[gpgpdump]: https://text.baldanders.info/release/gpgpdump/ "OpenPGP パケットを可視化する gpgpdump — リリース情報 | text.Baldanders.info"
