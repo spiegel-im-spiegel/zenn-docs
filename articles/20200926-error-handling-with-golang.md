@@ -3,7 +3,7 @@ title: "errors.Is, errors.As は（単なる）比較関数ではない" # 記�
 emoji: "⌨" # アイキャッチとして使われる絵文字（1文字だけ）
 type: "tech" # "tech" : 技術記事 / "idea" : アイデア記事
 topics: ["go", "programming"] # タグ。["markdown", "rust", "aws"] のように指定する
-published: false # 公開設定（true で公開）
+published: true # 公開設定（true で公開）
 ---
 
 - [［Golang］errors.Is() errors.As() 完全ガイド〜使い方と違いをしっかり調査しました〜 | Zenn](https://zenn.dev/kskumgk63/articles/550dc9d42078d968beac)
