@@ -29,6 +29,7 @@ published: true # 公開設定（true で公開）
 ## 参考
 
 - [Zennと連携するGitHubリポジトリ名は何がいいのか？ | Zenn](https://zenn.dev/j5c8k6m8/articles/zenn-github-repository-name)
+- [情報の熱的死 — しっぽのさきっちょ | text.Baldanders.info](https://text.baldanders.info/remark/2019/06/heat-death-of-information/)
 
 [Zenn]: https://zenn.dev/ "Zenn｜プログラマーのための情報共有コミュニティ"
 [Hugo]: https://gohugo.io/ "The world’s fastest framework for building websites | Hugo"
