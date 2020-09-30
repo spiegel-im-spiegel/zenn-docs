@@ -47,7 +47,7 @@ jobs:
 
 これで pull request 時， `master` ブランチ[^br1] への push 時，およびバージョンタグを打った際に脆弱性検査が走る。
 
-[^br1]: 2020年10月から [GitHub の新規リポジトリの既定ブランチ名が `main` になるらしい]({{< ref "/remark/2020/08/renaming-default-branch-name-in-github-repositries.md" >}} "GitHub リポジトリの既定ブランチ名が main になるらしい")。ご注意を。
+[^br1]: 2020年10月から [GitHub の新規リポジトリの既定ブランチ名が `main` になるらしい](https://text.baldanders.info/remark/2020/08/renaming-default-branch-name-in-github-repositries/ "GitHub リポジトリの既定ブランチ名が main になるらしい")。ご注意を。
 
 ## Lint & Test
 
