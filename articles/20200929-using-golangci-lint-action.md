@@ -161,6 +161,7 @@ jobs:
 - [golangci-lint を GitHub Actions で使う — プログラミング言語 Go | text.Baldanders.info](https://text.baldanders.info/golang/using-golangci-lint-action/)
 - [GitHub Actions でクロス・コンパイル（GoReleaser 編） — プログラミング言語 Go | text.Baldanders.info](https://text.baldanders.info/golang/cross-compiling-in-github-actions-with-goreleaser/)
 - [How to Add a GitHub Actions Badge to Your Project - DEV](https://dev.to/robdwaller/how-to-add-a-github-actions-badge-to-your-project-11ci)
+- [Go のコードでも GitHub Code Scanning が使えるらしい — しっぽのさきっちょ | text.Baldanders.info](https://text.baldanders.info/remark/2020/10/github-code-scanning-with-golang/)
 
 [Go]: https://golang.org/ "The Go Programming Language"
 [nancy]: https://github.com/sonatype-nexus-community/nancy "sonatype-nexus-community/nancy: A tool to check for vulnerabilities in your Golang dependencies, powered by Sonatype OSS Index"
