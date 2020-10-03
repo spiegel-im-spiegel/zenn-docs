@@ -16,4 +16,5 @@ published: false # 公開設定（true で公開）
 
 
 
+[Go]: https://golang.org/ "The Go Programming Language"
 <!-- eof -->
