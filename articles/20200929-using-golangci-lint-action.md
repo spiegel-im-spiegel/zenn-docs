@@ -157,6 +157,9 @@ jobs:
 
 ## 参考ページ
 
+- [reviewdog-golangci-lint を使う](https://zenn.dev/ikawaha/articles/57384e8fc69c7b057f7f)
+- [Go の CI を Github Actions に移行した](https://zenn.dev/ikawaha/articles/055cc7070ff0d12c5b10)
+
 - [Go 依存パッケージの脆弱性検査 — プログラミング言語 Go | text.Baldanders.info](https://text.baldanders.info/golang/check-for-vulns-in-golang-dependencies/)
 - [golangci-lint を GitHub Actions で使う — プログラミング言語 Go | text.Baldanders.info](https://text.baldanders.info/golang/using-golangci-lint-action/)
 - [GitHub Actions でクロス・コンパイル（GoReleaser 編） — プログラミング言語 Go | text.Baldanders.info](https://text.baldanders.info/golang/cross-compiling-in-github-actions-with-goreleaser/)
