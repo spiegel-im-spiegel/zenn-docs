@@ -1,0 +1,103 @@
+$ ./backup-all.sh 
+https://qiita.com/api/v2/users/spiegel-im-spiegel/items?page=1
+日能研の問題をGo言語で力づくで解いてみた(2018/11)
+GOPATH モードからモジュール対応モードへ移行せよ
+GitHub リポジトリに CC Licenses を設定したい
+ATOM Editor で拡張子に言語を関連付ける
+Go 1.8.7, 1.9.4, 1.10rc2 がリリース（セキュリティ・アップデート）
+Go 言語でも (a==1 && a==2 && a==3) を true にしてみたい（クソリプ編）
+Go 言語で改行コードを変換する（正規表現以外の解）
+GnuPG チートシート（簡易版）
+最近の私的 Golang 開発環境
+ちょこっと MathJax （目次）
+バイナリデータを Golang の []byte リテラル表記に変換する簡単なお仕事
+バイト列を整数に変換する簡単なお仕事メモ（Go言語）
+Glide から dep に移行せよ
+そうだ， TeX Live 2017 (for Windows) をインストールしよう！ （目次）
+クラスとオブジェクトの関係性（Go 言語編）
+Go 言語における無効日付(2月31日など)の扱い
+「プレミアムフライデー」を求める関数を作ってみた
+Go 言語の `++` や `--` は演算子ではない
+1を1億回足して1億にならない場合
+「いいね」ボタンを押さないことにしました
+
+https://qiita.com/api/v2/users/spiegel-im-spiegel/items?page=2
+Security Release Go 1.7.4 and 1.6.4
+「ストック」ボタンを救済して
+Go 1.7 is released.
+gometalinter で楽々 lint
+「ズンドコキヨシ」と擬似乱数
+icat for JSON について
+glibc ライブラリの脆弱性
+Go 1.6 出た！
+[security] Go 1.5.3 is released
+NYAGOS 4.1.0_0  と Lua のモジュール
+ATOM の Theme / Package の一言感想文（2015-12-12）
+ATOM で Go
+NYAGOS で Lua
+セキュリティ脆弱性を修正した Go 1.4.3 がリリース
+gibo (gitignore-boilerplates) による .gitignore 生成（Windows でもできるよ）
+ゼロから始める Hugo — Categories, Tags そして Section
+ゼロから始める Hugo — インストールから Hello World まで
+そろそろ node.js v4 が出る？
+ATOM 1.0.8 で導入された line-ending-selector がクソ
+そろそろ真面目に Golang 開発環境について考える — Internal Packages と Vendoring
+
+https://qiita.com/api/v2/users/spiegel-im-spiegel/items?page=3
+Golang の文字列連結はどちらが速い？
+Golang による文字エンコーディング変換
+そろそろ真面目に Golang 開発環境について考える — GOPATH 汚染問題
+Go 1.5 出た！
+CC0 ライセンスのソースコードを GitHub にあげるまで
+tcnksm/gcli を使った golang によるコマンドライン・ツール開発について
+はじめての Go 言語 (on Windows) その10
+Git.io 短縮 URL を golang コードで取得してみる
+node.js の CVSS v3 モジュールを使ってデモページを作ってみた
+CVSSv3 用の node.js モジュールを作ってみた
+はじめての Go 言語 (on Windows) その9
+ISC BIND 9 に DoS 脆弱性
+Windows の Adobe Type Manager モジュールに特権昇格の脆弱性
+Adobe Flash Player に複数のゼロ・ディ脆弱性
+セキュリティ・アップデート Node v0.12.6, v0.12.7
+やっと NYAGOS がビルドできた
+MSYS2 による gcc 開発環境の構築（2）
+.vimrc をメモっとく
+ATOM 1.0 リリースおめでたう記念に最初からインストールし直してみた
+Markdown ファイルを PDF に変換する。
+
+https://qiita.com/api/v2/users/spiegel-im-spiegel/items?page=4
+Windows 10 の広告アイコンを消す方法
+Retrospect Backup Client における Password Hash の脆弱性について
+Swiftkey キーボードアプリの脆弱性について
+Go 言語に関するブックマーク
+ATOM の Theme / Package の感想文（2015-06-10）
+日本年金機構の情報漏えいについて
+iOS に不正な SMS メッセージでクラッシュする脆弱性
+行末の空白は EditorConfig で始末しましょう
+ATOM Editor をそろそろ始めようか
+うるう秒に関する覚え書き
+MSYS2 による gcc 開発環境の構築
+はじめての Go 言語 (on Windows) その8
+NYAGOS + Console 2 に関するメモ
+はじめての Go 言語 (on Windows) その7
+TLS における Diffie-Hellman 鍵交換の脆弱性
+VENOM 脆弱性について
+はじめての Go 言語 (on Windows) その6
+はじめての Go 言語 (on Windows) その5
+IPA による「SSL/TLS暗号設定ガイドライン」
+Qiita の脚注記法
+
+https://qiita.com/api/v2/users/spiegel-im-spiegel/items?page=5
+はじめての Go 言語 (on Windows) その4
+Visual Studio Code を Markdown エディタとして使う
+はじめての Go 言語 (on Windows) その3
+はじめての Go 言語 (on Windows) その2
+はじめての Go 言語 (on Windows)
+【小ネタ】 HTML のチェックボックスを readonly にする
+「紙芝居」用の簡単 HTTP サーバを立てる（その2）
+「紙芝居」用の簡単 HTTP サーバを立てる
+Google spreadsheets で Medium 目次作成支援
+検索結果の最初の1件のみを取得する
+Windows 版 GnuPG 2.1.x を使ってみる
+
+https://qiita.com/api/v2/users/spiegel-im-spiegel/items?page=6
