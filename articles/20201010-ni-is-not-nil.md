@@ -34,7 +34,7 @@ func main() {
 
 [![type interface](https://research.swtch.com/gointer2.png)](https://research.swtch.com/interfaces)
 
-構造体がゼロ値であると言うためには構造体の要素全てがゼロ値である必要がある。つまり interface 型のインスタンスが `nil` であると言うためには型と値（への参照）がいずれも `nil` である必要がある。
+構造体がゼロ値であると言うためには構造体の要素全てがゼロ値である必要がある。今回の文脈で言うと interface 型のインスタンスが `nil` であると言うためには型と値（への参照）がいずれも `nil` でなければならない。
 
 これを踏まえて先程のコードを眺めると
 
@@ -49,7 +49,7 @@ var b interface{} = a
 
 よく [Go] の interfece 型は「C++ や java の templete や interface のようなもの」と説明されるが， C++ や Java の抽象型は基本的に「公称型の部分型付け（nominal subtyping）」であり根本の設計思想が異なる。ちなみに Rust の trait も公称型である。
 
-構造型部分型付けの何が嬉しいかというと「依存の注入（dependency injection）」の実装がとてつもなく簡単にできるのである。
+構造型部分型付けの何が嬉しいかというと「依存の注入（dependency injection）」がとてつもなく簡単にできるのである。
 
 先程の
 
