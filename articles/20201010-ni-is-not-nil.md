@@ -43,7 +43,7 @@ var a *string = nil
 var b interface{} = a
 ```
 
-変数 `a` は「`*string` 型で nil 値」である。これを `interface{}` 型の `b` に代入することで `b` は「型は `*string`, 値は `nil`」という内部状態を持つ。つまり `b == nil` は `true` ではないのだ。一方 `a == b` はそれぞれの「値の比較」で，双方 `nil` だから `true` になる，というわけ。
+変数 `a` は「`*string` 型で nil 値」である。これを `interface{}` 型の `b` に代入することで `b` は「型は `*string`, 値は `nil`」という内部状態を持つ。つまり `b == nil` は `true` ではないのだ。一方 `a == b` はそれぞれの「値の比較」で，両者比較可能で同じ `nil` だから `true` になる，というわけ。
 
 [Go] では interfece 型のこの機能と性質で以って「構造型の部分型付け（structural subtyping）」を実現している。
 
