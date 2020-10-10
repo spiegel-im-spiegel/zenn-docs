@@ -30,7 +30,7 @@ func main() {
 
 [Go] における `nil` はポインタ値のある状態を示すもので，いわゆる「null 参照」を指している。それだけだったら `b == nil` は `true` になりそうなものだが， interface 型が絡むと少し複雑になる。
 
-実は interface 型は，概念的には **型と値への参照を属性として持つ構造体** である。図で描くとこんな感じ（“[Go Data Structures: Interfaces](https://research.swtch.com/interfaces)” より引用）。
+実は interface 型は，概念的には **型と値への参照を要素として持つ構造体** である。図で描くとこんな感じ（“[Go Data Structures: Interfaces](https://research.swtch.com/interfaces)” より引用）。
 
 [![type interface](https://research.swtch.com/gointer2.png)](https://research.swtch.com/interfaces)
 
