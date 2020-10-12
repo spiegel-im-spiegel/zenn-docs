@@ -19,7 +19,7 @@ published: true # 公開設定（true で公開）
 
 次にリポジトリ直下の `.github/workflows` ディレクトリ（なければ作成する）に `blog-post-workflow.yml` ファイルを作成する。中身はこんな感じ。
 
-```yaml
+```yaml:blog-post-workflow.yml
 name: Latest blog post workflow
 on:
   schedule: # Run workflow automatically

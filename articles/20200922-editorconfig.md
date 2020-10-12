@@ -16,7 +16,7 @@ published: true # 公開設定（true で公開）
 
 [EditorConfig] を有効にするにはプロジェクトのトップ・フォルダに `.editorconfig` ファイルを置けばよい。たとえば私がよく使う `.editorconfig` ファイルの中身はこんな感じ。
 
-```
+```ini:.editorconfig
 root = true
 
 [*]

@@ -21,7 +21,7 @@ published: true # 公開設定（true で公開）
 
 [GitHub] Action で [nancy] を動かすには `.github/workflows/` ディレクトリに以下の内容の YAML ファイルを設置する。
 
-```yaml
+```yaml:vulns.yml
 name: vulns
 on:
   push:
@@ -58,7 +58,7 @@ jobs:
 
 [GitHub] Action で [golangci-lint] を動かすには `.github/workflows/` ディレクトリに以下の内容の YAML ファイルを設置する。
 
-```yaml
+```yaml:lint.yml
 name: lint
 on:
   push:
@@ -105,7 +105,7 @@ Pure Go であれば [GoReleaser] を使えばクロス・コンパイルと Rel
 
 [GitHub] Action で [GoReleaser] を動かすには `.github/workflows/` ディレクトリに以下の内容の YAML ファイルを設置する。
 
-```yaml
+```yaml:build.yml
 name: build
 
 on:

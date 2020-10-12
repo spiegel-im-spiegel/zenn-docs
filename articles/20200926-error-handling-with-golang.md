@@ -117,7 +117,7 @@ func main() {
 
 [Go] 1.13 からは，エラーハンドリングにおいて `Unwrap()` メソッドの有無が考慮される。
 
-```go
+```go:errors/wrap.go
 // Unwrap returns the result of calling the Unwrap method on err, if err's
 // type contains an Unwrap method returning error.
 // Otherwise, Unwrap returns nil.

@@ -14,7 +14,7 @@ published: true # 公開設定（true で公開）
 
 [mmcdole/gofeed] が優れているのは，フィードの種別に関わらず食べてくれて，統一された構造体に落とし込んでくれるところ。たとえばこんな感じ。
 
-```go
+```go:sample.go
 package main
 
 import (
