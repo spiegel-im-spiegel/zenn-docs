@@ -106,7 +106,9 @@ Public-Key Packet (tag 6) (1198 bytes)
     DSA y (= g^x mod p where x is secret) (3067 bits)
 ```
 
-なお,公開鍵パケットのみでは [OpenPGP] 公開鍵として使うことは出来ないのであしからず。 `raw_key` 項目はないがどうしても [OpenPGP] 公開鍵を入手したいのであれば，たとえば
+なお,公開鍵パケットのみでは [OpenPGP] 公開鍵として使うことは出来ないのであしからず[^pct1]。 `raw_key` 項目はないがどうしても [OpenPGP] 公開鍵を入手したいのであれば，たとえば
+
+[^pct1]: [OpenPGP] 公開鍵は公開鍵パケット，ユーザ ID パケット，署名パケットなど複数のパケットで構成されている。公開鍵パケットのみでは鍵自体を証明することが出来ないので，少なくとも [GnuPG] では使用することが出来ない。
 
 ```
 $ curl -s https://api.github.com/users/spiegel-im-spiegel/gpg_keys | jq -r .[].key_id
