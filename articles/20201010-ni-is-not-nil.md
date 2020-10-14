@@ -43,11 +43,11 @@ var a *string = nil
 var b interface{} = a
 ```
 
-変数 `a` は「`*string` 型で nil 値」である。これを `interface{}` 型の `b` に代入することで `b` は「型は `*string`, 値は `nil`」という内部状態を持つ。つまり `b == nil` は `true` ではないのだ。一方 `a == b` はそれぞれの「値の比較」で，両者比較可能で同じ `nil` だから `true` になる，というわけ。
+変数 `a` は「`*string` 型で `nil` 値」である。これを `interface{}` 型の `b` に代入することで `b` は「型は `*string`, 値は `nil`」という内部状態を持つ。つまり `b == nil` は `true` ではないのだ。一方 `a == b` はそれぞれの「値の比較」で，両者比較可能で同じ `nil` だから `true` になる，というわけ。
 
-[Go] では interfece 型のこの機能と性質で以って「構造型の部分型付け（structural subtyping）」を実現している。
+[Go] では interface 型のこの機能と性質で以って「構造型の部分型付け（structural subtyping）」を実現している。
 
-よく [Go] の interfece 型は「C++ や java の templete や interface のようなもの」と説明されるが， C++ や Java の抽象型は基本的に「公称型の部分型付け（nominal subtyping）」であり根本の設計思想が異なる。ちなみに Rust の trait も公称型である。
+よく [Go] の interface 型は「C++ や Java の templete や interface のようなもの」と説明されるが， C++ や Java の抽象型は基本的に「公称型の部分型付け（nominal subtyping）」であり根本の設計思想が異なる。ちなみに Rust の trait も公称型である。
 
 構造型部分型付けの何が嬉しいかというと「依存の注入（dependency injection）」がとてつもなく簡単にできるのである。
 
