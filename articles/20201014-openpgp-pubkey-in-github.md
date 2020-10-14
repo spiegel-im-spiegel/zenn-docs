@@ -123,6 +123,52 @@ $ gpg --recv-keys B4DA3BAE7E20B81C
 
 鍵サーバから [GnuPG] 等にインポートするしかないだろう。
 
+## 【2020-10-14 追記】
+
+コメントで教えてもらったのだが（情報ありがとうございます），ユーザ・プロファイルの URL に `.gpg` をくっつけたら [OpenPGP] 公開鍵データが取れるようだ。私の場合なら
+
+```
+$ curl -s https://github.com/spiegel-im-spiegel.gpg
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+
+...
+-----END PGP PUBLIC KEY BLOCK-----
+```
+
+で取れる。なのでこのまま
+
+```
+$ curl -s https://github.com/spiegel-im-spiegel.gpg | gpg --import
+```
+
+とするか，あるいは直接
+
+```
+$ gpg --fetch-key https://github.com/spiegel-im-spiegel.gpg
+```
+
+とすれば [GnuPG] にインポートできる。また [gpgpdump] を使って
+
+```
+$ curl -s https://github.com/spiegel-im-spiegel.gpg | gpgpdump
+```
+
+とかすれば可視化もできる。
+
+ちなみに複数の公開鍵を登録している場合は全ての鍵データを連結した状態で取り出せる。逆にひとつも公開鍵を登録してないユーザは
+
+```
+$ curl -s https://github.com/nokeyuser.gpg
+-----BEGIN PGP PUBLIC KEY BLOCK-----
+Note: This user hasn't uploaded any GPG keys.
+
+
+=twTO
+-----END PGP PUBLIC KEY BLOCK-----
+```
+
+みたいな表示になる。
+
 ## 参考
 
 - [Git Commit で OpenPGP 署名を行う — OpenPGP の実装 | text.Baldanders.info](https://text.baldanders.info/openpgp/git-commit-with-openpgp-signature/)
