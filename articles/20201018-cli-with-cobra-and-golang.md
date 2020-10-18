@@ -3,7 +3,7 @@ title: "Cobra でテストしやすい CLI を構成する" # 記事のタイト
 emoji: "⌨" # アイキャッチとして使われる絵文字（1文字だけ）
 type: "tech" # "tech" : 技術記事 / "idea" : アイデア記事
 topics: ["go", "programming"] # タグ。["markdown", "rust", "aws"] のように指定する
-published: false # 公開設定（true で公開）
+published: true # 公開設定（true で公開）
 ---
 
 ようやく [spf13/cobra] パッケージの v1.1.0 が出たと思ったら，いつのまにか [Cobra.Dev][Cobra] なるサイトも出来てた。折角なので，記念に [Cobra] を使った CLI (Command-Line Interface) を実際に作りながら紹介してみる。
@@ -383,21 +383,24 @@ func TestEncode(t *testing.T) {
         outp string
         ext  exitcode.ExitCode
     }{
-        {inp: "hello world\n", outp: "a948904f2f0f479b8f8197694b30184b0d2ed1c1cd2a1ec0fb85d299a192a447", ext: exitcode.Normal},
+        {inp: "hello world\n", outp: "a948904f2f0f479b8f8197694b30184b0d2ed1c1cd2a1ec0fb85d299a192a447\n", ext: exitcode.Normal},
     }
 
     for _, tc := range testCases {
         r := strings.NewReader(tc.inp)
         wbuf := &bytes.Buffer{}
+        ebuf := &bytes.Buffer{}
         ext := Execute(
             rwi.New(
                 rwi.WithReader(r),
                 rwi.WithWriter(wbuf),
+                rwi.WithErrorWriter(ebuf),
             ),
             []string{"encode"},
         )
         if ext != tc.ext {
             t.Errorf("Execute() is \"%v\", want \"%v\".", ext, tc.ext)
+            fmt.Println(ebuf.String())
         }
         str := wbuf.String()
         if str != tc.outp {
@@ -414,7 +417,8 @@ $ go test ./...
 ?       sample/hash    [no test files]
 --- FAIL: TestEncode (0.00s)
     encode_test.go:36: Execute() -> "encode called
-        ", want "a948904f2f0f479b8f8197694b30184b0d2ed1c1cd2a1ec0fb85d299a192a447".
+        ", want "a948904f2f0f479b8f8197694b30184b0d2ed1c1cd2a1ec0fb85d299a192a447
+        ".
 FAIL
 FAIL    sample/hash/cmd    0.002s
 FAIL
@@ -504,6 +508,8 @@ a948904f2f0f479b8f8197694b30184b0d2ed1c1cd2a1ec0fb85d299a192a447
 ```
 
 無事に実行できた。
+
+なお，今回書いたコードは [`github.com/spiegel-im-spiegel/zenn-docs/code/cobra/hash`](https://github.com/spiegel-im-spiegel/zenn-docs/tree/main/code/cobra/hash) に置いている。参考にどうぞ。
 
 [Go]: https://golang.org/ "The Go Programming Language"
 [flag]: https://golang.org/pkg/flag/ "flag - The Go Programming Language"
