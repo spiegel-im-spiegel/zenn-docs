@@ -452,10 +452,7 @@ func Value(r io.Reader, alg crypto.Hash) ([]byte, error) {
 }
 ```
 
-って感じでいいかな。
-
-
-じゃあ，これを `cmd.newEncodeCmd()` 関数に組み込んで
+って感じでいいかな。これを `cmd.newEncodeCmd()` 関数に組み込んで
 
 ```go:cmd/encode.go
 func newEncodeCmd(ui *rwi.RWI) *cobra.Command {
