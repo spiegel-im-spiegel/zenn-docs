@@ -15,7 +15,7 @@ published: true # 公開設定（true で公開）
 
 ```
 $ git init --object-format=sha256 sample-repo
-Initialized empty Git repository in /home/spiegel/work/sample-repo/.git/
+Initialized empty Git repository in /home/username/sample-repo/.git/
 
 $ cd sample-repo
 $ echo 'Hello, SHA-256!' >README.md
