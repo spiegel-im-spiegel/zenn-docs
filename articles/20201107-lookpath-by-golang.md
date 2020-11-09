@@ -61,9 +61,9 @@ func Command(name string, arg ...string) *Cmd {
 }
 ```
 
-てな感じで，直接コマンド名を渡してるわけではなく，いったん `exec.LookPath()` 関数でパスに展開してから渡している。
+てな感じで，直接コマンド名を渡してるわけではなく，いったん `exec.LookPath()` 関数でパスに展開してから渡している。この関数が問題なのだ。
 
-問題はこの `exec.LookPath()` 関数。この関数は OS 毎に別実装になっていて Windows ではこんな感じに実装されている（長めのコードでゴメン）。
+`exec.LookPath()` 関数は OS 毎に別実装になっていて，たとえば Windows では `lp_windows.go` というファイルにこんな感じで実装されている（長めのコードでゴメン）。
 
 ```go
 func LookPath(file string) (string, error) {
@@ -111,9 +111,9 @@ if f, err := findExecutable(filepath.Join(".", file), exts); err == nil {
 }
 ```
 
-の部分で，パス指定のないコマンド名に対してわざわざカレント・フォルダ “`.`” を付加して優先的にチェックしてるのだ。なんちうおせっかいな `orz`
+の部分で，パス指定のないコマンド名に対してわざわざカレント・フォルダ `.` を付加して優先的にチェックしてるのだ。なんちうおせっかいな `orz`
 
-ちなみに UNIX 版は（環境変数 `PATH` で明示しない限り）そんなことしない。
+ちなみに UNIX 版（`lp_unix.go` ファイル）では，環境変数 `PATH` で明示しない限り，そんなことはしない。
 
 ```go
 func LookPath(file string) (string, error) {
