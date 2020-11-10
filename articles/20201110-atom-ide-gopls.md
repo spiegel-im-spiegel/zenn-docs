@@ -16,7 +16,7 @@ Microsoft が誇る Visual Studo Code 最大の功績は「言語サーバ・プ
 
 各プログラミング言語コミュニティは自身の言語用サーバを提供している。 [Go] コミュニティでも早い段階からいくつかの実装が存在したが，現在では Google の [gopls][gopls] ( go please と読むらしい 😄) に集約されつつあるようだ。 [gopls] 自体はまだアルファ版だそうだが，それでも VSCode だけでなく Vim や Emacs などでも既に使われている。
 
-この流れに見事に取り残されているのが [ATOM] エディタである。何故かというと [Go] 支援用パッケージの最大手である [go-plus] が今だに [gocode] を使っているのである。つか，実質的に [go-plus] の開発は2年くらい前から止まっているのだが。それでも [go-plus] を越えるパッケージが未だ見当たらないのは，いかに [ATOM] エディタが過疎ってるかを示す傍証と言えるかもしれない。
+この流れに見事に取り残されているのが [ATOM] エディタである。何故かというと [Go] 支援用パッケージの最大手である [go-plus] が今だに [gocode] を使っているのである。つか，実質的に [go-plus] の開発は2年くらい前から止まっているのだが。それでも [go-plus] を越えるパッケージが未だ見当たらないのは（[Go] プログラマから見て）いかに [ATOM] エディタが過疎ってるかを示す傍証と言えるかもしれない。
 
 （ホンマ GitHub は [ATOM] をどうするつもりなんだろう）
 
@@ -42,6 +42,13 @@ Microsoft が誇る Visual Studo Code 最大の功績は「言語サーバ・プ
 比較対象が [go-plus] なので，評価が多少辛辣なのはご容赦を。まぁ「今後に期待」というところだろうか。 [gocode] はすでにソフトウェアとしての寿命を終えてるし [go-plus] の入力補完に我慢ならないという方は [ide-gopls] を応援し育てていくのもいいだろう。
 
 私はせめて lint & test ができるようになってから，かな。もう少し我慢する。
+
+## 参考
+
+- [Big Sky :: gocode やめます(そして Language Server へ)](https://mattn.kaoriya.net/software/lang/go/20181217000056.htm)
+- [Big Sky :: Go 言語の Language Server「gopls」が completeUnimported に対応した。](https://mattn.kaoriya.net/software/lang/c/20191112100330.htm)
+- [gopls 0.4.3で構造体を初期化（"fillstruct"）しようとしても、"No code actions found"とだけ表示される - My External Storage](https://budougumi0617.github.io/2020/07/18/use_fillstruct_of_goplus_on_vim/)
+- [vim-goを使わず、LSP（gopls）を使ってVimのGo開発環境を構築する - My External Storage](https://budougumi0617.github.io/2020/07/24/make_vimrc_with_lsp/)
 
 [Go]: https://golang.org/ "The Go Programming Language"
 [gopls]: https://github.com/golang/tools/tree/master/gopls "tools/gopls at master · golang/tools"
