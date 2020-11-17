@@ -18,6 +18,8 @@ https://zenn.dev/it/articles/e975f08392ea846d9d7b
 
 [Go] の「並行処理」に関してはバイブルと言える本がある。
 
+https://www.amazon.co.jp/dp/4873118468
+
 - [Go言語による並行処理 | Katherine Cox-Buday, 山口 能迪 |本 | 通販 | Amazon][Go言語による並行処理]
 
 
