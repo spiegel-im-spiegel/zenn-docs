@@ -16,7 +16,11 @@ https://zenn.dev/it/articles/e975f08392ea846d9d7b
 
 ## [Go] における「並行処理」と「並列処理」
 
-[Go] の「並行処理」に関してはバイブルと言える本がある。
+まずは「並行処理」と「並列処理」の違いについて書こうと思ったが，以下の記事に言及しつくされていた。
+
+https://zenn.dev/koron/articles/3ddcaaeae37f9befdf70
+
+orz ...気を取り直して， [Go] の「並行処理」に関してはバイブルと言える本がある。
 
 https://www.amazon.co.jp/dp/4873118468
 
