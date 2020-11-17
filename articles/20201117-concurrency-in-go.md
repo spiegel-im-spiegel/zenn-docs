@@ -3,7 +3,7 @@ title: "Go における「並行処理」の抽象化" # 記事のタイトル
 emoji: "🤔" # アイキャッチとして使われる絵文字（1文字だけ）
 type: "idea" # "tech" : 技術記事 / "idea" : アイデア記事
 topics: ["golang", "concurrency"] # タグ。["markdown", "rust", "aws"] のように指定する
-published: false # 公開設定（true で公開）
+published: true # 公開設定（true で公開）
 ---
 
 面白い記事を見かける。
@@ -36,7 +36,7 @@ https://www.amazon.co.jp/dp/4873118468
 
 > Coroutines are [computer program](https://en.wikipedia.org/wiki/Computer_program) components that generalize [subroutines](https://en.wikipedia.org/wiki/Subroutine) for [non-preemptive multitasking](https://en.wikipedia.org/wiki/Non-preemptive_multitasking), by allowing execution to be suspended and resumed. Coroutines are well-suited for implementing familiar program components such as [cooperative tasks](https://en.wikipedia.org/wiki/Cooperative_multitasking), [exceptions](https://en.wikipedia.org/wiki/Exception_handling), [event loops](https://en.wikipedia.org/wiki/Event_loop), [iterators](https://en.wikipedia.org/wiki/Iterator), [infinite lists](https://en.wikipedia.org/wiki/Lazy_evaluation) and [pipes](https://en.wikipedia.org/wiki/Pipeline_(software)). 
 
-などと書かれている。ここで Coroutine は非プリエンプティブであると書かれているが， [Go] の goroutine は [1.14](https://golang.org/doc/go1.14 "Go 1.14 Release Notes - The Go Programming Language") から（一部のプラットフォームを除いて）プリエンプティブな非同期処理を獲得している。
+などと書かれている。ここで coroutine は非プリエンプティブであると書かれているが， [Go] の goroutine は [1.14](https://golang.org/doc/go1.14 "Go 1.14 Release Notes - The Go Programming Language") から（一部のプラットフォームを除いて）プリエンプティブな非同期処理を獲得している。
 
 > Goroutines are now asynchronously preemptible. As a result, loops without function calls no longer potentially deadlock the scheduler or significantly delay garbage collection. This is supported on all platforms except `windows/arm`, `darwin/arm`, `js/wasm`, and `plan9/*`.
 
@@ -44,22 +44,23 @@ https://www.amazon.co.jp/dp/4873118468
 
 ## 並行処理のトレードオフ
 
-私は，個人的な好みとしては [Go] と [Rust] が好きなので[^rst1] 両者の比較を[よく考える](https://text.baldanders.info/remark/2020/04/subtyping/ "それは Duck Typing ぢゃない（らしい） | text.Baldanders.info")が，最初に紹介した「[多言語からみるマルチコアの活かし方](https://zenn.dev/it/articles/e975f08392ea846d9d7b)」を見るに，並行処理に関しても両者は対象的なんだなぁ，と感じる。
+私の個人的な好みとしては [Go] と [Rust] が好きなので[^rst1] 両者の比較を[よく考える](https://text.baldanders.info/remark/2020/04/subtyping/ "それは Duck Typing ぢゃない（らしい） | text.Baldanders.info")が，最初に紹介した「[多言語からみるマルチコアの活かし方](https://zenn.dev/it/articles/e975f08392ea846d9d7b)」を見るに，並行処理に関しても両者は対象的なんだなぁ，と感じる。
 
 [^rst1]: [Rust] については今のところ停滞しているが。個人が余暇でちょっとしたコードを書くには [Rust] はちょっとヘヴィなんだよなぁ。
 
 大抵のプログラミング言語は「並列処理」をライブラリまたはフレームワークの一部として装備している。なので大方において「並行処理」と「並列処理」は未分化のまま設計せざるを得ない。だから（並列処理に対する）並行処理を「複数の処理を順番に実行すること」みたいな勘違いが発生するのだと思う。しかし見方を変えると「並列処理」と「並行処理」が密結合しているからこそ得られるパフォーマンスもあるわけだ， [Rust] のように。
 
-一方 [Go] は「並列処理」と「並行処理」を明確に分離し疎結合とすることで「並行処理」そのものの自由度を高めている。その意味で [Go] と [Rust] はトレードオフの関係のようになっているわけだ（笑）
+一方 [Go] は「並列処理」をランタイム内に標準装備して「並行処理」と明確に分離し，両者を疎結合とすることで「並行処理」そのものの自由度を高めている。その意味で [Go] と [Rust] はトレードオフのような関係になっているわけだ。まぁ「[Go] か [Rust] かどっちか選べ」みたいな究極の選択はないだろうが（笑）
 
 ## というわけで...
 
 [Go] で並行処理を勉強するなら，まずは『[Go言語による並行処理]』を読みなはれ，ということで。
 
-## リンク
+## 参考リンク
 
 - [Go: Goroutine, OS Thread and CPU Management | by Vincent Blanchon | A Journey With Go | Medium](https://medium.com/a-journey-with-go/go-goroutine-os-thread-and-cpu-management-2f5a5eaf518a)
 - [Go: GOMAXPROCS & Live Updates. ℹ️ This article is based on Go 1.13. | by Vincent Blanchon | A Journey With Go | Medium](https://medium.com/a-journey-with-go/go-gomaxprocs-live-updates-407ad08624e1)
+- [In-process caching in Go: scaling lakeFS to 100k requests/second](https://lakefs.io/2020/09/23/in-process-caching-in-go-scaling-lakefs-to-100k-requests-second/)
 - [goroutineはなぜ軽量なのか - Carpe Diem](https://christina04.hatenablog.com/entry/why-goroutine-is-good)
 - [『Go 言語による並行処理』は Go 言語プログラマ必読書だろう | text.Baldanders.info](https://text.baldanders.info/remark/2018/11/concurrency-in-go/)
 
