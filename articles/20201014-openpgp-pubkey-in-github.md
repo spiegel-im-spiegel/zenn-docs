@@ -147,13 +147,7 @@ $ curl -s https://github.com/spiegel-im-spiegel.gpg | gpg --import
 $ gpg --fetch-key https://github.com/spiegel-im-spiegel.gpg
 ```
 
-とすれば [GnuPG] にインポートできる。また [gpgpdump] を使って
-
-```
-$ curl -s https://github.com/spiegel-im-spiegel.gpg | gpgpdump
-```
-
-とかすれば可視化もできる。
+とすれば [GnuPG] にインポートできる。
 
 ちなみに複数の公開鍵を登録している場合は全ての鍵データを連結した状態で取り出せる。逆にひとつも公開鍵を登録してないユーザは
 
@@ -168,6 +162,33 @@ Note: This user hasn't uploaded any GPG keys.
 ```
 
 みたいな表示になる。
+
+## 【2020-11-23 追記】
+
+拙作の [gpgpdump] で [GitHub] に登録した [OpenPGP] 公開鍵を取り出して可視化できるようにした。
+
+たとえば GitHub 上で以下のような署名を見つけたら
+
+[![verified-signature.png](https://text.baldanders.info/release/2020/11/gpgpdump-v0_10_0-is-released/verified-signature.png)](https://text.baldanders.info/release/2020/11/gpgpdump-v0_10_0-is-released/ "gpgpdump v0.10.0 をリリースした | text.Baldanders.info")
+
+以下のコマンドラインで公開鍵の中身を見ることができる。
+
+```text
+$ gpgpdump github spiegel-im-spiegel --keyid B4DA3BAE7E20B81C -u
+Public-Key Packet (tag 6) (1198 bytes)
+    Version: 4 (current)
+    Public key creation time: 2013-04-28T10:29:43Z
+    Public-key Algorithm: DSA (Digital Signature Algorithm) (pub 17)
+    DSA p (3072 bits)
+    DSA q (q is a prime divisor of p-1) (256 bits)
+    DSA g (3070 bits)
+    DSA y (= g^x mod p where x is secret) (3067 bits)
+...
+```
+
+詳しくは以下の記事をどうぞ。
+
+- [gpgpdump v0.10.0 をリリースした | text.Baldanders.info](https://text.baldanders.info/release/2020/11/gpgpdump-v0_10_0-is-released/)
 
 ## 参考
 
