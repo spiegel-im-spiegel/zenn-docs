@@ -8,7 +8,7 @@ published: true # 公開設定（true で公開）
 
 今回は
 
-- [ソートの計算量と現実のプログラム | Zenn](https://zenn.dev/satoru_takeuchi/articles/d66b8b69e0218d9f137e)
+https://zenn.dev/satoru_takeuchi/articles/d66b8b69e0218d9f137e
 
 から着想を得て [Go] 標準の [sort] パッケージについて簡単に紹介する。なお今回の記事は，以前 LT 用に書いたスライド「[配列とスライスとソート](https://slide.baldanders.info/shimane-go-2020-02-13/)」からの抜粋となっている。よろしければスライドの方もご笑覧あれ。
 

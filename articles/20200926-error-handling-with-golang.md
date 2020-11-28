@@ -6,7 +6,7 @@ topics: ["go", "programming"] # タグ。["markdown", "rust", "aws"] のよう�
 published: true # 公開設定（true で公開）
 ---
 
-- [［Golang］errors.Is() errors.As() 完全ガイド〜使い方と違いをしっかり調査しました〜 | Zenn](https://zenn.dev/kskumgk63/articles/550dc9d42078d968beac)
+https://zenn.dev/kskumgk63/articles/550dc9d42078d968beac
 
 という記事を見かけたが微妙に「？？？」な印象だったので，私なりに書き直してみる。
 
@@ -185,7 +185,7 @@ func As(type E)(err error) (e E, ok bool) {
 
 自作パッケージで使っているエラーハンドリングを切り出して，独立したパッケージとして公開している。そのまま使うなりコピペしてアレンジして使うなり，ご自由にどうぞ。
 
-- [Go 言語用エラーハンドリング・パッケージ — リリース情報 | text.Baldanders.info](https://text.baldanders.info/release/errs-package-for-golang/)
+https://text.baldanders.info/release/errs-package-for-golang/
 
 ## その他，参考
 

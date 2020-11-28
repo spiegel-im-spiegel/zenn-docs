@@ -77,7 +77,7 @@ if err != nil {
 
 ## 参考
 
-- [time.Ticker で遊ぶ — プログラミング言語 Go | text.Baldanders.info](https://text.baldanders.info/golang/ticker/)
+https://text.baldanders.info/golang/ticker/
 
 [Go]: https://golang.org/ "The Go Programming Language"
 [context]: https://golang.org/pkg/context/ "context - The Go Programming Language"

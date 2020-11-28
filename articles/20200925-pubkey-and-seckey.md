@@ -156,7 +156,7 @@ hello, world
 
 続きは結城浩さんの
 
-- [暗号技術入門 第3版　秘密の国のアリス](https://www.amazon.co.jp/dp/B015643CPE?tag=baldandersinf-22&linkCode=ogi&th=1&psc=1)
+https://www.amazon.co.jp/dp/B015643CPE
 
 を読むことをお勧めする。特に公開鍵が誰に所属するかの証明（certification）は公開鍵暗号および公開鍵暗号基盤の根幹に関わるので，この本を読んで理解を進めて欲しい。
 

@@ -12,7 +12,7 @@ published: true # 公開設定（true で公開）
 
 [GnuPG] の使い方に関する簡単な「虎の巻（cheat sheet）」を作ってみることにした。なお詳細版は以下の記事にまとめている。
 
-- [GnuPG チートシート（鍵作成から失効まで） — OpenPGP の実装 | text.Baldanders.info](http://text.baldanders.info/openpgp/gnupg-cheat-sheet/)
+http://text.baldanders.info/openpgp/gnupg-cheat-sheet/
 
 なお，記事は Linux 環境を前提に書いているが Windows 等でもコマンドラインはほぼ同じなので（鍵束のあるフォルダ位置が違うが），問題なく使えると思う。
 
@@ -40,7 +40,7 @@ $ gpg --full-gen-key --expert
 
 ECC の取り扱いについては以下の記事を参照のこと。
 
-- [そろそろ GnuPG でも ECC を標準で使うのがいいんじゃないかな — OpenPGP の実装 | text.Baldanders.info](http://text.baldanders.info/openpgp/using-ecc-with-gnupg/)
+http://text.baldanders.info/openpgp/using-ecc-with-gnupg/
 
 ### バッチ処理
 

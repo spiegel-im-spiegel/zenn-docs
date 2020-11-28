@@ -8,7 +8,7 @@ published: true # 公開設定（true で公開）
 
 今回も小ネタ。 [Go] でコードを書く人にはお馴染みの話題であるが，たまたま見つけたので。
 
-- [Go: nil == nil is true or false? Na tum jano na hum… | by Shivani Singhal | Oct, 2020 | Medium](https://medium.com/@shivi28/go-when-nil-nil-returns-true-a8a014abeffb)
+https://medium.com/@shivi28/go-when-nil-nil-returns-true-a8a014abeffb
 
 お題はこのコード：
 

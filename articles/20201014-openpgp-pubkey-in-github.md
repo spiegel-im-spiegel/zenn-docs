@@ -188,7 +188,7 @@ Public-Key Packet (tag 6) (1198 bytes)
 
 詳しくは以下の記事をどうぞ。
 
-- [gpgpdump v0.10.0 をリリースした | text.Baldanders.info](https://text.baldanders.info/release/2020/11/gpgpdump-v0_10_0-is-released/)
+https://text.baldanders.info/release/2020/11/gpgpdump-v0_10_0-is-released/
 
 ## 参考
 
