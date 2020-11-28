@@ -14,7 +14,7 @@ published: true # 公開設定（true で公開）
 
 http://text.baldanders.info/openpgp/gnupg-cheat-sheet/
 
-なお，記事は Linux 環境を前提に書いているが Windows 等でもコマンドラインはほぼ同じなので（鍵束のあるフォルダ位置が違うが），問題なく使えると思う。
+この記事では Linux 環境を前提に書いているが Windows 等でもコマンドラインはほぼ同じなので（鍵束のあるフォルダ位置が違うが），問題なく使えると思う。
 
 ## 鍵の作成
 
