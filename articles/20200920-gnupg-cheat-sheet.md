@@ -192,7 +192,6 @@ uid           [  究極  ] Alice <alice@example.com>
 sub   elg3072 2020-09-20 [E]
       7FDB DE0A 370F B089 4937  C70F BC59 C039 5F41 EC9F
 
-gpgtst --quick-set-expire 3C8FF48F3965803591FEB48C1E2B977521CA4529 2y
 $ gpg --quick-set-expire 3C8FF48F3965803591FEB48C1E2B977521CA4529 2y
 
 $ gpg --list-keys alice
@@ -218,13 +217,14 @@ sub   elg3072 2020-09-20 [E] [有効期限: 2022-09-20]
 $ gpg -a --export alice > alice-key.asc
 ```
 
+秘密鍵も含めてエクスポートする場合は `--export-secret-keys` コマンドを使う。秘密鍵の取扱は慎重に。
+
 ### 公開鍵をインポートする
 
 ```
 $ gpg --import alice-key.asc
 ```
-
-Web ページ上に公開鍵のファイルを置いている場合は `--fetch-keys` コマンドで直接インポートすることもできる。
+秘密鍵を含んでいる場合も `--import` コマンドでインポートできる（インポート時にパスフレーズを訊かれる）。 Web ページ上に公開鍵のファイルを置いている場合は `--fetch-keys` コマンドで直接インポートすることもできる。
 
 ```
 $ gpg --fetch-keys http://www.baldanders.info/spiegel/pubkeys/spiegel.asc
@@ -288,19 +288,25 @@ gpg: 鍵D06350E1BAB5DDCB: 公開鍵"alice <alice@example.com>"をインポート
 
 ### 公開鍵に署名する
 
+インポートした公開鍵は電子署名することで有効になるが，近年では第三者による野良署名は推奨されない傾向にある。また鍵サーバによっては自己署名以外の電子署名をドロップする場合もあるようだ。
+
+そこで公開鍵への電子署名には `--lsign-key` または `--quick-lsign-key` コマンドを使ったローカル署名を推奨する。ローカル署名はエクスポート（または鍵サーバへの送信）時にドロップされる。
+
 alice の鍵で署名する場合（鍵IDを指定してもOK）。
 
 ```
-$ gpg -u alice --quick-sign-key FDFA901CB9962C1FD0CB2DB3D06350E1BAB5DDCB
+$ gpg -u alice --quick-lsign-key FDFA901CB9962C1FD0CB2DB3D06350E1BAB5DDCB
 ```
 
-電子署名に使う既定の鍵を鍵束フォルダにある `gpg.conf` ファイルで指定することができる。
+電子署名に使う既定の鍵を鍵束フォルダにある `gpg.conf` ファイルで指定することもできる。
 
-```
+```text:gpg.conf
 default-key alice
 ```
 
-なお，電子署名を配布されては困る場合は `--quick-lsign-key` コマンドを使う。
+なお，電子署名を含めて配布したい場合は `--sign-key` または `--quick-sign-key` コマンドを使う（チーム運営などで相互署名したい[^km1] ときなど）。
+
+[^km1]: 詳しくは拙文「[OpenPGP 鍵管理に関する考察](https://text.baldanders.info/openpgp/openpgp-key-management/)」を参照のこと。
 
 ## データの暗号化
 
@@ -574,11 +580,11 @@ gpg:                発行者"alice@example.com"
 gpg: "Alice <alice@example.com>"からの正しい署名 [究極]
 ```
 
-## 鍵の失効
+## 鍵を失効させる
 
 鍵を作成する際に鍵束フォルダ以下の `openpgp-revocs.d` フォルダに失効証明書が作成される。中身はこんな感じ。
 
-```
+```text:openpgp-revocs.d/3C8FF48F3965803591FEB48C1E2B977521CA4529.rev
 これは失効証明書でこちらのOpenPGP鍵に対するものです:
 
 pub   dsa3072 2020-09-20 [SC]
