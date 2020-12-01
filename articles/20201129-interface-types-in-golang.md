@@ -83,7 +83,7 @@ type FileObject interface {
 
 ```go
 var f FileObject
-f, _ := OpenFile("sample.txt")
+f, _ = OpenFile("sample.txt")
 ```
 
 などと返り値を受けても全く問題なく動く。この辺が C++ や Java などの「公称型」の型システムと根本的に異なるところで，この機能のおかげで「どのメソッドを『使う』か」をオブジェクトを使う側が決めることができるのである。
