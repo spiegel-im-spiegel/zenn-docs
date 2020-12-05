@@ -1,5 +1,5 @@
 title: "Go のエラーハンドリング"
-summary: "書籍版"
+summary: "5年前よりは多少なりと理解が進んだと思うので，この際，今まで書いた駄文を「全部入り」で本の形にしてみようと思う。"
 topics: ["go", "programming", "error"]
 published: false
 price: 0 # 有料の場合200〜5000
@@ -7,3 +7,4 @@ price: 0 # 有料の場合200〜5000
 chapters:
   - intro
   - basics
+  - reference

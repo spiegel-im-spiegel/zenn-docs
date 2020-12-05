@@ -14,9 +14,9 @@ type error interface {
 }
 ```
 
-つまり，文字列を返す Error() メソッドを持つ型であれば全て error 型として扱うことができる。
+つまり，文字列を返す Error() メソッドを持つ型であれば全て error 型として扱うことができる。汎化にもほどがある（笑）
 
-[Go] ではエラーを普通に関数の返値として返す。
+しかも [Go] ではエラーを普通に関数の返り値として返す。
 
 ```go
 file, err := os.Open(filename)
@@ -24,7 +24,7 @@ file, err := os.Open(filename)
 
 他に返すべき値があれば組（tuple）にして最後の要素に error 型のインスタンスを配置するのが慣例らしい。
 
-検出したエラーは（どこにも投げないで）その場で評価してしまえばよい。
+検出したエラーは（投げ出さないでw）その場で評価してしまえばいい。
 
 ```go
 file, err := os.Open(filename)
@@ -34,7 +34,7 @@ if err != nil {
 }
 ```
 
-また if 構文は内部に構文を含めることができるので
+また [if 構文][if]は内部に構文を含めることもできるので
 
 ```go
 if err := file.Close(); err != nil {
@@ -43,9 +43,11 @@ if err := file.Close(); err != nil {
 }
 ```
 
-なんてな感じに書くこともできる。
+てな感じに書くこともできる[^if]。
 
-Open と Close のように一連の処理が要求される場合は defer 構文で後始末を先に書いてしまう。
+[^if]: [if 構文][if]内で宣言（:=）された変数は，そのスコープでのみ有効となる。同名変数の shadowing に注意。
+
+Open と Close のように一連の処理が要求される場合は [defer 構文][defer]で後始末を先に書いてしまう。
 
 ```go
 defer func() {
@@ -84,4 +86,6 @@ defer func() {
 
 
 [Go]: https://golang.org/ "The Go Programming Language"
+[if]: https://golang.org/ref/spec#If_statements "The Go Programming Language Specification - The Go Programming Language"
+[defer]: https://golang.org/ref/spec#Defer_statements "The Go Programming Language Specification - The Go Programming Language"
 <!-- eof -->
