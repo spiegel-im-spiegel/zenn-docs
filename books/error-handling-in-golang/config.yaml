@@ -6,17 +6,20 @@ summary: |-
 
   * エラー操作の基本
   * エラー評価のいろいろ
-  * 構造化エラー
+  * 階層化エラー
   * サードパーティのエラー・パッケージ
   * エラーの基本戦術
   * ぼくがかんがえたさいきょうのえらーろぐ
+  * Panic ハンドリング
 topics: ["go", "programming", "error"]
 published: false
 price: 0 # 有料の場合200〜5000
+toc_depth: 1
 # 本に含めるチャプターを順番に並べましょう
 chapters:
   - intro
   - basics
   - evaluations
+  - layered-error
   - reference
   - colophon

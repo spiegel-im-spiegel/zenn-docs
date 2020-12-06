@@ -51,17 +51,7 @@ if err := file.Close(); err != nil {
 
 [^if]: [if 構文][if]内で宣言（:=）された変数は，そのスコープでのみ有効となる。同名変数の shadowing に注意。
 
-Open と Close のように一連の処理が要求される場合は [defer 構文][defer]で後始末を先に書いてしまう。
-
-```go
-defer func() {
-    if err := file.Close(); err != nil {
-        fmt.Fprintln(os.Stderr, err)
-    }
-}()
-```
-
-まとめるとこんな感じ。
+Open と Close のように一連の処理が要求される場合は [defer 構文][defer]で後始末を先に書いてしまう。一連の処理をまとめるとこんな感じ。
 
 ```go
 file, err := os.Open(filename)
@@ -130,8 +120,6 @@ func main() {
 ```
 
 のように，その場でエラーメッセージを作ってエラー・インスタンスとして生成することもできる。
-
-（[fmt].Errorf() 関数については「構造化エラー」の節で再び紹介する。お楽しみに）
 
 [Go]: https://golang.org/ "The Go Programming Language"
 [if]: https://golang.org/ref/spec#If_statements "The Go Programming Language Specification - The Go Programming Language"

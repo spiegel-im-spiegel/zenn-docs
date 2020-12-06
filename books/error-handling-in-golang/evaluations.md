@@ -29,7 +29,7 @@ if err != nil {
 }
 ```
 
-まで展開してくれる。重宝してます，ホンマ（笑）
+まで展開してくれたりする。重宝してます，ホンマ（笑）
 
 ### Error とボクシング
 
@@ -86,14 +86,64 @@ if !errors.Is(err, io.EOF) {
 
 と置き換えることができる。むしろ今後は [errors].Is() 関数を使うことを強くお勧めする。
 
-（[errors].Is() 関数については「構造化エラー」の節で再び紹介する）
-
 ## インスタンスのボックス化解除
 
+たとえば [os].Open() 関数の返り値のエラー型は以下の内部状態を持っている。
 
+```go
+// PathError records an error and the operation and file path that caused it.
+type PathError struct {
+    Op   string
+    Path string
+    Err  error
+}
+```
 
+しかし error 型でボックス化している状態では Error() メソッドしか使えないため [os].PathError 型の要素を使うことが出来ない。使うためにはボックス化の解除が必要である。 [Go] では [conversion 構文][conversion]を使ってボックス化解除ができる。
+
+こんな感じ。
+
+```go
+switch e := err.(type) {
+case *os.PathError:
+    if errno, ok := e.Err.(syscall.Errno); ok {
+        switch errno {
+        case syscall.ENOENT:
+            fmt.Fprintln(os.Stderr, "ファイルが存在しない")
+        case syscall.ENOTDIR:
+            fmt.Fprintln(os.Stderr, "ディレクトリが存在しない")
+        default:
+            fmt.Fprintln(os.Stderr, "Errno =", errno)
+        }
+    } else {
+        fmt.Fprintln(os.Stderr, "その他の PathError")
+    }
+default:
+    fmt.Fprintln(os.Stderr, "その他のエラー")
+}
+```
+
+[Go] 1.13 からは [errors].As() 関数が正式に用意され，ボックス化解除が少し楽になった。
+
+```go
+var perr *os.PathError
+if errors.As(err, &perr) {
+    fmt.Fprintf(os.Stderr, "file is \"%v\"\n", perr.Path)
+}
+```
+
+## Error() メソッドの返り値（文字列）を解析する
+
+[バッドノウハウ](http://0xcc.net/misc/bad-knowhow.html "バッドノウハウと「奥が深い症候群」")。
+
+と切り捨てたいところだが，これまで述べた評価方法が使えない場合は文字列を解析するしかない。特に [fmt].Errorf() 関数でエラー・インスタンスを作るのは（便利な半面）複雑な評価がしづらい。
+
+なお [fmt].Errorf() 関数については [errors].Is() や [errors].As() などと組み合わせてもう少し構造的に評価できるようになった。これについては[次節](./layered-error)で改めて紹介する。
 
 [Go]: https://golang.org/ "The Go Programming Language"
 [io]: https://golang.org/pkg/io/ "io - The Go Programming Language"
 [errors]: https://golang.org/pkg/errors/ "errors - The Go Programming Language"
+[os]: https://golang.org/pkg/os/ "os - The Go Programming Language"
+[fmt]: https://golang.org/pkg/fmt/ "fmt - The Go Programming Language"
+[conversion]: https://golang.org/ref/spec#Conversions "The Go Programming Language Specification - The Go Programming Language"
 <!-- eof -->
