@@ -6,9 +6,8 @@ summary: |-
 
   * エラー操作の基本
   * エラー評価のいろいろ
-  * 階層化エラー
+  * エラーの階層化
   * サードパーティのエラー・パッケージ
-  * エラーの基本戦術
   * ぼくがかんがえたさいきょうのえらーろぐ
   * Panic ハンドリング
 topics: ["go", "programming", "error"]
@@ -21,5 +20,7 @@ chapters:
   - basics
   - evaluations
   - layered-error
+  - third-party-errors
+  - error-tactics
   - reference
   - colophon

@@ -1,10 +1,10 @@
 ---
-title: "階層化エラー"
+title: "エラーの階層化"
 ---
 
 ## 階層化エラーの導入
 
-[Go] 1.13 から [errors] 等の標準パッケージで階層化エラーが取り入れられた。具体的には Unwrap() 関数の導入である。
+[Go] 1.13 から [errors] 等の標準パッケージでエラーの階層化が取り入れられた。具体的には Unwrap() 関数の導入である。
 
 ```go:errors/wrap.go
 // Unwrap returns the result of calling the Unwrap method on err, if err's
@@ -93,10 +93,15 @@ $ go run sample.go
 ```go:sanple2.go
 func main() {
     if err := checkFileOpen("not-exist.txt"); err != nil {
-        switch {
-        case errors.Is(err, syscall.ENOENT):
-            fmt.Fprintln(os.Stderr, "ファイルが存在しない")
-        default:
+        var perr *os.PathError
+        if errors.As(err, &perr) {
+            switch {
+            case errors.Is(err, syscall.ENOENT):
+                fmt.Fprintf(os.Stderr, "\"%v\" ファイルが存在しない\n", perr.Path)
+            default:
+                fmt.Fprintln(os.Stderr, "その他の PathError")
+            }
+        } else {
             fmt.Fprintln(os.Stderr, "その他のエラー")
         }
         return
@@ -108,7 +113,7 @@ func main() {
 
 ```
 $ go run sample2.go 
-ファイルが存在しない
+"not-exist.txt" ファイルが存在しない
 ```
 
 といった評価も可能になる。
