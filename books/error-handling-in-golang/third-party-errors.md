@@ -6,7 +6,7 @@ title: "サードパーティのパッケージ"
 
 ## [pkg/errors]
 
-昔から人気の高い汎用エラー・パッケージで [Go] 1.13 以降の [errors] 標準パッケージと置き換えて使うこともできる。
+[pkg/errors] は昔から人気の高い汎用エラー・パッケージで，最近のバージョンでは [Go] 1.13 以降の [errors] 標準パッケージと置き換えて使うこともできるようになった。
 
 面白いのはエラーにスタック情報を付加できる点で
 
@@ -37,7 +37,7 @@ func main() {
 }
 ```
 
-のように [errors].WithStack() 関数でラッピングしたエラー・インスタンスを `%+v` 書式で表示すると
+のように errors.WithStack() 関数でラッピングしたエラー・インスタンスを `%+v` 書式で表示すると
 
 ```
 $ go run sample3.go 
@@ -60,7 +60,7 @@ if err != nil {
 }
 ```
 
-のようにすればエラーメッセージを付加することもできる。
+のように errors.Wrap() あるいは errors.Wrapf() 関数を使ってエラーメッセージを付加することもできる。
 
 ## [hashicorp/go-multierror]
 
@@ -106,9 +106,9 @@ if err := result.ErrorOrNil(); err != nil {
 
 ## [golang.org/x/xerrors]
 
-標準の [errors] パッケージの[元ネタ](https://go.googlesource.com/proposal/+/master/design/29934-error-values.md "Proposal: Go 2 Error Inspection")的なパッケージで今でも割と使われているが，可能であれば [errors] 標準パッケージへ移行することをお勧めする。
+[errors] 標準パッケージで追加された階層エラー機能の[元ネタ](https://go.googlesource.com/proposal/+/master/design/29934-error-values.md "Proposal: Go 2 Error Inspection")的なパッケージで今でも割と使われているが，可能であれば [errors] 標準パッケージへ移行すべきだろう。
 
-[golang.org/x/xerrors] パッケージにあって [errors] 標準パッケージにない機能として `%+v` 書式を使ったスタック情報の吐き出しがあるが，これについては先に紹介した [pkg/errors] のほうがシンプルでお勧めである。併せて検討していただきたい。
+[golang.org/x/xerrors] パッケージにあって [errors] 標準パッケージにない機能として `%+v` 書式を使ったスタック情報の吐き出しがあるが，これについては先に紹介した [pkg/errors] のほうが設計がシンプルでお勧めである。併せて検討していただきたい。
 
 [Go]: https://golang.org/ "The Go Programming Language"
 [errors]: https://golang.org/pkg/errors/ "errors - The Go Programming Language"
