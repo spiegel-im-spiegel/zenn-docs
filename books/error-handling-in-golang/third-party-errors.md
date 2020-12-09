@@ -1,9 +1,97 @@
 ---
-title: "サードパーティのエラー・パッケージ"
+title: "サードパーティのパッケージ"
 ---
 
+標準の [errors] パッケージで階層化エラーの基本機能が提供されたが，サードパーティの汎用エラー・パッケージではもう少し高機能なものもある。以下にいくつか紹介してみよう。
 
+## [pkg/errors]
 
+昔から人気の高い汎用エラー・パッケージで [Go] 1.13 以降の [errors] 標準パッケージと置き換えて使うこともできる。
+
+面白いのはエラーにスタック情報を付加できる点で
+
+```go
+package main
+
+import (
+    "fmt"
+    "os"
+
+    "github.com/pkg/errors"
+)
+
+func checkFileOpen(path string) error {
+    file, err := os.Open(path)
+    if err != nil {
+        return errors.WithStack(err)
+    }
+    defer file.Close()
+    return nil
+}
+
+func main() {
+    if err := checkFileOpen("not-exist.txt"); err != nil {
+        fmt.Fprintf(os.Stderr, "%+v\n", err)
+        return
+    }
+}
+```
+
+のよように [errors].WithStack() 関数でラッピングしたエラー・インスタンスを `%+v` 書式で表示すると
+
+```
+$ go run sample3.go
+open not-exist.txt: The system cannot find the file specified.
+main.checkFileOpen
+    /path/to/sample3.go:13
+main.main
+    /path/to/sample3.go:20
+runtime.main
+    /user/local/go/src/runtime/proc.go:204
+runtime.goexit
+    /user/local/go/src/runtime/asm_amd64.s:1374
+```
+
+てな感じにエラー発生時のスタック情報を吐き出すことができる。さらに
+
+```go
+if err != nil {
+    return errors.Wrapf(err, "open error (%s)", path)
+}
+```
+
+のようにすればエラーメッセージを付加することもできる。
+
+## [hashicorp/go-multierror]
+
+コンテナ操作や goroutine を使った並行処理などで複数のエラーをまとめて処理する場合がある。複数のエラーをまとめて扱えるサードパーティ・パッケージはいくつかあるが，個人的には [hashicorp/go-multierror] がシンプルでお気に入りである。
+
+エラーの追加は
+
+```go
+var result error
+
+if err := step1(); err != nil {
+	result = multierror.Append(result, err)
+}
+if err := step2(); err != nil {
+	result = multierror.Append(result, err)
+}
+
+return result
+```
+
+てな感じでできる。また [errors].Is() や [errors].As() を使った評価もできる。簡単・便利！
+
+## [golang.org/x/xerrors]
+
+標準の [errors] パッケージの[元ネタ](https://go.googlesource.com/proposal/+/master/design/29934-error-values.md "Proposal: Go 2 Error Inspection")的なパッケージで今でも割と使われているが，可能であれば [errors] 標準パッケージへ移行することをお勧めする。
+
+[golang.org/x/xerrors] パッケージにあって [errors] 標準パッケージにない機能として `%+v` 書式を使ったスタック情報の吐き出しがあるが，これについては先に紹介した [pkg/errors] のほうがシンプルでお勧めである。併せて検討していただきたい。
 
 [Go]: https://golang.org/ "The Go Programming Language"
+[errors]: https://golang.org/pkg/errors/ "errors - The Go Programming Language"
+[pkg/errors]: https://github.com/pkg/errors "pkg/errors: Simple error handling primitives"
+[hashicorp/go-multierror]: https://github.com/hashicorp/go-multierror "hashicorp/go-multierror: A Go (golang) package for representing a list of errors as a single error."
+[golang.org/x/xerrors]: https://pkg.go.dev/golang.org/x/xerrors "xerrors · pkg.go.dev"
 <!-- eof -->
