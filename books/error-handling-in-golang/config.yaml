@@ -21,5 +21,6 @@ chapters:
   - layered-error
   - third-party-errors
   - error-tactics
+  - error-logging
   - reference
   - colophon

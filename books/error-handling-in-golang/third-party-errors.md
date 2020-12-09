@@ -10,7 +10,7 @@ title: "サードパーティのパッケージ"
 
 面白いのはエラーにスタック情報を付加できる点で
 
-```go
+```go:sample3.go
 package main
 
 import (
@@ -37,19 +37,19 @@ func main() {
 }
 ```
 
-のよように [errors].WithStack() 関数でラッピングしたエラー・インスタンスを `%+v` 書式で表示すると
+のように [errors].WithStack() 関数でラッピングしたエラー・インスタンスを `%+v` 書式で表示すると
 
 ```
-$ go run sample3.go
-open not-exist.txt: The system cannot find the file specified.
+$ go run sample3.go 
+open not-exist.txt: no such file or directory
 main.checkFileOpen
-    /path/to/sample3.go:13
+    /home/username/path/to/sample3.go:13
 main.main
-    /path/to/sample3.go:20
+    /home/username/path/to/sample3.go:20
 runtime.main
-    /user/local/go/src/runtime/proc.go:204
+    /usr/local/go/src/runtime/proc.go:204
 runtime.goexit
-    /user/local/go/src/runtime/asm_amd64.s:1374
+    /usr/local/go/src/runtime/asm_amd64.s:1374
 ```
 
 てな感じにエラー発生時のスタック情報を吐き出すことができる。さらに
@@ -66,22 +66,43 @@ if err != nil {
 
 コンテナ操作や goroutine を使った並行処理などで複数のエラーをまとめて処理する場合がある。複数のエラーをまとめて扱えるサードパーティ・パッケージはいくつかあるが，個人的には [hashicorp/go-multierror] がシンプルでお気に入りである。
 
-エラーの追加は
+たとえば，こんな感じに書ける。
 
 ```go
-var result error
-
-if err := step1(); err != nil {
-	result = multierror.Append(result, err)
+func main() {
+    paths := []string{"not-exist1.txt", "not-exist2.txt"}
+    var result *multierror.Error
+    for _, path := range paths {
+        if err := checkFileOpen(path); err != nil {
+            result = multierror.Append(result, err)
+        }
+    }
+    if err := result.ErrorOrNil(); err != nil {
+        fmt.Fprintln(os.Stderr, err)
+    }
+    // Output:
+    // 2 errors occurred:
+    //     * error! : open not-exist1.txt: no such file or directory
+    //     * error! : open not-exist2.txt: no such file or directory
 }
-if err := step2(); err != nil {
-	result = multierror.Append(result, err)
-}
-
-return result
 ```
 
-てな感じでできる。また [errors].Is() や [errors].As() を使った評価もできる。簡単・便利！
+また [errors].Is() や [errors].As() を使った評価もできる。
+
+```go
+if err := result.ErrorOrNil(); err != nil {
+    var perr *os.PathError
+    if errors.As(err, &perr) && errors.Is(perr, syscall.ENOENT) {
+        fmt.Fprintf(os.Stderr, "\"%v\" ファイルが存在しない\n", perr.Path)
+    } else {
+        fmt.Fprintln(os.Stderr, "その他のエラー")
+    }
+}
+// Output:
+// "not-exist1.txt" ファイルが存在しない
+```
+
+簡単・便利！
 
 ## [golang.org/x/xerrors]
 
