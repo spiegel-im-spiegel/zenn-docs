@@ -12,8 +12,9 @@ summary: |-
 
   寄付（サポート）歓迎。ご笑覧のほどを。
 topics: ["go", "programming", "error"]
-published: false
+published: true
 price: 0 # 有料の場合200〜5000
+toc_depth: 1
 # 本に含めるチャプターを順番に並べましょう
 chapters:
   - intro

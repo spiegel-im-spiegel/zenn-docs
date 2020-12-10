@@ -24,7 +24,9 @@ fn main() {
 
 実にスマート！
 
-## 「例外」の問題は “goto” と同じ[^goto1]
+## 「例外」の問題は “goto” と同じ
+
+「例外」の問題は “goto” と同じと言える[^goto1]。
 
 [^goto1]: ちなみに [Go] の `goto` や ラベル付きの `break`, `continue` は[飛び先に制約](https://golang.org/test/goto.go)があり，どこにでもジャンプできるわけではない。
 
