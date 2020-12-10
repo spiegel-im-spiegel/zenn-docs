@@ -47,7 +47,7 @@ Run 'gpgpdump --help' for usage.
 
 https://text.baldanders.info/release/errs-package-for-golang/
 
-たとえば [spiegel-im-spiegel/errs][errs] を使ってこんな感じに書ける。
+たとえば，こんな感じに書ける。
 
 ```go:sample5.go
 package main
@@ -86,8 +86,7 @@ $ go run sample5.go
 {"Type":"*errs.Error","Err":{"Type":"*os.PathError","Msg":"open not-exist.txt: The system cannot find the file specified.","Cause":{"Type":"syscall.Errno","Msg":"The system cannot find the file specified."}},"Context":{"function":"main.checkFileOpen","path":"not-exist.txt"}}
 ```
 
-てな感じにエラーが JSON 形式で表示される。
-このままだと見にくいので [jq] コマンド等を使って
+てな感じにエラーが JSON 形式で表示される。このままだと見にくいので [jq] コマンド等を使って
 
 ```
 $ go run sample5.go | jq .
@@ -109,8 +108,6 @@ $ go run sample5.go | jq .
 ```
 
 などとすれば分かりやすいかな。自作コマンドライン・ツールでは `--debug` オプションをつけると JSON 形式のエラーを吐くようにしている。
-
-どや，かっこええやろ（CV は久川綾さんでw）
 
 ## [rs/zerolog][zerolog] を使って構造化ログを出力する
 

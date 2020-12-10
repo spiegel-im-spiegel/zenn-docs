@@ -10,12 +10,12 @@ package main
 import "fmt"
 
 func main() {
-	foo()
+    foo()
 }
 
 func foo() {
-	numbers := []int{0, 1, 2}
-	fmt.Println(numbers[3])
+    numbers := []int{0, 1, 2}
+    fmt.Println(numbers[3])
 }
 ```
 
@@ -41,11 +41,11 @@ panic は意図的に発生させることもできる。
 package main
 
 func main() {
-	foo()
+    foo()
 }
 
 func foo() {
-	panic("Panic!")
+    panic("Panic!")
 }
 ```
 
@@ -73,32 +73,32 @@ exit status 2
 package main
 
 import (
-	"errors"
-	"fmt"
-	)
+    "errors"
+    "fmt"
+    )
 
 func main() {
-	err := bar()
-	if err != nil {
-		fmt.Printf("%#v\n", err)
-		return
-	}
-	fmt.Println("Normal End.")
+    err := bar()
+    if err != nil {
+        fmt.Printf("%#v\n", err)
+        return
+    }
+    fmt.Println("Normal End.")
 }
 
 func bar() (err error) {
-	defer func() {
-		if rec := recover(); rec != nil {
-			err = fmt.Errorf("Recovered from: %w", rec)
-		}
-	}()
+    defer func() {
+        if rec := recover(); rec != nil {
+            err = fmt.Errorf("Recovered from: %w", rec)
+        }
+    }()
 
-	foo()
-	return
+    foo()
+    return
 }
 
 func foo() {
-	panic(errors.New("Panic!"))
+    panic(errors.New("Panic!"))
 }
 ```
 
@@ -122,23 +122,23 @@ $ go run sample9.go
 // makeSlice allocates a slice of size n. If the allocation fails, it panics
 // with ErrTooLarge.
 func makeSlice(n int) []byte {
-	// If the make fails, give a known error.
-	defer func() {
-		if recover() != nil {
-			panic(ErrTooLarge)
-		}
-	}()
-	return make([]byte, n)
+    // If the make fails, give a known error.
+    defer func() {
+        if recover() != nil {
+            panic(ErrTooLarge)
+        }
+    }()
+    return make([]byte, n)
 }
 ```
 
 また再帰処理中に続行不能なエラーが発生した場合に panic を投げてトップレベルの関数に一気に復帰するような使い方をすることもあるらしい。この場合，トップレベルの関数は（続行不可能なら）改めて panic を投げるか（処理続行できる根拠があるのなら）通常の error を返すことになる[^recover2]。
 
-[^recover2]: これ以外にサーバ用途などでプロセスを落とせない場合に recover で回避することもあるそうだが，既に続行不可能な状態で無理やりプロセスを続行するのが正しい動きなのかどうかは疑問が残る。
+[^recover2]: サーバ用途などでプロセスを落とせない場合に recover で回避することもあるそうだが，既に続行不可能な状態で無理やりプロセスを続行するのが正しい動きなのかどうかは疑問が残る。
 
 いずれにしろ，外部パッケージが（何らかの理由で）投げた panic を安易に拾って「例外処理」すべきではないし， panic を投げる側も本当にそれが正しいハンドリングなのかよくよく考えるべきだろう。
 
-なおビルド時（`go run` コマンド時を含む）に `-trimpath` オプションを付けるとスタック情報吐き出し時にフルパスで出力しないようになる。
+なお，ビルド時（`go run` コマンド時を含む）に `-trimpath` オプションを付けるとスタック情報吐き出し時にフルパスで出力しないようになる。
 
 ```
 $ go run -trimpath sample8.go
