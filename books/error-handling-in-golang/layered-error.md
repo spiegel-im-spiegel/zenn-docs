@@ -21,7 +21,7 @@ func Unwrap(err error) error {
 }
 ```
 
-たとえば[前節](./evaluations)で紹介した [os].PathError 型は以下のように定義されている。
+たとえば[前節](./evaluations)で紹介した [os].PathError 型のメソッドは以下のように定義されている。
 
 ```go:os/error.go
 // PathError records an error and the operation and file path that caused it.

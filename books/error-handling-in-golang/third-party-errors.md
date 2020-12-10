@@ -2,7 +2,7 @@
 title: "サードパーティのパッケージ"
 ---
 
-標準の [errors] パッケージで階層化エラーの基本機能が提供されたが，サードパーティの汎用エラー・パッケージではもう少し高機能なものもある。以下にいくつか紹介してみよう。
+[前節](./layered-error)で述べたとおり，標準の [errors] パッケージにて階層化エラーの基本機能が提供されたが，サードパーティの汎用エラー・パッケージではもう少し高機能なものもある。以下にいくつか紹介してみよう。
 
 ## [pkg/errors]
 
@@ -43,9 +43,9 @@ func main() {
 $ go run sample3.go 
 open not-exist.txt: no such file or directory
 main.checkFileOpen
-    /home/username/path/to/sample3.go:13
+    /home/username/path/to/sample3/sample3.go:13
 main.main
-    /home/username/path/to/sample3.go:20
+    /home/username/path/to/sample3/sample3.go:20
 runtime.main
     /usr/local/go/src/runtime/proc.go:204
 runtime.goexit

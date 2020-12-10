@@ -65,7 +65,7 @@ exit status 2
 
 てな感じになる。
 
-一方で panic を recover することもできる[^recover1]。
+また panic を recover することもできる[^recover1]。
 
 [^recover1]: recover は [defer 構文][defer]とともに使用する。つまり panic 発生時でも [defer 構文][defer]で予約された処理は実行される。
 
@@ -109,11 +109,11 @@ $ go run sample9.go
 &fmt.wrapError{msg:"Recovered from: Panic!", err:(*errors.errorString)(0xc00010a040)}
 ```
 
-といった感じになる。 panic を recover で捕まえて通常の error として返しているのがお分かりだろうか。
+といった感じになる。 panic を recover() 関数で捕まえて通常の error として返しているのがお分かりだろうか。
 
 一般的に panic はアプリケーション内で続行不可能な致命的エラーが発生した場合に投げられる。
 
-まぁ，ゼロ除算や領域外アクセスのようなエラーは panic が発生する前に回避するコードにすべきだが，ヒープメモリ不足のような回避不能なエラーの場合は panic が投げられるのもやむを得ないだろう。しかし，その場合でも recover することにほとんど意味はない。
+まぁ，ゼロ除算や領域外アクセスのようなエラーは panic が発生する前に回避するコードにすべきだが，ヒープメモリ不足のような回避不能なエラーの場合は panic が投げられるのもやむを得ないだろう。しかし，その場合でも recover して処理を継続させることに殆ど意味はない。
 
 例外的な使い方として [bytes].Buffer では，メモリ確保で panic が発生した際に recover で捕まえ，定義済みの error インスタンスに入れ替えて panic を投げ直している。
 
@@ -153,7 +153,7 @@ main.main()
 exit status 2
 ```
 
-デバッグ時はともかく，バイナリを公開する際に（たとえ Docker 上でビルドするにしても）開発環境のパスが丸見えなのはどうかと思うので，リリース用ビルドのスクリプトに `-trimpath` オプションを付けてビルドするよう手を加えておくといいだろう。
+開発中はともかく，バイナリを公にリリースする際に（たとえ Docker 上でビルドするにしても）開発環境のパスが丸見えなのはどうかと思うので，リリース用ビルドのスクリプトに `-trimpath` オプションを付けてビルドするよう手を加えておくといいだろう。
 
 [Go]: https://golang.org/ "The Go Programming Language"
 [defer]: https://golang.org/ref/spec#Defer_statements "The Go Programming Language Specification - The Go Programming Language"
