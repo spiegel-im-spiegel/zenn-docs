@@ -19,7 +19,7 @@ $ gpgpdump http
 Error: unknown command "http" for "gpgpdump"
 
 Did you mean this?
-	hkp
+    hkp
 
 Run 'gpgpdump --help' for usage.
 ```
@@ -83,7 +83,7 @@ func main() {
 
 ```
 $ go run sample5.go
-{"Type":"*errs.Error","Err":{"Type":"*os.PathError","Msg":"open not-exist.txt: The system cannot find the file specified.","Cause":{"Type":"syscall.Errno","Msg":"The system cannot find the file specified."}},"Context":{"function":"main.checkFileOpen","path":"not-exist.txt"}}
+{"Type":"*errs.Error","Err":{"Type":"*os.PathError","Msg":"open not-exist.txt: no such file or directory","Cause":{"Type":"syscall.Errno","Msg":"no such file or directory"}},"Context":{"function":"main.checkFileOpen","path":"not-exist.txt"}}
 ```
 
 てな感じにエラーが JSON 形式で表示される。このままだと見にくいので [jq] コマンド等を使って
@@ -94,10 +94,10 @@ $ go run sample5.go | jq .
   "Type": "*errs.Error",
   "Err": {
     "Type": "*os.PathError",
-    "Msg": "open not-exist.txt: The system cannot find the file specified.",
+    "Msg": "open not-exist.txt: no such file or directory",
     "Cause": {
       "Type": "syscall.Errno",
-      "Msg": "The system cannot find the file specified."
+      "Msg": "no such file or directory"
     }
   },
   "Context": {
@@ -111,7 +111,7 @@ $ go run sample5.go | jq .
 
 ## [rs/zerolog][zerolog] を使って構造化ログを出力する
 
-[rs/zerolog][zerolog] はパフォーマンスがよく，しかも JSON 形式でログを出力する優れものである。これを拙作の [spiegel-im-spiegel/errs][errs] と組み合わせることを考える。
+[rs/zerolog][zerolog] ロギング・パッケージはパフォーマンスがよく，しかも JSON 形式でログを出力する優れものである。これを拙作の [spiegel-im-spiegel/errs][errs] と組み合わせることを考える。
 
 こんな感じでどうだろう。
 
@@ -141,10 +141,10 @@ $ go run sample6.go | jq -s .
       "Type": "*errs.Error",
       "Err": {
         "Type": "*os.PathError",
-        "Msg": "open not-exist.txt: The system cannot find the file specified.",
+        "Msg": "open not-exist.txt: no such file or directory",
         "Cause": {
           "Type": "syscall.Errno",
-          "Msg": "The system cannot find the file specified."
+          "Msg": "no such file or directory"
         }
       },
       "Context": {
@@ -152,7 +152,7 @@ $ go run sample6.go | jq -s .
         "path": "not-exist.txt"
       }
     },
-    "time": "2020-12-10T14:39:48+09:00"
+    "time": "2020-12-10T19:16:29+09:00"
   }
 ]
 ```

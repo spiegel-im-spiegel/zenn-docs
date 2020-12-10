@@ -2,8 +2,9 @@ package main
 
 import (
 	"fmt"
-	"github.com/spiegel-im-spiegel/errs"
 	"os"
+
+	"github.com/spiegel-im-spiegel/errs"
 )
 
 func checkFileOpen(path string) error {
