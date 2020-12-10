@@ -8,7 +8,7 @@ summary: |-
   * エラーの階層化
   * サードパーティのパッケージ
   * ぼくがかんがえたさいきょうのえらーろぐ
-  * Panic ハンドリング
+  * Panic と Recover
 topics: ["go", "programming", "error"]
 published: false
 price: 0 # 有料の場合200〜5000

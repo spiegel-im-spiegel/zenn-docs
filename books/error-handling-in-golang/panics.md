@@ -115,8 +115,7 @@ $ go run sample9.go
 
 まぁ，ゼロ除算や領域外アクセスのようなエラーは panic が発生する前に回避するコードにすべきだが，ヒープメモリ不足のような回避不能なエラーの場合は panic が投げられるのもやむを得ないだろう。しかし，その場合でも recover することにほとんど意味はない。
 
-例外的な使い方として [bytes].Buffer では，メモリ確保で panic が発生した際に recover で捕まえ， error インスタンスを入れ替えて panic を投げ直している。
-このような用途で recover を使うことはあり得る。
+例外的な使い方として [bytes].Buffer では，メモリ確保で panic が発生した際に recover で捕まえ， error インスタンスを入れ替えて panic を投げ直している。このような用途で recover を使うことはあり得る。
 
 ```go
 // makeSlice allocates a slice of size n. If the allocation fails, it panics
@@ -138,7 +137,7 @@ func makeSlice(n int) []byte {
 
 いずれにしろ，外部パッケージが（何らかの理由で）投げた panic を安易に拾って「例外処理」すべきではないし， panic を投げる側も本当にそれが正しいハンドリングなのかよくよく考えるべきだろう。
 
-なお，ビルド時（`go run` コマンド時を含む）に `-trimpath` オプションを付けるとスタック情報吐き出し時にフルパスで出力しないようになる。
+なお，ビルド時（`go run` コマンド時を含む）に `-trimpath` オプションを付けるとスタック情報吐き出し時にフルパスでの表示を抑制できる。
 
 ```
 $ go run -trimpath sample8.go
