@@ -10,6 +10,8 @@ https://golang.org/ref/spec
 
 https://go.dev/
 
+https://blog.golang.org/defer-panic-and-recover
+
 ## 参考図書
 
 https://www.amazon.co.jp/dp/4621300253
