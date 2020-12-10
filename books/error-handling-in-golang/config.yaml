@@ -22,5 +22,6 @@ chapters:
   - third-party-errors
   - error-tactics
   - error-logging
+  - panics
   - reference
   - colophon
