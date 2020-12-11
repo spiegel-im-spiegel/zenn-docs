@@ -56,7 +56,7 @@ default:
 
 例として以下のようなコードを考えてみる。
 
-```go:sanple.go
+```go:sample.go
 package main
 
 import (
@@ -90,7 +90,7 @@ $ go run sample.go
 
 となり [os].PathError 型のインスタンスがラッピングされていることが分かる。したがって
 
-```go:sanple2.go
+```go:sample2.go
 func main() {
     if err := checkFileOpen("not-exist.txt"); err != nil {
         var perr *os.PathError
