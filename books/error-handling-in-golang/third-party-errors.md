@@ -110,6 +110,12 @@ if err := result.ErrorOrNil(); err != nil {
 
 [golang.org/x/xerrors] パッケージにあって [errors] 標準パッケージにない機能として `%+v` 書式を使ったスタック情報の吐き出しがあるが，これについては先に紹介した [pkg/errors] のほうが設計がシンプルでお勧めである。併せて検討していただきたい。
 
+## その他の汎用エラー・パッケージ
+
+以下はネット等で見かけた汎用エラー・パッケージを列挙していく。私自身が試したわけではないので機能・性能のほどは保証しかねるけど，気になるものがあれば是非とも試してみて欲しい。
+
+- [morikuni/failure: failure is a utility package for handling application errors.](https://github.com/morikuni/failure)
+
 [Go]: https://golang.org/ "The Go Programming Language"
 [errors]: https://golang.org/pkg/errors/ "errors - The Go Programming Language"
 [pkg/errors]: https://github.com/pkg/errors "pkg/errors: Simple error handling primitives"
