@@ -146,9 +146,37 @@ Windows 環境でパスの通っていないカレントのコマンドを安直
 
 どっとはらい
 
+## 【2020-12-20 追記】 [github.com/cli/safeexec][safeexec] パッケージを使う
+
+[Hugo v0.79.1 のリリースノート](https://github.com/gohugoio/hugo/releases/tag/v0.79.1 "Release v0.79.1 · gohugoio/hugo")を見て気づいたのだが， GitHub が自身のコマンドライン・ツール用に [github.com/cli/safeexec][safeexec] パッケージを公開している。
+
+これは [os/exec] 標準パッケージ内の `exec.LookPath()` 関数を置き換えるもので
+
+```go
+import (
+    "os/exec"
+    "github.com/cli/safeexec"
+)
+
+func gitStatus() error {
+    gitBin, err := safeexec.LookPath("git")
+    if err != nil {
+        return err
+    }
+    cmd := exec.Command(gitBin, "status")
+    return cmd.Run()
+}
+```
+
+てな感じに使うようだ。
+
+`exec.LookPath()` 関数周りでこれから対策を行うのであれば [github.com/cli/safeexec][safeexec] パッケージを使うことを検討してもいいだろう。
+
+https://text.baldanders.info/golang/safeexec-packge/
 
 [Go]: https://golang.org/ "The Go Programming Language"
 [Git for Windows]: https://gitforwindows.org/ "Git for Windows"
 [Git LFS]: https://git-lfs.github.com/ "Git Large File Storage | Git Large File Storage (LFS) replaces large files such as audio samples, videos, datasets, and graphics with text pointers inside Git, while storing the file contents on a remote server like GitHub.com or GitHub Enterprise."
 [os/exec]: https://golang.org/pkg/os/exec/ "exec - The Go Programming Language"
+[safeexec]: https://github.com/cli/safeexec "cli/safeexec: A safer version of exec.LookPath on Windows"
 <!-- eof -->
