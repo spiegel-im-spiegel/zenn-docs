@@ -115,6 +115,7 @@ if err := result.ErrorOrNil(); err != nil {
 以下はネット等で見かけた汎用エラー・パッケージを列挙していく。私自身が試したわけではないので機能・性能のほどは保証しかねるけど，気になるものがあれば是非とも試してみて欲しい。
 
 - [morikuni/failure: failure is a utility package for handling application errors.](https://github.com/morikuni/failure)
+- [errgroup · pkg.go.dev](https://pkg.go.dev/golang.org/x/sync/errgroup) : 個人的には [hashicorp/go-multierror] のほうがオススメ
 
 [Go]: https://golang.org/ "The Go Programming Language"
 [errors]: https://golang.org/pkg/errors/ "errors - The Go Programming Language"
