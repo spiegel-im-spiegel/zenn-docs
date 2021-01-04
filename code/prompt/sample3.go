@@ -31,6 +31,8 @@ type History struct {
 	buffer []string
 }
 
+var _ readline.IHistory = (*History)(nil)
+
 const (
 	max     = 50
 	logfile = "history.log"

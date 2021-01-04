@@ -36,16 +36,14 @@ func errPrint(err error) string {
 }
 
 func main() {
-	editor := readline.Editor{
-		Prompt: func() (int, error) { return fmt.Print("> ") },
-	}
 	//input
-	text, err := editor.ReadLine(context.Background())
+	text, err := (&readline.Editor{
+		Prompt: func() (int, error) { return fmt.Print("> ") },
+	}).ReadLine(context.Background())
 	if err != nil {
 		fmt.Fprintln(os.Stderr, errPrint(err))
 		return
 	}
 	//output
 	fmt.Println(string(Reverse([]rune(text))))
-	return
 }
