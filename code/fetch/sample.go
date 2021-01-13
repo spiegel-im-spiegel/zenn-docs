@@ -1,10 +1,11 @@
+// +build run
+
 package main
 
 import (
 	"context"
 	"fmt"
 	"io"
-	"io/ioutil"
 	"net/http"
 	"os"
 
@@ -18,22 +19,18 @@ func main() {
 		fmt.Fprintln(os.Stderr, err)
 		return
 	}
-	resp, err := fetch.New(
-		fetch.WithHTTPClient(&http.Client{}),
-		fetch.WithContext(context.Background()),
-	).Get(
-		u,
-		fetch.WithRequestHeaderSet("Accept", "application/vnd.github.v3+json"),
-	)
+	resp, err := fetch.New(fetch.WithHTTPClient(&http.Client{})).
+		Get(
+			u,
+			fetch.WithContext(context.Background()),
+			fetch.WithRequestHeaderSet("Accept", "application/vnd.github.v3+json"),
+		)
 	if err != nil {
 		fmt.Fprintln(os.Stderr, err)
 		return
 	}
-	defer func() {
-		// _, _ = io.Copy(ioutil.Discard, resp.Body)
-		resp.Body.Close()
-	}()
-	if _, err := io.Copy(os.Stdout, resp.Body); err != nil {
+	defer resp.Close()
+	if _, err := io.Copy(os.Stdout, resp.Body()); err != nil {
 		fmt.Fprintln(os.Stderr, err)
 	}
 }
