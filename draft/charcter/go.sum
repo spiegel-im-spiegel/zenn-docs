@@ -1,0 +1,4 @@
+github.com/ikawaha/encoding v1.0.0 h1:e5c91rsoSR8rcw4ZMRE/chEzJmf+xetA/mQrZLrS9aQ=
+github.com/ikawaha/encoding v1.0.0/go.mod h1:q3jnnFOYrSupzfYwGuZRQrLhTjEWL58M4LWihzgsM58=
+golang.org/x/text v0.3.5/go.mod h1:5Zoc/QRtKVWzQhOtBMvqHzDpF6irO9z98xDceosuGiQ=
+golang.org/x/tools v0.0.0-20180917221912-90fa682c2a6e/go.mod h1:n7NCudcB/nEzxVGmLbDWY5pfWTLqBcC2KZ6jyYvM4mQ=
