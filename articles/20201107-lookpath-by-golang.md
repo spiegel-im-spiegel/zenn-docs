@@ -174,9 +174,113 @@ func gitStatus() error {
 
 https://text.baldanders.info/golang/safeexec-packge/
 
+## 【2021-01-21 追記】 [golang.org/x/sys/execabs][execabs] パッケージを使う
+
+[Go] 1.15.7 でも今回の脆弱性について改修が行われた。
+
+https://blog.golang.org/path-security
+
+この中で [golang.org/x/sys/execabs][execabs] パッケージの[提案](https://github.com/golang/go/issues/43724 "proposal: os/exec: return error when PATH lookup would use current directory · Issue #43724 · golang/go")について言及されている。このパッケージでは
+
+```go:execabs.go
+func fixCmd(name string, cmd *exec.Cmd) {
+	if filepath.Base(name) == name && !filepath.IsAbs(cmd.Path) {
+		// exec.Command was called with a bare binary name and
+		// exec.LookPath returned a path which is not absolute.
+		// Set cmd.lookPathErr and clear cmd.Path so that it
+		// cannot be run.
+		lookPathErr := (*error)(unsafe.Pointer(reflect.ValueOf(cmd).Elem().FieldByName("lookPathErr").Addr().Pointer()))
+		if *lookPathErr == nil {
+			*lookPathErr = relError(name, cmd.Path)
+		}
+		cmd.Path = ""
+	}
+}
+
+// CommandContext is like Command but includes a context.
+//
+// The provided context is used to kill the process (by calling os.Process.Kill)
+// if the context becomes done before the command completes on its own.
+func CommandContext(ctx context.Context, name string, arg ...string) *exec.Cmd {
+	cmd := exec.CommandContext(ctx, name, arg...)
+	fixCmd(name, cmd)
+	return cmd
+
+}
+
+// Command returns the Cmd struct to execute the named program with the given arguments.
+// See exec.Command for most details.
+//
+// Command differs from exec.Command in its handling of PATH lookups,
+// which are used when the program name contains no slashes.
+// If exec.Command would have returned an exec.Cmd configured to run an
+// executable from the current directory, Command instead
+// returns an exec.Cmd that will return an error from Start or Run.
+func Command(name string, arg ...string) *exec.Cmd {
+	cmd := exec.Command(name, arg...)
+	fixCmd(name, cmd)
+	return cmd
+}
+```
+
+といった感じにパス指定のない外部コマンドについて絶対パスに展開されない場合はエラーとするようだ。
+
+例えばカレントフォルダに
+
+```Batch:hello.cmd
+@echo off
+echo Hello world!
+```
+
+というコマンドがあるとして。
+
+```go:sample.go
+package main
+
+import (
+	"os"
+	"fmt"
+
+	"golang.org/x/sys/execabs"
+)
+
+func main() {
+	if b, err := execabs.Command("hello").Output(); err != nil {
+		fmt.Fprintln(os.Stderr, err)
+	} else {
+		fmt.Println("Say:", string(b))
+	}
+}
+```
+
+とすれば
+
+```
+$ go run sample.go
+hello resolves to executable in current directory (.\hello.cmd)
+```
+
+てな感じに実行されずにエラーになる。ちなみに外部コマンドを以下のように
+
+```go:sample2.go
+if b, err := execabs.Command(".\\hello").Output(); err != nil {
+    ...
+}
+```
+
+明示的にカレント・フォルダを指定すれば問題なく動作する。
+
+```
+$ go run sample2.go
+Say: Hello world!
+```
+
+[execabs] パッケージが標準として組み込まれるかどうかは分からないが，暫定措置として置き換えを検討する価値はあるだろう。
+
 [Go]: https://golang.org/ "The Go Programming Language"
 [Git for Windows]: https://gitforwindows.org/ "Git for Windows"
 [Git LFS]: https://git-lfs.github.com/ "Git Large File Storage | Git Large File Storage (LFS) replaces large files such as audio samples, videos, datasets, and graphics with text pointers inside Git, while storing the file contents on a remote server like GitHub.com or GitHub Enterprise."
 [os/exec]: https://golang.org/pkg/os/exec/ "exec - The Go Programming Language"
 [safeexec]: https://github.com/cli/safeexec "cli/safeexec: A safer version of exec.LookPath on Windows"
+[execabs]: https://pkg.go.dev/golang.org/x/sys/execabs "execabs · pkg.go.dev"
 <!-- eof -->
