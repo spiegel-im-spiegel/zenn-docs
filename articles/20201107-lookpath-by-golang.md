@@ -6,6 +6,8 @@ topics: ["go", "security"] # タグ。["markdown", "rust", "aws"] のように�
 published: true # 公開設定（true で公開）
 ---
 
+## Windows 環境における外部コマンド起動に関する脆弱性
+
 先日 [Git for Windows] 2.29.2 (2) がリリースされたのだが，この中で [Git LFS] の脆弱性の修正が行われている。
 
 - [Release Git for Windows 2.29.2(2) · git-for-windows/git · GitHub](https://github.com/git-for-windows/git/releases/tag/v2.29.2.windows.2)
@@ -19,6 +21,8 @@ published: true # 公開設定（true で公開）
 Windows では `PATH` が通ってなくても（パスなしで指定すれば）カレント・フォルダの実行モジュールを起動できるので，そこに malware を紛れ込ませてユーザに起動させることが可能，というわけ。3年前くらいに流行った DLL 読み込みに関する脆弱性のバリエーションと考えると分かりやすいだろう。
 
 - [Windows アプリケーションの DLL 読み込みに関する脆弱性について](https://www.jpcert.or.jp/tips/2017/wr172001.html)
+
+## [os/exec] 標準パッケージ
 
 もの知らずで申し訳ないが，私は今回の件まで [Git LFS] が [Go] 製とは知らなかった（笑） じゃあ [Go] では外部コマンドの呼び出しをどうやっているのかというと [os/exec] 標準パッケージが用意されている。
 
@@ -139,6 +143,8 @@ func LookPath(file string) (string, error) {
 ```
 
 拡張子のチェックもしないし，シンプルって素晴らしい！
+
+## 脆弱性への対処
 
 Windows 環境でパスの通っていないカレントのコマンドを安直に実行しないようにするには `exec.Command()` 関数にコマンド名を渡す前にパス名に展開するか， `exec.Cmd`インスタンスの `Path` 要素にパスに展開したコマンド名を直接セットするしかないだろう。 [Git LFS] では `LookPath()` 関数をカスタマイズしたものを実装し，直接 `Path` 要素をセットし直しているようだ。
 
