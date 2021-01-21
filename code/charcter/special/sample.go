@@ -19,9 +19,11 @@ func check(r rune) string {
 	case unicode.IsMark(r): return "Mark"
 	case unicode.IsPunct(r): return "Punct"
 	case unicode.IsSpace(r): return "Space"
-	case unicode.IsControl(r): return "Control"
 	}
-	if unicode.IsGraphic(r) {return "Graphic"}
+	switch {
+		case unicode.IsControl(r): return "Control"
+		case unicode.IsGraphic(r): return "Graphic"
+	}
 	return "Unknown"
 }
 
