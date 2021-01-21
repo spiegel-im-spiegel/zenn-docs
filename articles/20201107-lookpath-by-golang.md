@@ -184,17 +184,17 @@ https://blog.golang.org/path-security
 
 ```go:execabs.go
 func fixCmd(name string, cmd *exec.Cmd) {
-	if filepath.Base(name) == name && !filepath.IsAbs(cmd.Path) {
-		// exec.Command was called with a bare binary name and
-		// exec.LookPath returned a path which is not absolute.
-		// Set cmd.lookPathErr and clear cmd.Path so that it
-		// cannot be run.
-		lookPathErr := (*error)(unsafe.Pointer(reflect.ValueOf(cmd).Elem().FieldByName("lookPathErr").Addr().Pointer()))
-		if *lookPathErr == nil {
-			*lookPathErr = relError(name, cmd.Path)
-		}
-		cmd.Path = ""
-	}
+    if filepath.Base(name) == name && !filepath.IsAbs(cmd.Path) {
+        // exec.Command was called with a bare binary name and
+        // exec.LookPath returned a path which is not absolute.
+        // Set cmd.lookPathErr and clear cmd.Path so that it
+        // cannot be run.
+        lookPathErr := (*error)(unsafe.Pointer(reflect.ValueOf(cmd).Elem().FieldByName("lookPathErr").Addr().Pointer()))
+        if *lookPathErr == nil {
+            *lookPathErr = relError(name, cmd.Path)
+        }
+        cmd.Path = ""
+    }
 }
 
 // CommandContext is like Command but includes a context.
@@ -202,9 +202,9 @@ func fixCmd(name string, cmd *exec.Cmd) {
 // The provided context is used to kill the process (by calling os.Process.Kill)
 // if the context becomes done before the command completes on its own.
 func CommandContext(ctx context.Context, name string, arg ...string) *exec.Cmd {
-	cmd := exec.CommandContext(ctx, name, arg...)
-	fixCmd(name, cmd)
-	return cmd
+    cmd := exec.CommandContext(ctx, name, arg...)
+    fixCmd(name, cmd)
+    return cmd
 
 }
 
@@ -217,9 +217,9 @@ func CommandContext(ctx context.Context, name string, arg ...string) *exec.Cmd {
 // executable from the current directory, Command instead
 // returns an exec.Cmd that will return an error from Start or Run.
 func Command(name string, arg ...string) *exec.Cmd {
-	cmd := exec.Command(name, arg...)
-	fixCmd(name, cmd)
-	return cmd
+    cmd := exec.Command(name, arg...)
+    fixCmd(name, cmd)
+    return cmd
 }
 ```
 
@@ -238,18 +238,18 @@ echo Hello world!
 package main
 
 import (
-	"os"
-	"fmt"
+    "os"
+    "fmt"
 
-	"golang.org/x/sys/execabs"
+    "golang.org/x/sys/execabs"
 )
 
 func main() {
-	if b, err := execabs.Command("hello").Output(); err != nil {
-		fmt.Fprintln(os.Stderr, err)
-	} else {
-		fmt.Println("Say:", string(b))
-	}
+    if b, err := execabs.Command("hello").Output(); err != nil {
+        fmt.Fprintln(os.Stderr, err)
+    } else {
+        fmt.Println("Say:", string(b))
+    }
 }
 ```
 
