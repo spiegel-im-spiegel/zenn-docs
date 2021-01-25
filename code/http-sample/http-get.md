@@ -1,0 +1,110 @@
+# http.Get に URI 文字列をそのまま入れると叱られる
+
+いや，私も割と最近までそういうコードを書いてたので他人のことを言えないのだけど
+
+```go
+func get(rawuri string) ([]byte, error) {
+    resp, err := http.Get(rawuri)
+    if err != nil {
+        return nil, err
+    }
+    defer resp.Body.Close()
+    return ioutil.ReadAll(resp.Body)
+}
+```
+
+てな感じに [http].Get() 関数の引数に URI 文字列を未評価のまま突っ込むコードを書くと
+
+```
+$ golangci-lint run --enable gosec
+sample.go:11:15: G107: Potential HTTP request made with variable url (gosec)
+        resp, err := http.Get(rawuri)
+                     ^
+```
+
+と [lint](https://golangci-lint.run/ "golangci-lint") に叱られる[^post1]。ちなみにリテラル文字列を引数に入れると（文字列の内容に関わらず）叱られない[^taint1]。
+
+[^post1]: 今回は [http].Get() 関数を名指しにしているが [http].Post() 関数でも同様である。
+[^taint1]: 引数として渡ってくる「汚染された（tainted）データ」を関数内でそのまま使わないための手段として，引数（変数）で渡すのではなく定数で保持・使用する，というのはセキュア・コーディングの戦術としてはよく見かける。個人的には「最後の手段」って感じだが（笑）
+
+固定文字列に置き換えるというのは設計が変わってしまうので論外として，回避方法としては以下の2つがある。
+
+ひとつは **URI 文字列を評価した上で使う**。
+
+最低限の評価でいいなら [url].Parse() 関数を使って，こんな感じに改修できる。
+
+```diff go
+func get(rawuri string) ([]byte, error) {
+-   resp, err := http.Get(rawuri)
++   u, err := url.Parse(rawuri)
++   if err != nil {
++       return nil, err
++   }
++   resp, err := http.Get(u.String())
+    if err != nil {
+        return nil, err
+    }
+    defer resp.Body.Close()
+    return ioutil.ReadAll(resp.Body)
+}
+```
+
+もうひとつは **[http].NewRequest() 関数等[^ctx1] を使っていったん [http].Request 型を生成するよう書き換える**。たとえば，こんな感じ。
+
+[^ctx1]: [context].Context 情報を含めるのなら [http].NewRequestWithContext() 関数を使う。
+
+```diff go
+func get(rawuri string) ([]byte, error) {
+-   resp, err := http.Get(rawuri)
++   req, err := http.NewRequest(http.MethodGet, rawuri, nil)
++   if err != nil {
++       return nil, err
++   }
++   resp, err := (&http.Client{}).Do(req)
+    if err != nil {
+        return nil, err
+    }
+    defer resp.Body.Close()
+    return ioutil.ReadAll(resp.Body)
+}
+```
+
+なんで [http].Request() 関数では問題ないかというと，この関数の中で [url].Parse() 関数を使って URI 文字列を [url].URL 型に変換しているからだ。
+
+でもねぇ。実は [http].Get() 関数の中身って
+
+```go:client.go
+var DefaultClient = &Client{}
+
+func Get(url string) (resp *Response, err error) {
+	return DefaultClient.Get(url)
+}
+
+func (c *Client) Get(url string) (resp *Response, err error) {
+    req, err := NewRequest("GET", url, nil)
+    if err != nil {
+        return nil, err
+    }
+    return c.Do(req)
+}
+```
+
+という感じに内部で [http].Request() 関数を呼んでるんだよねぇ。
+
+引数で渡ってくるパス・ファイル名や URI といった文字列を「汚染された（tainted）データ」と見なして lint 等で警告を出すというのは悪くない考え方だが，それなら最初から [http].Get() や [http].Request() 等の関数の引数に（URI を）文字列で渡さない設計にすべきじゃないの，と思ってしまうのよ。
+
+[url].URL 型を使って URI を組み立てたり検証したりしたものを String() 関数で文字列に展開して [http].Get() 関数等に渡し，その関数内部で更に [url].URL 型に [url].Parse() するのは果てしなく無駄な作業に思える。
+
+まぁ，だからと言って今さら変えられないだろうけど。
+
+## 関連リンク
+
+https://zenn.dev/spiegel/articles/20210113-fetch
+
+## 参考図書
+
+https://www.amazon.co.jp/dp/4621300253
+
+[http]: https://golang.org/pkg/net/http/ "http - The Go Programming Language"
+[url]: https://golang.org/pkg/net/url/ "url - The Go Programming Language"
+[context]: https://golang.org/pkg/context/ "context - The Go Programming Language"
