@@ -237,3 +237,7 @@ UTF-8 の BOM はそろそろ滅びてくれんかねぇ...
 [RFC 1468]: https://tools.ietf.org/html/rfc1468 "RFC 1468 - Japanese Character Encoding for Internet Messages"
 [ikawaha/encoding]: https://github.com/ikawaha/encoding
 [gnkf]: https://github.com/spiegel-im-spiegel/gnkf "spiegel-im-spiegel/gnkf: Network Kanji Filter by Golang"
+
+## 参考図書
+
+https://zenn.dev/zetamatta/books/b820d588f4856bcf836c
