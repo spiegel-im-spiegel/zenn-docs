@@ -6,7 +6,7 @@ topics: ["go", "programming"] # タグ。["markdown", "rust", "aws"] のよう�
 published: true # 公開設定（true で公開）
 ---
 
-[Go] のモジュールについては[自ブログ](https://text.baldanders.info/golang/ "プログラミング言語 Go | text.Baldanders.info")でもよく話題にするのだが，差分情報が多く内容が分散しているため，ここの Zenn でまとめておく。
+[Go] のモジュールについては[自ブログ](https://markup.baldanders.info/golang/ "プログラミング言語 Go | markup.Baldanders.info")でもよく話題にするのだが，差分情報が多く内容が分散しているため，ここの Zenn でまとめておく。
 
 ## 用語の整理
 
@@ -22,8 +22,8 @@ published: true # 公開設定（true で公開）
 ### 「モジュール」とは
 
 モジュール対応モードでは，標準ライブラリを除くパッケージを「モジュール（module）」として管理する。パッケージが [git] 等のバージョン管理ツールで管理されている場合はバージョン（またはリビジョン）ごとに異なるモジュールと見なされる。つまりモジュールの実体は「パッケージ＋バージョン」ということになる。
- 
-ただしコード上ではパッケージとモジュールの間に区別はなく，したがってソースコードを書き換える必要はない。モジュールはソースコードではなく go.mod ファイルで管理される。
+
+ただしモジュールのバージョンは go.mod ファイルで管理されるため，パッケージ・パスとモジュール名が同じであればソースコードを書き換える必要はない。
 
 ## 環境変数 GO111MODULE によるモードの切り替え
 
@@ -44,7 +44,7 @@ GO111MODULE の取りうる値は以下の通り。
 
 バージョン 1.16 から GO111MODULE 未指定時の既定値が `on` になった（1.15 までは `auto`）。 GOPATH モードを使いたいのであれば GO111MODULE の値を `auto` または `off` に設定する[^env1]。
 
-[^env1]: [Go] の環境変数の取り扱いについては，拙文「[Go 言語の環境変数管理](https://text.baldanders.info/golang/go-env/)」をご覧あれ。
+[^env1]: [Go] の環境変数の取り扱いについては，拙文「[Go 言語の環境変数管理](https://markup.baldanders.info/golang/go-env/)」をご覧あれ。
 
 ```
 $ go env -w GO111MODULE=auto
@@ -69,7 +69,7 @@ go: to add module requirements and sums:
 
 これでカレント・ディレクトリ直下に go.mod ファイルが作成される。中身はこんな感じ。
 
-```txt:go.mod
+```markup:go.mod
 module hello
 
 go 1.16
@@ -79,7 +79,7 @@ go 1.16
 
 モジュール名は任意に付けられるがソース・コードの `import` で指定するパッケージパスに合わせるのが無難である。たとえば [github.com/spiegel-im-spiegel/fetch](https://github.com/spiegel-im-spiegel/fetch) パッケージであれば
 
-```txt:go.mod
+```markup:go.mod
 module github.com/spiegel-im-spiegel/fetch
 ```
 
@@ -98,7 +98,7 @@ module github.com/spiegel-im-spiegel/fetch
 
 `replace` ディレクティブはパッケージのあるリポジトリがリダイレクトされていて上手くインポートできない等の状況で使える。たとえばこんな感じ。
 
-```txt:go.mod
+```markup:go.mod
 module sample
 
 require gopkg.in/russross/blackfriday.v2 v2.0.1
@@ -108,7 +108,7 @@ replace gopkg.in/russross/blackfriday.v2 v2.0.1 => github.com/russross/blackfrid
 
 `retract` ディレクティブはバージョン 1.16 から導入されたもので
 
-```txt:go.mod
+```markup:go.mod
 // Remote-triggered crash in package foo. See CVE-2021-01234.
 retract v1.0.5
 ```
@@ -131,13 +131,13 @@ go: to switch to the latest unretracted version, run:
 
 go.sum ファイルにはインポートするモジュールの SHA-256 チェックサム値が格納されている。たとえば go.mod ファイルで `require` ディレクティブが
 
-```txt:go.mod
+```markup:go.mod
 require github.com/spiegel-im-spiegel/errs v1.0.2
 ```
 
 と指定されている場合， go.sum ファイルの内容は
 
-```txt:go.sum
+```markup:go.sum
 github.com/spiegel-im-spiegel/errs v1.0.2 h1:v4amEwRDqRWjKHOILQnJSovYhZ4ZttEnBBXNXEzS6Sc=
 github.com/spiegel-im-spiegel/errs v1.0.2/go.mod h1:UoasJYYujMcdkbT9USv8dfZWoMyaY3btqQxoLJImw0A=
 ```
@@ -146,7 +146,7 @@ github.com/spiegel-im-spiegel/errs v1.0.2/go.mod h1:UoasJYYujMcdkbT9USv8dfZWoMya
 
 go.sum ファイルの内容はインポートするモジュールの完全性（integrity）を担保するものだが[^sum1]，手作業で記述できるようなものではないので，次に紹介する go mod tidy コマンドを使って更新する。
 
-[^sum1]: [Go] が go.sum ファイルを使って完全性をどのように管理しているかについては拙文「[Go モジュールのミラーリング・サービス【正式版】](https://text.baldanders.info/golang/mirror-index-and-checksum-database-for-go-module/)」を参考にどうぞ。
+[^sum1]: [Go] が go.sum ファイルを使って完全性をどのように管理しているかについては拙文「[Go モジュールのミラーリング・サービス【正式版】](https://markup.baldanders.info/golang/mirror-index-and-checksum-database-for-go-module/)」を参考にどうぞ。
 
 ### go mod tidy によるモジュール情報の更新
 
@@ -168,7 +168,7 @@ go: github.com/spiegel-im-spiegel/cov19jpn@v0.2.0: missing go.sum entry; to add 
 
 みたいなエラーが出たりする。 go.mod および go.sum ファイルをいい感じに更新したいのであれば
 
-```text
+```markup
 $ go mod tidy
 ```
 
@@ -178,7 +178,8 @@ $ go mod tidy
 
 モジュールのバージョンははリポジトリのリビジョン番号またはバージョンタグによって管理されるが，バージョンタグに関しては [Semantic Versioning] のルールに則ってバージョン番号を設定することが推奨されている。
 
-[![research.swtch.com/impver.png](https://research.swtch.com/impver.png)](https://research.swtch.com/vgo-import "via “Semantic Import Versioning”")
+[![research.swtch.com/impver.png](https://research.swtch.com/impver.png)](https://research.swtch.com/vgo-import "Semantic Import Versioning")
+*via “Semantic Import Versioning”*
 
 このように後方互換性のない変更がある場合にはメジャーバージョンを，後方互換性が担保された変更や追加についてはマイナーバージョンを，不具合や脆弱性の修正については第3位のパッチバージョンを上げるようにする。またメジャーバージョンを上げる際には，図のようにディレクトリを分離するか， go.mod ファイルの `module` ディレクティブの値を変更するのが簡単である[^ver1]。
 
@@ -186,7 +187,7 @@ $ go mod tidy
 
 以下は [github.com/mattn/jvgrep](https://github.com/mattn/jvgrep) の例：
 
-```txt:go.mod
+```markup:go.mod
 module github.com/mattn/jvgrep/v5
 ```
 
@@ -194,13 +195,13 @@ module github.com/mattn/jvgrep/v5
 
 バージョン 1.16 から go install コマンドで モジュール@バージョン を指定できるようになった。
 
-```text
+```markup
 $ go install golang.org/x/tools/gopls@v0.6.5
 ```
 
 とにかく最新版が欲しい場合は
 
-```text
+```markup
 $ go install golang.org/x/tools/gopls@latest
 go: downloading golang.org/x/tools/gopls v0.6.5
 ...
