@@ -129,7 +129,7 @@ go: to switch to the latest unretracted version, run:
 
 ### go.sum の中身
 
-go.sum ファイルにはインポートするモジュールのハッシュ情報が格納されている。たとえば go.mod ファイルで `require` ディレクティブが
+go.sum ファイルにはインポートするモジュールの SHA-256 チェックサム値が格納されている。たとえば go.mod ファイルで `require` ディレクティブが
 
 ```txt:go.mod
 require github.com/spiegel-im-spiegel/errs v1.0.2
@@ -144,7 +144,9 @@ github.com/spiegel-im-spiegel/errs v1.0.2/go.mod h1:UoasJYYujMcdkbT9USv8dfZWoMya
 
 といった感じになる。
 
-go.sum ファイルの内容はインポートするモジュールの完全性（integrity）を保証するものだが，手作業で記述できるようなものではないので，次に紹介する go mod tidy コマンドを使って更新する。
+go.sum ファイルの内容はインポートするモジュールの完全性（integrity）を担保するものだが[^sum1]，手作業で記述できるようなものではないので，次に紹介する go mod tidy コマンドを使って更新する。
+
+[^sum1]: [Go] が go.sum ファイルを使って完全性をどのように管理しているかについては拙文「[Go モジュールのミラーリング・サービス【正式版】](https://text.baldanders.info/golang/mirror-index-and-checksum-database-for-go-module/)」を参考にどうぞ。
 
 ### go mod tidy によるモジュール情報の更新
 
