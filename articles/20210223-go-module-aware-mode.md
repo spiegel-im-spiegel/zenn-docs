@@ -178,8 +178,8 @@ $ go mod tidy
 
 モジュールのバージョンははリポジトリのリビジョン番号またはバージョンタグによって管理されるが，バージョンタグに関しては [Semantic Versioning] のルールに則ってバージョン番号を設定することが推奨されている。
 
-[![research.swtch.com/impver.png](https://research.swtch.com/impver.png)](https://research.swtch.com/vgo-import "Semantic Import Versioning")
-*via “Semantic Import Versioning”*
+![research.swtch.com/impver.png](https://research.swtch.com/impver.png)
+*[via “Semantic Import Versioning”](https://research.swtch.com/vgo-import "Semantic Import Versioning")*
 
 このように後方互換性のない変更がある場合にはメジャーバージョンを，後方互換性が担保された変更や追加についてはマイナーバージョンを，不具合や脆弱性の修正については第3位のパッチバージョンを上げるようにする。またメジャーバージョンを上げる際には，図のようにディレクトリを分離するか， go.mod ファイルの `module` ディレクティブの値を変更するのが簡単である[^ver1]。
 
