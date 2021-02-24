@@ -16,14 +16,14 @@ published: true # 公開設定（true で公開）
 
 バージョン 1.11 以降からは [Go] ツールーチェーンは以下の2つのモードのどちらかで動作する。
 
-- **GOPATH モード (GOPATH mode)** : バージョン 1.10 までの動作モード。標準ライブラリを除く全てのパッケージのコード管理とビルドを環境変数 GOPATH で指定されたディレクトリ下で行う。パッケージの管理はリポジトリの最新リビジョンのみが対象となる
+- **GOPATH モード (GOPATH mode)** : バージョン 1.10 までのモード。標準ライブラリを除く全てのパッケージのコード管理とビルドを環境変数 GOPATH で指定されたディレクトリ下で行う。パッケージの管理はリポジトリの最新リビジョンのみが対象となる
 - **モジュール対応モード (module-aware mode)** : 標準ライブラリを除く全てのパッケージをモジュールとして管理する。コード管理とビルドは任意のディレクトリで可能で，モジュールはリポジトリのバージョンタグまたはリビジョン毎に管理される
 
 ### 「モジュール」とは
 
 モジュール対応モードでは，標準ライブラリを除くパッケージを「モジュール（module）」として管理する。パッケージが [git] 等のバージョン管理ツールで管理されている場合はバージョン（またはリビジョン）ごとに異なるモジュールと見なされる。つまりモジュールの実体は「パッケージ＋バージョン」ということになる。
 
-ただしモジュールのバージョンは go.mod ファイルで管理されるため，パッケージ・パスとモジュール名が同じであればソースコードを書き換える必要はない。
+ただしモジュールのバージョンは go.mod ファイルで管理されるため，パッケージ・パスとモジュール名が同じであればソース・コードを書き換える必要はない。
 
 ## 環境変数 GO111MODULE によるモードの切り替え
 
@@ -40,7 +40,7 @@ GO111MODULE の取りうる値は以下の通り。
 | ------ | ---- |
 | `on`   | 常にモジュール対応モードで動作する |
 | `off`  | 常に GOPATH モードで動作する  |
-| `auto` | `$GOPATH/src` 以下のディレクトリに配置され `go.mod` を含まないパッケージは GOPATH モードで，それ以外はモジュール対応モードで動作する |
+| `auto` | $GOPATH/src 以下のディレクトリに配置され go.mod ファイルを含まないパッケージは GOPATH モードで，それ以外はモジュール対応モードで動作する |
 
 バージョン 1.16 から GO111MODULE 未指定時の既定値が `on` になった（1.15 までは `auto`）。 GOPATH モードを使いたいのであれば GO111MODULE の値を `auto` または `off` に設定する[^env1]。
 
@@ -67,7 +67,7 @@ go: to add module requirements and sums:
 	go mod tidy
 ```
 
-これでカレント・ディレクトリ直下に go.mod ファイルが作成される。中身はこんな感じ。
+これでモジュール名 `hello` としてカレント・ディレクトリ直下に go.mod ファイルが作成される。中身はこんな感じ。
 
 ```markup:go.mod
 module hello
@@ -77,13 +77,24 @@ go 1.16
 
 行頭の `module` や `go` はディレクティブ（directive）と呼ばれるものだ。たとえば `module hello` はモジュール名が `hello` であることを示す。
 
-モジュール名は任意に付けられるがソース・コードの `import` で指定するパッケージパスに合わせるのが無難である。たとえば [github.com/spiegel-im-spiegel/fetch](https://github.com/spiegel-im-spiegel/fetch) パッケージであれば
+モジュール名は任意に付けられるがソース・コードの `import` で指定するパッケージパスに合わせるのが無難である（[Go] コンパイラはパッケージ名またはモジュール名のパス構成を見てリポジトリ先を判断するため）。たとえば [github.com/spiegel-im-spiegel/fetch](https://github.com/spiegel-im-spiegel/fetch) パッケージであれば
+
+```
+$ go mod init github.com/spiegel-im-spiegel/fetch
+go: creating new go.mod: module github.com/spiegel-im-spiegel/fetch
+go: to add module requirements and sums:
+	go mod tidy
+```
+
+とすれば
 
 ```markup:go.mod
 module github.com/spiegel-im-spiegel/fetch
+
+go 1.16
 ```
 
-とする。
+という内容で出力される。
 
 他に go.mod ファイルで使えるディレクティブは以下の通り。
 
@@ -190,6 +201,16 @@ $ go mod tidy
 ```markup:go.mod
 module github.com/mattn/jvgrep/v5
 ```
+
+このとき，ソース・コード側も
+
+```go
+import "github.com/mattn/jvgrep/v5/mmap"
+```
+
+などとモジュール名をベースに指定する必要がある[^pasth1]。
+
+[^pasth1]: バージョン 1.16 から import 時の相対パス指定は原則禁止になったので注意。
 
 ## 特定バージョンのモジュールをビルド&インストールする
 
