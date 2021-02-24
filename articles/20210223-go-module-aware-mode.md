@@ -122,7 +122,6 @@ replace gopkg.in/russross/blackfriday.v2 v2.0.1 => github.com/russross/blackfrid
 ```markup:go.mod
 module golang.org/x/tools/gopls
 
-
 replace golang.org/x/tools => ../
 ```
 
