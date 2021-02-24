@@ -60,7 +60,7 @@ $ go env -w GO111MODULE=auto
 
 ### ビルドパッケージのインストール先
 
-[Go] ではビルドしたバイナリのインストール先を $GOPATH/bin ディレクトリに配置しているが，これを GOBIN 環境変数で変更することができる。
+[Go] ではビルドしたバイナリのインストール先を $GOPATH/bin ディレクトリに配置しているが，これを環境変数 GOBIN で変更することができる。
 
 ```
 $ go env -w GOBIN=/home/username/bin
@@ -68,14 +68,14 @@ $ go env -w GOBIN=/home/username/bin
 
 ### モジュールのキャッシュ先
 
-最近の [Go] ではビルド結果を GOCACHE 環境変数で指定したディレクトリにキャッシュし，可能な限り再利用しようとする。
+最近の [Go] ではビルド結果を環境変数 GOCACHE で指定したディレクトリにキャッシュし，可能な限り再利用しようとする。
 
 ```
 $ go env | grep GOCACHE
 GOCACHE="/home/usernamee/.cache/go-build"
 ```
 
-インポートしたするモジュールのキャッシュについては $GOPATH/pkg/mod ディレクトリに配置されているが [Go] 1.15 より GOMODCACHE 環境変数で変更できるようになった。
+インポートしたモジュールのキャッシュについては $GOPATH/pkg/mod ディレクトリに配置されているが [Go] 1.15 より環境変数 GOMODCACHE で変更できるようになった。
 
 ```
 $ go env | grep GOMODCACHE
