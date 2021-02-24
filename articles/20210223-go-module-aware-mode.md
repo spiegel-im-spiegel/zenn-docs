@@ -117,6 +117,15 @@ require gopkg.in/russross/blackfriday.v2 v2.0.1
 replace gopkg.in/russross/blackfriday.v2 v2.0.1 => github.com/russross/blackfriday/v2 v2.0.1
 ```
 
+また，同一リポジトリ内に複数のモジュールがある場合に `replace` ディレクティブを使って相対パス指定ができるようだ。
+
+```markup:go.mod
+module golang.org/x/tools/gopls
+
+
+replace golang.org/x/tools => ../
+```
+
 `retract` ディレクティブはバージョン 1.16 から導入されたもので
 
 ```markup:go.mod
@@ -210,7 +219,7 @@ import "github.com/mattn/jvgrep/v5/mmap"
 
 などとモジュール名をベースに指定する必要がある[^pasth1]。
 
-[^pasth1]: バージョン 1.16 から import 時の相対パス指定は原則禁止になったので注意。
+[^pasth1]: バージョン 1.16 から import 時の相対パス指定は原則禁止になったので注意。同一リポジトリ内に複数のモジュールがある場合は go.mod ファイルで `replace` ディレクティブを使うとよい。
 
 ## 特定バージョンのモジュールをビルド&インストールする
 
@@ -249,7 +258,7 @@ go: downloading github.com/mattn/jvgrep/v5 v5.8.9
 
 とすれば無問題である。
 
-なお，バージョン 1.16 では go.mod ファイルに `replace` や `exclude` ディレクティブが含まれていると go install に失敗する。
+なお，バージョン 1.16 では go.mod ファイルに `replace` や `exclude` ディレクティブが含まれていると go install に失敗することがあるみたい。
 
 ```
 $ go install github.com/spiegel-im-spiegel/gnkf@latest
