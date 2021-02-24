@@ -6,7 +6,7 @@ topics: ["go", "programming"] # タグ。["markdown", "rust", "aws"] のよう�
 published: true # 公開設定（true で公開）
 ---
 
-[Go] のモジュールについては[自ブログ](https://markup.baldanders.info/golang/ "プログラミング言語 Go | markup.Baldanders.info")でもよく話題にするのだが，差分情報が多く内容が分散しているため，ここの Zenn でまとめておく。
+[Go] のモジュールについては[自ブログ](https://text.baldanders.info/golang/ "プログラミング言語 Go | text.Baldanders.info")でもよく話題にするのだが，差分情報が多く内容が分散しているため，ここの Zenn でまとめておく。
 
 ## 用語の整理
 
@@ -50,7 +50,7 @@ GO111MODULE の取りうる値は以下の通り。
 
 バージョン 1.16 から GO111MODULE 未指定時の既定値が `on` になった（1.15 までは `auto`）。 GOPATH モードを使いたいのであれば GO111MODULE の値を `auto` または `off` に設定する[^env1]。
 
-[^env1]: [Go] の環境変数の取り扱いについては，拙文「[Go 言語の環境変数管理](https://markup.baldanders.info/golang/go-env/)」をご覧あれ。
+[^env1]: [Go] の環境変数の取り扱いについては，拙文「[Go 言語の環境変数管理](https://text.baldanders.info/golang/go-env/)」をご覧あれ。
 
 ```
 $ go env -w GO111MODULE=auto
@@ -209,7 +209,7 @@ github.com/spiegel-im-spiegel/errs v1.0.2/go.mod h1:UoasJYYujMcdkbT9USv8dfZWoMya
 
 go.sum ファイルの内容はインポートするモジュールの完全性（integrity）を担保するものだが[^sum1]，手作業で記述できるようなものではないので，次に紹介する go mod tidy コマンドを使って更新する。
 
-[^sum1]: [Go] が go.sum ファイルを使って完全性をどのように管理しているかについては拙文「[Go モジュールのミラーリング・サービス【正式版】](https://markup.baldanders.info/golang/mirror-index-and-checksum-database-for-go-module/)」を参考にどうぞ。
+[^sum1]: [Go] が go.sum ファイルを使って完全性をどのように管理しているかについては拙文「[Go モジュールのミラーリング・サービス【正式版】](https://text.baldanders.info/golang/mirror-index-and-checksum-database-for-go-module/)」を参考にどうぞ。
 
 ### go mod tidy によるモジュール情報の更新
 
