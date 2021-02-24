@@ -25,7 +25,13 @@ published: true # 公開設定（true で公開）
 
 ただしモジュールのバージョンは go.mod ファイルで管理されるため，パッケージ・パスとモジュール名が同じであればソース・コードを書き換える必要はない。
 
-## 環境変数 GO111MODULE によるモードの切り替え
+## モジュール関連の環境変数
+
+参考：
+
+https://zenn.dev/tennashi/articles/3b87a8d924bc9c43573e
+
+### 環境変数 GO111MODULE によるモードの切り替え
 
 バージョン 1.11 以降では2つのモードの切り替えのために環境変数 GO111MODULE が用意されている。
 
@@ -50,9 +56,47 @@ GO111MODULE の取りうる値は以下の通り。
 $ go env -w GO111MODULE=auto
 ```
 
-ただし [Go] では環境変数 GOPATH への依存を徐々に薄めつつあり，最終的には $GOPATH/bin ディレクトリ以外は使われなくなると思われる。
+ただし [Go] では環境変数 GOPATH への依存を徐々に薄めつつあり，最終的には $GOPATH ディレクトリは使われなくなると思われる。
 
-https://zenn.dev/tennashi/articles/3b87a8d924bc9c43573e
+### ビルドパッケージのインストール先
+
+[Go] ではビルドしたバイナリのインストール先を $GOPATH/bin ディレクトリに配置しているが，これを GOBIN 環境変数で変更することができる。
+
+```
+$ go env -w GOBIN=/home/username/bin
+```
+
+### モジュールのキャッシュ先
+
+最近の [Go] ではビルド結果を GOCACHE 環境変数で指定したディレクトリにキャッシュし，可能な限り再利用しようとする。
+
+```
+$ go env | grep GOCACHE
+GOCACHE="/home/usernamee/.cache/go-build"
+```
+
+インポートしたするモジュールのキャッシュについては $GOPATH/pkg/mod ディレクトリに配置されているが [Go] 1.15 より GOMODCACHE 環境変数で変更できるようになった。
+
+```
+$ go env | grep GOMODCACHE
+GOMODCACHE="/home/usernamee/go/pkg/mod"
+
+$ go env -w GOBIN=/home/usernamee/.cache/go-mod
+```
+
+なお，キャッシュのクリアは
+
+```bash:ビルド・キャッシュのクリア
+$ go clean -cache
+```
+
+または
+
+```bash:モジュール・キャッシュのクリア
+$ go clean -modcache
+```
+
+で可能である。
 
 ## go.mod と go.sum
 
