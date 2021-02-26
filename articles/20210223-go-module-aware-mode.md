@@ -239,7 +239,7 @@ $ go mod tidy
 
 ## [Semantic Versioning] によるバージョン管理
 
-モジュールのバージョンははリポジトリのリビジョン番号またはバージョンタグによって管理されるが，バージョンタグに関しては [Semantic Versioning] のルールに則ってバージョン番号を設定することが推奨されている。
+モジュールのバージョンはリポジトリのリビジョン番号またはバージョンタグによって管理されるが，バージョンタグに関しては [Semantic Versioning] のルールに則ってバージョン番号を設定することが推奨されている。
 
 ![research.swtch.com/impver.png](https://research.swtch.com/impver.png)
 *[via “Semantic Import Versioning”](https://research.swtch.com/vgo-import "Semantic Import Versioning")*
@@ -322,8 +322,19 @@ $ go get github.com/spiegel-im-spiegel/gnkf@latest
 
 ただし go get コマンドを使ったビルド&インストールは将来バージョンで廃止されるらしいので，何とかしなきゃなぁ...
 
+### go get はオワコン？
+
+go get コマンドは元々 $GOPATH ディレクトリ下に指定した外部パッケージを組み込むための仕組みである。旧来の GOPATH モードでは go get で常に最新リビジョンのパッケージを $GOPATH ディレクトリ下にダウンロードしようとするため「[GOPATH 汚染](https://text.baldanders.info/golang/gopath-pollution/)」の問題がつきまとっていた。現在のモジュール対応モードはこの問題を根本的に解決するためのものと言える。
+
+しかしその結果，モジュール対応モードでは go get コマンドはモジュールをキャッシュするだけのコマンドになってしまった。しかも go.mod & go.sum ファイルを意図せず書き換えてしまう危険がある。
+
+開発中のパッケージにおいて，意図的に（依存パッケージを含む）外部パッケージの読み込みと go.mod & go.sum ファイルの更新を行いたいのであれば go mod tidy で一括処理するほうが便利である。単にパッケージをビルド&インストールしたいだけであれば [go install を使うほうが不用意に go.mod & go.sum ファイルを汚すこともない](https://zenn.dev/minguu/articles/20210225-difference-of-go-install-and-go-get "go installとgo getをどう使い分ければ良いのか調べた")ので安全と言える。
+
+GOPATH モードが後方互換機能として残されている間は go get コマンド自体もなくならないだろうが，モジュール対応モードが主流となる今後はユーザが手打ちで go get コマンドを叩くことはなくなってくるんじゃないだろうか。
+
 ## 参考
 
+https://golang.org/ref/mod
 https://blog.golang.org/go116-module-changes
 
 [Go]: https://golang.org/ "The Go Programming Language"
