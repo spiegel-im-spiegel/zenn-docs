@@ -2,7 +2,8 @@ package main
 
 import (
 	"os"
-	"sample/hash/cmd"
+
+	"github.com/spiegel-im-spiegel/zenn-docs/code/cobra/hash/cmd"
 
 	_ "crypto/sha256"
 

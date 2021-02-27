@@ -4,7 +4,7 @@ import (
 	"crypto"
 	"fmt"
 
-	"sample/hash/encode"
+	"github.com/spiegel-im-spiegel/zenn-docs/code/cobra/hash/encode"
 
 	"github.com/spf13/cobra"
 	"github.com/spiegel-im-spiegel/gocli/rwi"
