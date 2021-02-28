@@ -335,6 +335,7 @@ GOPATH モードが後方互換機能として残されている間は go get �
 ## 参考
 
 https://golang.org/ref/mod
+https://golang.org/doc/modules/developing
 https://blog.golang.org/go116-module-changes
 
 [Go]: https://golang.org/ "The Go Programming Language"
