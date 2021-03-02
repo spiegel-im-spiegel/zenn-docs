@@ -12,7 +12,7 @@ published: true # 公開設定（true で公開）
 
 たとえば，こんな感じの CSV ファイルがあるとして
 
-```csv:sampel.csv
+```markup:sample.csv
 "order", name ,"mass","distance","habitable"
 1, Mercury, 0.055, 0.4,false
 2, Venus, 0.815, 0.7,false
