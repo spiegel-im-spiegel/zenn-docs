@@ -126,4 +126,5 @@ $ go run sample2.go
 [os]: https://golang.org/pkg/os/ "os - The Go Programming Language"
 [fmt]: https://golang.org/pkg/fmt/ "fmt - The Go Programming Language"
 [conversion]: https://golang.org/ref/spec#Conversions "The Go Programming Language Specification - The Go Programming Language"
+[type assertion]: https://golang.org/ref/spec#Type_assertions "The Go Programming Language Specification - The Go Programming Language"
 <!-- eof -->
