@@ -40,7 +40,7 @@ https://blog.golang.org/context-and-structs
 
 [^conc1]: [Go] のゴルーチン同士には優先順位がない。 RTOS なんかでありがちな priority inversion は起こらないわけだ。言い方を変えるとシビアなリアルタイム処理が要求されるシステムには [Go] は向かないってことなんだけど。という話を[読書会イベント]の雑談でしていた。
 
-んで， [Go] 1.7 から実装された [context] パッケージはこの仕組みを実に上手く使っている。違う見方をすると「チャネル・クローズを使ったキャンセル・イベントの伝搬」の仕組みを頭に入れた上で [context].Context を実装しないと思わぬ副作用が出ててしまうわけだ。例えば “[Contexts and structs](https://blog.golang.org/context-and-structs)” で例示されるような。
+んで， [Go] 1.7 から実装された [context] パッケージはこの仕組みを実に上手く使っている。違う見方をすると「チャネル・クローズを使ったキャンセル・イベントの伝搬」の仕組みを頭に入れた上で [context].Context を実装しないと思わぬ副作用が出ててしまうのだ。例えば “[Contexts and structs](https://blog.golang.org/context-and-structs)” で例示されるような。
 
 あと，先日公開された
 
