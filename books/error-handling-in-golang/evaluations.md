@@ -97,7 +97,7 @@ type PathError struct {
 }
 ```
 
-しかし error 型でボックス化している状態では Error() メソッドしか使えないため [os].PathError 型の要素を使うことが出来ない。使うためにはボックス化の解除が必要である。 [Go] では [conversion 構文][conversion]を使ってボックス化解除ができる。
+しかし error 型でボックス化している状態では Error() メソッドしか使えないため [os].PathError 型の要素を使うことが出来ない。使うためにはボックス化の解除が必要である。 [Go] では[型アサーション][type assertion]を使ってボックス化解除ができる。
 
 こんな感じ。
 
@@ -144,4 +144,5 @@ if errors.As(err, &perr) {
 [os]: https://golang.org/pkg/os/ "os - The Go Programming Language"
 [fmt]: https://golang.org/pkg/fmt/ "fmt - The Go Programming Language"
 [conversion]: https://golang.org/ref/spec#Conversions "The Go Programming Language Specification - The Go Programming Language"
+[type assertion]: https://golang.org/ref/spec#Type_assertions "The Go Programming Language Specification - The Go Programming Language"
 <!-- eof -->
