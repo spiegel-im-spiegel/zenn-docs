@@ -1,0 +1,90 @@
+@startuml sample2
+!include skinparams.iuml
+
+mainframe sd Sample 2
+
+actor "Manager" as manager
+collections "Plan\n(buffer 2)" as plan
+actor "Worker 1" as worker1
+actor "Worker 2" as worker2
+
+manager->plan : add Task(1)
+activate plan
+manager<<--plan
+deactivate plan
+
+manager->plan : add Task(2)
+activate plan
+manager<<--plan
+deactivate plan
+
+manager->plan : add Task(3)
+activate plan
+
+par
+plan<-worker2 : get
+activate worker2
+activate plan
+plan-->>worker2 : Task(1)
+deactivate plan
+
+manager<<--plan
+deactivate plan
+manager->plan : add Task(4)
+activate plan
+
+worker2->worker2
+deactivate worker2
+else
+plan<-worker1 : get
+activate worker1
+activate plan
+plan-->>worker1 : Task(2)
+deactivate plan
+
+manager<<--plan
+deactivate plan
+manager->plan : add Task(5)
+activate plan
+
+worker1->worker1
+deactivate worker1
+end
+
+par
+plan<-worker1 : get
+activate worker1
+activate plan
+plan-->>worker1 : Task(3)
+deactivate plan
+
+manager<<--plan
+deactivate plan
+[<<-manager : return home
+
+worker1->worker1
+deactivate worker1
+else
+plan<-worker2 : get
+activate worker2
+activate plan
+plan-->>worker2 : Task(4)
+deactivate plan
+worker2->worker2
+deactivate worker2
+end
+
+par
+plan<-worker1 : get
+activate worker1
+activate plan
+plan-->>worker1 : Task(5)
+deactivate plan
+worker1->worker1
+deactivate worker1
+else
+worker2->>] : return home
+end
+worker1->>] : return home
+
+@enduml

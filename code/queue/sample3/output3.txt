@@ -1,0 +1,24 @@
+021/03/08 22:11:12 Start...
+2021/03/08 22:11:12 Manager: set Task(1)
+2021/03/08 22:11:12 Manager: set Task(2)
+2021/03/08 22:11:12 Manager: set Task(3)
+2021/03/08 22:11:12 Manager: set Task(4)
+2021/03/08 22:11:12 Manager: canot assign Task(5): too busy
+2021/03/08 22:11:12 Worker(1): start Task(2)
+2021/03/08 22:11:12 Worker(2): start Task(1)
+2021/03/08 22:11:13 Manager: canot assign Task(5): too busy
+2021/03/08 22:11:13 Manager: canot assign Task(5): too busy
+2021/03/08 22:11:14 Manager: canot assign Task(5): too busy
+2021/03/08 22:11:14 Worker(1): end Task(2)
+2021/03/08 22:11:14 Worker(1): start Task(3)
+2021/03/08 22:11:14 Worker(2): end Task(1)
+2021/03/08 22:11:14 Worker(2): start Task(4)
+2021/03/08 22:11:14 Manager: set Task(5)
+2021/03/08 22:11:14 Manager: return home
+2021/03/08 22:11:16 Worker(2): end Task(4)
+2021/03/08 22:11:16 Worker(1): end Task(3)
+2021/03/08 22:11:16 Worker(1): return home
+2021/03/08 22:11:16 Worker(2): start Task(5)
+2021/03/08 22:11:18 Worker(2): end Task(5)
+2021/03/08 22:11:18 Worker(2): return home
+2021/03/08 22:11:18 ...End

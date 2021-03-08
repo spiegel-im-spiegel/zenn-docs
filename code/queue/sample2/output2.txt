@@ -1,0 +1,20 @@
+2021/03/08 20:56:47 Start...
+2021/03/08 20:56:47 Manager: set Task(1)
+2021/03/08 20:56:47 Manager: set Task(2)
+2021/03/08 20:56:47 Manager: set Task(3)
+2021/03/08 20:56:47 Worker(2): start Task(1)
+2021/03/08 20:56:47 Worker(1): start Task(2)
+2021/03/08 20:56:47 Manager: set Task(4)
+2021/03/08 20:56:49 Worker(2): end Task(1)
+2021/03/08 20:56:49 Worker(2): start Task(3)
+2021/03/08 20:56:49 Manager: set Task(5)
+2021/03/08 20:56:49 Manager: return home
+2021/03/08 20:56:49 Worker(1): end Task(2)
+2021/03/08 20:56:49 Worker(1): start Task(4)
+2021/03/08 20:56:51 Worker(1): end Task(4)
+2021/03/08 20:56:51 Worker(1): start Task(5)
+2021/03/08 20:56:51 Worker(2): end Task(3)
+2021/03/08 20:56:51 Worker(2): return home
+2021/03/08 20:56:53 Worker(1): end Task(5)
+2021/03/08 20:56:53 Worker(1): return home
+2021/03/08 20:56:53 ...End
