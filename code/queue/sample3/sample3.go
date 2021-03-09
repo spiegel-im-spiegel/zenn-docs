@@ -62,9 +62,11 @@ func Workers(wg *sync.WaitGroup, q *Queue) {
 	}
 }
 
-func Manager(tasklist []int) *Queue {
+func Manager(wg *sync.WaitGroup, tasklist []int) *Queue {
 	plan := New(MaxWorkers)
+	wg.Add(1)
 	go func() {
+		defer wg.Done()
 		defer plan.Complete()
 		offset := 0
 		for {
@@ -79,10 +81,9 @@ func Manager(tasklist []int) *Queue {
 				} else {
 					log.Printf("Manager: set Task(%d)\n", n)
 				}
-
 			}
 			if rest {
-				time.Sleep(time.Second / 2)
+				time.Sleep(time.Second)
 			} else {
 				break
 			}
@@ -97,7 +98,7 @@ func main() {
 	tasklist := []int{1, 2, 3, 4, 5}
 	log.Println("Start...")
 	var wg sync.WaitGroup
-	plan := Manager(tasklist)
+	plan := Manager(&wg, tasklist)
 	Workers(&wg, plan)
 	wg.Wait()
 	log.Println("...End")

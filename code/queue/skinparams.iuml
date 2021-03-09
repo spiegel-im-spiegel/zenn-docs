@@ -5,7 +5,7 @@
 'Constant Definition
 !define FONTSERIF Noto Serif CJK JP Light
 !define FONTSANS Noto Sans CJK JP Light
-!define FONTMONO Inconsolata
+!define FONTMONO Noto Sans Mono CJK JP Regular
 
 'General
 skinparam shadowing false
@@ -231,6 +231,17 @@ skinparam collections {
   'Border Color
   BackgroundColor WhiteSmoke
   BorderColor Black
+}
+
+'queue
+skinparam queue {
+  'Font Style (inherits from Default)
+  FontSize 14
+
+  'Border Color
+  BackgroundColor WhiteSmoke
+  BorderColor Black
+  BorderThickness 1
 }
 
 'Participant

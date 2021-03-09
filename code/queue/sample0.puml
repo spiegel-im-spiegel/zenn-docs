@@ -1,0 +1,10 @@
+@startuml sample1
+!include skinparams.iuml
+
+participant "Goroutine A" as A
+queue "Channel" as C
+participant "Goroutine B" as B
+
+A ->> C : Send
+C ->> B : Receive
+@enduml
