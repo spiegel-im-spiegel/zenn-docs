@@ -124,7 +124,7 @@ slc2 := []byte{}        // empty slice (size 0)
 slc3 := make([]byte, 5) // empty slice (size 5)
 ```
 
-ゼロ値（nil）のスライスに対して `slc1[0]` などとすると panic を吐くのでご注意を。
+ゼロ値（nil）またはサイズ 0 のスライスに対して `slc1[0]` などとすると panic を吐くのでご注意を。
 
 配列はスライスに変換することができる。こんな感じ。
 
