@@ -8,6 +8,7 @@ require (
 	github.com/hashicorp/go-multierror v1.1.0
 	github.com/ikawaha/encoding v1.0.0
 	github.com/kylelemons/godebug v1.1.0 // indirect
+	github.com/kyokomi/emoji/v2 v2.2.8
 	github.com/mmcdole/gofeed v1.1.0
 	github.com/pkg/errors v0.9.1
 	github.com/robertkrimen/otto v0.0.0-20200922221731-ef014fd054ac // indirect
