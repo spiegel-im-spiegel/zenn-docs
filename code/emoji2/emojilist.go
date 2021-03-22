@@ -40,31 +40,17 @@ func (nec *NormalizeEmojiCode) Add(ec EmojiCode) bool {
 }
 
 func EmojiListAll() []*NormalizeEmojiCode {
-	elist := []EmojiCode{}
-	for c, e := range emoji.CodeMap() {
-		elist = append(elist, newEmoji(c, e))
-	}
-	sort.Slice(elist, func(i, j int) bool {
-		return strings.Compare(elist[i].Emoji, elist[j].Emoji) < 0
-	})
-
 	emojiList := []*NormalizeEmojiCode{}
-	var nec *NormalizeEmojiCode
-	for _, ec := range elist {
-		if !nec.Add(ec) {
-			nec = newNormalizeEmoji(ec)
+	for e, clist := range emoji.RevCodeMap() {
+		if len(clist) > 0 {
+			nec := newNormalizeEmoji(newEmoji(clist[0], e))
+			for i := 1; i < len(clist); i++ {
+				nec.Add(newEmoji(clist[i], e))
+			}
 			emojiList = append(emojiList, nec)
 		}
 	}
 
-	for i := 0; i < len(emojiList); i++ {
-		if len(emojiList[i].EmojiList) > 1 {
-			list := emojiList[i].EmojiList
-			sort.Slice(list, func(n, m int) bool {
-				return strings.Compare(list[n].Code, list[m].Code) < 0
-			})
-		}
-	}
 	sort.Slice(emojiList, func(i, j int) bool {
 		return strings.Compare(emojiList[i].Code, emojiList[j].Code) < 0
 	})

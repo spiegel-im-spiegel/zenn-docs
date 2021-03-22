@@ -1,7 +1,7 @@
 | Short Code | Graph | Aliases |
 | ---------- | :---: | ------- |
-| `:+1:` | 👍 | `:thumbs_up:` `:thumbsup:` |
-| `:-1:` | 👎 | `:thumbs_down:` `:thumbsdown:` |
+| `:+1:` | 👍 | `:thumbsup:` `:thumbs_up:` |
+| `:-1:` | 👎 | `:thumbsdown:` `:thumbs_down:` |
 | `:100:` | 💯 | `:hundred_points:` |
 | `:1234:` | 🔢 | `:input_numbers:` |
 | `:8ball:` | 🎱 | `:pool_8_ball:` |
@@ -51,16 +51,16 @@
 | `:airplane:` | ✈️ | |
 | `:airplane_small:` | 🛩 | |
 | `:alarm_clock:` | ⏰ | |
-| `:albania:` | 🇦🇱 | `:flag-al:` `:flag_Albania:` `:flag_al:` |
+| `:albania:` | 🇦🇱 | `:flag-al:` `:flag_al:` `:flag_Albania:` |
 | `:alembic:` | ⚗️ | |
-| `:algeria:` | 🇩🇿 | `:flag-dz:` `:flag_Algeria:` `:flag_dz:` |
+| `:algeria:` | 🇩🇿 | `:flag-dz:` `:flag_dz:` `:flag_Algeria:` |
 | `:alien:` | 👽 | |
 | `:alien_monster:` | 👾 | `:space_invader:` |
 | `:ambulance:` | 🚑 | |
 | `:amphora:` | 🏺 | |
 | `:anatomical_heart:` | 🫀 | |
 | `:anchor:` | ⚓ | |
-| `:andorra:` | 🇦🇩 | `:flag-ad:` `:flag_Andorra:` `:flag_ad:` |
+| `:andorra:` | 🇦🇩 | `:flag-ad:` `:flag_ad:` `:flag_Andorra:` |
 | `:angel:` | 👼 | `:baby_angel:` |
 | `:angel_tone1:` | 👼🏻 | |
 | `:angel_tone2:` | 👼🏼 | |
@@ -69,13 +69,13 @@
 | `:angel_tone5:` | 👼🏿 | |
 | `:anger:` | 💢 | `:anger_symbol:` |
 | `:anger_right:` | 🗯 | |
-| `:angola:` | 🇦🇴 | `:flag-ao:` `:flag_Angola:` `:flag_ao:` |
+| `:angola:` | 🇦🇴 | `:flag-ao:` `:flag_ao:` `:flag_Angola:` |
 | `:angry:` | 😠 | `:angry_face:` |
 | `:anguished:` | 😧 | `:anguished_face:` |
 | `:ant:` | 🐜 | |
 | `:antenna_bars:` | 📶 | `:signal_strength:` |
 | `:apple:` | 🍎 | `:red_apple:` |
-| `:armenia:` | 🇦🇲 | `:flag-am:` `:flag_Armenia:` `:flag_am:` |
+| `:armenia:` | 🇦🇲 | `:flag-am:` `:flag_am:` `:flag_Armenia:` |
 | `:arrow_backward:` | ◀️ | |
 | `:arrow_down:` | ⬇️ | |
 | `:arrow_down_small:` | 🔽 | `:downwards_button:` |
@@ -97,14 +97,14 @@
 | `:art:` | 🎨 | `:artist_palette:` |
 | `:articulated_lorry:` | 🚛 | |
 | `:artist:` | 🧑‍🎨 | |
-| `:aruba:` | 🇦🇼 | `:flag-aw:` `:flag_Aruba:` `:flag_aw:` |
+| `:aruba:` | 🇦🇼 | `:flag-aw:` `:flag_aw:` `:flag_Aruba:` |
 | `:asterisk:` | *️⃣ | `:keycap_*:` `:keycap_star:` |
 | `:astonished:` | 😲 | `:astonished_face:` |
 | `:astronaut:` | 🧑‍🚀 | |
 | `:atm:` | 🏧 | `:ATM_sign:` |
 | `:atom:` | ⚛ | |
 | `:atom_symbol:` | ⚛️ | |
-| `:austria:` | 🇦🇹 | `:flag-at:` `:flag_Austria:` `:flag_at:` |
+| `:austria:` | 🇦🇹 | `:flag-at:` `:flag_at:` `:flag_Austria:` |
 | `:auto_rickshaw:` | 🛺 | |
 | `:avocado:` | 🥑 | |
 | `:axe:` | 🪓 | |
@@ -125,8 +125,8 @@
 | `:badminton:` | 🏸 | `:badminton_racquet_and_shuttlecock:` |
 | `:bagel:` | 🥯 | |
 | `:baggage_claim:` | 🛄 | |
-| `:bahamas:` | 🇧🇸 | `:flag-bs:` `:flag_Bahamas:` `:flag_bs:` |
-| `:bahrain:` | 🇧🇭 | `:flag-bh:` `:flag_Bahrain:` `:flag_bh:` |
+| `:bahamas:` | 🇧🇸 | `:flag-bs:` `:flag_bs:` `:flag_Bahamas:` |
+| `:bahrain:` | 🇧🇭 | `:flag-bh:` `:flag_bh:` `:flag_Bahrain:` |
 | `:balance_scale:` | ⚖ | |
 | `:bald:` | 🦲 | |
 | `:bald_man:` | 👨‍🦲 | `:man_bald:` |
@@ -148,7 +148,7 @@
 | `:baseball:` | ⚾ | |
 | `:basket:` | 🧺 | |
 | `:basketball:` | 🏀 | |
-| `:basketball_man:` | ⛹️‍♂️ | `:bouncing_ball_man:` `:man-bouncing-ball:` `:man_bouncing_ball:` `:person_with_ball:` |
+| `:basketball_man:` | ⛹️‍♂️ | `:person_with_ball:` `:bouncing_ball_man:` `:man-bouncing-ball:` `:man_bouncing_ball:` |
 | `:basketball_woman:` | ⛹️‍♀️ | `:bouncing_ball_woman:` `:woman-bouncing-ball:` `:woman_bouncing_ball:` |
 | `:bat:` | 🦇 | |
 | `:bath:` | 🛀 | `:person_taking_bath:` |
@@ -175,18 +175,18 @@
 | `:beers:` | 🍻 | `:clinking_beer_mugs:` |
 | `:beetle:` | 🪲 | |
 | `:beginner:` | 🔰 | `:Japanese_symbol_for_beginner:` |
-| `:belarus:` | 🇧🇾 | `:flag-by:` `:flag_Belarus:` `:flag_by:` |
-| `:belgium:` | 🇧🇪 | `:flag-be:` `:flag_Belgium:` `:flag_be:` |
-| `:belize:` | 🇧🇿 | `:flag-bz:` `:flag_Belize:` `:flag_bz:` |
+| `:belarus:` | 🇧🇾 | `:flag-by:` `:flag_by:` `:flag_Belarus:` |
+| `:belgium:` | 🇧🇪 | `:flag-be:` `:flag_be:` `:flag_Belgium:` |
+| `:belize:` | 🇧🇿 | `:flag-bz:` `:flag_bz:` `:flag_Belize:` |
 | `:bell:` | 🔔 | |
 | `:bell_pepper:` | 🫑 | |
 | `:bellhop:` | 🛎 | |
 | `:bellhop_bell:` | 🛎️ | |
-| `:benin:` | 🇧🇯 | `:flag-bj:` `:flag_Benin:` `:flag_bj:` |
+| `:benin:` | 🇧🇯 | `:flag-bj:` `:flag_bj:` `:flag_Benin:` |
 | `:bento:` | 🍱 | `:bento_box:` |
-| `:bermuda:` | 🇧🇲 | `:flag-bm:` `:flag_Bermuda:` `:flag_bm:` |
+| `:bermuda:` | 🇧🇲 | `:flag-bm:` `:flag_bm:` `:flag_Bermuda:` |
 | `:beverage_box:` | 🧃 | |
-| `:bhutan:` | 🇧🇹 | `:flag-bt:` `:flag_Bhutan:` `:flag_bt:` |
+| `:bhutan:` | 🇧🇹 | `:flag-bt:` `:flag_bt:` `:flag_Bhutan:` |
 | `:bicyclist:` | 🚴‍♂️ | `:biking_man:` `:man-biking:` `:man_biking:` |
 | `:bike:` | 🚲 | `:bicycle:` |
 | `:biking_woman:` | 🚴‍♀️ | `:woman-biking:` `:woman_biking:` |
@@ -226,7 +226,7 @@
 | `:blond_haired_person_tone3:` | 👱🏽 | |
 | `:blond_haired_person_tone4:` | 👱🏾 | |
 | `:blond_haired_person_tone5:` | 👱🏿 | |
-| `:blonde_woman:` | 👱‍♀️ | `:blond-haired-woman:` `:blond-haired_woman:` `:blond_haired_woman:` `:woman_blond_hair:` |
+| `:blonde_woman:` | 👱‍♀️ | `:woman_blond_hair:` `:blond-haired-woman:` `:blond-haired_woman:` `:blond_haired_woman:` |
 | `:blossom:` | 🌼 | |
 | `:blowfish:` | 🐡 | |
 | `:blue_book:` | 📘 | |
@@ -238,7 +238,7 @@
 | `:blush:` | 😊 | `:smiling_face_with_smiling_eyes:` |
 | `:boar:` | 🐗 | |
 | `:boat:` | ⛵ | `:sailboat:` |
-| `:bolivia:` | 🇧🇴 | `:flag-bo:` `:flag_Bolivia:` `:flag_bo:` |
+| `:bolivia:` | 🇧🇴 | `:flag-bo:` `:flag_bo:` `:flag_Bolivia:` |
 | `:bomb:` | 💣 | |
 | `:bone:` | 🦴 | |
 | `:book:` | 📖 | `:open_book:` |
@@ -263,7 +263,7 @@
 | `:boy_tone4:` | 👦🏾 | |
 | `:boy_tone5:` | 👦🏿 | |
 | `:brain:` | 🧠 | |
-| `:brazil:` | 🇧🇷 | `:flag-br:` `:flag_Brazil:` `:flag_br:` |
+| `:brazil:` | 🇧🇷 | `:flag-br:` `:flag_br:` `:flag_Brazil:` |
 | `:bread:` | 🍞 | |
 | `:breast-feeding:` | 🤱 | `:breast_feeding:` |
 | `:breast_feeding_tone1:` | 🤱🏻 | |
@@ -288,7 +288,7 @@
 | `:brown_circle:` | 🟤 | `:large_brown_circle:` |
 | `:brown_heart:` | 🤎 | |
 | `:brown_square:` | 🟫 | `:large_brown_square:` |
-| `:brunei:` | 🇧🇳 | `:flag-bn:` `:flag_Brunei:` `:flag_bn:` |
+| `:brunei:` | 🇧🇳 | `:flag-bn:` `:flag_bn:` `:flag_Brunei:` |
 | `:bubble_tea:` | 🧋 | |
 | `:bucket:` | 🪣 | |
 | `:bug:` | 🐛 | |
@@ -297,7 +297,7 @@
 | `:bullet_train:` | 🚅 | `:bullettrain_front:` |
 | `:bullettrain_side:` | 🚄 | `:high-speed_train:` |
 | `:burrito:` | 🌯 | |
-| `:burundi:` | 🇧🇮 | `:flag-bi:` `:flag_Burundi:` `:flag_bi:` |
+| `:burundi:` | 🇧🇮 | `:flag-bi:` `:flag_bi:` `:flag_Burundi:` |
 | `:bus:` | 🚌 | |
 | `:business_suit_levitating:` | 🕴️ | `:man_in_business_suit_levitating:` |
 | `:busstop:` | 🚏 | `:bus_stop:` |
@@ -320,13 +320,13 @@
 | `:camera:` | 📷 | |
 | `:camera_flash:` | 📸 | `:camera_with_flash:` |
 | `:camping:` | 🏕️ | |
-| `:canada:` | 🇨🇦 | `:flag-ca:` `:flag_Canada:` `:flag_ca:` |
+| `:canada:` | 🇨🇦 | `:flag-ca:` `:flag_ca:` `:flag_Canada:` |
 | `:candle:` | 🕯️ | |
 | `:candy:` | 🍬 | |
 | `:canned_food:` | 🥫 | |
 | `:canoe:` | 🛶 | |
 | `:capital_abcd:` | 🔠 | `:input_latin_uppercase:` |
-| `:car:` | 🚗 | `:automobile:` `:red_car:` |
+| `:car:` | 🚗 | `:red_car:` `:automobile:` |
 | `:card_box:` | 🗃 | |
 | `:card_file_box:` | 🗃️ | |
 | `:card_index:` | 📇 | |
@@ -339,7 +339,7 @@
 | `:cat2:` | 🐈 | |
 | `:cat:` | 🐱 | `:cat_face:` |
 | `:cd:` | 💿 | `:optical_disk:` |
-| `:chad:` | 🇹🇩 | `:flag-td:` `:flag_Chad:` `:flag_td:` |
+| `:chad:` | 🇹🇩 | `:flag-td:` `:flag_td:` `:flag_Chad:` |
 | `:chains:` | ⛓️ | |
 | `:chair:` | 🪑 | |
 | `:champagne:` | 🍾 | `:bottle_with_popping_cork:` |
@@ -363,7 +363,7 @@
 | `:child_tone4:` | 🧒🏾 | |
 | `:child_tone5:` | 🧒🏿 | |
 | `:children_crossing:` | 🚸 | |
-| `:chile:` | 🇨🇱 | `:flag-cl:` `:flag_Chile:` `:flag_cl:` |
+| `:chile:` | 🇨🇱 | `:flag-cl:` `:flag_cl:` `:flag_Chile:` |
 | `:chipmunk:` | 🐿️ | |
 | `:chocolate_bar:` | 🍫 | |
 | `:chopsticks:` | 🥢 | |
@@ -385,7 +385,7 @@
 | `:classical_building:` | 🏛️ | |
 | `:climbing:` | 🧗 | |
 | `:climbing_man:` | 🧗‍♂️ | `:man_climbing:` |
-| `:climbing_woman:` | 🧗‍♀️ | `:person_climbing:` `:woman_climbing:` |
+| `:climbing_woman:` | 🧗‍♀️ | `:woman_climbing:` `:person_climbing:` |
 | `:clipboard:` | 📋 | |
 | `:clock1030:` | 🕥 | `:ten-thirty:` |
 | `:clock10:` | 🕙 | `:ten_o’clock:` |
@@ -422,7 +422,7 @@
 | `:clown:` | 🤡 | `:clown_face:` |
 | `:club_suit:` | ♣ | |
 | `:clubs:` | ♣️ | |
-| `:cn:` | 🇨🇳 | `:flag_China:` `:flag_cn:` |
+| `:cn:` | 🇨🇳 | `:flag_cn:` `:flag_China:` |
 | `:coat:` | 🧥 | |
 | `:cockroach:` | 🪳 | |
 | `:cocktail:` | 🍸 | `:cocktail_glass:` |
@@ -433,7 +433,7 @@
 | `:cold_face:` | 🥶 | |
 | `:cold_sweat:` | 😰 | `:anxious_face_with_sweat:` |
 | `:comet:` | ☄️ | |
-| `:comoros:` | 🇰🇲 | `:flag-km:` `:flag_Comoros:` `:flag_km:` |
+| `:comoros:` | 🇰🇲 | `:flag-km:` `:flag_km:` `:flag_Comoros:` |
 | `:compass:` | 🧭 | |
 | `:compression:` | 🗜️ | |
 | `:computer_mouse:` | 🖱 | `:mouse_three_button:` |
@@ -443,28 +443,28 @@
 | `:congratulations:` | ㊗️ | |
 | `:construction:` | 🚧 | |
 | `:construction_site:` | 🏗 | |
-| `:construction_worker:` | 👷‍♂️ | `:construction_worker_man:` `:male-construction-worker:` `:man_construction_worker:` |
+| `:construction_worker:` | 👷‍♂️ | `:construction_worker_man:` `:man_construction_worker:` `:male-construction-worker:` |
 | `:construction_worker_tone1:` | 👷🏻 | |
 | `:construction_worker_tone2:` | 👷🏼 | |
 | `:construction_worker_tone3:` | 👷🏽 | |
 | `:construction_worker_tone4:` | 👷🏾 | |
 | `:construction_worker_tone5:` | 👷🏿 | |
-| `:construction_worker_woman:` | 👷‍♀️ | `:female-construction-worker:` `:woman_construction_worker:` |
+| `:construction_worker_woman:` | 👷‍♀️ | `:woman_construction_worker:` `:female-construction-worker:` |
 | `:control_knobs:` | 🎛️ | |
 | `:convenience_store:` | 🏪 | |
 | `:cook:` | 🧑‍🍳 | |
 | `:cookie:` | 🍪 | |
 | `:cooking:` | 🍳 | `:fried_egg:` |
 | `:cool:` | 🆒 | `:COOL_button:` |
-| `:cop:` | 👮‍♂️ | `:male-police-officer:` `:man_police_officer:` `:policeman:` |
+| `:cop:` | 👮‍♂️ | `:policeman:` `:man_police_officer:` `:male-police-officer:` |
 | `:copyright:` | ©️ | |
 | `:corn:` | 🌽 | `:ear_of_corn:` |
 | `:couch:` | 🛋 | |
 | `:couch_and_lamp:` | 🛋️ | |
 | `:couple:` | 👫 | `:man_and_woman_holding_hands:` `:woman_and_man_holding_hands:` |
-| `:couple_mm:` | 👨‍❤️‍👨 | `:couple_with_heart_man_man:` `:man-heart-man:` |
-| `:couple_ww:` | 👩‍❤️‍👩 | `:couple_with_heart_woman_woman:` `:woman-heart-woman:` |
-| `:couplekiss:` | 👩‍❤️‍💋‍👨 | `:couplekiss_man_woman:` `:kiss_woman_man:` `:woman-kiss-man:` |
+| `:couple_mm:` | 👨‍❤️‍👨 | `:man-heart-man:` `:couple_with_heart_man_man:` |
+| `:couple_ww:` | 👩‍❤️‍👩 | `:woman-heart-woman:` `:couple_with_heart_woman_woman:` |
+| `:couplekiss:` | 👩‍❤️‍💋‍👨 | `:kiss_woman_man:` `:woman-kiss-man:` `:couplekiss_man_woman:` |
 | `:cow2:` | 🐄 | |
 | `:cow:` | 🐮 | `:cow_face:` |
 | `:cowboy:` | 🤠 | `:cowboy_hat_face:` `:face_with_cowboy_hat:` |
@@ -474,7 +474,7 @@
 | `:crescent_moon:` | 🌙 | |
 | `:cricket:` | 🦗 | |
 | `:cricket_game:` | 🏏 | `:cricket_bat_and_ball:` |
-| `:croatia:` | 🇭🇷 | `:flag-hr:` `:flag_Croatia:` `:flag_hr:` |
+| `:croatia:` | 🇭🇷 | `:flag-hr:` `:flag_hr:` `:flag_Croatia:` |
 | `:crocodile:` | 🐊 | |
 | `:croissant:` | 🥐 | |
 | `:cross:` | ✝ | |
@@ -487,12 +487,12 @@
 | `:cry:` | 😢 | `:crying_face:` |
 | `:crying_cat:` | 😿 | `:crying_cat_face:` |
 | `:crystal_ball:` | 🔮 | |
-| `:cuba:` | 🇨🇺 | `:flag-cu:` `:flag_Cuba:` `:flag_cu:` |
+| `:cuba:` | 🇨🇺 | `:flag-cu:` `:flag_cu:` `:flag_Cuba:` |
 | `:cucumber:` | 🥒 | |
 | `:cup_with_straw:` | 🥤 | |
 | `:cupcake:` | 🧁 | |
 | `:cupid:` | 💘 | `:heart_with_arrow:` |
-| `:curacao:` | 🇨🇼 | `:flag-cw:` `:flag_Curaçao:` `:flag_cw:` |
+| `:curacao:` | 🇨🇼 | `:flag-cw:` `:flag_cw:` `:flag_Curaçao:` |
 | `:curling_stone:` | 🥌 | |
 | `:curly_hair:` | 🦱 | |
 | `:curly_loop:` | ➰ | |
@@ -503,7 +503,7 @@
 | `:customs:` | 🛃 | |
 | `:cut_of_meat:` | 🥩 | |
 | `:cyclone:` | 🌀 | |
-| `:cyprus:` | 🇨🇾 | `:flag-cy:` `:flag_Cyprus:` `:flag_cy:` |
+| `:cyprus:` | 🇨🇾 | `:flag-cy:` `:flag_cy:` `:flag_Cyprus:` |
 | `:dagger:` | 🗡 | |
 | `:dagger_knife:` | 🗡️ | |
 | `:dancer:` | 💃 | `:woman_dancing:` |
@@ -512,20 +512,20 @@
 | `:dancer_tone3:` | 💃🏽 | |
 | `:dancer_tone4:` | 💃🏾 | |
 | `:dancer_tone5:` | 💃🏿 | |
-| `:dancers:` | 👯‍♀️ | `:dancing_women:` `:woman-with-bunny-ears-partying:` `:women_with_bunny_ears:` `:women_with_bunny_ears_partying:` |
-| `:dancing_men:` | 👯‍♂️ | `:man-with-bunny-ears-partying:` `:men_with_bunny_ears:` `:men_with_bunny_ears_partying:` |
+| `:dancers:` | 👯‍♀️ | `:dancing_women:` `:women_with_bunny_ears:` `:woman-with-bunny-ears-partying:` `:women_with_bunny_ears_partying:` |
+| `:dancing_men:` | 👯‍♂️ | `:men_with_bunny_ears:` `:man-with-bunny-ears-partying:` `:men_with_bunny_ears_partying:` |
 | `:dango:` | 🍡 | |
 | `:dark_sunglasses:` | 🕶️ | |
 | `:dart:` | 🎯 | `:bullseye:` |
 | `:dash:` | 💨 | `:dashing_away:` |
 | `:date:` | 📅 | |
-| `:de:` | 🇩🇪 | `:flag_Germany:` `:flag_de:` |
+| `:de:` | 🇩🇪 | `:flag_de:` `:flag_Germany:` |
 | `:deaf_man:` | 🧏‍♂️ | |
 | `:deaf_person:` | 🧏 | |
 | `:deaf_woman:` | 🧏‍♀️ | |
 | `:deciduous_tree:` | 🌳 | |
 | `:deer:` | 🦌 | |
-| `:denmark:` | 🇩🇰 | `:flag-dk:` `:flag_Denmark:` `:flag_dk:` |
+| `:denmark:` | 🇩🇰 | `:flag-dk:` `:flag_dk:` `:flag_Denmark:` |
 | `:department_store:` | 🏬 | |
 | `:derelict_house:` | 🏚 | `:house_abandoned:` |
 | `:derelict_house_building:` | 🏚️ | |
@@ -592,10 +592,10 @@
 | `:earth_africa:` | 🌍 | `:globe_showing_Europe-Africa:` |
 | `:earth_americas:` | 🌎 | `:globe_showing_Americas:` |
 | `:earth_asia:` | 🌏 | `:globe_showing_Asia-Australia:` |
-| `:ecuador:` | 🇪🇨 | `:flag-ec:` `:flag_Ecuador:` `:flag_ec:` |
+| `:ecuador:` | 🇪🇨 | `:flag-ec:` `:flag_ec:` `:flag_Ecuador:` |
 | `:egg:` | 🥚 | |
 | `:eggplant:` | 🍆 | |
-| `:egypt:` | 🇪🇬 | `:flag-eg:` `:flag_Egypt:` `:flag_eg:` |
+| `:egypt:` | 🇪🇬 | `:flag-eg:` `:flag_eg:` `:flag_Egypt:` |
 | `:eight-pointed_star:` | ✴ | |
 | `:eight-spoked_asterisk:` | ✳ | |
 | `:eight:` | 8️⃣ | `:keycap_8:` |
@@ -606,27 +606,27 @@
 | `:electric_plug:` | 🔌 | |
 | `:elephant:` | 🐘 | |
 | `:elevator:` | 🛗 | |
-| `:elf:` | 🧝‍♂️ | `:elf_man:` `:male_elf:` `:man_elf:` |
+| `:elf:` | 🧝‍♂️ | `:elf_man:` `:man_elf:` `:male_elf:` |
 | `:elf_tone1:` | 🧝🏻 | |
 | `:elf_tone2:` | 🧝🏼 | |
 | `:elf_tone3:` | 🧝🏽 | |
 | `:elf_tone4:` | 🧝🏾 | |
 | `:elf_tone5:` | 🧝🏿 | |
-| `:elf_woman:` | 🧝‍♀️ | `:female_elf:` `:woman_elf:` |
+| `:elf_woman:` | 🧝‍♀️ | `:woman_elf:` `:female_elf:` |
 | `:email:` | ✉️ | |
 | `:end:` | 🔚 | `:END_arrow:` |
 | `:england:` | 🏴󠁧󠁢󠁥󠁮󠁧󠁿 | `:flag-england:` `:flag_England:` |
 | `:envelope:` | ✉ | |
 | `:envelope_with_arrow:` | 📩 | |
-| `:eritrea:` | 🇪🇷 | `:flag-er:` `:flag_Eritrea:` `:flag_er:` |
-| `:es:` | 🇪🇸 | `:flag_Spain:` `:flag_es:` |
-| `:estonia:` | 🇪🇪 | `:flag-ee:` `:flag_Estonia:` `:flag_ee:` |
-| `:eu:` | 🇪🇺 | `:european_union:` `:flag-eu:` `:flag_European_Union:` `:flag_eu:` |
+| `:eritrea:` | 🇪🇷 | `:flag-er:` `:flag_er:` `:flag_Eritrea:` |
+| `:es:` | 🇪🇸 | `:flag_es:` `:flag_Spain:` |
+| `:estonia:` | 🇪🇪 | `:flag-ee:` `:flag_ee:` `:flag_Estonia:` |
+| `:eu:` | 🇪🇺 | `:flag-eu:` `:flag_eu:` `:european_union:` `:flag_European_Union:` |
 | `:euro:` | 💶 | `:euro_banknote:` |
 | `:european_post_office:` | 🏤 | |
 | `:evergreen_tree:` | 🌲 | |
 | `:ewe:` | 🐑 | `:sheep:` |
-| `:exclamation:` | ❗ | `:heavy_exclamation_mark:` `:red_exclamation_mark:` |
+| `:exclamation:` | ❗ | `:red_exclamation_mark:` `:heavy_exclamation_mark:` |
 | `:exclamation_question_mark:` | ⁉ | |
 | `:exploding_head:` | 🤯 | |
 | `:expressionless:` | 😑 | `:expressionless_face:` |
@@ -641,8 +641,8 @@
 | `:facepalm:` | 🤦 | `:face_palm:` `:person_facepalming:` |
 | `:factory:` | 🏭 | |
 | `:factory_worker:` | 🧑‍🏭 | |
-| `:fairy:` | 🧚‍♀️ | `:fairy_woman:` `:female_fairy:` `:woman_fairy:` |
-| `:fairy_man:` | 🧚‍♂️ | `:male_fairy:` `:man_fairy:` |
+| `:fairy:` | 🧚‍♀️ | `:fairy_woman:` `:woman_fairy:` `:female_fairy:` |
+| `:fairy_man:` | 🧚‍♂️ | `:man_fairy:` `:male_fairy:` |
 | `:fairy_tone1:` | 🧚🏻 | |
 | `:fairy_tone2:` | 🧚🏼 | |
 | `:fairy_tone3:` | 🧚🏽 | |
@@ -650,21 +650,21 @@
 | `:fairy_tone5:` | 🧚🏿 | |
 | `:falafel:` | 🧆 | |
 | `:fallen_leaf:` | 🍂 | |
-| `:family:` | 👨‍👩‍👦 | `:family_man_woman_boy:` `:man-woman-boy:` |
-| `:family_mmb:` | 👨‍👨‍👦 | `:family_man_man_boy:` `:man-man-boy:` |
-| `:family_mmbb:` | 👨‍👨‍👦‍👦 | `:family_man_man_boy_boy:` `:man-man-boy-boy:` |
-| `:family_mmg:` | 👨‍👨‍👧 | `:family_man_man_girl:` `:man-man-girl:` |
-| `:family_mmgb:` | 👨‍👨‍👧‍👦 | `:family_man_man_girl_boy:` `:man-man-girl-boy:` |
-| `:family_mmgg:` | 👨‍👨‍👧‍👧 | `:family_man_man_girl_girl:` `:man-man-girl-girl:` |
-| `:family_mwbb:` | 👨‍👩‍👦‍👦 | `:family_man_woman_boy_boy:` `:man-woman-boy-boy:` |
-| `:family_mwg:` | 👨‍👩‍👧 | `:family_man_woman_girl:` `:man-woman-girl:` |
-| `:family_mwgb:` | 👨‍👩‍👧‍👦 | `:family_man_woman_girl_boy:` `:man-woman-girl-boy:` |
-| `:family_mwgg:` | 👨‍👩‍👧‍👧 | `:family_man_woman_girl_girl:` `:man-woman-girl-girl:` |
-| `:family_wwb:` | 👩‍👩‍👦 | `:family_woman_woman_boy:` `:woman-woman-boy:` |
-| `:family_wwbb:` | 👩‍👩‍👦‍👦 | `:family_woman_woman_boy_boy:` `:woman-woman-boy-boy:` |
-| `:family_wwg:` | 👩‍👩‍👧 | `:family_woman_woman_girl:` `:woman-woman-girl:` |
-| `:family_wwgb:` | 👩‍👩‍👧‍👦 | `:family_woman_woman_girl_boy:` `:woman-woman-girl-boy:` |
-| `:family_wwgg:` | 👩‍👩‍👧‍👧 | `:family_woman_woman_girl_girl:` `:woman-woman-girl-girl:` |
+| `:family:` | 👨‍👩‍👦 | `:man-woman-boy:` `:family_man_woman_boy:` |
+| `:family_mmb:` | 👨‍👨‍👦 | `:man-man-boy:` `:family_man_man_boy:` |
+| `:family_mmbb:` | 👨‍👨‍👦‍👦 | `:man-man-boy-boy:` `:family_man_man_boy_boy:` |
+| `:family_mmg:` | 👨‍👨‍👧 | `:man-man-girl:` `:family_man_man_girl:` |
+| `:family_mmgb:` | 👨‍👨‍👧‍👦 | `:man-man-girl-boy:` `:family_man_man_girl_boy:` |
+| `:family_mmgg:` | 👨‍👨‍👧‍👧 | `:man-man-girl-girl:` `:family_man_man_girl_girl:` |
+| `:family_mwbb:` | 👨‍👩‍👦‍👦 | `:man-woman-boy-boy:` `:family_man_woman_boy_boy:` |
+| `:family_mwg:` | 👨‍👩‍👧 | `:man-woman-girl:` `:family_man_woman_girl:` |
+| `:family_mwgb:` | 👨‍👩‍👧‍👦 | `:man-woman-girl-boy:` `:family_man_woman_girl_boy:` |
+| `:family_mwgg:` | 👨‍👩‍👧‍👧 | `:man-woman-girl-girl:` `:family_man_woman_girl_girl:` |
+| `:family_wwb:` | 👩‍👩‍👦 | `:woman-woman-boy:` `:family_woman_woman_boy:` |
+| `:family_wwbb:` | 👩‍👩‍👦‍👦 | `:woman-woman-boy-boy:` `:family_woman_woman_boy_boy:` |
+| `:family_wwg:` | 👩‍👩‍👧 | `:woman-woman-girl:` `:family_woman_woman_girl:` |
+| `:family_wwgb:` | 👩‍👩‍👧‍👦 | `:woman-woman-girl-boy:` `:family_woman_woman_girl_boy:` |
+| `:family_wwgg:` | 👩‍👩‍👧‍👧 | `:woman-woman-girl-girl:` `:family_woman_woman_girl_girl:` |
 | `:farmer:` | 🧑‍🌾 | |
 | `:fast_down_button:` | ⏬ | `:arrow_double_down:` |
 | `:fast_forward:` | ⏩ | `:fast-forward_button:` |
@@ -679,7 +679,7 @@
 | `:ferris_wheel:` | 🎡 | |
 | `:ferry:` | ⛴️ | |
 | `:field_hockey:` | 🏑 | `:field_hockey_stick_and_ball:` |
-| `:fiji:` | 🇫🇯 | `:flag-fj:` `:flag_Fiji:` `:flag_fj:` |
+| `:fiji:` | 🇫🇯 | `:flag-fj:` `:flag_fj:` `:flag_Fiji:` |
 | `:file_cabinet:` | 🗄️ | |
 | `:file_folder:` | 📁 | |
 | `:film_projector:` | 📽️ | |
@@ -689,7 +689,7 @@
 | `:fingers_crossed_tone3:` | 🤞🏽 | |
 | `:fingers_crossed_tone4:` | 🤞🏾 | |
 | `:fingers_crossed_tone5:` | 🤞🏿 | |
-| `:finland:` | 🇫🇮 | `:flag-fi:` `:flag_Finland:` `:flag_fi:` |
+| `:finland:` | 🇫🇮 | `:flag-fi:` `:flag_fi:` `:flag_Finland:` |
 | `:fire:` | 🔥 | |
 | `:fire_engine:` | 🚒 | |
 | `:fire_extinguisher:` | 🧯 | |
@@ -711,168 +711,168 @@
 | `:fist_tone4:` | ✊🏾 | |
 | `:fist_tone5:` | ✊🏿 | |
 | `:five:` | 5️⃣ | `:keycap_5:` |
-| `:flag-ac:` | 🇦🇨 | `:ascension_island:` `:flag_Ascension_Island:` `:flag_ac:` |
-| `:flag-ae:` | 🇦🇪 | `:flag_United_Arab_Emirates:` `:flag_ae:` `:united_arab_emirates:` |
-| `:flag-af:` | 🇦🇫 | `:afghanistan:` `:flag_Afghanistan:` `:flag_af:` |
-| `:flag-ag:` | 🇦🇬 | `:antigua_barbuda:` `:flag_Antigua_&_Barbuda:` `:flag_ag:` |
-| `:flag-ai:` | 🇦🇮 | `:anguilla:` `:flag_Anguilla:` `:flag_ai:` |
-| `:flag-aq:` | 🇦🇶 | `:antarctica:` `:flag_Antarctica:` `:flag_aq:` |
-| `:flag-ar:` | 🇦🇷 | `:argentina:` `:flag_Argentina:` `:flag_ar:` |
-| `:flag-as:` | 🇦🇸 | `:american_samoa:` `:flag_American_Samoa:` `:flag_as:` |
-| `:flag-au:` | 🇦🇺 | `:australia:` `:flag_Australia:` `:flag_au:` |
-| `:flag-ax:` | 🇦🇽 | `:aland_islands:` `:flag_ax:` `:flag_Åland_Islands:` |
-| `:flag-az:` | 🇦🇿 | `:azerbaijan:` `:flag_Azerbaijan:` `:flag_az:` |
-| `:flag-ba:` | 🇧🇦 | `:bosnia_herzegovina:` `:flag_Bosnia_&_Herzegovina:` `:flag_ba:` |
-| `:flag-bb:` | 🇧🇧 | `:barbados:` `:flag_Barbados:` `:flag_bb:` |
-| `:flag-bd:` | 🇧🇩 | `:bangladesh:` `:flag_Bangladesh:` `:flag_bd:` |
-| `:flag-bf:` | 🇧🇫 | `:burkina_faso:` `:flag_Burkina_Faso:` `:flag_bf:` |
-| `:flag-bg:` | 🇧🇬 | `:bulgaria:` `:flag_Bulgaria:` `:flag_bg:` |
-| `:flag-bl:` | 🇧🇱 | `:flag_St._Barthélemy:` `:flag_bl:` `:st_barthelemy:` |
-| `:flag-bq:` | 🇧🇶 | `:caribbean_netherlands:` `:flag_Caribbean_Netherlands:` `:flag_bq:` |
-| `:flag-bv:` | 🇧🇻 | `:bouvet_island:` `:flag_Bouvet_Island:` `:flag_bv:` |
-| `:flag-bw:` | 🇧🇼 | `:botswana:` `:flag_Botswana:` `:flag_bw:` |
-| `:flag-cc:` | 🇨🇨 | `:cocos_islands:` `:flag_Cocos_(Keeling)_Islands:` `:flag_cc:` |
-| `:flag-cd:` | 🇨🇩 | `:congo_kinshasa:` `:flag_Congo_-_Kinshasa:` `:flag_cd:` |
-| `:flag-cf:` | 🇨🇫 | `:central_african_republic:` `:flag_Central_African_Republic:` `:flag_cf:` |
-| `:flag-cg:` | 🇨🇬 | `:congo_brazzaville:` `:flag_Congo_-_Brazzaville:` `:flag_cg:` |
-| `:flag-ch:` | 🇨🇭 | `:flag_Switzerland:` `:flag_ch:` `:switzerland:` |
-| `:flag-ci:` | 🇨🇮 | `:cote_divoire:` `:flag_Côte_d’Ivoire:` `:flag_ci:` |
-| `:flag-ck:` | 🇨🇰 | `:cook_islands:` `:flag_Cook_Islands:` `:flag_ck:` |
-| `:flag-cm:` | 🇨🇲 | `:cameroon:` `:flag_Cameroon:` `:flag_cm:` |
-| `:flag-co:` | 🇨🇴 | `:colombia:` `:flag_Colombia:` `:flag_co:` |
-| `:flag-cp:` | 🇨🇵 | `:clipperton_island:` `:flag_Clipperton_Island:` `:flag_cp:` |
-| `:flag-cr:` | 🇨🇷 | `:costa_rica:` `:flag_Costa_Rica:` `:flag_cr:` |
-| `:flag-cv:` | 🇨🇻 | `:cape_verde:` `:flag_Cape_Verde:` `:flag_cv:` |
-| `:flag-cx:` | 🇨🇽 | `:christmas_island:` `:flag_Christmas_Island:` `:flag_cx:` |
-| `:flag-cz:` | 🇨🇿 | `:czech_republic:` `:flag_Czechia:` `:flag_cz:` |
-| `:flag-dg:` | 🇩🇬 | `:diego_garcia:` `:flag_Diego_Garcia:` `:flag_dg:` |
-| `:flag-dj:` | 🇩🇯 | `:djibouti:` `:flag_Djibouti:` `:flag_dj:` |
-| `:flag-dm:` | 🇩🇲 | `:dominica:` `:flag_Dominica:` `:flag_dm:` |
-| `:flag-do:` | 🇩🇴 | `:dominican_republic:` `:flag_Dominican_Republic:` `:flag_do:` |
-| `:flag-ea:` | 🇪🇦 | `:ceuta_melilla:` `:flag_Ceuta_&_Melilla:` `:flag_ea:` |
-| `:flag-eh:` | 🇪🇭 | `:flag_Western_Sahara:` `:flag_eh:` `:western_sahara:` |
-| `:flag-et:` | 🇪🇹 | `:ethiopia:` `:flag_Ethiopia:` `:flag_et:` |
-| `:flag-fk:` | 🇫🇰 | `:falkland_islands:` `:flag_Falkland_Islands:` `:flag_fk:` |
-| `:flag-fm:` | 🇫🇲 | `:flag_Micronesia:` `:flag_fm:` `:micronesia:` |
-| `:flag-fo:` | 🇫🇴 | `:faroe_islands:` `:flag_Faroe_Islands:` `:flag_fo:` |
-| `:flag-gd:` | 🇬🇩 | `:flag_Grenada:` `:flag_gd:` `:grenada:` |
-| `:flag-ge:` | 🇬🇪 | `:flag_Georgia:` `:flag_ge:` `:georgia:` |
-| `:flag-gf:` | 🇬🇫 | `:flag_French_Guiana:` `:flag_gf:` `:french_guiana:` |
-| `:flag-gg:` | 🇬🇬 | `:flag_Guernsey:` `:flag_gg:` `:guernsey:` |
-| `:flag-gi:` | 🇬🇮 | `:flag_Gibraltar:` `:flag_gi:` `:gibraltar:` |
-| `:flag-gl:` | 🇬🇱 | `:flag_Greenland:` `:flag_gl:` `:greenland:` |
-| `:flag-gp:` | 🇬🇵 | `:flag_Guadeloupe:` `:flag_gp:` `:guadeloupe:` |
-| `:flag-gq:` | 🇬🇶 | `:equatorial_guinea:` `:flag_Equatorial_Guinea:` `:flag_gq:` |
-| `:flag-gs:` | 🇬🇸 | `:flag_South_Georgia_&_South_Sandwich_Islands:` `:flag_gs:` `:south_georgia_south_sandwich_islands:` |
-| `:flag-gt:` | 🇬🇹 | `:flag_Guatemala:` `:flag_gt:` `:guatemala:` |
-| `:flag-gw:` | 🇬🇼 | `:flag_Guinea-Bissau:` `:flag_gw:` `:guinea_bissau:` |
-| `:flag-hk:` | 🇭🇰 | `:flag_Hong_Kong_SAR_China:` `:flag_hk:` `:hong_kong:` |
-| `:flag-hm:` | 🇭🇲 | `:flag_Heard_&_McDonald_Islands:` `:flag_hm:` `:heard_mcdonald_islands:` |
-| `:flag-hn:` | 🇭🇳 | `:flag_Honduras:` `:flag_hn:` `:honduras:` |
-| `:flag-hu:` | 🇭🇺 | `:flag_Hungary:` `:flag_hu:` `:hungary:` |
-| `:flag-ic:` | 🇮🇨 | `:canary_islands:` `:flag_Canary_Islands:` `:flag_ic:` |
-| `:flag-id:` | 🇮🇩 | `:flag_Indonesia:` `:flag_id:` `:indonesia:` |
-| `:flag-ie:` | 🇮🇪 | `:flag_Ireland:` `:flag_ie:` `:ireland:` |
-| `:flag-im:` | 🇮🇲 | `:flag_Isle_of_Man:` `:flag_im:` `:isle_of_man:` |
-| `:flag-io:` | 🇮🇴 | `:british_indian_ocean_territory:` `:flag_British_Indian_Ocean_Territory:` `:flag_io:` |
-| `:flag-is:` | 🇮🇸 | `:flag_Iceland:` `:flag_is:` `:iceland:` |
-| `:flag-jm:` | 🇯🇲 | `:flag_Jamaica:` `:flag_jm:` `:jamaica:` |
-| `:flag-kg:` | 🇰🇬 | `:flag_Kyrgyzstan:` `:flag_kg:` `:kyrgyzstan:` |
-| `:flag-kh:` | 🇰🇭 | `:cambodia:` `:flag_Cambodia:` `:flag_kh:` |
-| `:flag-ki:` | 🇰🇮 | `:flag_Kiribati:` `:flag_ki:` `:kiribati:` |
-| `:flag-kn:` | 🇰🇳 | `:flag_St._Kitts_&_Nevis:` `:flag_kn:` `:st_kitts_nevis:` |
-| `:flag-kp:` | 🇰🇵 | `:flag_North_Korea:` `:flag_kp:` `:north_korea:` |
-| `:flag-ky:` | 🇰🇾 | `:cayman_islands:` `:flag_Cayman_Islands:` `:flag_ky:` |
-| `:flag-kz:` | 🇰🇿 | `:flag_Kazakhstan:` `:flag_kz:` `:kazakhstan:` |
-| `:flag-lb:` | 🇱🇧 | `:flag_Lebanon:` `:flag_lb:` `:lebanon:` |
-| `:flag-lc:` | 🇱🇨 | `:flag_St._Lucia:` `:flag_lc:` `:st_lucia:` |
-| `:flag-li:` | 🇱🇮 | `:flag_Liechtenstein:` `:flag_li:` `:liechtenstein:` |
-| `:flag-lk:` | 🇱🇰 | `:flag_Sri_Lanka:` `:flag_lk:` `:sri_lanka:` |
-| `:flag-lr:` | 🇱🇷 | `:flag_Liberia:` `:flag_lr:` `:liberia:` |
-| `:flag-ls:` | 🇱🇸 | `:flag_Lesotho:` `:flag_ls:` `:lesotho:` |
-| `:flag-lt:` | 🇱🇹 | `:flag_Lithuania:` `:flag_lt:` `:lithuania:` |
-| `:flag-lu:` | 🇱🇺 | `:flag_Luxembourg:` `:flag_lu:` `:luxembourg:` |
-| `:flag-ma:` | 🇲🇦 | `:flag_Morocco:` `:flag_ma:` `:morocco:` |
-| `:flag-md:` | 🇲🇩 | `:flag_Moldova:` `:flag_md:` `:moldova:` |
-| `:flag-me:` | 🇲🇪 | `:flag_Montenegro:` `:flag_me:` `:montenegro:` |
-| `:flag-mf:` | 🇲🇫 | `:flag_St._Martin:` `:flag_mf:` `:st_martin:` |
-| `:flag-mg:` | 🇲🇬 | `:flag_Madagascar:` `:flag_mg:` `:madagascar:` |
-| `:flag-mh:` | 🇲🇭 | `:flag_Marshall_Islands:` `:flag_mh:` `:marshall_islands:` |
-| `:flag-mk:` | 🇲🇰 | `:flag_North_Macedonia:` `:flag_mk:` `:macedonia:` |
-| `:flag-mm:` | 🇲🇲 | `:flag_Myanmar_(Burma):` `:flag_mm:` `:myanmar:` |
-| `:flag-mn:` | 🇲🇳 | `:flag_Mongolia:` `:flag_mn:` `:mongolia:` |
-| `:flag-mp:` | 🇲🇵 | `:flag_Northern_Mariana_Islands:` `:flag_mp:` `:northern_mariana_islands:` |
-| `:flag-mq:` | 🇲🇶 | `:flag_Martinique:` `:flag_mq:` `:martinique:` |
-| `:flag-mr:` | 🇲🇷 | `:flag_Mauritania:` `:flag_mr:` `:mauritania:` |
-| `:flag-ms:` | 🇲🇸 | `:flag_Montserrat:` `:flag_ms:` `:montserrat:` |
-| `:flag-mu:` | 🇲🇺 | `:flag_Mauritius:` `:flag_mu:` `:mauritius:` |
-| `:flag-mv:` | 🇲🇻 | `:flag_Maldives:` `:flag_mv:` `:maldives:` |
-| `:flag-my:` | 🇲🇾 | `:flag_Malaysia:` `:flag_my:` `:malaysia:` |
-| `:flag-mz:` | 🇲🇿 | `:flag_Mozambique:` `:flag_mz:` `:mozambique:` |
-| `:flag-na:` | 🇳🇦 | `:flag_Namibia:` `:flag_na:` `:namibia:` |
-| `:flag-nc:` | 🇳🇨 | `:flag_New_Caledonia:` `:flag_nc:` `:new_caledonia:` |
-| `:flag-nf:` | 🇳🇫 | `:flag_Norfolk_Island:` `:flag_nf:` `:norfolk_island:` |
-| `:flag-ng:` | 🇳🇬 | `:flag_Nigeria:` `:flag_ng:` `:nigeria:` |
-| `:flag-ni:` | 🇳🇮 | `:flag_Nicaragua:` `:flag_ni:` `:nicaragua:` |
-| `:flag-nl:` | 🇳🇱 | `:flag_Netherlands:` `:flag_nl:` `:netherlands:` |
-| `:flag-nz:` | 🇳🇿 | `:flag_New_Zealand:` `:flag_nz:` `:new_zealand:` |
-| `:flag-pf:` | 🇵🇫 | `:flag_French_Polynesia:` `:flag_pf:` `:french_polynesia:` |
-| `:flag-pg:` | 🇵🇬 | `:flag_Papua_New_Guinea:` `:flag_pg:` `:papua_new_guinea:` |
-| `:flag-ph:` | 🇵🇭 | `:flag_Philippines:` `:flag_ph:` `:philippines:` |
-| `:flag-pk:` | 🇵🇰 | `:flag_Pakistan:` `:flag_pk:` `:pakistan:` |
-| `:flag-pm:` | 🇵🇲 | `:flag_St._Pierre_&_Miquelon:` `:flag_pm:` `:st_pierre_miquelon:` |
-| `:flag-pn:` | 🇵🇳 | `:flag_Pitcairn_Islands:` `:flag_pn:` `:pitcairn_islands:` |
-| `:flag-pr:` | 🇵🇷 | `:flag_Puerto_Rico:` `:flag_pr:` `:puerto_rico:` |
-| `:flag-ps:` | 🇵🇸 | `:flag_Palestinian_Territories:` `:flag_ps:` `:palestinian_territories:` |
-| `:flag-pt:` | 🇵🇹 | `:flag_Portugal:` `:flag_pt:` `:portugal:` |
-| `:flag-py:` | 🇵🇾 | `:flag_Paraguay:` `:flag_py:` `:paraguay:` |
-| `:flag-re:` | 🇷🇪 | `:flag_Réunion:` `:flag_re:` `:reunion:` |
-| `:flag-ro:` | 🇷🇴 | `:flag_Romania:` `:flag_ro:` `:romania:` |
-| `:flag-sa:` | 🇸🇦 | `:flag_Saudi_Arabia:` `:flag_sa:` `:saudi_arabia:` |
-| `:flag-sb:` | 🇸🇧 | `:flag_Solomon_Islands:` `:flag_sb:` `:solomon_islands:` |
-| `:flag-sc:` | 🇸🇨 | `:flag_Seychelles:` `:flag_sc:` `:seychelles:` |
-| `:flag-sg:` | 🇸🇬 | `:flag_Singapore:` `:flag_sg:` `:singapore:` |
-| `:flag-sh:` | 🇸🇭 | `:flag_St._Helena:` `:flag_sh:` `:st_helena:` |
-| `:flag-si:` | 🇸🇮 | `:flag_Slovenia:` `:flag_si:` `:slovenia:` |
-| `:flag-sj:` | 🇸🇯 | `:flag_Svalbard_&_Jan_Mayen:` `:flag_sj:` `:svalbard_jan_mayen:` |
-| `:flag-sk:` | 🇸🇰 | `:flag_Slovakia:` `:flag_sk:` `:slovakia:` |
-| `:flag-sl:` | 🇸🇱 | `:flag_Sierra_Leone:` `:flag_sl:` `:sierra_leone:` |
-| `:flag-sm:` | 🇸🇲 | `:flag_San_Marino:` `:flag_sm:` `:san_marino:` |
-| `:flag-sn:` | 🇸🇳 | `:flag_Senegal:` `:flag_sn:` `:senegal:` |
-| `:flag-so:` | 🇸🇴 | `:flag_Somalia:` `:flag_so:` `:somalia:` |
-| `:flag-sr:` | 🇸🇷 | `:flag_Suriname:` `:flag_sr:` `:suriname:` |
-| `:flag-ss:` | 🇸🇸 | `:flag_South_Sudan:` `:flag_ss:` `:south_sudan:` |
-| `:flag-st:` | 🇸🇹 | `:flag_São_Tomé_&_Príncipe:` `:flag_st:` `:sao_tome_principe:` |
-| `:flag-sv:` | 🇸🇻 | `:el_salvador:` `:flag_El_Salvador:` `:flag_sv:` |
-| `:flag-sx:` | 🇸🇽 | `:flag_Sint_Maarten:` `:flag_sx:` `:sint_maarten:` |
-| `:flag-sz:` | 🇸🇿 | `:flag_Eswatini:` `:flag_sz:` `:swaziland:` |
-| `:flag-ta:` | 🇹🇦 | `:flag_Tristan_da_Cunha:` `:flag_ta:` `:tristan_da_cunha:` |
-| `:flag-tc:` | 🇹🇨 | `:flag_Turks_&_Caicos_Islands:` `:flag_tc:` `:turks_caicos_islands:` |
-| `:flag-tf:` | 🇹🇫 | `:flag_French_Southern_Territories:` `:flag_tf:` `:french_southern_territories:` |
-| `:flag-th:` | 🇹🇭 | `:flag_Thailand:` `:flag_th:` `:thailand:` |
-| `:flag-tj:` | 🇹🇯 | `:flag_Tajikistan:` `:flag_tj:` `:tajikistan:` |
-| `:flag-tk:` | 🇹🇰 | `:flag_Tokelau:` `:flag_tk:` `:tokelau:` |
-| `:flag-tl:` | 🇹🇱 | `:flag_Timor-Leste:` `:flag_tl:` `:timor_leste:` |
-| `:flag-tm:` | 🇹🇲 | `:flag_Turkmenistan:` `:flag_tm:` `:turkmenistan:` |
-| `:flag-tn:` | 🇹🇳 | `:flag_Tunisia:` `:flag_tn:` `:tunisia:` |
-| `:flag-tt:` | 🇹🇹 | `:flag_Trinidad_&_Tobago:` `:flag_tt:` `:trinidad_tobago:` |
-| `:flag-tz:` | 🇹🇿 | `:flag_Tanzania:` `:flag_tz:` `:tanzania:` |
-| `:flag-ua:` | 🇺🇦 | `:flag_Ukraine:` `:flag_ua:` `:ukraine:` |
-| `:flag-um:` | 🇺🇲 | `:flag_U.S._Outlying_Islands:` `:flag_um:` `:us_outlying_islands:` |
-| `:flag-un:` | 🇺🇳 | `:flag_United_Nations:` `:united_nations:` |
-| `:flag-uy:` | 🇺🇾 | `:flag_Uruguay:` `:flag_uy:` `:uruguay:` |
-| `:flag-uz:` | 🇺🇿 | `:flag_Uzbekistan:` `:flag_uz:` `:uzbekistan:` |
-| `:flag-va:` | 🇻🇦 | `:flag_Vatican_City:` `:flag_va:` `:vatican_city:` |
-| `:flag-vc:` | 🇻🇨 | `:flag_St._Vincent_&_Grenadines:` `:flag_vc:` `:st_vincent_grenadines:` |
-| `:flag-ve:` | 🇻🇪 | `:flag_Venezuela:` `:flag_ve:` `:venezuela:` |
-| `:flag-vg:` | 🇻🇬 | `:british_virgin_islands:` `:flag_British_Virgin_Islands:` `:flag_vg:` |
-| `:flag-vi:` | 🇻🇮 | `:flag_U.S._Virgin_Islands:` `:flag_vi:` `:us_virgin_islands:` |
-| `:flag-vn:` | 🇻🇳 | `:flag_Vietnam:` `:flag_vn:` `:vietnam:` |
-| `:flag-vu:` | 🇻🇺 | `:flag_Vanuatu:` `:flag_vu:` `:vanuatu:` |
-| `:flag-wf:` | 🇼🇫 | `:flag_Wallis_&_Futuna:` `:flag_wf:` `:wallis_futuna:` |
-| `:flag-yt:` | 🇾🇹 | `:flag_Mayotte:` `:flag_yt:` `:mayotte:` |
-| `:flag-za:` | 🇿🇦 | `:flag_South_Africa:` `:flag_za:` `:south_africa:` |
-| `:flag-zw:` | 🇿🇼 | `:flag_Zimbabwe:` `:flag_zw:` `:zimbabwe:` |
+| `:flag-ac:` | 🇦🇨 | `:flag_ac:` `:ascension_island:` `:flag_Ascension_Island:` |
+| `:flag-ae:` | 🇦🇪 | `:flag_ae:` `:united_arab_emirates:` `:flag_United_Arab_Emirates:` |
+| `:flag-af:` | 🇦🇫 | `:flag_af:` `:afghanistan:` `:flag_Afghanistan:` |
+| `:flag-ag:` | 🇦🇬 | `:flag_ag:` `:antigua_barbuda:` `:flag_Antigua_&_Barbuda:` |
+| `:flag-ai:` | 🇦🇮 | `:flag_ai:` `:anguilla:` `:flag_Anguilla:` |
+| `:flag-aq:` | 🇦🇶 | `:flag_aq:` `:antarctica:` `:flag_Antarctica:` |
+| `:flag-ar:` | 🇦🇷 | `:flag_ar:` `:argentina:` `:flag_Argentina:` |
+| `:flag-as:` | 🇦🇸 | `:flag_as:` `:american_samoa:` `:flag_American_Samoa:` |
+| `:flag-au:` | 🇦🇺 | `:flag_au:` `:australia:` `:flag_Australia:` |
+| `:flag-ax:` | 🇦🇽 | `:flag_ax:` `:aland_islands:` `:flag_Åland_Islands:` |
+| `:flag-az:` | 🇦🇿 | `:flag_az:` `:azerbaijan:` `:flag_Azerbaijan:` |
+| `:flag-ba:` | 🇧🇦 | `:flag_ba:` `:bosnia_herzegovina:` `:flag_Bosnia_&_Herzegovina:` |
+| `:flag-bb:` | 🇧🇧 | `:flag_bb:` `:barbados:` `:flag_Barbados:` |
+| `:flag-bd:` | 🇧🇩 | `:flag_bd:` `:bangladesh:` `:flag_Bangladesh:` |
+| `:flag-bf:` | 🇧🇫 | `:flag_bf:` `:burkina_faso:` `:flag_Burkina_Faso:` |
+| `:flag-bg:` | 🇧🇬 | `:flag_bg:` `:bulgaria:` `:flag_Bulgaria:` |
+| `:flag-bl:` | 🇧🇱 | `:flag_bl:` `:st_barthelemy:` `:flag_St._Barthélemy:` |
+| `:flag-bq:` | 🇧🇶 | `:flag_bq:` `:caribbean_netherlands:` `:flag_Caribbean_Netherlands:` |
+| `:flag-bv:` | 🇧🇻 | `:flag_bv:` `:bouvet_island:` `:flag_Bouvet_Island:` |
+| `:flag-bw:` | 🇧🇼 | `:flag_bw:` `:botswana:` `:flag_Botswana:` |
+| `:flag-cc:` | 🇨🇨 | `:flag_cc:` `:cocos_islands:` `:flag_Cocos_(Keeling)_Islands:` |
+| `:flag-cd:` | 🇨🇩 | `:flag_cd:` `:congo_kinshasa:` `:flag_Congo_-_Kinshasa:` |
+| `:flag-cf:` | 🇨🇫 | `:flag_cf:` `:central_african_republic:` `:flag_Central_African_Republic:` |
+| `:flag-cg:` | 🇨🇬 | `:flag_cg:` `:congo_brazzaville:` `:flag_Congo_-_Brazzaville:` |
+| `:flag-ch:` | 🇨🇭 | `:flag_ch:` `:switzerland:` `:flag_Switzerland:` |
+| `:flag-ci:` | 🇨🇮 | `:flag_ci:` `:cote_divoire:` `:flag_Côte_d’Ivoire:` |
+| `:flag-ck:` | 🇨🇰 | `:flag_ck:` `:cook_islands:` `:flag_Cook_Islands:` |
+| `:flag-cm:` | 🇨🇲 | `:flag_cm:` `:cameroon:` `:flag_Cameroon:` |
+| `:flag-co:` | 🇨🇴 | `:flag_co:` `:colombia:` `:flag_Colombia:` |
+| `:flag-cp:` | 🇨🇵 | `:flag_cp:` `:clipperton_island:` `:flag_Clipperton_Island:` |
+| `:flag-cr:` | 🇨🇷 | `:flag_cr:` `:costa_rica:` `:flag_Costa_Rica:` |
+| `:flag-cv:` | 🇨🇻 | `:flag_cv:` `:cape_verde:` `:flag_Cape_Verde:` |
+| `:flag-cx:` | 🇨🇽 | `:flag_cx:` `:christmas_island:` `:flag_Christmas_Island:` |
+| `:flag-cz:` | 🇨🇿 | `:flag_cz:` `:flag_Czechia:` `:czech_republic:` |
+| `:flag-dg:` | 🇩🇬 | `:flag_dg:` `:diego_garcia:` `:flag_Diego_Garcia:` |
+| `:flag-dj:` | 🇩🇯 | `:flag_dj:` `:djibouti:` `:flag_Djibouti:` |
+| `:flag-dm:` | 🇩🇲 | `:flag_dm:` `:dominica:` `:flag_Dominica:` |
+| `:flag-do:` | 🇩🇴 | `:flag_do:` `:dominican_republic:` `:flag_Dominican_Republic:` |
+| `:flag-ea:` | 🇪🇦 | `:flag_ea:` `:ceuta_melilla:` `:flag_Ceuta_&_Melilla:` |
+| `:flag-eh:` | 🇪🇭 | `:flag_eh:` `:western_sahara:` `:flag_Western_Sahara:` |
+| `:flag-et:` | 🇪🇹 | `:flag_et:` `:ethiopia:` `:flag_Ethiopia:` |
+| `:flag-fk:` | 🇫🇰 | `:flag_fk:` `:falkland_islands:` `:flag_Falkland_Islands:` |
+| `:flag-fm:` | 🇫🇲 | `:flag_fm:` `:micronesia:` `:flag_Micronesia:` |
+| `:flag-fo:` | 🇫🇴 | `:flag_fo:` `:faroe_islands:` `:flag_Faroe_Islands:` |
+| `:flag-gd:` | 🇬🇩 | `:flag_gd:` `:grenada:` `:flag_Grenada:` |
+| `:flag-ge:` | 🇬🇪 | `:flag_ge:` `:georgia:` `:flag_Georgia:` |
+| `:flag-gf:` | 🇬🇫 | `:flag_gf:` `:french_guiana:` `:flag_French_Guiana:` |
+| `:flag-gg:` | 🇬🇬 | `:flag_gg:` `:guernsey:` `:flag_Guernsey:` |
+| `:flag-gi:` | 🇬🇮 | `:flag_gi:` `:gibraltar:` `:flag_Gibraltar:` |
+| `:flag-gl:` | 🇬🇱 | `:flag_gl:` `:greenland:` `:flag_Greenland:` |
+| `:flag-gp:` | 🇬🇵 | `:flag_gp:` `:guadeloupe:` `:flag_Guadeloupe:` |
+| `:flag-gq:` | 🇬🇶 | `:flag_gq:` `:equatorial_guinea:` `:flag_Equatorial_Guinea:` |
+| `:flag-gs:` | 🇬🇸 | `:flag_gs:` `:south_georgia_south_sandwich_islands:` `:flag_South_Georgia_&_South_Sandwich_Islands:` |
+| `:flag-gt:` | 🇬🇹 | `:flag_gt:` `:guatemala:` `:flag_Guatemala:` |
+| `:flag-gw:` | 🇬🇼 | `:flag_gw:` `:guinea_bissau:` `:flag_Guinea-Bissau:` |
+| `:flag-hk:` | 🇭🇰 | `:flag_hk:` `:hong_kong:` `:flag_Hong_Kong_SAR_China:` |
+| `:flag-hm:` | 🇭🇲 | `:flag_hm:` `:heard_mcdonald_islands:` `:flag_Heard_&_McDonald_Islands:` |
+| `:flag-hn:` | 🇭🇳 | `:flag_hn:` `:honduras:` `:flag_Honduras:` |
+| `:flag-hu:` | 🇭🇺 | `:flag_hu:` `:hungary:` `:flag_Hungary:` |
+| `:flag-ic:` | 🇮🇨 | `:flag_ic:` `:canary_islands:` `:flag_Canary_Islands:` |
+| `:flag-id:` | 🇮🇩 | `:flag_id:` `:indonesia:` `:flag_Indonesia:` |
+| `:flag-ie:` | 🇮🇪 | `:flag_ie:` `:ireland:` `:flag_Ireland:` |
+| `:flag-im:` | 🇮🇲 | `:flag_im:` `:isle_of_man:` `:flag_Isle_of_Man:` |
+| `:flag-io:` | 🇮🇴 | `:flag_io:` `:british_indian_ocean_territory:` `:flag_British_Indian_Ocean_Territory:` |
+| `:flag-is:` | 🇮🇸 | `:flag_is:` `:iceland:` `:flag_Iceland:` |
+| `:flag-jm:` | 🇯🇲 | `:flag_jm:` `:jamaica:` `:flag_Jamaica:` |
+| `:flag-kg:` | 🇰🇬 | `:flag_kg:` `:kyrgyzstan:` `:flag_Kyrgyzstan:` |
+| `:flag-kh:` | 🇰🇭 | `:flag_kh:` `:cambodia:` `:flag_Cambodia:` |
+| `:flag-ki:` | 🇰🇮 | `:flag_ki:` `:kiribati:` `:flag_Kiribati:` |
+| `:flag-kn:` | 🇰🇳 | `:flag_kn:` `:st_kitts_nevis:` `:flag_St._Kitts_&_Nevis:` |
+| `:flag-kp:` | 🇰🇵 | `:flag_kp:` `:north_korea:` `:flag_North_Korea:` |
+| `:flag-ky:` | 🇰🇾 | `:flag_ky:` `:cayman_islands:` `:flag_Cayman_Islands:` |
+| `:flag-kz:` | 🇰🇿 | `:flag_kz:` `:kazakhstan:` `:flag_Kazakhstan:` |
+| `:flag-lb:` | 🇱🇧 | `:flag_lb:` `:lebanon:` `:flag_Lebanon:` |
+| `:flag-lc:` | 🇱🇨 | `:flag_lc:` `:st_lucia:` `:flag_St._Lucia:` |
+| `:flag-li:` | 🇱🇮 | `:flag_li:` `:liechtenstein:` `:flag_Liechtenstein:` |
+| `:flag-lk:` | 🇱🇰 | `:flag_lk:` `:sri_lanka:` `:flag_Sri_Lanka:` |
+| `:flag-lr:` | 🇱🇷 | `:flag_lr:` `:liberia:` `:flag_Liberia:` |
+| `:flag-ls:` | 🇱🇸 | `:flag_ls:` `:lesotho:` `:flag_Lesotho:` |
+| `:flag-lt:` | 🇱🇹 | `:flag_lt:` `:lithuania:` `:flag_Lithuania:` |
+| `:flag-lu:` | 🇱🇺 | `:flag_lu:` `:luxembourg:` `:flag_Luxembourg:` |
+| `:flag-ma:` | 🇲🇦 | `:flag_ma:` `:morocco:` `:flag_Morocco:` |
+| `:flag-md:` | 🇲🇩 | `:flag_md:` `:moldova:` `:flag_Moldova:` |
+| `:flag-me:` | 🇲🇪 | `:flag_me:` `:montenegro:` `:flag_Montenegro:` |
+| `:flag-mf:` | 🇲🇫 | `:flag_mf:` `:st_martin:` `:flag_St._Martin:` |
+| `:flag-mg:` | 🇲🇬 | `:flag_mg:` `:madagascar:` `:flag_Madagascar:` |
+| `:flag-mh:` | 🇲🇭 | `:flag_mh:` `:marshall_islands:` `:flag_Marshall_Islands:` |
+| `:flag-mk:` | 🇲🇰 | `:flag_mk:` `:macedonia:` `:flag_North_Macedonia:` |
+| `:flag-mm:` | 🇲🇲 | `:flag_mm:` `:myanmar:` `:flag_Myanmar_(Burma):` |
+| `:flag-mn:` | 🇲🇳 | `:flag_mn:` `:mongolia:` `:flag_Mongolia:` |
+| `:flag-mp:` | 🇲🇵 | `:flag_mp:` `:northern_mariana_islands:` `:flag_Northern_Mariana_Islands:` |
+| `:flag-mq:` | 🇲🇶 | `:flag_mq:` `:martinique:` `:flag_Martinique:` |
+| `:flag-mr:` | 🇲🇷 | `:flag_mr:` `:mauritania:` `:flag_Mauritania:` |
+| `:flag-ms:` | 🇲🇸 | `:flag_ms:` `:montserrat:` `:flag_Montserrat:` |
+| `:flag-mu:` | 🇲🇺 | `:flag_mu:` `:mauritius:` `:flag_Mauritius:` |
+| `:flag-mv:` | 🇲🇻 | `:flag_mv:` `:maldives:` `:flag_Maldives:` |
+| `:flag-my:` | 🇲🇾 | `:flag_my:` `:malaysia:` `:flag_Malaysia:` |
+| `:flag-mz:` | 🇲🇿 | `:flag_mz:` `:mozambique:` `:flag_Mozambique:` |
+| `:flag-na:` | 🇳🇦 | `:flag_na:` `:namibia:` `:flag_Namibia:` |
+| `:flag-nc:` | 🇳🇨 | `:flag_nc:` `:new_caledonia:` `:flag_New_Caledonia:` |
+| `:flag-nf:` | 🇳🇫 | `:flag_nf:` `:norfolk_island:` `:flag_Norfolk_Island:` |
+| `:flag-ng:` | 🇳🇬 | `:flag_ng:` `:nigeria:` `:flag_Nigeria:` |
+| `:flag-ni:` | 🇳🇮 | `:flag_ni:` `:nicaragua:` `:flag_Nicaragua:` |
+| `:flag-nl:` | 🇳🇱 | `:flag_nl:` `:netherlands:` `:flag_Netherlands:` |
+| `:flag-nz:` | 🇳🇿 | `:flag_nz:` `:new_zealand:` `:flag_New_Zealand:` |
+| `:flag-pf:` | 🇵🇫 | `:flag_pf:` `:french_polynesia:` `:flag_French_Polynesia:` |
+| `:flag-pg:` | 🇵🇬 | `:flag_pg:` `:papua_new_guinea:` `:flag_Papua_New_Guinea:` |
+| `:flag-ph:` | 🇵🇭 | `:flag_ph:` `:philippines:` `:flag_Philippines:` |
+| `:flag-pk:` | 🇵🇰 | `:flag_pk:` `:pakistan:` `:flag_Pakistan:` |
+| `:flag-pm:` | 🇵🇲 | `:flag_pm:` `:st_pierre_miquelon:` `:flag_St._Pierre_&_Miquelon:` |
+| `:flag-pn:` | 🇵🇳 | `:flag_pn:` `:pitcairn_islands:` `:flag_Pitcairn_Islands:` |
+| `:flag-pr:` | 🇵🇷 | `:flag_pr:` `:puerto_rico:` `:flag_Puerto_Rico:` |
+| `:flag-ps:` | 🇵🇸 | `:flag_ps:` `:palestinian_territories:` `:flag_Palestinian_Territories:` |
+| `:flag-pt:` | 🇵🇹 | `:flag_pt:` `:portugal:` `:flag_Portugal:` |
+| `:flag-py:` | 🇵🇾 | `:flag_py:` `:paraguay:` `:flag_Paraguay:` |
+| `:flag-re:` | 🇷🇪 | `:flag_re:` `:reunion:` `:flag_Réunion:` |
+| `:flag-ro:` | 🇷🇴 | `:flag_ro:` `:romania:` `:flag_Romania:` |
+| `:flag-sa:` | 🇸🇦 | `:flag_sa:` `:saudi_arabia:` `:flag_Saudi_Arabia:` |
+| `:flag-sb:` | 🇸🇧 | `:flag_sb:` `:solomon_islands:` `:flag_Solomon_Islands:` |
+| `:flag-sc:` | 🇸🇨 | `:flag_sc:` `:seychelles:` `:flag_Seychelles:` |
+| `:flag-sg:` | 🇸🇬 | `:flag_sg:` `:singapore:` `:flag_Singapore:` |
+| `:flag-sh:` | 🇸🇭 | `:flag_sh:` `:st_helena:` `:flag_St._Helena:` |
+| `:flag-si:` | 🇸🇮 | `:flag_si:` `:slovenia:` `:flag_Slovenia:` |
+| `:flag-sj:` | 🇸🇯 | `:flag_sj:` `:svalbard_jan_mayen:` `:flag_Svalbard_&_Jan_Mayen:` |
+| `:flag-sk:` | 🇸🇰 | `:flag_sk:` `:slovakia:` `:flag_Slovakia:` |
+| `:flag-sl:` | 🇸🇱 | `:flag_sl:` `:sierra_leone:` `:flag_Sierra_Leone:` |
+| `:flag-sm:` | 🇸🇲 | `:flag_sm:` `:san_marino:` `:flag_San_Marino:` |
+| `:flag-sn:` | 🇸🇳 | `:flag_sn:` `:senegal:` `:flag_Senegal:` |
+| `:flag-so:` | 🇸🇴 | `:flag_so:` `:somalia:` `:flag_Somalia:` |
+| `:flag-sr:` | 🇸🇷 | `:flag_sr:` `:suriname:` `:flag_Suriname:` |
+| `:flag-ss:` | 🇸🇸 | `:flag_ss:` `:south_sudan:` `:flag_South_Sudan:` |
+| `:flag-st:` | 🇸🇹 | `:flag_st:` `:sao_tome_principe:` `:flag_São_Tomé_&_Príncipe:` |
+| `:flag-sv:` | 🇸🇻 | `:flag_sv:` `:el_salvador:` `:flag_El_Salvador:` |
+| `:flag-sx:` | 🇸🇽 | `:flag_sx:` `:sint_maarten:` `:flag_Sint_Maarten:` |
+| `:flag-sz:` | 🇸🇿 | `:flag_sz:` `:swaziland:` `:flag_Eswatini:` |
+| `:flag-ta:` | 🇹🇦 | `:flag_ta:` `:tristan_da_cunha:` `:flag_Tristan_da_Cunha:` |
+| `:flag-tc:` | 🇹🇨 | `:flag_tc:` `:turks_caicos_islands:` `:flag_Turks_&_Caicos_Islands:` |
+| `:flag-tf:` | 🇹🇫 | `:flag_tf:` `:french_southern_territories:` `:flag_French_Southern_Territories:` |
+| `:flag-th:` | 🇹🇭 | `:flag_th:` `:thailand:` `:flag_Thailand:` |
+| `:flag-tj:` | 🇹🇯 | `:flag_tj:` `:tajikistan:` `:flag_Tajikistan:` |
+| `:flag-tk:` | 🇹🇰 | `:flag_tk:` `:tokelau:` `:flag_Tokelau:` |
+| `:flag-tl:` | 🇹🇱 | `:flag_tl:` `:timor_leste:` `:flag_Timor-Leste:` |
+| `:flag-tm:` | 🇹🇲 | `:flag_tm:` `:turkmenistan:` `:flag_Turkmenistan:` |
+| `:flag-tn:` | 🇹🇳 | `:flag_tn:` `:tunisia:` `:flag_Tunisia:` |
+| `:flag-tt:` | 🇹🇹 | `:flag_tt:` `:trinidad_tobago:` `:flag_Trinidad_&_Tobago:` |
+| `:flag-tz:` | 🇹🇿 | `:flag_tz:` `:tanzania:` `:flag_Tanzania:` |
+| `:flag-ua:` | 🇺🇦 | `:flag_ua:` `:ukraine:` `:flag_Ukraine:` |
+| `:flag-um:` | 🇺🇲 | `:flag_um:` `:us_outlying_islands:` `:flag_U.S._Outlying_Islands:` |
+| `:flag-un:` | 🇺🇳 | `:united_nations:` `:flag_United_Nations:` |
+| `:flag-uy:` | 🇺🇾 | `:flag_uy:` `:uruguay:` `:flag_Uruguay:` |
+| `:flag-uz:` | 🇺🇿 | `:flag_uz:` `:uzbekistan:` `:flag_Uzbekistan:` |
+| `:flag-va:` | 🇻🇦 | `:flag_va:` `:vatican_city:` `:flag_Vatican_City:` |
+| `:flag-vc:` | 🇻🇨 | `:flag_vc:` `:st_vincent_grenadines:` `:flag_St._Vincent_&_Grenadines:` |
+| `:flag-ve:` | 🇻🇪 | `:flag_ve:` `:venezuela:` `:flag_Venezuela:` |
+| `:flag-vg:` | 🇻🇬 | `:flag_vg:` `:british_virgin_islands:` `:flag_British_Virgin_Islands:` |
+| `:flag-vi:` | 🇻🇮 | `:flag_vi:` `:us_virgin_islands:` `:flag_U.S._Virgin_Islands:` |
+| `:flag-vn:` | 🇻🇳 | `:flag_vn:` `:vietnam:` `:flag_Vietnam:` |
+| `:flag-vu:` | 🇻🇺 | `:flag_vu:` `:vanuatu:` `:flag_Vanuatu:` |
+| `:flag-wf:` | 🇼🇫 | `:flag_wf:` `:wallis_futuna:` `:flag_Wallis_&_Futuna:` |
+| `:flag-yt:` | 🇾🇹 | `:flag_yt:` `:mayotte:` `:flag_Mayotte:` |
+| `:flag-za:` | 🇿🇦 | `:flag_za:` `:south_africa:` `:flag_South_Africa:` |
+| `:flag-zw:` | 🇿🇼 | `:flag_zw:` `:zimbabwe:` `:flag_Zimbabwe:` |
 | `:flag_white:` | 🏳 | `:white_flag:` |
 | `:flags:` | 🎏 | `:carp_streamer:` |
 | `:flamingo:` | 🦩 | |
@@ -903,7 +903,7 @@
 | `:four:` | 4️⃣ | `:keycap_4:` |
 | `:four_leaf_clover:` | 🍀 | |
 | `:fox:` | 🦊 | `:fox_face:` |
-| `:fr:` | 🇫🇷 | `:flag_France:` `:flag_fr:` |
+| `:fr:` | 🇫🇷 | `:flag_fr:` `:flag_France:` |
 | `:frame_photo:` | 🖼 | `:framed_picture:` |
 | `:frame_with_picture:` | 🖼️ | |
 | `:free:` | 🆓 | `:FREE_button:` |
@@ -915,22 +915,22 @@
 | `:frowning:` | 😦 | `:frowning_face_with_open_mouth:` |
 | `:frowning_man:` | 🙍‍♂️ | `:man-frowning:` `:man_frowning:` |
 | `:frowning_person:` | 🙍 | |
-| `:frowning_woman:` | 🙍‍♀️ | `:person_frowning:` `:woman-frowning:` `:woman_frowning:` |
+| `:frowning_woman:` | 🙍‍♀️ | `:woman-frowning:` `:woman_frowning:` `:person_frowning:` |
 | `:fu:` | 🖕 | `:middle_finger:` |
 | `:fuelpump:` | ⛽ | `:fuel_pump:` |
 | `:full_moon:` | 🌕 | |
 | `:full_moon_face:` | 🌝 | `:full_moon_with_face:` |
 | `:funeral_urn:` | ⚱️ | |
-| `:gabon:` | 🇬🇦 | `:flag-ga:` `:flag_Gabon:` `:flag_ga:` |
-| `:gambia:` | 🇬🇲 | `:flag-gm:` `:flag_Gambia:` `:flag_gm:` |
+| `:gabon:` | 🇬🇦 | `:flag-ga:` `:flag_ga:` `:flag_Gabon:` |
+| `:gambia:` | 🇬🇲 | `:flag-gm:` `:flag_gm:` `:flag_Gambia:` |
 | `:game_die:` | 🎲 | |
 | `:garlic:` | 🧄 | |
-| `:gb:` | 🇬🇧 | `:flag_United_Kingdom:` `:flag_gb:` `:uk:` |
+| `:gb:` | 🇬🇧 | `:uk:` `:flag_gb:` `:flag_United_Kingdom:` |
 | `:gear:` | ⚙️ | |
 | `:gem:` | 💎 | `:gem_stone:` |
-| `:genie:` | 🧞‍♂️ | `:genie_man:` `:male_genie:` `:man_genie:` |
-| `:genie_woman:` | 🧞‍♀️ | `:female_genie:` `:woman_genie:` |
-| `:ghana:` | 🇬🇭 | `:flag-gh:` `:flag_Ghana:` `:flag_gh:` |
+| `:genie:` | 🧞‍♂️ | `:genie_man:` `:man_genie:` `:male_genie:` |
+| `:genie_woman:` | 🧞‍♀️ | `:woman_genie:` `:female_genie:` |
+| `:ghana:` | 🇬🇭 | `:flag-gh:` `:flag_gh:` `:flag_Ghana:` |
 | `:ghost:` | 👻 | |
 | `:gift:` | 🎁 | `:wrapped_gift:` |
 | `:gift_heart:` | 💝 | `:heart_with_ribbon:` |
@@ -954,7 +954,7 @@
 | `:golfing_woman:` | 🏌️‍♀️ | `:woman-golfing:` `:woman_golfing:` |
 | `:gorilla:` | 🦍 | |
 | `:grapes:` | 🍇 | |
-| `:greece:` | 🇬🇷 | `:flag-gr:` `:flag_Greece:` `:flag_gr:` |
+| `:greece:` | 🇬🇷 | `:flag-gr:` `:flag_gr:` `:flag_Greece:` |
 | `:green_apple:` | 🍏 | |
 | `:green_book:` | 📗 | |
 | `:green_circle:` | 🟢 | `:large_green_circle:` |
@@ -965,23 +965,23 @@
 | `:grimacing:` | 😬 | `:grimacing_face:` |
 | `:grin:` | 😁 | `:beaming_face_with_smiling_eyes:` |
 | `:grinning:` | 😀 | `:grinning_face:` |
-| `:guam:` | 🇬🇺 | `:flag-gu:` `:flag_Guam:` `:flag_gu:` |
+| `:guam:` | 🇬🇺 | `:flag-gu:` `:flag_gu:` `:flag_Guam:` |
 | `:guard:` | 💂 | |
 | `:guard_tone1:` | 💂🏻 | |
 | `:guard_tone2:` | 💂🏼 | |
 | `:guard_tone3:` | 💂🏽 | |
 | `:guard_tone4:` | 💂🏾 | |
 | `:guard_tone5:` | 💂🏿 | |
-| `:guardsman:` | 💂‍♂️ | `:male-guard:` `:man_guard:` |
-| `:guardswoman:` | 💂‍♀️ | `:female-guard:` `:woman_guard:` |
+| `:guardsman:` | 💂‍♂️ | `:man_guard:` `:male-guard:` |
+| `:guardswoman:` | 💂‍♀️ | `:woman_guard:` `:female-guard:` |
 | `:guide_dog:` | 🦮 | |
-| `:guinea:` | 🇬🇳 | `:flag-gn:` `:flag_Guinea:` `:flag_gn:` |
+| `:guinea:` | 🇬🇳 | `:flag-gn:` `:flag_gn:` `:flag_Guinea:` |
 | `:guitar:` | 🎸 | |
 | `:gun:` | 🔫 | `:water_pistol:` |
-| `:guyana:` | 🇬🇾 | `:flag-gy:` `:flag_Guyana:` `:flag_gy:` |
+| `:guyana:` | 🇬🇾 | `:flag-gy:` `:flag_gy:` `:flag_Guyana:` |
 | `:haircut:` | 💇‍♀️ | `:haircut_woman:` `:woman-getting-haircut:` `:woman_getting_haircut:` |
 | `:haircut_man:` | 💇‍♂️ | `:man-getting-haircut:` `:man_getting_haircut:` |
-| `:haiti:` | 🇭🇹 | `:flag-ht:` `:flag_Haiti:` `:flag_ht:` |
+| `:haiti:` | 🇭🇹 | `:flag-ht:` `:flag_ht:` `:flag_Haiti:` |
 | `:hamburger:` | 🍔 | |
 | `:hammer:` | 🔨 | |
 | `:hammer_and_pick:` | ⚒️ | |
@@ -1030,7 +1030,7 @@
 | `:hiking_boot:` | 🥾 | |
 | `:hindu_temple:` | 🛕 | |
 | `:hippopotamus:` | 🦛 | |
-| `:hocho:` | 🔪 | `:kitchen_knife:` `:knife:` |
+| `:hocho:` | 🔪 | `:knife:` `:kitchen_knife:` |
 | `:hockey:` | 🏒 | `:ice_hockey:` `:ice_hockey_stick_and_puck:` |
 | `:hole:` | 🕳️ | |
 | `:homes:` | 🏘 | `:houses:` |
@@ -1068,49 +1068,49 @@
 | `:inbox_tray:` | 📥 | |
 | `:incoming_envelope:` | 📨 | |
 | `:index_pointing_up:` | ☝ | |
-| `:india:` | 🇮🇳 | `:flag-in:` `:flag_India:` `:flag_in:` |
+| `:india:` | 🇮🇳 | `:flag-in:` `:flag_in:` `:flag_India:` |
 | `:infinity:` | ♾️ | |
 | `:information:` | ℹ | |
 | `:information_source:` | ℹ️ | |
 | `:innocent:` | 😇 | `:smiling_face_with_halo:` |
 | `:interrobang:` | ⁉️ | |
 | `:iphone:` | 📱 | `:mobile_phone:` |
-| `:iran:` | 🇮🇷 | `:flag-ir:` `:flag_Iran:` `:flag_ir:` |
-| `:iraq:` | 🇮🇶 | `:flag-iq:` `:flag_Iraq:` `:flag_iq:` |
+| `:iran:` | 🇮🇷 | `:flag-ir:` `:flag_ir:` `:flag_Iran:` |
+| `:iraq:` | 🇮🇶 | `:flag-iq:` `:flag_iq:` `:flag_Iraq:` |
 | `:island:` | 🏝 | |
-| `:israel:` | 🇮🇱 | `:flag-il:` `:flag_Israel:` `:flag_il:` |
-| `:it:` | 🇮🇹 | `:flag_Italy:` `:flag_it:` |
+| `:israel:` | 🇮🇱 | `:flag-il:` `:flag_il:` `:flag_Israel:` |
+| `:it:` | 🇮🇹 | `:flag_it:` `:flag_Italy:` |
 | `:jack-o-lantern:` | 🎃 | `:jack_o_lantern:` |
 | `:japan:` | 🗾 | `:map_of_Japan:` |
 | `:jeans:` | 👖 | |
-| `:jersey:` | 🇯🇪 | `:flag-je:` `:flag_Jersey:` `:flag_je:` |
+| `:jersey:` | 🇯🇪 | `:flag-je:` `:flag_je:` `:flag_Jersey:` |
 | `:jigsaw:` | 🧩 | `:puzzle_piece:` |
 | `:joker:` | 🃏 | `:black_joker:` |
-| `:jordan:` | 🇯🇴 | `:flag-jo:` `:flag_Jordan:` `:flag_jo:` |
+| `:jordan:` | 🇯🇴 | `:flag-jo:` `:flag_jo:` `:flag_Jordan:` |
 | `:joy:` | 😂 | `:face_with_tears_of_joy:` |
 | `:joy_cat:` | 😹 | `:cat_with_tears_of_joy:` |
 | `:joystick:` | 🕹️ | |
-| `:jp:` | 🇯🇵 | `:flag_Japan:` `:flag_jp:` |
+| `:jp:` | 🇯🇵 | `:flag_jp:` `:flag_Japan:` |
 | `:judge:` | 🧑‍⚖️ | |
 | `:juggling:` | 🤹 | `:juggling_person:` `:person_juggling:` |
 | `:kaaba:` | 🕋 | |
 | `:kangaroo:` | 🦘 | |
-| `:kenya:` | 🇰🇪 | `:flag-ke:` `:flag_Kenya:` `:flag_ke:` |
+| `:kenya:` | 🇰🇪 | `:flag-ke:` `:flag_ke:` `:flag_Kenya:` |
 | `:key2:` | 🗝 | |
 | `:key:` | 🔑 | |
 | `:keyboard:` | ⌨️ | |
 | `:keycap_10:` | 🔟 | `:keycap_ten:` |
 | `:kimono:` | 👘 | |
 | `:kiss:` | 💋 | `:kiss_mark:` |
-| `:kiss_mm:` | 👨‍❤️‍💋‍👨 | `:couplekiss_man_man:` `:kiss_man_man:` `:man-kiss-man:` |
-| `:kiss_ww:` | 👩‍❤️‍💋‍👩 | `:couplekiss_woman_woman:` `:kiss_woman_woman:` `:woman-kiss-woman:` |
+| `:kiss_mm:` | 👨‍❤️‍💋‍👨 | `:kiss_man_man:` `:man-kiss-man:` `:couplekiss_man_man:` |
+| `:kiss_ww:` | 👩‍❤️‍💋‍👩 | `:kiss_woman_woman:` `:woman-kiss-woman:` `:couplekiss_woman_woman:` |
 | `:kissing:` | 😗 | `:kissing_face:` |
 | `:kissing_cat:` | 😽 | |
 | `:kissing_closed_eyes:` | 😚 | `:kissing_face_with_closed_eyes:` |
 | `:kissing_heart:` | 😘 | `:face_blowing_a_kiss:` |
 | `:kissing_smiling_eyes:` | 😙 | `:kissing_face_with_smiling_eyes:` |
 | `:kite:` | 🪁 | |
-| `:kiwi:` | 🥝 | `:kiwi_fruit:` `:kiwifruit:` |
+| `:kiwi:` | 🥝 | `:kiwifruit:` `:kiwi_fruit:` |
 | `:kneeling_man:` | 🧎‍♂️ | `:man_kneeling:` |
 | `:kneeling_person:` | 🧎 | `:person_kneeling:` |
 | `:kneeling_woman:` | 🧎‍♀️ | `:woman_kneeling:` |
@@ -1118,24 +1118,24 @@
 | `:knot:` | 🪢 | |
 | `:koala:` | 🐨 | |
 | `:koko:` | 🈁 | `:Japanese_here_button:` |
-| `:kosovo:` | 🇽🇰 | `:flag-xk:` `:flag_Kosovo:` `:flag_xk:` |
-| `:kr:` | 🇰🇷 | `:flag_South_Korea:` `:flag_kr:` |
-| `:kuwait:` | 🇰🇼 | `:flag-kw:` `:flag_Kuwait:` `:flag_kw:` |
+| `:kosovo:` | 🇽🇰 | `:flag-xk:` `:flag_xk:` `:flag_Kosovo:` |
+| `:kr:` | 🇰🇷 | `:flag_kr:` `:flag_South_Korea:` |
+| `:kuwait:` | 🇰🇼 | `:flag-kw:` `:flag_kw:` `:flag_Kuwait:` |
 | `:lab_coat:` | 🥼 | |
 | `:label:` | 🏷️ | |
 | `:lacrosse:` | 🥍 | |
 | `:ladder:` | 🪜 | |
 | `:ladybug:` | 🐞 | `:lady_beetle:` |
 | `:lantern:` | 🏮 | `:izakaya_lantern:` `:red_paper_lantern:` |
-| `:laos:` | 🇱🇦 | `:flag-la:` `:flag_Laos:` `:flag_la:` |
+| `:laos:` | 🇱🇦 | `:flag-la:` `:flag_la:` `:flag_Laos:` |
 | `:laptop:` | 💻 | `:computer:` |
 | `:large_blue_diamond:` | 🔷 | |
 | `:large_orange_diamond:` | 🔶 | |
 | `:last_quarter_moon:` | 🌗 | |
 | `:last_quarter_moon_face:` | 🌜 | `:last_quarter_moon_with_face:` |
 | `:latin_cross:` | ✝️ | |
-| `:latvia:` | 🇱🇻 | `:flag-lv:` `:flag_Latvia:` `:flag_lv:` |
-| `:laughing:` | 😆 | `:grinning_squinting_face:` `:satisfied:` |
+| `:latvia:` | 🇱🇻 | `:flag-lv:` `:flag_lv:` `:flag_Latvia:` |
+| `:laughing:` | 😆 | `:satisfied:` `:grinning_squinting_face:` |
 | `:leafy_green:` | 🥬 | |
 | `:leaves:` | 🍃 | `:leaf_fluttering_in_wind:` |
 | `:ledger:` | 📒 | |
@@ -1155,7 +1155,7 @@
 | `:lemon:` | 🍋 | |
 | `:leopard:` | 🐆 | |
 | `:level_slider:` | 🎚️ | |
-| `:libya:` | 🇱🇾 | `:flag-ly:` `:flag_Libya:` `:flag_ly:` |
+| `:libya:` | 🇱🇾 | `:flag-ly:` `:flag_ly:` `:flag_Libya:` |
 | `:light_rail:` | 🚈 | |
 | `:lightning:` | 🌩️ | |
 | `:link:` | 🔗 | |
@@ -1177,10 +1177,10 @@
 | `:lotion_bottle:` | 🧴 | |
 | `:lotus_position:` | 🧘 | |
 | `:lotus_position_man:` | 🧘‍♂️ | `:man_in_lotus_position:` |
-| `:lotus_position_woman:` | 🧘‍♀️ | `:person_in_lotus_position:` `:woman_in_lotus_position:` |
+| `:lotus_position_woman:` | 🧘‍♀️ | `:woman_in_lotus_position:` `:person_in_lotus_position:` |
 | `:loud_sound:` | 🔊 | `:speaker_high_volume:` |
 | `:loudspeaker:` | 📢 | |
-| `:love-you_gesture:` | 🤟 | `:i_love_you_hand_sign:` `:love_you_gesture:` |
+| `:love-you_gesture:` | 🤟 | `:love_you_gesture:` `:i_love_you_hand_sign:` |
 | `:love_hotel:` | 🏩 | |
 | `:love_letter:` | 💌 | |
 | `:love_you_gesture_tone1:` | 🤟🏻 | |
@@ -1196,11 +1196,11 @@
 | `:lungs:` | 🫁 | |
 | `:lying_face:` | 🤥 | |
 | `:m:` | ⓜ️ | |
-| `:macau:` | 🇲🇴 | `:flag-mo:` `:flag_Macao_SAR_China:` `:flag_mo:` |
+| `:macau:` | 🇲🇴 | `:flag-mo:` `:flag_mo:` `:flag_Macao_SAR_China:` |
 | `:mag:` | 🔍 | `:magnifying_glass_tilted_left:` |
 | `:mag_right:` | 🔎 | `:magnifying_glass_tilted_right:` |
-| `:mage:` | 🧙‍♀️ | `:female_mage:` `:mage_woman:` `:woman_mage:` |
-| `:mage_man:` | 🧙‍♂️ | `:male_mage:` `:man_mage:` |
+| `:mage:` | 🧙‍♀️ | `:mage_woman:` `:woman_mage:` `:female_mage:` |
+| `:mage_man:` | 🧙‍♂️ | `:man_mage:` `:male_mage:` |
 | `:mage_tone1:` | 🧙🏻 | |
 | `:mage_tone2:` | 🧙🏼 | |
 | `:mage_tone3:` | 🧙🏽 | |
@@ -1213,11 +1213,11 @@
 | `:mailbox_closed:` | 📪 | `:closed_mailbox_with_lowered_flag:` |
 | `:mailbox_with_mail:` | 📬 | `:open_mailbox_with_raised_flag:` |
 | `:mailbox_with_no_mail:` | 📭 | `:open_mailbox_with_lowered_flag:` |
-| `:malawi:` | 🇲🇼 | `:flag-mw:` `:flag_Malawi:` `:flag_mw:` |
+| `:malawi:` | 🇲🇼 | `:flag-mw:` `:flag_mw:` `:flag_Malawi:` |
 | `:male-doctor:` | 👨‍⚕️ | `:man_health_worker:` |
 | `:male_sign:` | ♂️ | |
-| `:mali:` | 🇲🇱 | `:flag-ml:` `:flag_Mali:` `:flag_ml:` |
-| `:malta:` | 🇲🇹 | `:flag-mt:` `:flag_Malta:` `:flag_mt:` |
+| `:mali:` | 🇲🇱 | `:flag-ml:` `:flag_ml:` `:flag_Mali:` |
+| `:malta:` | 🇲🇹 | `:flag-mt:` `:flag_mt:` `:flag_Malta:` |
 | `:mammoth:` | 🦣 | |
 | `:man-boy-boy:` | 👨‍👦‍👦 | `:family_man_boy_boy:` |
 | `:man-boy:` | 👨‍👦 | `:family_man_boy:` |
@@ -1291,7 +1291,7 @@
 | `:man_dancing_tone3:` | 🕺🏽 | |
 | `:man_dancing_tone4:` | 🕺🏾 | |
 | `:man_dancing_tone5:` | 🕺🏿 | |
-| `:man_detective:` | 🕵️‍♂️ | `:male-detective:` `:male_detective:` `:sleuth_or_spy:` |
+| `:man_detective:` | 🕵️‍♂️ | `:sleuth_or_spy:` `:male-detective:` `:male_detective:` |
 | `:man_detective_tone1:` | 🕵🏻‍♂️ | |
 | `:man_detective_tone2:` | 🕵🏼‍♂️ | |
 | `:man_detective_tone3:` | 🕵🏽‍♂️ | |
@@ -1498,8 +1498,8 @@
 | `:man_student_tone3:` | 👨🏽‍🎓 | |
 | `:man_student_tone4:` | 👨🏾‍🎓 | |
 | `:man_student_tone5:` | 👨🏿‍🎓 | |
-| `:man_superhero:` | 🦸‍♂️ | `:male_superhero:` `:superhero_man:` |
-| `:man_supervillain:` | 🦹‍♂️ | `:male_supervillain:` `:supervillain_man:` |
+| `:man_superhero:` | 🦸‍♂️ | `:superhero_man:` `:male_superhero:` |
+| `:man_supervillain:` | 🦹‍♂️ | `:supervillain_man:` `:male_supervillain:` |
 | `:man_surfing_tone1:` | 🏄🏻‍♂️ | |
 | `:man_surfing_tone2:` | 🏄🏼‍♂️ | |
 | `:man_surfing_tone3:` | 🏄🏽‍♂️ | |
@@ -1532,7 +1532,7 @@
 | `:man_tone3:` | 👨🏽 | |
 | `:man_tone4:` | 👨🏾 | |
 | `:man_tone5:` | 👨🏿 | |
-| `:man_vampire:` | 🧛‍♂️ | `:male_vampire:` `:vampire_man:` |
+| `:man_vampire:` | 🧛‍♂️ | `:vampire_man:` `:male_vampire:` |
 | `:man_vampire_tone1:` | 🧛🏻‍♂️ | |
 | `:man_vampire_tone2:` | 🧛🏼‍♂️ | |
 | `:man_vampire_tone3:` | 🧛🏽‍♂️ | |
@@ -1565,8 +1565,8 @@
 | `:maple_leaf:` | 🍁 | |
 | `:martial_arts_uniform:` | 🥋 | |
 | `:mask:` | 😷 | `:face_with_medical_mask:` |
-| `:massage:` | 💆‍♀️ | `:massage_woman:` `:woman-getting-massage:` `:woman_getting_face_massage:` `:woman_getting_massage:` |
-| `:massage_man:` | 💆‍♂️ | `:man-getting-massage:` `:man_getting_face_massage:` `:man_getting_massage:` |
+| `:massage:` | 💆‍♀️ | `:massage_woman:` `:woman-getting-massage:` `:woman_getting_massage:` `:woman_getting_face_massage:` |
+| `:massage_man:` | 💆‍♂️ | `:man-getting-massage:` `:man_getting_massage:` `:man_getting_face_massage:` |
 | `:mate:` | 🧉 | `:mate_drink:` |
 | `:meat_on_bone:` | 🍖 | |
 | `:mechanic:` | 🧑‍🔧 | |
@@ -1599,14 +1599,14 @@
 | `:merperson_tone3:` | 🧜🏽 | |
 | `:merperson_tone4:` | 🧜🏾 | |
 | `:merperson_tone5:` | 🧜🏿 | |
-| `:metal:` | 🤘 | `:sign_of_the_horns:` `:the_horns:` |
+| `:metal:` | 🤘 | `:the_horns:` `:sign_of_the_horns:` |
 | `:metal_tone1:` | 🤘🏻 | |
 | `:metal_tone2:` | 🤘🏼 | |
 | `:metal_tone3:` | 🤘🏽 | |
 | `:metal_tone4:` | 🤘🏾 | |
 | `:metal_tone5:` | 🤘🏿 | |
 | `:metro:` | 🚇 | |
-| `:mexico:` | 🇲🇽 | `:flag-mx:` `:flag_Mexico:` `:flag_mx:` |
+| `:mexico:` | 🇲🇽 | `:flag-mx:` `:flag_mx:` `:flag_Mexico:` |
 | `:microbe:` | 🦠 | |
 | `:microphone2:` | 🎙 | |
 | `:microphone:` | 🎤 | |
@@ -1618,7 +1618,7 @@
 | `:middle_finger_tone5:` | 🖕🏿 | |
 | `:military_helmet:` | 🪖 | |
 | `:military_medal:` | 🎖 | |
-| `:milk:` | 🥛 | `:glass_of_milk:` `:milk_glass:` |
+| `:milk:` | 🥛 | `:milk_glass:` `:glass_of_milk:` |
 | `:milky_way:` | 🌌 | |
 | `:minibus:` | 🚐 | |
 | `:minidisc:` | 💽 | `:computer_disk:` |
@@ -1626,7 +1626,7 @@
 | `:mirror:` | 🪞 | |
 | `:moai:` | 🗿 | `:moyai:` |
 | `:mobile_phone_off:` | 📴 | |
-| `:monaco:` | 🇲🇨 | `:flag-mc:` `:flag_Monaco:` `:flag_mc:` |
+| `:monaco:` | 🇲🇨 | `:flag-mc:` `:flag_mc:` `:flag_Monaco:` |
 | `:money_mouth:` | 🤑 | `:money-mouth_face:` `:money_mouth_face:` |
 | `:money_with_wings:` | 💸 | |
 | `:moneybag:` | 💰 | `:money_bag:` |
@@ -1684,11 +1684,11 @@
 | `:nail_care_tone5:` | 💅🏿 | |
 | `:name_badge:` | 📛 | |
 | `:national_park:` | 🏞️ | |
-| `:nauru:` | 🇳🇷 | `:flag-nr:` `:flag_Nauru:` `:flag_nr:` |
+| `:nauru:` | 🇳🇷 | `:flag-nr:` `:flag_nr:` `:flag_Nauru:` |
 | `:nauseated_face:` | 🤢 | |
 | `:nazar_amulet:` | 🧿 | |
 | `:necktie:` | 👔 | |
-| `:nepal:` | 🇳🇵 | `:flag-np:` `:flag_Nepal:` `:flag_np:` |
+| `:nepal:` | 🇳🇵 | `:flag-np:` `:flag_np:` `:flag_Nepal:` |
 | `:nerd:` | 🤓 | `:nerd_face:` |
 | `:nesting_dolls:` | 🪆 | |
 | `:neutral_face:` | 😐 | |
@@ -1699,12 +1699,12 @@
 | `:newspaper:` | 📰 | |
 | `:newspaper_roll:` | 🗞️ | `:rolled_up_newspaper:` |
 | `:ng:` | 🆖 | `:NG_button:` |
-| `:ng_man:` | 🙅‍♂️ | `:man-gesturing-no:` `:man_gesturing_NO:` `:man_gesturing_no:` `:no_good_man:` |
-| `:niger:` | 🇳🇪 | `:flag-ne:` `:flag_Niger:` `:flag_ne:` |
+| `:ng_man:` | 🙅‍♂️ | `:no_good_man:` `:man-gesturing-no:` `:man_gesturing_NO:` `:man_gesturing_no:` |
+| `:niger:` | 🇳🇪 | `:flag-ne:` `:flag_ne:` `:flag_Niger:` |
 | `:night_with_stars:` | 🌃 | |
 | `:nine:` | 9️⃣ | `:keycap_9:` |
 | `:ninja:` | 🥷 | |
-| `:niue:` | 🇳🇺 | `:flag-nu:` `:flag_Niue:` `:flag_nu:` |
+| `:niue:` | 🇳🇺 | `:flag-nu:` `:flag_nu:` `:flag_Niue:` |
 | `:no_bell:` | 🔕 | `:bell_with_slash:` |
 | `:no_bicycles:` | 🚳 | |
 | `:no_entry:` | ⛔ | |
@@ -1715,7 +1715,7 @@
 | `:no_pedestrians:` | 🚷 | |
 | `:no_smoking:` | 🚭 | |
 | `:non-potable_water:` | 🚱 | |
-| `:norway:` | 🇳🇴 | `:flag-no:` `:flag_Norway:` `:flag_no:` |
+| `:norway:` | 🇳🇴 | `:flag-no:` `:flag_no:` `:flag_Norway:` |
 | `:nose:` | 👃 | |
 | `:nose_tone1:` | 👃🏻 | |
 | `:nose_tone2:` | 👃🏼 | |
@@ -1768,7 +1768,7 @@
 | `:olive:` | 🫒 | |
 | `:om:` | 🕉 | |
 | `:om_symbol:` | 🕉️ | |
-| `:oman:` | 🇴🇲 | `:flag-om:` `:flag_Oman:` `:flag_om:` |
+| `:oman:` | 🇴🇲 | `:flag-om:` `:flag_om:` `:flag_Oman:` |
 | `:on:` | 🔛 | `:ON!_arrow:` |
 | `:oncoming_automobile:` | 🚘 | |
 | `:oncoming_bus:` | 🚍 | |
@@ -1802,7 +1802,7 @@
 | `:page_with_curl:` | 📃 | |
 | `:pager:` | 📟 | |
 | `:paintbrush:` | 🖌 | |
-| `:palau:` | 🇵🇼 | `:flag-pw:` `:flag_Palau:` `:flag_pw:` |
+| `:palau:` | 🇵🇼 | `:flag-pw:` `:flag_pw:` `:flag_Palau:` |
 | `:palm_tree:` | 🌴 | |
 | `:palms_up_together:` | 🤲 | |
 | `:palms_up_together_tone1:` | 🤲🏻 | |
@@ -1810,7 +1810,7 @@
 | `:palms_up_together_tone3:` | 🤲🏽 | |
 | `:palms_up_together_tone4:` | 🤲🏾 | |
 | `:palms_up_together_tone5:` | 🤲🏿 | |
-| `:panama:` | 🇵🇦 | `:flag-pa:` `:flag_Panama:` `:flag_pa:` |
+| `:panama:` | 🇵🇦 | `:flag-pa:` `:flag_pa:` `:flag_Panama:` |
 | `:pancakes:` | 🥞 | |
 | `:panda:` | 🐼 | `:panda_face:` |
 | `:paperclip:` | 📎 | |
@@ -2022,7 +2022,7 @@
 | `:person_white_hair:` | 🧑‍🦳 | `:white_haired_person:` |
 | `:person_with_turban:` | 👳 | `:person_wearing_turban:` |
 | `:person_with_white_cane:` | 🧑‍🦯 | `:person_with_probing_cane:` |
-| `:peru:` | 🇵🇪 | `:flag-pe:` `:flag_Peru:` `:flag_pe:` |
+| `:peru:` | 🇵🇪 | `:flag-pe:` `:flag_pe:` `:flag_Peru:` |
 | `:petri_dish:` | 🧫 | |
 | `:phone:` | ☎️ | |
 | `:pick:` | ⛏️ | |
@@ -2077,7 +2077,7 @@
 | `:point_up_tone3:` | ☝🏽 | |
 | `:point_up_tone4:` | ☝🏾 | |
 | `:point_up_tone5:` | ☝🏿 | |
-| `:poland:` | 🇵🇱 | `:flag-pl:` `:flag_Poland:` `:flag_pl:` |
+| `:poland:` | 🇵🇱 | `:flag-pl:` `:flag_pl:` `:flag_Poland:` |
 | `:polar_bear:` | 🐻‍❄️ | |
 | `:police_car:` | 🚓 | |
 | `:police_officer:` | 👮 | |
@@ -2086,9 +2086,9 @@
 | `:police_officer_tone3:` | 👮🏽 | |
 | `:police_officer_tone4:` | 👮🏾 | |
 | `:police_officer_tone5:` | 👮🏿 | |
-| `:policewoman:` | 👮‍♀️ | `:female-police-officer:` `:woman_police_officer:` |
+| `:policewoman:` | 👮‍♀️ | `:woman_police_officer:` `:female-police-officer:` |
 | `:poodle:` | 🐩 | |
-| `:poop:` | 💩 | `:hankey:` `:pile_of_poo:` `:shit:` |
+| `:poop:` | 💩 | `:shit:` `:hankey:` `:pile_of_poo:` |
 | `:popcorn:` | 🍿 | |
 | `:post_office:` | 🏣 | `:Japanese_post_office:` |
 | `:postal_horn:` | 📯 | |
@@ -2099,9 +2099,9 @@
 | `:pouch:` | 👝 | `:clutch_bag:` |
 | `:poultry_leg:` | 🍗 | |
 | `:pound:` | 💷 | `:pound_banknote:` |
-| `:pout:` | 😡 | `:pouting_face:` `:rage:` |
+| `:pout:` | 😡 | `:rage:` `:pouting_face:` |
 | `:pouting_cat:` | 😾 | |
-| `:pouting_woman:` | 🙎‍♀️ | `:person_with_pouting_face:` `:woman-pouting:` `:woman_pouting:` |
+| `:pouting_woman:` | 🙎‍♀️ | `:woman-pouting:` `:woman_pouting:` `:person_with_pouting_face:` |
 | `:pray:` | 🙏 | `:folded_hands:` |
 | `:pray_tone1:` | 🙏🏻 | |
 | `:pray_tone2:` | 🙏🏼 | |
@@ -2143,7 +2143,7 @@
 | `:purple_square:` | 🟪 | `:large_purple_square:` |
 | `:purse:` | 👛 | |
 | `:pushpin:` | 📌 | |
-| `:qatar:` | 🇶🇦 | `:flag-qa:` `:flag_Qatar:` `:flag_qa:` |
+| `:qatar:` | 🇶🇦 | `:flag-qa:` `:flag_qa:` `:flag_Qatar:` |
 | `:question:` | ❓ | `:red_question_mark:` |
 | `:rabbit2:` | 🐇 | |
 | `:rabbit:` | 🐰 | `:rabbit_face:` |
@@ -2227,7 +2227,7 @@
 | `:rock:` | 🪨 | |
 | `:rocket:` | 🚀 | |
 | `:rofl:` | 🤣 | `:rolling_on_the_floor_laughing:` |
-| `:roll_eyes:` | 🙄 | `:face_with_rolling_eyes:` `:rolling_eyes:` |
+| `:roll_eyes:` | 🙄 | `:rolling_eyes:` `:face_with_rolling_eyes:` |
 | `:roll_of_paper:` | 🧻 | |
 | `:roller_coaster:` | 🎢 | |
 | `:roller_skate:` | 🛼 | |
@@ -2236,23 +2236,23 @@
 | `:rosette:` | 🏵️ | |
 | `:rotating_light:` | 🚨 | `:police_car_light:` |
 | `:round_pushpin:` | 📍 | |
-| `:rowboat:` | 🚣‍♂️ | `:man-rowing-boat:` `:man_rowing_boat:` `:rowing_man:` |
+| `:rowboat:` | 🚣‍♂️ | `:rowing_man:` `:man-rowing-boat:` `:man_rowing_boat:` |
 | `:rowing_woman:` | 🚣‍♀️ | `:woman-rowing-boat:` `:woman_rowing_boat:` |
-| `:ru:` | 🇷🇺 | `:flag_Russia:` `:flag_ru:` |
+| `:ru:` | 🇷🇺 | `:flag_ru:` `:flag_Russia:` |
 | `:rugby_football:` | 🏉 | |
 | `:runner:` | 🏃‍♂️ | `:man-running:` `:man_running:` `:running_man:` |
 | `:running:` | 🏃 | `:person_running:` |
 | `:running_shirt:` | 🎽 | `:running_shirt_with_sash:` |
 | `:running_shoe:` | 👟 | `:athletic_shoe:` |
 | `:running_woman:` | 🏃‍♀️ | `:woman-running:` `:woman_running:` |
-| `:rwanda:` | 🇷🇼 | `:flag-rw:` `:flag_Rwanda:` `:flag_rw:` |
+| `:rwanda:` | 🇷🇼 | `:flag-rw:` `:flag_rw:` `:flag_Rwanda:` |
 | `:sa:` | 🈂️ | |
 | `:safety_pin:` | 🧷 | |
 | `:safety_vest:` | 🦺 | |
 | `:sake:` | 🍶 | |
 | `:salad:` | 🥗 | `:green_salad:` |
 | `:salt:` | 🧂 | |
-| `:samoa:` | 🇼🇸 | `:flag-ws:` `:flag_Samoa:` `:flag_ws:` |
+| `:samoa:` | 🇼🇸 | `:flag-ws:` `:flag_ws:` `:flag_Samoa:` |
 | `:sandal:` | 👡 | `:woman’s_sandal:` |
 | `:sandwich:` | 🥪 | |
 | `:santa:` | 🎅 | `:Santa_Claus:` |
@@ -2263,7 +2263,7 @@
 | `:santa_tone5:` | 🎅🏿 | |
 | `:sari:` | 🥻 | |
 | `:sassy_man:` | 💁‍♂️ | `:man-tipping-hand:` `:man_tipping_hand:` `:tipping_hand_man:` |
-| `:sassy_woman:` | 💁‍♀️ | `:information_desk_person:` `:tipping_hand_woman:` `:woman-tipping-hand:` `:woman_tipping_hand:` |
+| `:sassy_woman:` | 💁‍♀️ | `:tipping_hand_woman:` `:woman-tipping-hand:` `:woman_tipping_hand:` `:information_desk_person:` |
 | `:satellite:` | 🛰️ | `:artificial_satellite:` |
 | `:satellite_antenna:` | 📡 | |
 | `:satellite_orbital:` | 🛰 | |
@@ -2295,7 +2295,7 @@
 | `:selfie_tone3:` | 🤳🏽 | |
 | `:selfie_tone4:` | 🤳🏾 | |
 | `:selfie_tone5:` | 🤳🏿 | |
-| `:serbia:` | 🇷🇸 | `:flag-rs:` `:flag_Serbia:` `:flag_rs:` |
+| `:serbia:` | 🇷🇸 | `:flag-rs:` `:flag_rs:` `:flag_Serbia:` |
 | `:service_dog:` | 🐕‍🦺 | |
 | `:seven:` | 7️⃣ | `:keycap_7:` |
 | `:sewing_needle:` | 🪡 | |
@@ -2307,7 +2307,7 @@
 | `:shield:` | 🛡️ | |
 | `:shinto_shrine:` | ⛩️ | |
 | `:ship:` | 🚢 | |
-| `:shirt:` | 👕 | `:t-shirt:` `:tshirt:` |
+| `:shirt:` | 👕 | `:tshirt:` `:t-shirt:` |
 | `:shoe:` | 👞 | `:mans_shoe:` `:man’s_shoe:` |
 | `:shopping:` | 🛍️ | `:shopping_bags:` |
 | `:shopping_cart:` | 🛒 | `:shopping_trolley:` |
@@ -2421,7 +2421,7 @@
 | `:student:` | 🧑‍🎓 | |
 | `:studio_microphone:` | 🎙️ | |
 | `:stuffed_flatbread:` | 🥙 | |
-| `:sudan:` | 🇸🇩 | `:flag-sd:` `:flag_Sudan:` `:flag_sd:` |
+| `:sudan:` | 🇸🇩 | `:flag-sd:` `:flag_sd:` `:flag_Sudan:` |
 | `:sun:` | ☀ | |
 | `:sun_with_face:` | 🌞 | |
 | `:sunflower:` | 🌻 | |
@@ -2431,9 +2431,9 @@
 | `:sunrise_over_mountains:` | 🌄 | |
 | `:sunset:` | 🌇 | `:city_sunrise:` |
 | `:superhero:` | 🦸 | |
-| `:superhero_woman:` | 🦸‍♀️ | `:female_superhero:` `:woman_superhero:` |
+| `:superhero_woman:` | 🦸‍♀️ | `:woman_superhero:` `:female_superhero:` |
 | `:supervillain:` | 🦹 | |
-| `:supervillain_woman:` | 🦹‍♀️ | `:female_supervillain:` `:woman_supervillain:` |
+| `:supervillain_woman:` | 🦹‍♀️ | `:woman_supervillain:` `:female_supervillain:` |
 | `:surfer:` | 🏄‍♂️ | `:man-surfing:` `:man_surfing:` `:surfing_man:` |
 | `:surfing_woman:` | 🏄‍♀️ | `:woman-surfing:` `:woman_surfing:` |
 | `:sushi:` | 🍣 | |
@@ -2442,17 +2442,17 @@
 | `:sweat:` | 😓 | `:downcast_face_with_sweat:` |
 | `:sweat_drops:` | 💦 | `:sweat_droplets:` |
 | `:sweat_smile:` | 😅 | `:grinning_face_with_sweat:` |
-| `:sweden:` | 🇸🇪 | `:flag-se:` `:flag_Sweden:` `:flag_se:` |
+| `:sweden:` | 🇸🇪 | `:flag-se:` `:flag_se:` `:flag_Sweden:` |
 | `:sweet_potato:` | 🍠 | `:roasted_sweet_potato:` |
 | `:swimmer:` | 🏊‍♂️ | `:man-swimming:` `:man_swimming:` `:swimming_man:` |
 | `:swimming_woman:` | 🏊‍♀️ | `:woman-swimming:` `:woman_swimming:` |
 | `:symbols:` | 🔣 | `:input_symbols:` |
 | `:synagogue:` | 🕍 | |
-| `:syria:` | 🇸🇾 | `:flag-sy:` `:flag_Syria:` `:flag_sy:` |
+| `:syria:` | 🇸🇾 | `:flag-sy:` `:flag_sy:` `:flag_Syria:` |
 | `:syringe:` | 💉 | |
 | `:taco:` | 🌮 | |
 | `:tada:` | 🎉 | `:party_popper:` |
-| `:taiwan:` | 🇹🇼 | `:flag-tw:` `:flag_Taiwan:` `:flag_tw:` |
+| `:taiwan:` | 🇹🇼 | `:flag-tw:` `:flag_tw:` `:flag_Taiwan:` |
 | `:takeout_box:` | 🥡 | |
 | `:tamale:` | 🫔 | |
 | `:tanabata_tree:` | 🎋 | |
@@ -2497,10 +2497,10 @@
 | `:timer_clock:` | ⏲️ | |
 | `:tired_face:` | 😫 | |
 | `:tm:` | ™️ | |
-| `:togo:` | 🇹🇬 | `:flag-tg:` `:flag_Togo:` `:flag_tg:` |
+| `:togo:` | 🇹🇬 | `:flag-tg:` `:flag_tg:` `:flag_Togo:` |
 | `:toilet:` | 🚽 | |
 | `:tomato:` | 🍅 | |
-| `:tonga:` | 🇹🇴 | `:flag-to:` `:flag_Tonga:` `:flag_to:` |
+| `:tonga:` | 🇹🇴 | `:flag-to:` `:flag_to:` `:flag_Tonga:` |
 | `:tongue:` | 👅 | |
 | `:toolbox:` | 🧰 | |
 | `:tools:` | 🛠 | |
@@ -2509,7 +2509,7 @@
 | `:top:` | 🔝 | `:TOP_arrow:` |
 | `:tophat:` | 🎩 | `:top_hat:` |
 | `:tornado:` | 🌪️ | |
-| `:tr:` | 🇹🇷 | `:flag-tr:` `:flag_Turkey:` `:flag_tr:` |
+| `:tr:` | 🇹🇷 | `:flag-tr:` `:flag_tr:` `:flag_Turkey:` |
 | `:track_next:` | ⏭ | `:next_track_button:` |
 | `:track_previous:` | ⏮ | `:last_track_button:` |
 | `:trackball:` | 🖲️ | |
@@ -2535,7 +2535,7 @@
 | `:tumbler_glass:` | 🥃 | |
 | `:turkey:` | 🦃 | |
 | `:turtle:` | 🐢 | |
-| `:tuvalu:` | 🇹🇻 | `:flag-tv:` `:flag_Tuvalu:` `:flag_tv:` |
+| `:tuvalu:` | 🇹🇻 | `:flag-tv:` `:flag_tv:` `:flag_Tuvalu:` |
 | `:tv:` | 📺 | `:television:` |
 | `:two:` | 2️⃣ | `:keycap_2:` |
 | `:two_hearts:` | 💕 | |
@@ -2550,7 +2550,7 @@
 | `:u7533:` | 🈸 | `:Japanese_application_button:` |
 | `:u7981:` | 🈲 | `:Japanese_prohibited_button:` |
 | `:u7a7a:` | 🈳 | `:Japanese_vacancy_button:` |
-| `:uganda:` | 🇺🇬 | `:flag-ug:` `:flag_Uganda:` `:flag_ug:` |
+| `:uganda:` | 🇺🇬 | `:flag-ug:` `:flag_ug:` `:flag_Uganda:` |
 | `:umbrella2:` | ☂ | |
 | `:umbrella:` | ☂️ | `:open_umbrella:` |
 | `:umbrella_with_rain_drops:` | ☔ | |
@@ -2565,14 +2565,14 @@
 | `:up_arrow:` | ⬆ | |
 | `:upside_down:` | 🙃 | `:upside-down_face:` `:upside_down_face:` |
 | `:urn:` | ⚱ | |
-| `:us:` | 🇺🇸 | `:flag_United_States:` `:flag_us:` |
+| `:us:` | 🇺🇸 | `:flag_us:` `:flag_United_States:` |
 | `:v:` | ✌️ | |
 | `:v_tone1:` | ✌🏻 | |
 | `:v_tone2:` | ✌🏼 | |
 | `:v_tone3:` | ✌🏽 | |
 | `:v_tone4:` | ✌🏾 | |
 | `:v_tone5:` | ✌🏿 | |
-| `:vampire:` | 🧛‍♀️ | `:female_vampire:` `:vampire_woman:` `:woman_vampire:` |
+| `:vampire:` | 🧛‍♀️ | `:vampire_woman:` `:woman_vampire:` `:female_vampire:` |
 | `:vampire_tone1:` | 🧛🏻 | |
 | `:vampire_tone2:` | 🧛🏼 | |
 | `:vampire_tone3:` | 🧛🏽 | |
@@ -2619,7 +2619,7 @@
 | `:weary:` | 😩 | `:weary_face:` |
 | `:weary_cat:` | 🙀 | `:scream_cat:` |
 | `:wedding:` | 💒 | |
-| `:weight_lifter:` | 🏋️‍♂️ | `:man-lifting-weights:` `:man_lifting_weights:` `:weight_lifting_man:` |
+| `:weight_lifter:` | 🏋️‍♂️ | `:weight_lifting_man:` `:man-lifting-weights:` `:man_lifting_weights:` |
 | `:weight_lifting:` | 🏋️ | |
 | `:weight_lifting_woman:` | 🏋️‍♀️ | `:woman-lifting-weights:` `:woman_lifting_weights:` |
 | `:whale2:` | 🐋 | |
@@ -2967,7 +2967,7 @@
 | `:woman_with_turban:` | 👳‍♀️ | `:woman-wearing-turban:` `:woman_wearing_turban:` |
 | `:woman_with_veil:` | 👰‍♀️ | |
 | `:woman_with_white_cane:` | 👩‍🦯 | `:woman_with_probing_cane:` |
-| `:woman_zombie:` | 🧟‍♀️ | `:female_zombie:` `:zombie_woman:` |
+| `:woman_zombie:` | 🧟‍♀️ | `:zombie_woman:` `:female_zombie:` |
 | `:womans_clothes:` | 👚 | `:woman’s_clothes:` |
 | `:womans_hat:` | 👒 | `:woman’s_hat:` |
 | `:women_holding_hands:` | 👭 | `:two_women_holding_hands:` |
@@ -2978,7 +2978,7 @@
 | `:worm:` | 🪱 | |
 | `:worried:` | 😟 | `:worried_face:` |
 | `:wrench:` | 🔧 | |
-| `:wrestlers:` | 🤼 | `:people_wrestling:` `:wrestling:` |
+| `:wrestlers:` | 🤼 | `:wrestling:` `:people_wrestling:` |
 | `:writing_hand:` | ✍️ | |
 | `:writing_hand_tone1:` | ✍🏻 | |
 | `:writing_hand_tone2:` | ✍🏼 | |
@@ -2991,16 +2991,16 @@
 | `:yellow_circle:` | 🟡 | `:large_yellow_circle:` |
 | `:yellow_heart:` | 💛 | |
 | `:yellow_square:` | 🟨 | `:large_yellow_square:` |
-| `:yemen:` | 🇾🇪 | `:flag-ye:` `:flag_Yemen:` `:flag_ye:` |
+| `:yemen:` | 🇾🇪 | `:flag-ye:` `:flag_ye:` `:flag_Yemen:` |
 | `:yen:` | 💴 | `:yen_banknote:` |
 | `:yin_yang:` | ☯️ | |
 | `:yo-yo:` | 🪀 | `:yo_yo:` |
 | `:yum:` | 😋 | `:face_savoring_food:` |
-| `:zambia:` | 🇿🇲 | `:flag-zm:` `:flag_Zambia:` `:flag_zm:` |
+| `:zambia:` | 🇿🇲 | `:flag-zm:` `:flag_zm:` `:flag_Zambia:` |
 | `:zany_face:` | 🤪 | `:crazy_face:` |
 | `:zap:` | ⚡ | `:high_voltage:` |
 | `:zebra:` | 🦓 | `:zebra_face:` |
 | `:zero:` | 0️⃣ | `:keycap_0:` |
 | `:zipper_mouth:` | 🤐 | `:zipper-mouth_face:` `:zipper_mouth_face:` |
-| `:zombie:` | 🧟‍♂️ | `:male_zombie:` `:man_zombie:` `:zombie_man:` |
+| `:zombie:` | 🧟‍♂️ | `:man_zombie:` `:zombie_man:` `:male_zombie:` |
 | `:zzz:` | 💤 | |
