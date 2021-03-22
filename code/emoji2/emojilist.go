@@ -1,3 +1,5 @@
+// +build run
+
 package main
 
 import (
@@ -26,6 +28,9 @@ func newNormalizeEmoji(ec EmojiCode) *NormalizeEmojiCode {
 }
 
 func (nec *NormalizeEmojiCode) Add(ec EmojiCode) bool {
+	if nec == nil {
+		return false
+	}
 	norm := emoji.NormalizeShortCode(ec.Code)
 	if nec.Code != norm {
 		return false
@@ -46,7 +51,7 @@ func EmojiListAll() []*NormalizeEmojiCode {
 	emojiList := []*NormalizeEmojiCode{}
 	var nec *NormalizeEmojiCode
 	for _, ec := range elist {
-		if nec == nil || !nec.Add(ec) {
+		if !nec.Add(ec) {
 			nec = newNormalizeEmoji(ec)
 			emojiList = append(emojiList, nec)
 		}
