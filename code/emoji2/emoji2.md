@@ -8,18 +8,18 @@ Hugo でも使われている。
 package main
 
 import (
-	"fmt"
+    "fmt"
 
-	"github.com/kyokomi/emoji/v2"
+    "github.com/kyokomi/emoji/v2"
 )
 
 func main() {
-	fmt.Println("Hello World Emoji!")
+    fmt.Println("Hello World Emoji!")
 
-	emoji.Println(":beer: Beer!!!")
+    emoji.Println(":beer: Beer!!!")
 
-	pizzaMessage := emoji.Sprint("I like a :pizza: and :sushi:!!")
-	fmt.Println(pizzaMessage)
+    pizzaMessage := emoji.Sprint("I like a :pizza: and :sushi:!!")
+    fmt.Println(pizzaMessage)
 }
 ```
 

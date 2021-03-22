@@ -12,45 +12,25 @@ import (
 
 type EmojiCode struct {
 	Code, Emoji string
+	Aliases     []string
 }
 
-func newEmoji(c, e string) EmojiCode {
-	return EmojiCode{Code: c, Emoji: e}
+func NewEmoji(c, e string) *EmojiCode {
+	return &EmojiCode{Code: emoji.NormalizeShortCode(c), Emoji: e, Aliases: []string{}}
 }
 
-type NormalizeEmojiCode struct {
-	Code      string
-	EmojiList []EmojiCode
+func (ec *EmojiCode) Add(code ...string) *EmojiCode {
+	ec.Aliases = append(ec.Aliases, code...)
+	return ec
 }
 
-func newNormalizeEmoji(ec EmojiCode) *NormalizeEmojiCode {
-	return &NormalizeEmojiCode{Code: emoji.NormalizeShortCode(ec.Code), EmojiList: []EmojiCode{ec}}
-}
-
-func (nec *NormalizeEmojiCode) Add(ec EmojiCode) bool {
-	if nec == nil {
-		return false
-	}
-	norm := emoji.NormalizeShortCode(ec.Code)
-	if nec.Code != norm {
-		return false
-	}
-	nec.EmojiList = append(nec.EmojiList, ec)
-	return true
-}
-
-func EmojiListAll() []*NormalizeEmojiCode {
-	emojiList := []*NormalizeEmojiCode{}
+func EmojiListAll() []*EmojiCode {
+	emojiList := []*EmojiCode{}
 	for e, clist := range emoji.RevCodeMap() {
 		if len(clist) > 0 {
-			nec := newNormalizeEmoji(newEmoji(clist[0], e))
-			for i := 1; i < len(clist); i++ {
-				nec.Add(newEmoji(clist[i], e))
-			}
-			emojiList = append(emojiList, nec)
+			emojiList = append(emojiList, NewEmoji(clist[0], e).Add(clist...))
 		}
 	}
-
 	sort.Slice(emojiList, func(i, j int) bool {
 		return strings.Compare(emojiList[i].Code, emojiList[j].Code) < 0
 	})
@@ -60,16 +40,13 @@ func EmojiListAll() []*NormalizeEmojiCode {
 func main() {
 	fmt.Println("| Short Code | Graph | Aliases |")
 	fmt.Println("| ---------- | :---: | ------- |")
-	for _, eclist := range EmojiListAll() {
-		var e string
+	for _, ec := range EmojiListAll() {
 		var bldr strings.Builder
-		for _, ec := range eclist.EmojiList {
-			if ec.Code == eclist.Code {
-				e = ec.Emoji
-			} else {
-				bldr.WriteString(fmt.Sprintf(" `%s`", ec.Code))
+		for _, c := range ec.Aliases {
+			if ec.Code != c {
+				bldr.WriteString(fmt.Sprintf(" `%s`", c))
 			}
 		}
-		fmt.Printf("| `%s` | %s |%s |\n", eclist.Code, e, bldr.String())
+		fmt.Printf("| `%s` | %s |%s |\n", ec.Code, ec.Emoji, bldr.String())
 	}
 }
