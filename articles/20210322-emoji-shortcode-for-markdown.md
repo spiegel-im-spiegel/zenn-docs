@@ -32,20 +32,18 @@ type EmojiCode struct {
     Aliases     []string
 }
 
-func NewEmoji(c, e string) *EmojiCode {
-    return &EmojiCode{Code: emoji.NormalizeShortCode(c), Emoji: e, Aliases: []string{}}
+func NewEmoji(e string, cs []string) (EmojiCode, bool) {
+    if len(cs) > 0 {
+        return EmojiCode{Code: emoji.NormalizeShortCode(cs[0]), Emoji: e, Aliases: cs}, true
+    }
+    return EmojiCode{}, false
 }
 
-func (ec *EmojiCode) Add(code ...string) *EmojiCode {
-    ec.Aliases = append(ec.Aliases, code...)
-    return ec
-}
-
-func EmojiListAll() []*EmojiCode {
-    emojiList := []*EmojiCode{}
+func EmojiListAll() []EmojiCode {
+    emojiList := []EmojiCode{}
     for e, clist := range emoji.RevCodeMap() {
-        if len(clist) > 0 {
-            emojiList = append(emojiList, NewEmoji(clist[0], e).Add(clist...))
+        if ec, ok := NewEmoji(e, clist); ok {
+            emojiList = append(emojiList, ec)
         }
     }
     sort.Slice(emojiList, func(i, j int) bool {
