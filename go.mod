@@ -5,6 +5,7 @@ go 1.16
 require (
 	github.com/atotto/clipboard v0.1.4
 	github.com/flynn/json5 v0.0.0-20160717195620-7620272ed633
+	github.com/goccy/go-json v0.4.11
 	github.com/hashicorp/go-multierror v1.1.0
 	github.com/ikawaha/encoding v1.0.0
 	github.com/kylelemons/godebug v1.1.0 // indirect
@@ -15,6 +16,7 @@ require (
 	github.com/rs/zerolog v1.20.0
 	github.com/spf13/cobra v1.1.3
 	github.com/spiegel-im-spiegel/cov19jpn v0.2.0
+	github.com/spiegel-im-spiegel/emojis v0.2.1
 	github.com/spiegel-im-spiegel/errs v1.0.2
 	github.com/spiegel-im-spiegel/fetch v0.2.3
 	github.com/spiegel-im-spiegel/gocli v0.10.4
