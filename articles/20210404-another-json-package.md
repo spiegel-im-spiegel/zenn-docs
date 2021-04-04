@@ -103,12 +103,12 @@ import (
 
 ```
 $ go run sample2.go 
-| Sequence | Shortcodes                                |
-| :------: | ----------------------------------------- |
-|    #️⃣     | `:hash:` `:keycap_#:`                     |
-|    *️⃣     | `:asterisk:` `:keycap_*:` `:keycap_star:` |
-|    0️⃣     | `:zero:` `:keycap_0:`                     |
-|    1️⃣     | `:one:` `:keycap_1:`                      |
+| Sequence | Shortcodes |
+| :------: | ---------- |
+| #️⃣ | `:hash:` `:keycap_#:` |
+| *️⃣ | `:asterisk:` `:keycap_*:` `:keycap_star:` |
+| 0️⃣ | `:zero:` `:keycap_0:` |
+| 1️⃣ | `:one:` `:keycap_1:` |
 ...
 ```
 
