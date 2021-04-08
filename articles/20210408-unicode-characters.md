@@ -111,7 +111,7 @@ Text: |#️⃣|☝️|☝🏻|🇯🇵|🏴󠁧󠁢󠁥󠁮󠁧󠁿|👩🏻‍�
 
 | 絵文字 | コードポイント | 名前 |
 | :----:| ------------- | ---- |
-| 👩🏻 | U+1F469 U+1F3FB | woman: light skin ton |
+| 👩🏻 | U+1F469 U+1F3FB | woman: light skin tone |
 | ❤️ | U+2764 U+FE0F | red heart |
 | 💋 | U+1F48B | KISS MARK |
 | 👨🏼 | U+1F468 U+1F3FC | man: medium-light skin tone |
