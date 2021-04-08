@@ -68,7 +68,7 @@ Text: ペンギン ﾍﾟﾝｷﾞﾝ
 ﾝ : [U+FF9D]
 ```
 
-ほほう。濁点や半濁点の結合文字もちゃんと認識してくれるんだねぇ。偉い豪い。
+ほほう。濁点や半濁点の結合文字もちゃんと認識してくれるんだねぇ。偉い偉い。
 
 ではでは，次は色んなパターンの絵文字
 
@@ -98,14 +98,14 @@ Text: |#️⃣|☝️|☝🏻|🇯🇵|🏴󠁧󠁢󠁥󠁮󠁧󠁿|👩🏻‍�
 
 おおっ！ きれいに分離できた。ちなみに各絵文字は
 
-| 絵文字 | シーケンス・タイプ |
-| :----:| ----------------- |
-| #️⃣ | emoji keycap sequence |
-| ☝️ | emoji presentation sequence |
-| ☝🏻 | emoji modifier sequence |
-| 🇯🇵 | emoji flag sequence |
-| 🏴󠁧󠁢󠁥󠁮󠁧󠁿 | emoji tag sequence |
-| 👩🏻‍❤️‍💋‍👨🏼 | emoji zwj sequence |
+| 絵文字 | シーケンス・タイプ | 名前 |
+| :----:| ---- | ----------------- |
+| #️⃣ | emoji keycap sequence | keycap: # |
+| ☝️ | emoji presentation sequence | index pointing up |
+| ☝🏻 | emoji modifier sequence | index pointing up: light skin tone |
+| 🇯🇵 | emoji flag sequence | flag: Japan |
+| 🏴󠁧󠁢󠁥󠁮󠁧󠁿 | emoji tag sequence | flag: England |
+| 👩🏻‍❤️‍💋‍👨🏼 | emoji zwj sequence | kiss: woman, man, light skin tone, medium-light skin tone |
 
 という感じに分類できる。最後のなんか
 
@@ -116,7 +116,7 @@ Text: |#️⃣|☝️|☝🏻|🇯🇵|🏴󠁧󠁢󠁥󠁮󠁧󠁿|👩🏻‍�
 | 💋 | U+1F48B | KISS MARK |
 | 👨🏼 | U+1F468 U+1F3FC | man: medium-light skin tone |
 
-の4つの文字を ZWJ (U+200D) で繋げてひとつの絵文字 “👩🏻‍❤️‍💋‍👨🏼 (kiss: woman, man, light skin tone, medium-light skin tone)” とする（全部で10個のコード列）鬼畜仕様である。
+の4つの文字を ZWJ (U+200D) で繋げてひとつの絵文字 👩🏻‍❤️‍💋‍👨🏼 とする（全部で10個のコード列）鬼畜仕様である。
 
 でも，まぁ，これで絵文字を含めて Unicode 文字列を「文字」単位に分離できることが確認できた。めでたし。
 
