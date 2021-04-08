@@ -12,6 +12,7 @@ require (
 	github.com/kyokomi/emoji/v2 v2.2.8
 	github.com/mmcdole/gofeed v1.1.0
 	github.com/pkg/errors v0.9.1
+	github.com/rivo/uniseg v0.2.0
 	github.com/robertkrimen/otto v0.0.0-20200922221731-ef014fd054ac // indirect
 	github.com/rs/zerolog v1.20.0
 	github.com/spf13/cobra v1.1.3
