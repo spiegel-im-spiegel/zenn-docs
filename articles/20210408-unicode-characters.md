@@ -107,7 +107,7 @@ Text: |#️⃣|☝️|☝🏻|🇯🇵|🏴󠁧󠁢󠁥󠁮󠁧󠁿|👩🏻‍�
 | 🏴󠁧󠁢󠁥󠁮󠁧󠁿 | emoji tag sequence | flag: England |
 | 👩🏻‍❤️‍💋‍👨🏼 | emoji zwj sequence | kiss: woman, man, light skin tone, medium-light skin tone |
 
-という感じに分類できる。最後のなんか
+という感じに分類できる（下に行くほど表示できるプラットフォームが限られてくるので悪しからず）。最後のなんか
 
 | 絵文字 | コードポイント | 名前 |
 | :----:| ------------- | ---- |
