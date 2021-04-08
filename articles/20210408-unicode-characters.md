@@ -3,7 +3,7 @@ title: "Unicode 文字列を「文字」単位に分離する" # 記事のタイ
 emoji: "💻" # アイキャッチとして使われる絵文字（1文字だけ）
 type: "tech" # "tech" : 技術記事 / "idea" : アイデア記事
 topics: ["go", "programming", "unicode"] # タグ。["markdown", "rust", "aws"] のように指定する
-published: false # 公開設定（true で公開）
+published: true # 公開設定（true で公開）
 ---
 
 前に「[やっかいな日本語](https://zenn.dev/spiegel/articles/20210118-characters)」でも紹介したが Unicode 文字列は「1コードポイント＝1文字」ではない。特にやっかいなのが絵文字で，このあたりの話は自ブログでまとめている。
