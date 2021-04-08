@@ -6,8 +6,7 @@ topics: ["go", "programming", "unicode"] # タグ。["markdown", "rust", "aws"] 
 published: false # 公開設定（true で公開）
 ---
 
-前に「[やっかいな日本語](https://zenn.dev/spiegel/articles/20210118-characters)」でも紹介したが Unicode 文字列は「1コードポイント＝1文字」ではない。
-特にやっかいなのが絵文字で，このあたりの話は自ブログでまとめている。
+前に「[やっかいな日本語](https://zenn.dev/spiegel/articles/20210118-characters)」でも紹介したが Unicode 文字列は「1コードポイント＝1文字」ではない。特にやっかいなのが絵文字で，このあたりの話は自ブログでまとめている。
 
 https://text.baldanders.info/remark/2021/03/terrible-emoji/
 https://text.baldanders.info/remark/2021/04/emoji-list/
@@ -117,7 +116,7 @@ Text: |#️⃣|☝️|☝🏻|🇯🇵|🏴󠁧󠁢󠁥󠁮󠁧󠁿|👩🏻‍�
 | 💋 | U+1F48B | KISS MARK |
 | 👨🏼 | U+1F468 U+1F3FC | man: medium-light skin tone |
 
-の4つの文字を ZWJ (U+200D) で繋げてひとつの絵文字 “👩🏻‍❤️‍💋‍👨🏼 (kiss: woman, man, light skin tone, medium-light skin tone)” にする（全部で10個のコードポイント），という鬼畜仕様である。
+の4つの文字を ZWJ (U+200D) で繋げてひとつの絵文字 “👩🏻‍❤️‍💋‍👨🏼 (kiss: woman, man, light skin tone, medium-light skin tone)” とする（全部で10個のコード列）鬼畜仕様である。
 
 でも，まぁ，これで絵文字を含めて Unicode 文字列を「文字」単位に分離できることが確認できた。めでたし。
 
