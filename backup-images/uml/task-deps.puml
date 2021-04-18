@@ -1,0 +1,8 @@
+@startuml task-deps
+
+hide circle
+hide empty members
+
+default .> hello
+
+@enduml
