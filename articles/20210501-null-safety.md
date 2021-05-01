@@ -12,7 +12,9 @@ published: true # 公開設定（true で公開）
 
 https://zenn.dev/zetamatta/scraps/07cb6835e172a6
 
-の後半で2019年のリリースされた C# 8.0 で導入された [null 許容参照型][nullable-reference-types]について言及されている。
+の後半で C# の [null 許容参照型][nullable-reference-types]について言及されている[^nrt]。
+
+[^nrt]: C# の [null 許容参照型][nullable-reference-types]は2019年にリリースされた 8.0 から導入されたらしい。ただし null の静的検査および警告はオプションで，既定では無効になっている。
 
 そういえば，縁あって昨年末に職業プログラマに復帰できたのだが，ン年ぶりに書いた Java コードで null 参照がいわゆる「ヌルポ」になることを失念していて思い出すまでしばらく悩んでいたよ[^dbg1]。
 
@@ -103,4 +105,3 @@ https://mattn.kaoriya.net/software/lang/go/20190516095124.htm
 [Go]: https://golang.org/ "The Go Programming Language"
 [Rust]: https://www.rust-lang.org/ "Rust Programming Language"
 [nullable-reference-types]: https://docs.microsoft.com/ja-jp/dotnet/csharp/language-reference/builtin-types/nullable-reference-types "Null 許容参照型 - C# リファレンス | Microsoft Docs"
-<!-- eof -->
