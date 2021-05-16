@@ -35,16 +35,13 @@ func ExcelToCsv(w io.Writer, path string, sheetIndex int) error {
     }
     csvw := csv.NewWriter(w)
     defer csvw.Flush()
-    for {
+    for rows.Next() {
         cols, err := rows.Columns()
         if err != nil {
             return err
         }
         if err := csvw.Write(cols); err != nil {
             return err
-        }
-        if !rows.Next() {
-            break
         }
     }
     return nil
