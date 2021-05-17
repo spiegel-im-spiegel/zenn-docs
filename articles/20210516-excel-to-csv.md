@@ -61,6 +61,7 @@ func main() {
 ## 参考
 
 https://qiita.com/hiro_nico/items/0f180f2dfc62cf2559c7
+https://text.baldanders.info/release/2021/05/xls2csv/
 
 [Go]: https://golang.org/ "The Go Programming Language"
 [excelize]: https://github.com/360EntSecGroup-Skylar/excelize "360EntSecGroup-Skylar/excelize: Golang library for reading and writing Microsoft Excel™ (XLSX) files."
