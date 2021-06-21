@@ -110,6 +110,18 @@ rt := csvdata.New(tsvReader, true).WithComma('\t')
 
 とりあえず COVID-2019 関連の CSV データ読み込み処理を [spiegel-im-spiegel/csvdata][csvdata] パッケージで置き換えていくことにしよう。
 
+## 【付録】 Shift-JIS エンコーディングの CSV データを読み込む
+
+Excel 等でエクスポートした CSV ファイルの場合，文字エンコーディングが Shift-JIS だったりする場合がある。この場合は [golang.org/x/text/encoding/japanese](https://pkg.go.dev/golang.org/x/text/encoding/japanese) パッケージを使って UTF-8 エンコーディングに変換しつつ読み込むとよい。
+
+つまり先程の sample.go のコードの [csvdata].New() 関数をこんな感じに書き換える。
+
+```go
+rc := csvdata.New(japanese.ShiftJIS.NewDecoder().Reader(os.Stdin), true)
+```
+
+こうすれば CSV データを必要なだけ読み込みつつ処理できる。
+
 ## 参考
 
 https://zenn.dev/koya_iwamura/articles/53a4469271022e

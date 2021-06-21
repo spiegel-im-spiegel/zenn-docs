@@ -1,0 +1,5 @@
+"order", name ,"mass","distance","habitable"
+1, 水星, 0.055, 0.4,false
+2, 金星, 0.815, 0.7,false
+3, 地球, 1.0, 1.0,true
+4, 火星, 0.107, 1.5,false

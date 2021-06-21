@@ -17,6 +17,7 @@ require (
 	github.com/rs/zerolog v1.20.0
 	github.com/spf13/cobra v1.1.3
 	github.com/spiegel-im-spiegel/cov19jpn v0.2.0
+	github.com/spiegel-im-spiegel/csvdata v0.1.0
 	github.com/spiegel-im-spiegel/emojis v0.2.1
 	github.com/spiegel-im-spiegel/errs v1.0.2
 	github.com/spiegel-im-spiegel/fetch v0.2.3
@@ -24,5 +25,6 @@ require (
 	github.com/spiegel-im-spiegel/koyomi v0.1.6
 	github.com/zetamatta/go-readline-ny v0.4.6
 	golang.org/x/sys v0.0.0-20210227040730-b0d1d43c014d
+	golang.org/x/text v0.3.5
 	gopkg.in/sourcemap.v1 v1.0.5 // indirect
 )

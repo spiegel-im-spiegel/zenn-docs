@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/spiegel-im-spiegel/zenn-docs#readme",
   "dependencies": {
-    "zenn-cli": "^0.1.80"
-  }
+    "zenn-cli": "^0.1.89"
+  },
+  "devDependencies": {}
 }

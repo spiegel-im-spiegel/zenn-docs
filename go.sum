@@ -229,6 +229,8 @@ github.com/spf13/pflag v1.0.5/go.mod h1:McXfInJRrz4CZXVZOBLb0bTZqETkiAhM9Iw0y3An
 github.com/spf13/viper v1.7.0/go.mod h1:8WkrPz2fc9jxqZNCJI/76HCieCp4Q8HaLFoCha5qpdg=
 github.com/spiegel-im-spiegel/cov19jpn v0.2.0 h1:N8qKzkE39A61RmQBAtSiR1QpKMFlOeiIK9llkqlj0Us=
 github.com/spiegel-im-spiegel/cov19jpn v0.2.0/go.mod h1:pCGg5Amd9JO88gqh8NQG6/odAVvfZMGiB3Gyoa0NyFw=
+github.com/spiegel-im-spiegel/csvdata v0.1.0 h1:1zCS2sr31lX1V6PeMsdbkuQiViB/dIv/VY3dL6lHEz0=
+github.com/spiegel-im-spiegel/csvdata v0.1.0/go.mod h1:bNTPQtF0aPiaAkawEwIT7u+h7drQFdnemw5dXT7P8sQ=
 github.com/spiegel-im-spiegel/emojis v0.2.1 h1:59ckOC85BQ4G6HijsfpSLmYrtFq97/RvpE3qwVsB9T4=
 github.com/spiegel-im-spiegel/emojis v0.2.1/go.mod h1:PGjEibXrRzIhJwsBNpkTh7uHYEVM0Fo+CGNn7FT6Nc0=
 github.com/spiegel-im-spiegel/errs v1.0.1/go.mod h1:UoasJYYujMcdkbT9USv8dfZWoMyaY3btqQxoLJImw0A=
