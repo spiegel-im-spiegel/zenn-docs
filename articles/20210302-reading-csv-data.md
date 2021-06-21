@@ -6,6 +6,8 @@ topics: ["go", "programming"] # タグ。["markdown", "rust", "aws"] のよう�
 published: true # 公開設定（true で公開）
 ---
 
+## [spiegel-im-spiegel/csvdata][csvdata] パッケージ
+
 標準パッケージに [encoding/csv][csv] というのがあって [RFC 4180] に従って処理してくれるのだが， [encoding/csv][csv] 自体は基本的な機能しか用意されてないため，毎回ゴチャゴチャと周辺コード（とテスト）を書いていくのが面倒くさくなってきたんだよね。
 
 ちうわけで [encoding/csv][csv] 標準パッケージに機能をちょい足しした [spiegel-im-spiegel/csvdata][csvdata] という小さいパッケージを書いてみた。
