@@ -62,6 +62,10 @@ if err != nil {
 
 のように errors.Wrap() あるいは errors.Wrapf() 関数を使ってエラーメッセージを付加することもできる。
 
+:::message alert
+【2021-07-14 追記】 [pkg/errors] パッケージの Unwrap() メソッドには一部[不具合](https://github.com/pkg/errors/issues/223 "Unwrap doesn't return the base error · Issue #223 · pkg/errors")が残っているようです。ご注意を。
+:::
+
 ## [hashicorp/go-multierror]
 
 コンテナ操作や goroutine を使った並行処理などで複数のエラーをまとめて処理する場合がある。複数のエラーをまとめて扱えるサードパーティ・パッケージはいくつかあるが，個人的には [hashicorp/go-multierror] がシンプルでお気に入りである。
