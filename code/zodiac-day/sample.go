@@ -14,7 +14,7 @@ var (
 )
 
 func zodiacName(t time.Time) string {
-	d := int64(t.Sub(baseDay).Seconds()) / 86400 % 12
+	d := int64(t.Sub(baseDay).Hours()) / 24 % 12
 	if d < 0 {
 		d += 12
 	}
