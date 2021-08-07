@@ -99,5 +99,9 @@ zodiac.go:8:2: `甲` is unused (deadcode)
 
 というわけで [Go] の仕様の意外な落とし穴にハマってしまったよ orz
 
+## 参考
+
+https://text.baldanders.info/golang/go-with-japanese/
+
 [Go]: https://golang.org/ "The Go Programming Language"
 <!-- eof -->
