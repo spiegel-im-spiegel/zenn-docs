@@ -76,5 +76,11 @@ $ go run sample.go
 
 どっとはらい。
 
+## 【2021-08-07 追記】
+
+調子に乗ってパッケージ化してみた。
+
+https://github.com/spiegel-im-spiegel/jzodiac
+
 [Go]: https://golang.org/ "The Go Programming Language"
 <!-- eof -->
