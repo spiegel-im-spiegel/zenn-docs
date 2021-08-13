@@ -12,6 +12,7 @@ require (
 	github.com/kylelemons/godebug v1.1.0 // indirect
 	github.com/kyokomi/emoji/v2 v2.2.8
 	github.com/mmcdole/gofeed v1.1.0
+	github.com/pelletier/go-toml v1.9.3
 	github.com/pelletier/go-toml/v2 v2.0.0-beta.3
 	github.com/pkg/errors v0.9.1
 	github.com/rivo/uniseg v0.2.0
