@@ -5,6 +5,7 @@ go 1.16
 require (
 	github.com/BurntSushi/toml v0.4.1
 	github.com/atotto/clipboard v0.1.4
+	github.com/buger/jsonparser v1.1.1
 	github.com/flynn/json5 v0.0.0-20160717195620-7620272ed633
 	github.com/goccy/go-json v0.4.11
 	github.com/hashicorp/go-multierror v1.1.0
