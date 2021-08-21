@@ -473,6 +473,8 @@ https://golang.org/ref/mod
 https://golang.org/doc/modules/developing
 https://blog.golang.org/go116-module-changes
 https://zenn.dev/nobonobo/articles/4fb018a24f9ee9
+https://future-architect.github.io/articles/20210810a/
+https://future-architect.github.io/articles/20210818a/
 
 [go]: https://golang.org/ "The Go Programming Language"
 [git]: https://git-scm.com/ "Git"
