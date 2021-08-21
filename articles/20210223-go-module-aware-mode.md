@@ -1,12 +1,14 @@
 ---
-title: "Go のモジュール管理【バージョン 1.16 改訂版】"
+title: "Go のモジュール管理【バージョン 1.17 改訂版】"
 emoji: "💻" # アイキャッチとして使われる絵文字（1文字だけ）
 type: "tech" # "tech" : 技術記事 / "idea" : アイデア記事
 topics: ["go", "programming"] # タグ。["markdown", "rust", "aws"] のように指定する
 published: true # 公開設定（true で公開）
 ---
 
-[Go] のモジュールについては[自ブログ](https://text.baldanders.info/golang/ "プログラミング言語 Go | text.Baldanders.info")でもよく話題にするのだが，差分情報が多く内容が分散しているため，ここの Zenn でまとめておく。
+[Go] のモジュールについては[自ブログ](https://text.baldanders.info/golang/ "プログラミング言語 Go | text.Baldanders.info")でもよく話題にするのだが，差分情報が多く内容が分散しているため，ここの Zenn でまとめておく。なお，この記事では vendoring 機能については言及しないのであしからず[^vdr1]。
+
+[^vdr1]: Vendoring 機能は [Go] 1.5 で追加されたパッケージ管理機能である。パッケージ直下に作成した `vendor` ディレクトリ以下を外部パッケージのコード・ツリーとみなす。モジュール対応モードが登場するまでは重宝されていたが，どうしてもコード管理が多重化してしまうため（モジュール対応モードに比べて）扱いが煩雑になってしまうのが欠点である。パッケージを公開しない内部開発であれば使い道はあるかもしれない。 Vendoring については拙文「[GOPATH 汚染](https://text.baldanders.info/golang/gopath-pollution/)」で簡単に解説している。
 
 ## 用語の整理
 
@@ -98,7 +100,7 @@ $ go env -w GO111MODULE=auto
 
 ### パッケージのインストール先
 
-[Go] では go get または go install コマンドでビルドした実行バイナリのインストール先を $GOPATH/bin ディレクトリに配置しているが，これを環境変数 GOBIN で変更することができる。
+[Go] では go install コマンドでビルドした実行バイナリのインストール先を $GOPATH/bin ディレクトリに配置しているが，これを環境変数 GOBIN で変更することができる。
 
 ```
 $ go env -w GOBIN=/home/username/bin
@@ -147,8 +149,6 @@ $ go clean -modcache
 ```
 $ go mod init github.com/spiegel-im-spiegel/pa-api
 go: creating new go.mod: module github.com/spiegel-im-spiegel/pa-api
-go: to add module requirements and sums:
-	go mod tidy
 ```
 
 これでモジュール名 github.com/spiegel-im-spiegel/pa-api としてカレント・ディレクトリ直下に go.mod ファイルが作成される。中身はこんな感じ。
@@ -156,7 +156,7 @@ go: to add module requirements and sums:
 ```markup:go.mod
 module github.com/spiegel-im-spiegel/pa-api
 
-go 1.16
+go 1.17
 ```
 
 `module` や `go` はディレクティブ（directive）と呼ばれるものだ。たとえば `module` ディレクティブはモジュール名を定義する。他に go.mod ファイルで使えるディレクティブは以下の通り。
@@ -164,11 +164,13 @@ go 1.16
 | ディレクティブ | 記述例                                          | 内容                   |
 | -------------- | ----------------------------------------------- | ---------------------- |
 | `module`       | `module my/thing`                               | モジュール名       |
-| `go`           | `1.16`                                          | 有効な Go バージョン   |
+| `go`           | `1.17`                                          | 有効な Go バージョン   |
 | `require`      | `require other/thing v1.0.2`                    | インポート・モジュール |
 | `exclude`      | `exclude old/thing v1.2.3`                      | 除外モジュール         |
 | `replace`      | `replace bad/thing v1.4.5 => good/thing v1.4.5` | モジュールの置換       |
 | `retract`      | `v1.0.5`                                        | 撤回バージョン         |
+
+1.17 から `go` ディレクティブ未指定時の既定値が 1.11 とみなされるようになった。
 
 `replace` ディレクティブはモジュール名が物理パスと対応してなくて上手くインポートできない等の状況で使える。たとえばこんな感じ。
 
@@ -209,6 +211,15 @@ go: to switch to the latest unretracted version, run:
 
 てな感じにコメントの内容でワーニングを出してくれるらしい。
 
+`module` ディレクティブの直前に
+
+```markup:go.mod
+// Deprecated: use example.com/mod/v2 instead.
+module example.com/mod
+```
+
+などと記述すると go list -m -u とかで非推奨パッケージとして警告してくれるらしい。 Deprecated コメントはモジュール名に対して付与される。たとえば v1 系から v2 系にアップグレードする際に v1 系を非推奨にしたい場合には役に立つだろう。
+
 ### go.sum の中身
 
 go.sum ファイルにはインポートするモジュールの SHA-256 チェックサム値が格納されている。たとえば go.mod ファイルで `require` ディレクティブが
@@ -237,7 +248,7 @@ go.sum ファイルの内容はインポートするモジュールの完全性�
 ```
 $ go test ./...
 main.go:9:2: no required module provides package github.com/spiegel-im-spiegel/cov19jpn/chart; to add it:
-	go get github.com/spiegel-im-spiegel/cov19jpn/chart
+    go get github.com/spiegel-im-spiegel/cov19jpn/chart
 ```
 
 とか
@@ -245,16 +256,93 @@ main.go:9:2: no required module provides package github.com/spiegel-im-spiegel/c
 ```
 $ go test ./...
 go: github.com/spiegel-im-spiegel/cov19jpn@v0.2.0: missing go.sum entry; to add it:
-	go mod download github.com/spiegel-im-spiegel/cov19jpn
+    go mod download github.com/spiegel-im-spiegel/cov19jpn
 ```
 
 みたいなエラーが出たりする。 go.mod および go.sum ファイルをいい感じに更新したいのであれば
 
-```markup
+```
 $ go mod tidy
 ```
 
 とするとよい。
+
+### go ディレクティブを更新する
+
+go mod tidy コマンドに -go オプションを付けることで `go` ディレクティブのバージョン指定を上書きできる。
+
+```
+$ go mod tidy -go=1.17
+```
+
+また -go オプションの代わりに -compat オプションを付けると `go` ディレクティブの変更は行わないが，指定した [Go] バージョンの仕様で処理される。
+
+```
+$ go mod tidy -compat=1.17
+```
+
+なんでこんなオプションが付いたかというと [Go] 1.17 で go mod tidy の出力結果が大きく変わるからだ。
+
+### Module Graph Pruning
+
+辞書で引くと prune は木の枝の剪定なんかを指すらしいが，丁度いい日本語がないようで，[リリースパーティ](https://gocon.connpass.com/event/216361/ "Go 1.17 リリースパーティ - connpass")でも「原文ママ」の英語で紹介されていた。
+
+たとえば，拙パッケージの [spiegel-im-spiegel/cov19jpn](https://github.com/spiegel-im-spiegel/cov19jpn "spiegel-im-spiegel/cov19jpn: COVID-2019 in Japan; Importing Google COVID-19 Public Forecasts") v0.2.7 の go.mod ファイルの内容は以下のとおりだが
+
+```markup:go.mod
+module github.com/spiegel-im-spiegel/cov19jpn
+
+go 1.16
+
+require (
+    github.com/spf13/cobra v1.2.1
+    github.com/spiegel-im-spiegel/csvdata v0.1.1
+    github.com/spiegel-im-spiegel/errs v1.0.4
+    github.com/spiegel-im-spiegel/fetch v0.2.4
+    github.com/spiegel-im-spiegel/gocli v0.10.4
+    gonum.org/v1/plot v0.9.0
+)
+```
+
+これを [Go] 1.17 で処理すると
+
+```
+$ go mod tidy -go=1.17
+$ cat go.mod
+module github.com/spiegel-im-spiegel/cov19jpn
+
+go 1.17
+
+require (
+    github.com/spf13/cobra v1.2.1
+    github.com/spiegel-im-spiegel/csvdata v0.1.1
+    github.com/spiegel-im-spiegel/errs v1.0.4
+    github.com/spiegel-im-spiegel/fetch v0.2.4
+    github.com/spiegel-im-spiegel/gocli v0.10.4
+    gonum.org/v1/plot v0.9.0
+)
+
+require (
+    github.com/ajstarks/svgo v0.0.0-20180226025133-644b8db467af // indirect
+    github.com/fogleman/gg v1.3.0 // indirect
+    github.com/go-fonts/liberation v0.1.1 // indirect
+    github.com/go-latex/latex v0.0.0-20210118124228-b3d85cf34e07 // indirect
+    github.com/golang/freetype v0.0.0-20170609003504-e2365dfdc4a0 // indirect
+    github.com/inconshreveable/mousetrap v1.0.0 // indirect
+    github.com/phpdave11/gofpdf v1.4.2 // indirect
+    github.com/spf13/pflag v1.0.5 // indirect
+    golang.org/x/image v0.0.0-20210216034530-4410531fe030 // indirect
+    golang.org/x/text v0.3.5 // indirect
+)
+```
+
+といった感じに書き換えられる。ちなみにこのパッケージの依存関係は
+
+[![dependency.png](https://storage.googleapis.com/zenn-user-upload/9d9b6fa16a7cbcbe4d256263.png)](https://github.com/spiegel-im-spiegel/cov19jpn/blob/v0.2.7/dependency.png "cov19jpn/dependency.png at v0.2.7 · spiegel-im-spiegel/cov19jpn")
+
+という感じになっていて [Go] 1.17 の go mod tidy で間接的な依存モジュールも列挙されていることが分かる。
+
+Indirect なモジュール指定がない場合，依存モジュールの go.mod ファイルを再帰的に読み込んで（バージョンを含む）モジュールを決定しなければならない。 1.17 の go.mod では，関節依存モジュールを明記することでこれを回避しようということのようだ。だから “pruning” なんだね。
 
 ## [Semantic Versioning] によるバージョン管理
 
@@ -283,13 +371,15 @@ import "github.com/mattn/jvgrep/v5/mmap"
 
 [^pasth1]: バージョン 1.16 から import 時の相対パス指定は原則禁止になったので注意。同一リポジトリ内に複数のモジュールがある場合は go.mod ファイルで `replace` ディレクティブを使うとよい。
 
-## 特定バージョンのモジュールをビルド&インストールする
+## 特定バージョンのモジュールをビルド&インストール&実行する
 
 バージョン 1.16 から go install コマンドで モジュール@バージョン を指定できるようになった。
 
 ```markup
 $ go install golang.org/x/tools/gopls@v0.6.5
 ```
+
+go install コマンドの実行によって go.mod ファイルにも影響を与えることはない。
 
 とにかく最新版が欲しい場合は
 
@@ -320,12 +410,22 @@ go: downloading github.com/mattn/jvgrep/v5 v5.8.9
 
 とすれば無問題である。
 
-なお，バージョン 1.16 では go.mod ファイルに `replace` や `exclude` ディレクティブが含まれていると go install に失敗することがあるみたい。
+更にバージョン 1.17 から go run コマンドでも モジュール@バージョン を指定して実行できるようになった。ソースコードをあらかじめダウンロードする必要はなく go.mod ファイルに影響を与えない。
 
 ```
-$ go install github.com/spiegel-im-spiegel/gnkf@latest
+$ go run github.com/mattn/jvgrep/v5@latest --version
+5.8.9
+```
+
+この go run の使い方は `//go:generate` でも使えるらしい。 GitHub Actions や他の CI/CD でも色々と応用が効きそうである。
+
+:::details この項目は検証しきれてないので保留
+バージョン 1.16 および 1.17 では go.mod ファイルに `replace` や `exclude` ディレクティブが含まれていると go install に失敗することがあるみたい。
+
+```
+$ go install github.com/spiegel-im-spiegel/gnkf@v0.3.0
 go: downloading github.com/spiegel-im-spiegel/gnkf v0.3.0
-go install github.com/spiegel-im-spiegel/gnkf@latest: github.com/spiegel-im-spiegel/gnkf@v0.3.0
+go install: github.com/spiegel-im-spiegel/gnkf@v0.3.0 (in github.com/spiegel-im-spiegel/gnkf@v0.3.0):
 	The go.mod file for the module providing named packages contains one or
 	more replace directives. It must not contain directives that would cause
 	it to be interpreted differently than if it were the main module.
@@ -333,15 +433,31 @@ go install github.com/spiegel-im-spiegel/gnkf@latest: github.com/spiegel-im-spie
 
 とほほ orz
 
-こういうときは go install ではなく go get コマンドを使えば取り敢えず大丈夫なようだ。
+こういうときは go install ではなく go get コマンドを使えば取り敢えず大丈夫なようだ（ただし [Go] 1.17 では警告が出る）。
 
 ```
-$ go get github.com/spiegel-im-spiegel/gnkf@latest
+$ go get github.com/spiegel-im-spiegel/gnkf@v0.3.0
+go get: installing executables with 'go get' in module mode is deprecated.
+	Use 'go install pkg@version' instead.
+	For more information, see https://golang.org/doc/go-get-install-deprecation
+	or run 'go help get' or 'go help install'.
 ```
+:::
 
-ただし go get コマンドを使ったビルド&インストールは将来バージョンで廃止されるらしいので，何とかしなきゃなぁ...
+## go get はオワコン？
 
-### go get はオワコン？
+go install および go run の機能拡張の代わりに go get は機能制限される予定である。バージョン 1.17 では警告のみだが， 1.18 からは go get によるビルド&インストールはできなくなるそうだ（go get -u 相当の機能に限定）。
+
+```
+$ go version
+go version go1.17 linux/amd64
+
+$ go get github.com/mattn/jvgrep/v5@latest
+go get: installing executables with 'go get' in module mode is deprecated.
+    Use 'go install pkg@version' instead.
+    For more information, see https://golang.org/doc/go-get-install-deprecation
+    or run 'go help get' or 'go help install'.
+```
 
 go get コマンドは元々 $GOPATH ディレクトリ下に指定した外部パッケージを組み込むための仕組みである。
 
@@ -349,9 +465,7 @@ go get コマンドは元々 $GOPATH ディレクトリ下に指定した外部�
 
 しかしその結果，モジュール対応モードでは go get コマンドはモジュールをキャッシュするだけのコマンドになってしまった。しかも go.mod & go.sum ファイルを意図せず書き換えてしまう危険がある。
 
-開発中のパッケージにおいて，意図的に（依存モジュールを含む）外部モジュールの読み込みと go.mod & go.sum ファイルの更新を行いたいのであれば go mod tidy で一括処理するほうが便利である。また単にパッケージ（またはモジュール）をビルド&インストールしたいだけであれば [go install を使うほうが不用意に go.mod & go.sum ファイルを汚すこともない](https://zenn.dev/minguu/articles/20210225-difference-of-go-install-and-go-get "go installとgo getをどう使い分ければ良いのか調べた")ので安全と言える。
-
-GOPATH モードが後方互換機能として残されている間は go get コマンド自体もなくならないだろうが，モジュール対応モードが主流となる今後はユーザが手打ちで go get コマンドを叩くことはなくなってくるんじゃないだろうか。
+開発中のパッケージにおいて，意図的に（依存モジュールを含む）外部モジュールの読み込みと go.mod & go.sum ファイルの更新を行いたいのであれば go mod tidy で一括処理するほうが便利である。 GOPATH モードが後方互換機能として残されている間は go get コマンド自体もなくならないだろうが，モジュール対応モードが主流となる今後はユーザが手打ちで go get コマンドを叩くことはなくなってくるんじゃないだろうか。
 
 ## 参考
 
