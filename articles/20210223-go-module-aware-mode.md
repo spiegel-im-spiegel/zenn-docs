@@ -6,6 +6,10 @@ topics: ["go", "programming"] # タグ。["markdown", "rust", "aws"] のよう�
 published: true # 公開設定（true で公開）
 ---
 
+:::message
+[Go 1.17 リリース](https://blog.golang.org/go1.17 "Go 1.17 is released - The Go Blog")に合わせて【バージョン 1.17 改訂版】とした（2021-08-21）
+:::
+
 [Go] のモジュールについては[自ブログ](https://text.baldanders.info/golang/ "プログラミング言語 Go | text.Baldanders.info")でもよく話題にするのだが，差分情報が多く内容が分散しているため，ここの Zenn でまとめておく。なお，この記事では vendoring 機能については言及しないのであしからず[^vdr1]。
 
 [^vdr1]: Vendoring 機能は [Go] 1.5 で追加されたパッケージ管理機能である。パッケージ直下に作成した `vendor` ディレクトリ以下を外部パッケージのコード・ツリーとみなす。モジュール対応モードが登場するまでは重宝されていたが，どうしてもコード管理が多重化してしまうため（モジュール対応モードに比べて）扱いが煩雑になってしまうのが欠点である。パッケージを公開しない内部開発であれば使い道はあるかもしれない。 Vendoring については拙文「[GOPATH 汚染](https://text.baldanders.info/golang/gopath-pollution/)」で簡単に解説している。
@@ -281,11 +285,11 @@ $ go mod tidy -go=1.17
 $ go mod tidy -compat=1.17
 ```
 
-なんでこんなオプションが付いたかというと [Go] 1.17 で go mod tidy の出力結果が大きく変わるからだ。
+なんでこんなオプションが付いたかというと [Go] 1.17 で go mod tidy の処理結果が大きく変わるからだ。
 
 ### Module Graph Pruning
 
-辞書で引くと prune は木の枝の剪定なんかを指すらしいが，丁度いい日本語がないようで，[リリースパーティ](https://gocon.connpass.com/event/216361/ "Go 1.17 リリースパーティ - connpass")でも「原文ママ」の英語で紹介されていた。
+辞書を引くと prune は木の枝の剪定なんかを指すらしいが，丁度いい日本語がないようで，[リリースパーティ](https://gocon.connpass.com/event/216361/ "Go 1.17 リリースパーティ - connpass")でも「原文ママ」の英語で紹介されていた。
 
 たとえば，拙パッケージの [spiegel-im-spiegel/cov19jpn](https://github.com/spiegel-im-spiegel/cov19jpn "spiegel-im-spiegel/cov19jpn: COVID-2019 in Japan; Importing Google COVID-19 Public Forecasts") v0.2.7 の go.mod ファイルの内容は以下のとおりだが
 
