@@ -185,6 +185,10 @@ ok      json2    3.172s
 
 こりゃあ，一考の価値ありか？
 
+## 作者の goccy さんによるスライド
+
+https://docs.google.com/presentation/d/1VCUPh21hrZRN-2kneQ07dxJPjgScSo3gsKESWlEBzIQ/
+
 ## 参考
 
 https://zenn.dev/spiegel/articles/20210113-fetch
