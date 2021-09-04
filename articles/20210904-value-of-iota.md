@@ -79,7 +79,9 @@ func main() {
 }
 ```
 
-てな風に書くと [iota 出現時の値は 4 になる](https://play.golang.org/p/3RbtW0-jJis)。つまり iota は出現する前から（見かけ上）カウントしているわけだ。
+てな風に書くと [iota 出現時の値は 4 になる](https://play.golang.org/p/3RbtW0-jJis)。つまり iota は出現する前から（見かけ上[^iota1]）カウントしているわけだ。
+
+[^iota1]: 正しくは iota はカウンタではない。この辺の話については拙文「[定数生成器 iota についてちゃんと書く](https://text.baldanders.info/golang/iota-constant-generator/)」で纒めてみた。
 
 iota 出現時の値が常にゼロだと思いこんで，うっかり
 
