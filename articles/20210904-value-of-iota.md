@@ -79,7 +79,7 @@ func main() {
 }
 ```
 
-てな風に書くと [iota 出現時の値は 4 になる](https://play.golang.org/p/3RbtW0-jJis)。つまり iota は（見かけ上）出現する前からカウントしているわけだ。
+てな風に書くと [iota 出現時の値は 4 になる](https://play.golang.org/p/3RbtW0-jJis)。つまり iota は出現する前から（見かけ上）カウントしているわけだ。
 
 iota 出現時の値が常にゼロだと思いこんで，うっかり
 
