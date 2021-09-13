@@ -72,5 +72,4 @@ https://krypt.co/developers/
 https://github.com/kryptco
 https://www.slideshare.net/AkiraMidouchi/krypton-for-devops
 https://qiita.com/angel_p_57/items/2e3f3f8661de32a0d432
-
-<!-- eof -->
+https://text.baldanders.info/remark/2020/09/authenticator-and-aal/
