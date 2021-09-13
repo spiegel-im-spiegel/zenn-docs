@@ -50,7 +50,7 @@ sequenceDiagram
     P->>P: 電子署名
     P-->>-K: 電子署名だよ
     K-->>-GPG: 電子署名だよ
-    GPG->>-G: 電子署名だよ
+    GPG-->>-G: 電子署名だよ
 ```
 
 krgpg は電子署名に限れば gpg (GnuPG) と完全に置き換えるようだ。
