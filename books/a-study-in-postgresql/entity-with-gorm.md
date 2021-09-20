@@ -2,6 +2,7 @@
 title: "GORM による Entity の設計"
 ---
 
+今回は以下の関係を持つ2つのテーブルを作って基本的な CRUD (Create/Read/Update/Delete) を試してみることにする。
 
 ```mermaid
 erDiagram

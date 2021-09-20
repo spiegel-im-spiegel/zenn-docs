@@ -8,6 +8,16 @@ https://github.com/go-gorm/gorm
 
 ORM としての基本機能はきちんと押さえられている。その上でテーブル設計や SQL 文構築の自由度が高いのが特徴と言えるだろう。その代わり型の解釈で挙動が怪しくなる場合があるため，取り回しでは若干の注意を要する（まぁ interface{} 型を使って無理やり汎化してるので仕方ない面はあるのだが）。
 
+[オフィシャルサイト][GORM]を見ると “[GORM 2.0 Release Note](https://gorm.io/docs/v2_release_note.html)” とあるが，これはモジュールのバージョン（バージョンタグは 1.x）とは関係ないようだ。ただし，機能的にも後方互換性が壊れている部分があるので，以前から使っている人は注意が必要かもしれない。
+
+コード管理も [github.com/go-gorm](https://github.com/go-gorm) に移管されていて，インポートする際のパスは
+
+```go
+import "gorm.io/gorm"
+```
+
+と指定する（パスの後ろに /v2 とかは付けない）。
+
 SQL 文の方言があるためどんな DB ドライバでも受け付けるというわけではないのだが MySQL, [PostgreSQL], SQLite, SQL Server といったメジャーどころは対応している。内部では *[sql][database/sql].DB 型のインスタンスとして保持しているようなので，上述の製品と互換性のある RDBMS であれば対応できる可能性がある。
 
 今回であれば stdlib.OpenDB() 関数で生成した [sql][database/sql].DB インスタンスを渡してしまえばよい。こんな感じ。
