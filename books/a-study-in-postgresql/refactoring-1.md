@@ -2,7 +2,21 @@
 title: "リファクタリング（その1）"
 ---
 
-さて，だいぶコードがカオスになってきたので，ここらで一発，リファクタリングをかましておこう。この節は長いよ。コードに興味のない方は適当に読み飛ばしてよい（笑）
+さて，コードがかなりカオスになってきたので，ここらで一発，リファクタリングをかましておこう。この節は長いよ。コードに興味のない方は適当に読み飛ばしてよい（笑）
+
+そうそう。今回書いたコードは
+
+```
+$ go mod init sample
+```
+
+で初期化したディレクトリ内にあるので，サブパッケージをインポートする際には
+
+```go
+import "sample/env"
+```
+
+という記述になっている。あしからずご了承の程を。
 
 ## env サブパッケージ
 
@@ -22,67 +36,67 @@ LOGLEVEL=info
 package env
 
 import (
-	"strings"
+    "strings"
 
-	"github.com/jackc/pgx/v4"
-	"github.com/rs/zerolog"
+    "github.com/jackc/pgx/v4"
+    "github.com/rs/zerolog"
 )
 
 type LoggerLevel int
 
 const (
-	LevelNop LoggerLevel = iota
-	LevelError
-	LevelWarn
-	LevelInfo
-	LevelDebug
+    LevelNop LoggerLevel = iota
+    LevelError
+    LevelWarn
+    LevelInfo
+    LevelDebug
 )
 
 var levelMap = map[LoggerLevel]string{
-	LevelNop:   "nop",
-	LevelError: "error",
-	LevelWarn:  "warn",
-	LevelInfo:  "info",
-	LevelDebug: "debug",
+    LevelNop:   "nop",
+    LevelError: "error",
+    LevelWarn:  "warn",
+    LevelInfo:  "info",
+    LevelDebug: "debug",
 }
 
 var zerologLevelMap = map[LoggerLevel]zerolog.Level{
-	LevelNop:   zerolog.NoLevel,
-	LevelError: zerolog.ErrorLevel,
-	LevelWarn:  zerolog.WarnLevel,
-	LevelInfo:  zerolog.InfoLevel,
-	LevelDebug: zerolog.DebugLevel,
+    LevelNop:   zerolog.NoLevel,
+    LevelError: zerolog.ErrorLevel,
+    LevelWarn:  zerolog.WarnLevel,
+    LevelInfo:  zerolog.InfoLevel,
+    LevelDebug: zerolog.DebugLevel,
 }
 
 var pgxlogLevelMap = map[LoggerLevel]pgx.LogLevel{
-	LevelNop:   pgx.LogLevelNone,
-	LevelError: pgx.LogLevelError,
-	LevelWarn:  pgx.LogLevelWarn,
-	LevelInfo:  pgx.LogLevelInfo,
-	LevelDebug: pgx.LogLevelDebug,
+    LevelNop:   pgx.LogLevelNone,
+    LevelError: pgx.LogLevelError,
+    LevelWarn:  pgx.LogLevelWarn,
+    LevelInfo:  pgx.LogLevelInfo,
+    LevelDebug: pgx.LogLevelDebug,
 }
 
 func getLogLevel(s string) LoggerLevel {
-	for k, v := range levelMap {
-		if strings.EqualFold(v, s) {
-			return k
-		}
-	}
-	return LevelInfo
+    for k, v := range levelMap {
+        if strings.EqualFold(v, s) {
+            return k
+        }
+    }
+    return LevelInfo
 }
 
 func (lvl LoggerLevel) ZerlogLevel() zerolog.Level {
-	if l, ok := zerologLevelMap[lvl]; ok {
-		return l
-	}
-	return zerolog.InfoLevel
+    if l, ok := zerologLevelMap[lvl]; ok {
+        return l
+    }
+    return zerolog.InfoLevel
 }
 
 func (lvl LoggerLevel) PgxLogLevel() pgx.LogLevel {
-	if l, ok := pgxlogLevelMap[lvl]; ok {
-		return l
-	}
-	return pgx.LogLevelInfo
+    if l, ok := pgxlogLevelMap[lvl]; ok {
+        return l
+    }
+    return pgx.LogLevelInfo
 }
 ```
 
@@ -92,44 +106,44 @@ func (lvl LoggerLevel) PgxLogLevel() pgx.LogLevel {
 package env
 
 import (
-	"os"
-	"strings"
+    "os"
+    "strings"
 
-	"github.com/jackc/pgx/v4"
-	"github.com/joho/godotenv"
-	"github.com/rs/zerolog"
-	"github.com/spiegel-im-spiegel/gocli/config"
+    "github.com/jackc/pgx/v4"
+    "github.com/joho/godotenv"
+    "github.com/rs/zerolog"
+    "github.com/spiegel-im-spiegel/gocli/config"
 )
 
 const (
-	ServiceName = "elephantsql"
+    ServiceName = "elephantsql"
 )
 
 func init() {
-	//load ${XDG_CONFIG_HOME}/${ServiceName}/env file
-	if err := godotenv.Load(config.Path(ServiceName, "env")); err != nil {
-		panic(err)
-	}
+    //load ${XDG_CONFIG_HOME}/${ServiceName}/env file
+    if err := godotenv.Load(config.Path(ServiceName, "env")); err != nil {
+        panic(err)
+    }
 }
 
 func PostgresDSN() string {
-	return os.Getenv("ELEPHANTSQL_URL")
+    return os.Getenv("ELEPHANTSQL_URL")
 }
 
 func LogLevel() LoggerLevel {
-	return getLogLevel(os.Getenv("LOGLEVEL"))
+    return getLogLevel(os.Getenv("LOGLEVEL"))
 }
 
 func ZerologLevel() zerolog.Level {
-	return LogLevel().ZerlogLevel()
+    return LogLevel().ZerlogLevel()
 }
 
 func PgxlogLevel() pgx.LogLevel {
-	return LogLevel().PgxLogLevel()
+    return LogLevel().PgxLogLevel()
 }
 
 func ZerologTerminal() bool {
-	return strings.EqualFold(os.Getenv("ZEROLOG_TERMINAL"), "true")
+    return strings.EqualFold(os.Getenv("ZEROLOG_TERMINAL"), "true")
 }
 ```
 
@@ -141,46 +155,46 @@ func ZerologTerminal() bool {
 package loggr
 
 import (
-	"fmt"
-	"io"
-	"os"
-	"sample/env"
-	"time"
+    "fmt"
+    "io"
+    "os"
+    "sample/env"
+    "time"
 
-	"github.com/rs/zerolog"
-	"github.com/spiegel-im-spiegel/errs"
-	"github.com/spiegel-im-spiegel/gocli/cache"
+    "github.com/rs/zerolog"
+    "github.com/spiegel-im-spiegel/errs"
+    "github.com/spiegel-im-spiegel/gocli/cache"
 )
 
 func New() *zerolog.Logger {
-	logger := zerolog.Nop()
-	if env.ZerologLevel() == zerolog.NoLevel {
-		return &logger
-	}
+    logger := zerolog.Nop()
+    if env.ZerologLevel() == zerolog.NoLevel {
+        return &logger
+    }
 
-	// enable ConsoleWriter
-	var stdout io.Writer = os.Stdout
-	if env.ZerologTerminal() {
-		stdout = zerolog.ConsoleWriter{Out: os.Stdout, NoColor: false}
-	}
+    // enable ConsoleWriter
+    var stdout io.Writer = os.Stdout
+    if env.ZerologTerminal() {
+        stdout = zerolog.ConsoleWriter{Out: os.Stdout, NoColor: false}
+    }
 
-	// make path to ${XDG_CACHE_HOME}/${ServiceName}/access.YYYYMMDD.log file and create logger
-	logpath := cache.Path(env.ServiceName, fmt.Sprintf("access.%s.log", time.Now().Local().Format("20060102")))
-	file, err := os.OpenFile(logpath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
-	if err != nil {
-		logger = zerolog.New(stdout)
-	} else {
-		logger = zerolog.New(io.MultiWriter(
-			file,
-			stdout,
-		))
-	}
-	logger = logger.Level(env.ZerologLevel()).With().Timestamp().Logger()
+    // make path to ${XDG_CACHE_HOME}/${ServiceName}/access.YYYYMMDD.log file and create logger
+    logpath := cache.Path(env.ServiceName, fmt.Sprintf("access.%s.log", time.Now().Local().Format("20060102")))
+    file, err := os.OpenFile(logpath, os.O_APPEND|os.O_CREATE|os.O_WRONLY, 0600)
+    if err != nil {
+        logger = zerolog.New(stdout)
+    } else {
+        logger = zerolog.New(io.MultiWriter(
+            file,
+            stdout,
+        ))
+    }
+    logger = logger.Level(env.ZerologLevel()).With().Timestamp().Logger()
 
-	if err != nil {
-		logger.Error().Interface("error", errs.Wrap(err, errs.WithContext("logpath", logpath))).Str("logpath", logpath).Msg("error in opening logfile")
-	}
-	return &logger
+    if err != nil {
+        logger.Error().Interface("error", errs.Wrap(err, errs.WithContext("logpath", logpath))).Str("logpath", logpath).Msg("error in opening logfile")
+    }
+    return &logger
 }
 ```
 
@@ -194,66 +208,66 @@ func New() *zerolog.Logger {
 package dbconn
 
 import (
-	"database/sql"
-	"sample/env"
-	"sample/loggr"
+    "database/sql"
+    "sample/env"
+    "sample/loggr"
 
-	"github.com/jackc/pgx/v4"
-	"github.com/jackc/pgx/v4/log/zerologadapter"
-	"github.com/jackc/pgx/v4/stdlib"
-	"github.com/rs/zerolog"
-	"github.com/spiegel-im-spiegel/errs"
+    "github.com/jackc/pgx/v4"
+    "github.com/jackc/pgx/v4/log/zerologadapter"
+    "github.com/jackc/pgx/v4/stdlib"
+    "github.com/rs/zerolog"
+    "github.com/spiegel-im-spiegel/errs"
 )
 
 type PgxContext struct {
-	Db     *sql.DB
-	Logger *zerolog.Logger
+    Db     *sql.DB
+    Logger *zerolog.Logger
 }
 
 func NewPgx() (*PgxContext, error) {
-	dbctx := &PgxContext{
-		Logger: loggr.New(),
-	}
-	cfg, err := pgx.ParseConfig(env.PostgresDSN())
-	if err != nil {
-		dbctx.Logger.Error().Interface("error", errs.Wrap(err)).Msg("error in pgx.ParseConfig() method")
-		return nil, errs.Wrap(err, errs.WithContext("dsn", env.PostgresDSN()))
-	}
-	cfg.Logger = zerologadapter.NewLogger(*dbctx.Logger)
-	cfg.LogLevel = env.PgxlogLevel()
-	dbctx.Db = stdlib.OpenDB(*cfg)
+    dbctx := &PgxContext{
+        Logger: loggr.New(),
+    }
+    cfg, err := pgx.ParseConfig(env.PostgresDSN())
+    if err != nil {
+        dbctx.Logger.Error().Interface("error", errs.Wrap(err)).Msg("error in pgx.ParseConfig() method")
+        return nil, errs.Wrap(err, errs.WithContext("dsn", env.PostgresDSN()))
+    }
+    cfg.Logger = zerologadapter.NewLogger(*dbctx.Logger)
+    cfg.LogLevel = env.PgxlogLevel()
+    dbctx.Db = stdlib.OpenDB(*cfg)
 
-	return dbctx, nil
+    return dbctx, nil
 }
 
 func (dbctx *PgxContext) GetDb() *sql.DB {
-	if dbctx == nil {
-		return nil
-	}
-	return dbctx.Db
+    if dbctx == nil {
+        return nil
+    }
+    return dbctx.Db
 }
 
 func (dbctx *PgxContext) GetLogger() *zerolog.Logger {
-	if dbctx == nil {
-		lggr := zerolog.Nop()
-		return &lggr
-	}
-	return dbctx.Logger
+    if dbctx == nil {
+        lggr := zerolog.Nop()
+        return &lggr
+    }
+    return dbctx.Logger
 }
 
 func (dbctx *PgxContext) Acquire() (*pgx.Conn, error) {
-	if db := dbctx.GetDb(); db != nil {
-		conn, err := stdlib.AcquireConn(db)
-		return conn, errs.Wrap(err)
-	}
-	return nil, errs.New("*sql.DB instance is nil.")
+    if db := dbctx.GetDb(); db != nil {
+        conn, err := stdlib.AcquireConn(db)
+        return conn, errs.Wrap(err)
+    }
+    return nil, errs.New("*sql.DB instance is nil.")
 }
 
 func (dbctx *PgxContext) Close() error {
-	if db := dbctx.GetDb(); db != nil {
-		return errs.Wrap(db.Close())
-	}
-	return nil
+    if db := dbctx.GetDb(); db != nil {
+        return errs.Wrap(db.Close())
+    }
+    return nil
 }
 ```
 
@@ -267,74 +281,76 @@ dbconn.PgxContext というコンテキストを作って，これを返して�
 package orm
 
 import (
-	"sample/dbconn"
-	"sample/env"
+    "sample/dbconn"
+    "sample/env"
 
-	"github.com/rs/zerolog"
-	"github.com/spiegel-im-spiegel/errs"
-	"gorm.io/driver/postgres"
-	"gorm.io/gorm"
-	"gorm.io/gorm/logger"
+    "github.com/rs/zerolog"
+    "github.com/spiegel-im-spiegel/errs"
+    "gorm.io/driver/postgres"
+    "gorm.io/gorm"
+    "gorm.io/gorm/logger"
 )
 
 type GormContext struct {
-	Db     *gorm.DB
-	Logger *zerolog.Logger
+    Db     *gorm.DB
+    Logger *zerolog.Logger
 }
 
 func NewGORM() (*GormContext, error) {
-	pgxCtx, err := dbconn.NewPgx()
-	if err != nil {
-		return nil, errs.Wrap(err)
-	}
-	gormCtx := &GormContext{
-		Logger: pgxCtx.GetLogger(),
-	}
-	loggr := logger.Discard
-	if env.LogLevel() == env.LevelDebug {
-		loggr = logger.Default
-	}
-	gormCtx.Db, err = gorm.Open(postgres.New(postgres.Config{
-		Conn: pgxCtx.GetDb(),
-	}), &gorm.Config{
-		Logger: loggr,
-	})
-	if err != nil {
-		pgxCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Msg("error in gorm.Open() method")
-		pgxCtx.Close()
-		return nil, errs.Wrap(err)
-	}
-	return gormCtx, nil
+    pgxCtx, err := dbconn.NewPgx()
+    if err != nil {
+        return nil, errs.Wrap(err)
+    }
+    gormCtx := &GormContext{
+        Logger: pgxCtx.GetLogger(),
+    }
+    loggr := logger.Discard
+    if env.LogLevel() == env.LevelDebug {
+        loggr = logger.Default
+    }
+    gormCtx.Db, err = gorm.Open(postgres.New(postgres.Config{
+        Conn: pgxCtx.GetDb(),
+    }), &gorm.Config{
+        Logger: loggr,
+    })
+    if err != nil {
+        pgxCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Msg("error in gorm.Open() method")
+        pgxCtx.Close()
+        return nil, errs.Wrap(err)
+    }
+    return gormCtx, nil
 }
 
 func (gormCtx *GormContext) GetDb() *gorm.DB {
-	if gormCtx == nil {
-		return nil
-	}
-	return gormCtx.Db
+    if gormCtx == nil {
+        return nil
+    }
+    return gormCtx.Db
 }
 
 func (gormCtx *GormContext) GetLogger() *zerolog.Logger {
-	if gormCtx == nil {
-		lggr := zerolog.Nop()
-		return &lggr
-	}
-	return gormCtx.Logger
+    if gormCtx == nil {
+        lggr := zerolog.Nop()
+        return &lggr
+    }
+    return gormCtx.Logger
 }
 
 func (gormCtx *GormContext) Close() error {
-	if db := gormCtx.GetDb(); db != nil {
-		if sqlDb, err := db.DB(); err == nil {
-			sqlDb.Close()
-		}
-	}
-	return nil
+    if db := gormCtx.GetDb(); db != nil {
+        if sqlDb, err := db.DB(); err == nil {
+            sqlDb.Close()
+        }
+    }
+    return nil
 }
 ```
 
-これも同じく logger を含めた orm.GormContext を返している。
+これも同じく logger を含めた orm.GormContext を返している。あと env ファイルで `LOGLEVEL` が `debug` と指定されている場合は [GORM] の logger も有効とするようにした。
 
-これを使ってサンプルコードを書き直すとこうなる。
+## 起動サンプル
+
+以上のサブパッケージ群を使ってサンプルコードを書き直すとこうなる。
 
 ```go:sampele2.go
 //go:build run
@@ -343,36 +359,36 @@ func (gormCtx *GormContext) Close() error {
 package main
 
 import (
-	"fmt"
-	"os"
-	"sample/orm"
+    "fmt"
+    "os"
+    "sample/orm"
 
-	"github.com/spiegel-im-spiegel/errs"
-	"github.com/spiegel-im-spiegel/gocli/exitcode"
+    "github.com/spiegel-im-spiegel/errs"
+    "github.com/spiegel-im-spiegel/gocli/exitcode"
 )
 
 func Run() exitcode.ExitCode {
-	// create gorm.DB instance for PostgreSQL service
-	gormCtx, err := orm.NewGORM()
-	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		return exitcode.Abnormal
-	}
-	defer gormCtx.Close()
+    // create gorm.DB instance for PostgreSQL service
+    gormCtx, err := orm.NewGORM()
+    if err != nil {
+        fmt.Fprintln(os.Stderr, err)
+        return exitcode.Abnormal
+    }
+    defer gormCtx.Close()
 
-	// query
-	var results []map[string]interface{}
-	tx := gormCtx.GetDb().Table("tablename").Find(&results) // "tablename" is not exist
-	if tx.Error != nil {
-		gormCtx.GetLogger().Error().Interface("error", errs.Wrap(tx.Error)).Send()
-		return exitcode.Abnormal
-	}
+    // query
+    var results []map[string]interface{}
+    tx := gormCtx.GetDb().Table("tablename").Find(&results) // "tablename" is not exist
+    if tx.Error != nil {
+        gormCtx.GetLogger().Error().Interface("error", errs.Wrap(tx.Error)).Send()
+        return exitcode.Abnormal
+    }
 
-	return exitcode.Normal
+    return exitcode.Normal
 }
 
 func main() {
-	Run().Exit()
+    Run().Exit()
 }
 ```
 
