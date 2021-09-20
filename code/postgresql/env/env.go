@@ -37,6 +37,6 @@ func PgxlogLevel() pgx.LogLevel {
 	return LogLevel().PgxLogLevel()
 }
 
-func ZerologTerminal() bool {
-	return strings.EqualFold(os.Getenv("ZEROLOG_TERMINAL"), "true")
+func EnableLogFile() bool {
+	return strings.EqualFold(os.Getenv("ENABLE_LOGFILE"), "true")
 }

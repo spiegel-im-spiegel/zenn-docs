@@ -14,5 +14,6 @@ chapters:
   - logger
   - connect-with-gorm
   - refactoring-1
+  - entity-with-gorm
   - reference
   - colophon
