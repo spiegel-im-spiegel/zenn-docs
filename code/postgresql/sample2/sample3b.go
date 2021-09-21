@@ -4,6 +4,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"sample/gorm/model"
@@ -11,7 +12,6 @@ import (
 
 	"github.com/spiegel-im-spiegel/errs"
 	"github.com/spiegel-im-spiegel/gocli/exitcode"
-	"gorm.io/gorm"
 )
 
 func Run() exitcode.ExitCode {
@@ -23,8 +23,8 @@ func Run() exitcode.ExitCode {
 	}
 	defer gormCtx.Close()
 
-	// migration (dry run)
-	if err := gormCtx.GetDb().Session(&gorm.Session{DryRun: true}).AutoMigrate(&model.User{}, &model.BinaryFile{}); err != nil {
+	// migration
+	if err := gormCtx.GetDb().WithContext(context.TODO()).AutoMigrate(&model.User{}, &model.BinaryFile{}); err != nil {
 		gormCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Send()
 		return exitcode.Abnormal
 	}

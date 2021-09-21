@@ -14,7 +14,7 @@ title: "はじめに"
 
 https://www.elephantsql.com/
 
-きちんと開発環境を整えるなら Docker という手もあるし，本格的な運用をするなら大手クラウド企業の PaaS を使うべきかもしれないが，ちょろんと調べるだけなら [ElephantSQL] の無料プランで十分賄える。 [ElephantSQL] の利用方法については以下の Qiita 記事が参考になった。ありがとう！
+きちんと開発環境を整えるなら Docker という手もあるし，本格的な運用をするなら大手クラウド企業の PaaS を使うべきかもしれないが，ちょろんと調べるだけなら [ElephantSQL] の無料プランで十分賄える（GitHub のアカウントが使えるし）。 [ElephantSQL] の利用方法については以下の Qiita 記事が参考になった。ありがとう！
 
 https://qiita.com/mikankitten/items/a9a0363c7b455e928179
 

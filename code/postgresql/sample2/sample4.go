@@ -23,7 +23,7 @@ func Run() exitcode.ExitCode {
 	}
 	defer gormCtx.Close()
 
-	// migration (dry run)
+	// migration
 	if err := gormCtx.GetDb().Session(&gorm.Session{DryRun: true}).AutoMigrate(&model.User{}, &model.BinaryFile{}); err != nil {
 		gormCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Send()
 		return exitcode.Abnormal

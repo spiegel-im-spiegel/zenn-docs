@@ -158,7 +158,9 @@ func UserCacheDir() (string, error) {
 ```
 
 
-ま，まぁ，最近はログを直接ファイルに吐き出すのは流行りじゃないみたいだし，ちょっとしたツール用ならこれで十分かな。
+ま，まぁ，最近はログを直接ファイルに吐き出すのは流行りじゃないみたいだし，ちょっとしたツール用ならこれで十分かな[^rotate1]。
+
+[^rotate1]: ログファイルをローテーションさせたければ [github.com/natefinch/lumberjack](https://github.com/natefinch/lumberjack) パッケージを使う手もある。
 
 ## zerolog を pgx に組み込む
 
@@ -233,7 +235,7 @@ $ go run sample1.go
 
 という感じにエラーになる。まぁ，ログ出力の確認は出来たということで（笑）
 
-[database/sql] を使いたい場合は stdlib.OpenDB() 関数から [sql][database/sql].DB インスタンスを取得する。
+[database/sql] を使いたい場合は stdlib.OpenDB() 関数で [sql][database/sql].DB インスタンスを取得するとよい。
 
 ```go:sample2.go
 import (

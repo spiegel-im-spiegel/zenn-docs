@@ -16,7 +16,7 @@ $ go mod init sample
 import "sample/env"
 ```
 
-という記述になっている。あしからずご了承の程を。
+みたいな記述になっている。あしからずご了承の程を。
 
 ## env サブパッケージ
 
@@ -52,12 +52,12 @@ const (
     LevelDebug
 )
 
-var levelMap = map[LoggerLevel]string{
-    LevelNop:   "nop",
-    LevelError: "error",
-    LevelWarn:  "warn",
-    LevelInfo:  "info",
-    LevelDebug: "debug",
+var levelMap = map[string]LoggerLevel{
+    "nop":   LevelNop,
+    "error": LevelError,
+    "warn":  LevelWarn,
+    "info":  LevelInfo,
+    "debug": LevelDebug,
 }
 
 var zerologLevelMap = map[LoggerLevel]zerolog.Level{
@@ -77,10 +77,8 @@ var pgxlogLevelMap = map[LoggerLevel]pgx.LogLevel{
 }
 
 func getLogLevel(s string) LoggerLevel {
-    for k, v := range levelMap {
-        if strings.EqualFold(v, s) {
-            return k
-        }
+    if lvl, ok := levelMap[s]; ok {
+        return lvl
     }
     return LevelInfo
 }
