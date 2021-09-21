@@ -11,7 +11,6 @@ import (
 
 	"github.com/spiegel-im-spiegel/errs"
 	"github.com/spiegel-im-spiegel/gocli/exitcode"
-	"gorm.io/gorm"
 )
 
 func Run() exitcode.ExitCode {
@@ -23,8 +22,8 @@ func Run() exitcode.ExitCode {
 	}
 	defer gormCtx.Close()
 
-	// migration
-	if err := gormCtx.GetDb().Session(&gorm.Session{DryRun: true}).AutoMigrate(&model.User{}, &model.BinaryFile{}); err != nil {
+	// drop table
+	if err := gormCtx.GetDb().Migrator().DropTable(&model.User{}, &model.BinaryFile{}); err != nil {
 		gormCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Send()
 		return exitcode.Abnormal
 	}

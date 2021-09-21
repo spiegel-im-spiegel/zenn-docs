@@ -2,7 +2,7 @@
 title: "GORM による Model (Entity) の設計"
 ---
 
-この節から以下の関係を持つ2つのテーブルを作って基本的な CRUD (Create/Read/Update/Delete) を試してみることにする。まずは MVC (Model-View-Controller) で言うところの Model の定義から。
+この節から以下の関係を持つ2つのテーブルを作ってデータの読み書きを試してみることにする。まずは MVC (Model-View-Controller) で言うところの Model の定義から。
 
 ```mermaid
 erDiagram
@@ -78,32 +78,32 @@ type Model struct {
 
 ```go:sample3.go
 import (
-	"fmt"
-	"os"
-	"sample/gorm/model"
-	"sample/orm"
+    "fmt"
+    "os"
+    "sample/gorm/model"
+    "sample/orm"
 
-	"github.com/spiegel-im-spiegel/errs"
-	"github.com/spiegel-im-spiegel/gocli/exitcode"
-	"gorm.io/gorm"
+    "github.com/spiegel-im-spiegel/errs"
+    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "gorm.io/gorm"
 )
 
 func Run() exitcode.ExitCode {
-	// create gorm.DB instance for PostgreSQL service
-	gormCtx, err := orm.NewGORM()
-	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		return exitcode.Abnormal
-	}
-	defer gormCtx.Close()
+    // create gorm.DB instance for PostgreSQL service
+    gormCtx, err := orm.NewGORM()
+    if err != nil {
+        fmt.Fprintln(os.Stderr, err)
+        return exitcode.Abnormal
+    }
+    defer gormCtx.Close()
 
-	// migration (dry run)
-	if err := gormCtx.GetDb().Session(&gorm.Session{DryRun: true}).AutoMigrate(&model.User{}, &model.BinaryFile{}); err != nil {
-		gormCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Send()
-		return exitcode.Abnormal
-	}
+    // migration (dry run)
+    if err := gormCtx.GetDb().Session(&gorm.Session{DryRun: true}).AutoMigrate(&model.User{}, &model.BinaryFile{}); err != nil {
+        gormCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Send()
+        return exitcode.Abnormal
+    }
 
-	return exitcode.Normal
+    return exitcode.Normal
 }
 ```
 
@@ -113,17 +113,17 @@ func Run() exitcode.ExitCode {
 dry run mode unsupported; dry run mode unsupported
 ```
 
-とか言われた， [GORM] のエラーログで（しかも2回もw）。 Migration では dry run は対応しとらんのかーい！ しょうがない
+とか言われた， [GORM] のエラーログで（しかも2回もw）。 [gorm][GORM].DB.AutoMigrate() メソッドでは dry run は対応しとらんのかーい！ しょうがない
 
 ```go:sample3b.go
 // migration
 if err := gormCtx.GetDb().WithContext(context.TODO()).AutoMigrate(&model.User{}, &model.BinaryFile{}); err != nil {
-	gormCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Send()
-	return exitcode.Abnormal
+    gormCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Send()
+    return exitcode.Abnormal
 }
 ```
 
-で，うーやーたー！と実行しよう。
+で，うーやーたー！と実行しよう（最悪は手動でどうにかする）。
 
 実行結果のログを見ると
 
@@ -144,8 +144,8 @@ $ go run sample3b.go
 
 1. テーブル名が複数形（`users`, `binary_files`）になっている
 2. 2つのテーブルとも `id` が bigserial 型で定義されている
-3. `users.username` および `binary_files.filename` が text 型で定義されている
-4. `binary_files.user_id` が `users.id` の foreign key として定義されている
+3. `binary_files.user_id` が `users.id` の foreign key として定義されている
+4. `users.username` および `binary_files.filename` が text 型で定義されている
 
 といった辺りだろうか。
 
@@ -153,17 +153,38 @@ $ go run sample3b.go
 
 ```go
 func (m *User) TableName() string {
-	return "m_user"
+    return "m_user"
 }
 ```
 
 といった感じに TableName() メソッドを追加するとよい（今回はしない）。
 
+本当なら `id` カラムは serial/bigserial ではなく uuid とかにしたいよね。その場合は
+
+```go
+type User struct {
+    ID string `validate:"is_valid_uuid" gorm:"primaryKey;size:255;default:uuid_generate_v4()"`
+    ...
+}
+```
+
+とかに[すべき](https://qiita.com/taisuke-j/items/aa38198cb9ff88836aab "GORMでマイグレーションする際の覚書 - Qiita")なんだろうけど，この場合は [PostgreSQL] 側も EXTENSION などの設定をしないといけないので，今回は見なかったことにする（笑）
+
+自動で foreign key を付けて欲しくない場合は，データベース接続時のオプションで
+
+```go
+db, err := gorm.Open(postgres.New(postgres.Config{
+    Conn: stdlib.OpenDB(*cfg),
+}), &gorm.Config{
+    DisableForeignKeyConstraintWhenMigrating: true,
+})
+```
+
+と指定すればいいらしいが，これも今回は試さない。
+
 `users.username` と `binary_files.filename` が text 型なのはサイズを指定しなかった私のミスだが，ファイル名はサイズ制限しないほうがいいか。あと両者を not null にしないとな。
 
-というわけで，以下のように書き直してみた[^id1]。
-
-[^id1]: 本当は `id` を uuid 型にしたいのだが，ちょっと面倒そうな感じ（[PostgreSQL] に extension を入れる必要あり？）なので，今回はパスした。
+以上を踏まえて，以下のように書き直してみた。
 
 ```go
 package model
@@ -171,20 +192,20 @@ package model
 import "gorm.io/gorm"
 
 type User struct {
-	gorm.Model
-	Username    string       `gorm:"size:63;not null"`
-	BinaryFiles []BinaryFile // has many (0..N)
+    gorm.Model
+    Username    string       `gorm:"size:63;not null"`
+    BinaryFiles []BinaryFile // has many (0..N)
 }
 
 type BinaryFile struct {
-	gorm.Model
-	UserId   uint   `gorm:"not null"`
-	Filename string `gorm:"not null"`
-	Body     []byte
+    gorm.Model
+    UserId   uint   `gorm:"not null"`
+    Filename string `gorm:"not null"`
+    Body     []byte
 }
 ```
 
-これでもう一度テーブルを生成してみる。その前にさっき作ったテーブルは手動で drop しておく。 [GORM] の Migration はテーブル定義の変更もできるそうだが，今回はその辺の検証は割愛する（イチから作り直したほうが早い）。
+これでもう一度テーブルを生成してみる。その前にさっき作ったテーブルは手動で DROP しておく。 [gorm][GORM].DB.AutoMigrate() メソッドはテーブル定義の変更もできるが（ただし安全面を考慮してカラムの削除はしない），今回はその辺の検証は割愛する（最初だし）。
 
 ```
 $ go run sample3b.go 
@@ -206,7 +227,6 @@ $ go run sample3b.go
 | Tag Name                             | Sample Code                                                   |
 | ------------------------------------ | ------------------------------------------------------------- |
 | `column`                             | \``gorm:"column:column_name"`\`                               |
-| `type`<br>`primary_key`<br>`default` | \``gorm:"type:uuid;primary_key;default:uuid_generate_v4()"`\` |
 | `unique`                             | \``gorm:"unique"`\`                                           |
 | `autoIncrement`                      | \``gorm:"autoIncrement"`\`                                    |
 | `index`                              | \``gorm:"index"`\`<br>\``gorm:"index:idx_name"`\`             |
@@ -216,6 +236,72 @@ $ go run sample3b.go
 
 https://sql2gorm.mccode.info/
 https://github.com/cascax/sql2gorm
+
+[GORM] では Migrator というインタフェースを用意していて，テーブル生成・変更・削除に関する機能を提供している。ただし DBMS によっては全ての機能を提供していない場合がある。
+
+```go:go-gorm/gorm/migrator.go
+type Migrator interface {
+    // AutoMigrate
+    AutoMigrate(dst ...interface{}) error
+
+    // Database
+    CurrentDatabase() string
+    FullDataTypeOf(*schema.Field) clause.Expr
+
+    // Tables
+    CreateTable(dst ...interface{}) error
+    DropTable(dst ...interface{}) error
+    HasTable(dst interface{}) bool
+    RenameTable(oldName, newName interface{}) error
+
+    // Columns
+    AddColumn(dst interface{}, field string) error
+    DropColumn(dst interface{}, field string) error
+    AlterColumn(dst interface{}, field string) error
+    MigrateColumn(dst interface{}, field *schema.Field, columnType ColumnType) error
+    HasColumn(dst interface{}, field string) bool
+    RenameColumn(dst interface{}, oldName, field string) error
+    ColumnTypes(dst interface{}) ([]ColumnType, error)
+
+    // Views
+    CreateView(name string, option ViewOption) error
+    DropView(name string) error
+
+    // Constraints
+    CreateConstraint(dst interface{}, name string) error
+    DropConstraint(dst interface{}, name string) error
+    HasConstraint(dst interface{}, name string) bool
+
+    // Indexes
+    CreateIndex(dst interface{}, name string) error
+    DropIndex(dst interface{}, name string) error
+    HasIndex(dst interface{}, name string) bool
+    RenameIndex(dst interface{}, oldName, newName string) error
+}
+```
+
+たとえばテーブルの DROP は
+
+```go:sample4.go
+if err := gormCtx.GetDb().Migrator().DropTable(&model.User{}, &model.BinaryFile{}); err != nil {
+    gormCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Send()
+    return exitcode.Abnormal
+}
+```
+
+みたいな感じで書ける。これを実際に実行すると
+
+```
+$ go run sample4.go 
+10:43PM INF Dialing PostgreSQL server host=hostname module=pgx
+10:43PM INF Exec args=[] commandTag=null module=pgx pid=4565 sql=;
+10:43PM INF Exec args=[] commandTag=RFJPUCBUQUJMRQ== module=pgx pid=4565 sql="DROP TABLE IF EXISTS \"binary_files\" CASCADE"
+10:43PM INF Exec args=[] commandTag=RFJPUCBUQUJMRQ== module=pgx pid=4565 sql="DROP TABLE IF EXISTS \"users\" CASCADE"
+10:43PM INF closed connection module=pgx pid=4565
+
+```
+
+などとテーブル間の関係（foreign key のあたり）をちゃんと認識しているのか `binary_files` → `users` の順に DROP してくれた。賢い！
 
 [Go]: https://go.dev/
 [PostgreSQL]: https://www.postgresql.org/ "PostgreSQL: The world's most advanced open source database"
