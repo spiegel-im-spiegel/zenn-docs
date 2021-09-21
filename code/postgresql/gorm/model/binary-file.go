@@ -1,13 +1,9 @@
-package entity
+package model
 
 import "gorm.io/gorm"
 
-type User struct {
+type BinaryFile struct {
 	gorm.Model
-	Username string
-}
-
-type BinaryFiles struct {
 	UserId   string
 	Filename string
 	Body     []byte
