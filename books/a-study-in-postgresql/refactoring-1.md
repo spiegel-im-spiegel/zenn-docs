@@ -296,7 +296,7 @@ func NewGORM() (*GormContext, error) {
     }
     loggr := logger.Discard
     if env.LogLevel() == env.LevelDebug {
-        loggr = logger.Default
+        loggr = logger.Default.LogMode(logger.Info)
     }
     gormCtx.Db, err = gorm.Open(postgres.New(postgres.Config{
         Conn: pgxCtx.GetDb(),
@@ -386,11 +386,11 @@ func main() {
 
 ```
 $ go run sample2.go 
-12:25PM INF Dialing PostgreSQL server host=hostname module=pgx
-12:25PM INF Exec args=[] commandTag=null module=pgx pid=11556 sql=;
-12:25PM ERR Query args=[] err="ERROR: relation \"tablename\" does not exist (SQLSTATE 42P01)" module=pgx pid=11556 sql="SELECT * FROM \"tablename\""
-12:25PM ERR  error={"Context":{"function":"main.Run"},"Err":{"Msg":"ERROR: relation \"tablename\" does not exist (SQLSTATE 42P01)","Type":"*pgconn.PgError"},"Type":"*errs.Error"}
-12:25PM INF closed connection module=pgx pid=11556
+0:00AM INF Dialing PostgreSQL server host=hostname module=pgx
+0:00AM INF Exec args=[] commandTag=null module=pgx pid=11556 sql=;
+0:00AM ERR Query args=[] err="ERROR: relation \"tablename\" does not exist (SQLSTATE 42P01)" module=pgx pid=11556 sql="SELECT * FROM \"tablename\""
+0:00AM ERR  error={"Context":{"function":"main.Run"},"Err":{"Msg":"ERROR: relation \"tablename\" does not exist (SQLSTATE 42P01)","Type":"*pgconn.PgError"},"Type":"*errs.Error"}
+0:00AM INF closed connection module=pgx pid=11556
 ```
 
 ん，問題なく SELECT 文でエラーになるね（笑）

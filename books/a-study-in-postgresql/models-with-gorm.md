@@ -129,15 +129,15 @@ if err := gormCtx.GetDb().WithContext(context.TODO()).AutoMigrate(&model.User{},
 
 ```
 $ go run sample3b.go 
-8:06PM INF Dialing PostgreSQL server host=hostname module=pgx
-8:06PM INF Exec args=[] commandTag=null module=pgx pid=5178 sql=;
-8:06PM INF Query args=["users","BASE TABLE"] module=pgx pid=5178 rowCount=1 sql="SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = $1 AND table_type = $2"
-8:06PM INF Exec args=[] commandTag=Q1JFQVRFIFRBQkxF module=pgx pid=5178 sql="CREATE TABLE \"users\" (\"id\" bigserial,\"created_at\" timestamptz,\"updated_at\" timestamptz,\"deleted_at\" timestamptz,\"username\" text,PRIMARY KEY (\"id\"))"
-8:06PM INF Exec args=[] commandTag=Q1JFQVRFIElOREVY module=pgx pid=5178 sql="CREATE INDEX \"idx_users_deleted_at\" ON \"users\" (\"deleted_at\")"
-8:06PM INF Query args=["binary_files","BASE TABLE"] module=pgx pid=5178 rowCount=1 sql="SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = $1 AND table_type = $2"
-8:06PM INF Exec args=[] commandTag=Q1JFQVRFIFRBQkxF module=pgx pid=5178 sql="CREATE TABLE \"binary_files\" (\"id\" bigserial,\"created_at\" timestamptz,\"updated_at\" timestamptz,\"deleted_at\" timestamptz,\"user_id\" bigint,\"filename\" text,\"body\" bytea,PRIMARY KEY (\"id\"),CONSTRAINT \"fk_users_binary_files\" FOREIGN KEY (\"user_id\") REFERENCES \"users\"(\"id\"))"
-8:06PM INF Exec args=[] commandTag=Q1JFQVRFIElOREVY module=pgx pid=5178 sql="CREATE INDEX \"idx_binary_files_deleted_at\" ON \"binary_files\" (\"deleted_at\")"
-8:06PM INF closed connection module=pgx pid=5178
+0:00AM INF Dialing PostgreSQL server host=hostname module=pgx
+0:00AM INF Exec args=[] commandTag=null module=pgx pid=5178 sql=;
+0:00AM INF Query args=["users","BASE TABLE"] module=pgx pid=5178 rowCount=1 sql="SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = $1 AND table_type = $2"
+0:00AM INF Exec args=[] commandTag=Q1JFQVRFIFRBQkxF module=pgx pid=5178 sql="CREATE TABLE \"users\" (\"id\" bigserial,\"created_at\" timestamptz,\"updated_at\" timestamptz,\"deleted_at\" timestamptz,\"username\" text,PRIMARY KEY (\"id\"))"
+0:00AM INF Exec args=[] commandTag=Q1JFQVRFIElOREVY module=pgx pid=5178 sql="CREATE INDEX \"idx_users_deleted_at\" ON \"users\" (\"deleted_at\")"
+0:00AM INF Query args=["binary_files","BASE TABLE"] module=pgx pid=5178 rowCount=1 sql="SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = $1 AND table_type = $2"
+0:00AM INF Exec args=[] commandTag=Q1JFQVRFIFRBQkxF module=pgx pid=5178 sql="CREATE TABLE \"binary_files\" (\"id\" bigserial,\"created_at\" timestamptz,\"updated_at\" timestamptz,\"deleted_at\" timestamptz,\"user_id\" bigint,\"filename\" text,\"body\" bytea,PRIMARY KEY (\"id\"),CONSTRAINT \"fk_users_binary_files\" FOREIGN KEY (\"user_id\") REFERENCES \"users\"(\"id\"))"
+0:00AM INF Exec args=[] commandTag=Q1JFQVRFIElOREVY module=pgx pid=5178 sql="CREATE INDEX \"idx_binary_files_deleted_at\" ON \"binary_files\" (\"deleted_at\")"
+0:00AM INF closed connection module=pgx pid=5178
 ```
 
 となっていた。特徴を挙げると
@@ -182,7 +182,7 @@ db, err := gorm.Open(postgres.New(postgres.Config{
 
 と指定すればいいらしいが，これも今回は試さない。
 
-`users.username` と `binary_files.filename` が text 型なのはサイズを指定しなかった私のミスだが，ファイル名はサイズ制限しないほうがいいか。あと両者を not null にしないとな。
+`users.username` と `binary_files.filename` が text 型なのはサイズを指定しなかった私のミスだが，ファイル名はサイズ制限しないほうがいいか。あと両者を not null かつ unique にしないとな。
 
 以上を踏まえて，以下のように書き直してみた。
 
@@ -193,14 +193,14 @@ import "gorm.io/gorm"
 
 type User struct {
     gorm.Model
-    Username    string       `gorm:"size:63;not null"`
+    Username    string       `gorm:"size:63;unique;not null"`
     BinaryFiles []BinaryFile // has many (0..N)
 }
 
 type BinaryFile struct {
     gorm.Model
     UserId   uint   `gorm:"not null"`
-    Filename string `gorm:"not null"`
+    Filename string `gorm:"unique;not null"`
     Body     []byte
 }
 ```
@@ -209,15 +209,15 @@ type BinaryFile struct {
 
 ```
 $ go run sample3b.go 
-10:43PM INF Dialing PostgreSQL server host=hostname module=pgx
-10:43PM INF Exec args=[] commandTag=null module=pgx pid=8947 sql=;
-10:43PM INF Query args=["users","BASE TABLE"] module=pgx pid=8947 rowCount=1 sql="SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = $1 AND table_type = $2"
-10:43PM INF Exec args=[] commandTag=Q1JFQVRFIFRBQkxF module=pgx pid=8947 sql="CREATE TABLE \"users\" (\"id\" bigserial,\"created_at\" timestamptz,\"updated_at\" timestamptz,\"deleted_at\" timestamptz,\"username\" varchar(63) NOT NULL,PRIMARY KEY (\"id\"))"
-10:43PM INF Exec args=[] commandTag=Q1JFQVRFIElOREVY module=pgx pid=8947 sql="CREATE INDEX \"idx_users_deleted_at\" ON \"users\" (\"deleted_at\")"
-10:43PM INF Query args=["binary_files","BASE TABLE"] module=pgx pid=8947 rowCount=1 sql="SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = $1 AND table_type = $2"
-10:43PM INF Exec args=[] commandTag=Q1JFQVRFIFRBQkxF module=pgx pid=8947 sql="CREATE TABLE \"binary_files\" (\"id\" bigserial,\"created_at\" timestamptz,\"updated_at\" timestamptz,\"deleted_at\" timestamptz,\"user_id\" bigint NOT NULL,\"filename\" text NOT NULL,\"body\" bytea,PRIMARY KEY (\"id\"),CONSTRAINT \"fk_users_binary_files\" FOREIGN KEY (\"user_id\") REFERENCES \"users\"(\"id\"))"
-10:43PM INF Exec args=[] commandTag=Q1JFQVRFIElOREVY module=pgx pid=8947 sql="CREATE INDEX \"idx_binary_files_deleted_at\" ON \"binary_files\" (\"deleted_at\")"
-10:43PM INF closed connection module=pgx pid=8947
+0:00AM INF Dialing PostgreSQL server host=hostname module=pgx
+0:00AM INF Exec args=[] commandTag=null module=pgx pid=8193 sql=;
+0:00AM INF Query args=["users","BASE TABLE"] module=pgx pid=8193 rowCount=1 sql="SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = $1 AND table_type = $2"
+0:00AM INF Exec args=[] commandTag=Q1JFQVRFIFRBQkxF module=pgx pid=8193 sql="CREATE TABLE \"users\" (\"id\" bigserial,\"created_at\" timestamptz,\"updated_at\" timestamptz,\"deleted_at\" timestamptz,\"username\" varchar(63) NOT NULL UNIQUE,PRIMARY KEY (\"id\"))"
+0:00AM INF Exec args=[] commandTag=Q1JFQVRFIElOREVY module=pgx pid=8193 sql="CREATE INDEX \"idx_users_deleted_at\" ON \"users\" (\"deleted_at\")"
+0:00AM INF Query args=["binary_files","BASE TABLE"] module=pgx pid=8193 rowCount=1 sql="SELECT count(*) FROM information_schema.tables WHERE table_schema = CURRENT_SCHEMA() AND table_name = $1 AND table_type = $2"
+0:00AM INF Exec args=[] commandTag=Q1JFQVRFIFRBQkxF module=pgx pid=8193 sql="CREATE TABLE \"binary_files\" (\"id\" bigserial,\"created_at\" timestamptz,\"updated_at\" timestamptz,\"deleted_at\" timestamptz,\"user_id\" bigint NOT NULL,\"filename\" text NOT NULL UNIQUE,\"body\" bytea,PRIMARY KEY (\"id\"),CONSTRAINT \"fk_users_binary_files\" FOREIGN KEY (\"user_id\") REFERENCES \"users\"(\"id\"))"
+0:00AM INF Exec args=[] commandTag=Q1JFQVRFIElOREVY module=pgx pid=8193 sql="CREATE INDEX \"idx_binary_files_deleted_at\" ON \"binary_files\" (\"deleted_at\")"
+0:00AM INF closed connection module=pgx pid=8193
 ```
 
 よーし，うむうむ，よーし。
@@ -227,7 +227,6 @@ $ go run sample3b.go
 | Tag Name                             | Sample Code                                                   |
 | ------------------------------------ | ------------------------------------------------------------- |
 | `column`                             | \``gorm:"column:column_name"`\`                               |
-| `unique`                             | \``gorm:"unique"`\`                                           |
 | `autoIncrement`                      | \``gorm:"autoIncrement"`\`                                    |
 | `index`                              | \``gorm:"index"`\`<br>\``gorm:"index:idx_name"`\`             |
 | `uniqueIndex`                        | \``gorm:"uniqueIndex"`\`                                      |
@@ -237,7 +236,7 @@ $ go run sample3b.go
 https://sql2gorm.mccode.info/
 https://github.com/cascax/sql2gorm
 
-[GORM] では Migrator というインタフェースを用意していて，テーブル生成・変更・削除に関する機能を提供している。ただし DBMS によっては全ての機能を提供していない場合がある。
+[GORM] では Migrator というインタフェースが用意されていて，これを使ってテーブル生成・変更・削除に関する機能をサービス横断的に提供されている。ただし DBMS によっては全ての機能を提供していない場合もある。
 
 ```go:go-gorm/gorm/migrator.go
 type Migrator interface {
@@ -293,12 +292,11 @@ if err := gormCtx.GetDb().Migrator().DropTable(&model.User{}, &model.BinaryFile{
 
 ```
 $ go run sample4.go 
-10:43PM INF Dialing PostgreSQL server host=hostname module=pgx
-10:43PM INF Exec args=[] commandTag=null module=pgx pid=4565 sql=;
-10:43PM INF Exec args=[] commandTag=RFJPUCBUQUJMRQ== module=pgx pid=4565 sql="DROP TABLE IF EXISTS \"binary_files\" CASCADE"
-10:43PM INF Exec args=[] commandTag=RFJPUCBUQUJMRQ== module=pgx pid=4565 sql="DROP TABLE IF EXISTS \"users\" CASCADE"
-10:43PM INF closed connection module=pgx pid=4565
-
+0:00AM INF Dialing PostgreSQL server host=hostname module=pgx
+0:00AM INF Exec args=[] commandTag=null module=pgx pid=4565 sql=;
+0:00AM INF Exec args=[] commandTag=RFJPUCBUQUJMRQ== module=pgx pid=4565 sql="DROP TABLE IF EXISTS \"binary_files\" CASCADE"
+0:00AM INF Exec args=[] commandTag=RFJPUCBUQUJMRQ== module=pgx pid=4565 sql="DROP TABLE IF EXISTS \"users\" CASCADE"
+0:00AM INF closed connection module=pgx pid=4565
 ```
 
 などとテーブル間の関係（foreign key のあたり）をちゃんと認識しているのか `binary_files` → `users` の順に DROP してくれた。賢い！

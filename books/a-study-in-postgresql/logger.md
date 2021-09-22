@@ -40,8 +40,8 @@ func main() {
 
 ```
 $ go run sample0.go
-{"level":"error","error":"invalid argument","time":"2021-09-19T20:11:32+09:00"}
-{"level":"error","error":{"Type":"*errs.Error","Err":{"Type":"*errors.errorString","Msg":"invalid argument"},"Context":{"function":"main.Run"}},"time":"2021-09-19T20:11:32+09:00","message":"sample error"}
+{"level":"error","error":"invalid argument","time":"2021-09-20T00:00:00+09:00"}
+{"level":"error","error":{"Type":"*errs.Error","Err":{"Type":"*errors.errorString","Msg":"invalid argument"},"Context":{"function":"main.Run"}},"time":"2021-09-20T00:00:00+09:00","message":"sample error"}
 ```
 
 などと出力される。ちょっと分かりにくいから [jq] で整形してみるか。
@@ -51,7 +51,7 @@ $ go run sample0.go | jq .
 {
   "level": "error",
   "error": "invalid argument",
-  "time": "2021-09-19T20:13:13+09:00"
+  "time": "2021-09-20T00:00:00+09:00"
 }
 {
   "level": "error",
@@ -65,7 +65,7 @@ $ go run sample0.go | jq .
       "function": "main.Run"
     }
   },
-  "time": "2021-09-19T20:13:13+09:00",
+  "time": "2021-09-20T00:00:00+09:00",
   "message": "sample error"
 }
 ```
@@ -96,8 +96,8 @@ func Run() exitcode.ExitCode {
 
 ```
 $ go run sample0b.go
-8:21PM ERR  error="invalid argument"
-8:21PM ERR sample error error={"Context":{"function":"main.Run"},"Err":{"Msg":"invalid argument","Type":"*errors.errorString"},"Type":"*errs.Error"}
+0:00AM ERR  error="invalid argument"
+0:00AM ERR sample error error={"Context":{"function":"main.Run"},"Err":{"Msg":"invalid argument","Type":"*errors.errorString"},"Type":"*errs.Error"}
 ```
 
 といった内容を色付きで出力してくれる。素晴らしい。
@@ -227,10 +227,10 @@ func Run() exitcode.ExitCode {
 
 ```
 $ go run sample1.go
-9:39PM INF Dialing PostgreSQL server host=hostname module=pgx
-9:39PM ERR Query args=[] err="ERROR: relation \"tablename\" does not exist (SQLSTATE 42P01)" module=pgx pid=27036 sql="SELECT * FROM tablename"
-9:39PM ERR  error={"Context":{"function":"main.Run"},"Err":{"Msg":"ERROR: relation \"tablename\" does not exist (SQLSTATE 42P01)","Type":"*pgconn.PgError"},"Type":"*errs.Error"}
-9:39PM INF closed connection module=pgx pid=27036
+0:00AM INF Dialing PostgreSQL server host=hostname module=pgx
+0:00AM ERR Query args=[] err="ERROR: relation \"tablename\" does not exist (SQLSTATE 42P01)" module=pgx pid=27036 sql="SELECT * FROM tablename"
+0:00AM ERR  error={"Context":{"function":"main.Run"},"Err":{"Msg":"ERROR: relation \"tablename\" does not exist (SQLSTATE 42P01)","Type":"*pgconn.PgError"},"Type":"*errs.Error"}
+0:00AM INF closed connection module=pgx pid=27036
 ```
 
 という感じにエラーになる。まぁ，ログ出力の確認は出来たということで（笑）

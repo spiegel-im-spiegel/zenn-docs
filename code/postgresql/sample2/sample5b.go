@@ -4,6 +4,7 @@
 package main
 
 import (
+	"context"
 	"fmt"
 	"os"
 	"sample/files"
@@ -12,7 +13,6 @@ import (
 
 	"github.com/spiegel-im-spiegel/errs"
 	"github.com/spiegel-im-spiegel/gocli/exitcode"
-	"gorm.io/gorm"
 )
 
 func Run() exitcode.ExitCode {
@@ -45,8 +45,8 @@ func Run() exitcode.ExitCode {
 		},
 	}
 
-	// insert data (dry run)
-	tx := gormCtx.GetDb().Session(&gorm.Session{DryRun: true}).Create(data)
+	// insert data
+	tx := gormCtx.GetDb().WithContext(context.TODO()).Create(data)
 	if tx.Error != nil {
 		gormCtx.GetLogger().Error().Interface("error", errs.Wrap(tx.Error)).Send()
 		return exitcode.Abnormal

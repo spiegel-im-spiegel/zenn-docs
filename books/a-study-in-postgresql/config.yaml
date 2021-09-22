@@ -15,5 +15,6 @@ chapters:
   - connect-with-gorm
   - refactoring-1
   - models-with-gorm
+  - crud-with-gorm
   - reference
   - colophon
