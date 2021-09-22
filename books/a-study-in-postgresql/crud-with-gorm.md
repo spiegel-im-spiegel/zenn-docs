@@ -123,6 +123,44 @@ $ go run sample5b.go
 
 と `users.username` の一意制約違反でエラーになったのが分かる。よしよし。
 
+`users` テーブルのレコードが1つしかないのは寂しいのでもう一つ追加しておくか。
+
+```go:sample5c.go
+func Run() exitcode.ExitCode {
+	// create gorm.DB instance for PostgreSQL service
+	gormCtx, err := orm.NewGORM()
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		return exitcode.Abnormal
+	}
+	defer gormCtx.Close()
+
+	file3 := "files/file3.txt"
+	bin3, err := files.GetBinary(file3)
+	if err != nil {
+		gormCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Send()
+		return exitcode.Abnormal
+	}
+
+	data := &model.User{
+		Username: "Bob",
+		BinaryFiles: []model.BinaryFile{
+			{Filename: file3, Body: bin3},
+		},
+	}
+
+	// insert data
+	tx := gormCtx.GetDb().WithContext(context.TODO()).Create(data)
+	if tx.Error != nil {
+		gormCtx.GetLogger().Error().Interface("error", errs.Wrap(tx.Error)).Send()
+		return exitcode.Abnormal
+	}
+
+	return exitcode.Normal
+}
+```
+
+
 ## Read
 
 今度は前項で作ったデータを読みだしてみる。
@@ -193,15 +231,69 @@ if err := files.Output(os.Stdout, data); err != nil {
 
 ```
 $ go run sample6b.go
-0:00AM INF Dialing PostgreSQL server host=hostname module=pgx
-0:00AM INF Exec args=[] commandTag=null module=pgx pid=12334 sql=;
-0:00AM INF Query args=[] module=pgx pid=12334 rowCount=1 sql="SELECT * FROM \"users\" WHERE \"users\".\"deleted_at\" IS NULL"
-[{"ID":1,"CreatedAt":"2021-09-20T00:00:00.041478+09:00","UpdatedAt":"2021-09-20T00:00:00.041478+09:00","DeletedAt":null,"Username":"Alice","BinaryFiles":null}]
-0:00AM INF closed connection module=pgx pid=12334
+0:00AM INF Dialing PostgreSQL server host=arjuna.db.elephantsql.com module=pgx
+0:00AM INF Exec args=[] commandTag=null module=pgx pid=16676 sql=;
+0:00AM INF Query args=[] module=pgx pid=16676 rowCount=2 sql="SELECT * FROM \"users\" WHERE \"users\".\"deleted_at\" IS NULL"
+[{"ID":1,"CreatedAt":"2021-09-20T00:00:00.041478+09:00","UpdatedAt":"2021-09-20T00:00:00.041478+09:00","DeletedAt":null,"Username":"Alice","BinaryFiles":null},{"ID":3,"CreatedAt":"2021-09-20T00:00:00.282635+09:00","UpdatedAt":"2021-09-20T00:00:00.282635+09:00","DeletedAt":null,"Username":"Bob","BinaryFiles":null}]
+0:00AM INF closed connection module=pgx pid=16676
 ```
 
 問題なさそうだね。当然ではあるが User.BinaryFiles のフィールドには何も入らないので null になっている。
 
+では User.BinaryFiles にも値を詰めたい場合はどうするかというと Preload() メソッドを使う。
+
+```go:sample7.go
+import (
+	"context"
+	"fmt"
+	"os"
+	"sample/files"
+	"sample/gorm/model"
+	"sample/orm"
+
+	"github.com/spiegel-im-spiegel/errs"
+	"github.com/spiegel-im-spiegel/gocli/exitcode"
+	"gorm.io/gorm/clause"
+)
+
+func Run() exitcode.ExitCode {
+	// create gorm.DB instance for PostgreSQL service
+	gormCtx, err := orm.NewGORM()
+	if err != nil {
+		fmt.Fprintln(os.Stderr, err)
+		return exitcode.Abnormal
+	}
+	defer gormCtx.Close()
+
+	// select all records (with preload)
+	data := []model.User{}
+	tx := gormCtx.GetDb().WithContext(context.TODO()).Preload(clause.Associations).Find(&data)
+	if tx.Error != nil {
+		gormCtx.GetLogger().Error().Interface("error", errs.Wrap(tx.Error)).Send()
+		return exitcode.Abnormal
+	}
+
+	// output by JSON format
+	if err := files.Output(os.Stdout, data); err != nil {
+		gormCtx.GetLogger().Error().Interface("error", errs.Wrap(tx.Error)).Send()
+		return exitcode.Abnormal
+	}
+
+	return exitcode.Normal
+}
+```
+
+これは dry run が上手く働かないみたいなので，いきなり実行する。実行結果は以下の通り。
+
+```
+$ go run sample7.go
+0:00AM INF Dialing PostgreSQL server host=arjuna.db.elephantsql.com module=pgx
+0:00AM INF Exec args=[] commandTag=null module=pgx pid=17949 sql=;
+0:00AM INF Query args=[] module=pgx pid=17949 rowCount=2 sql="SELECT * FROM \"users\" WHERE \"users\".\"deleted_at\" IS NULL"
+0:00AM INF Query args=[1,3] module=pgx pid=17949 rowCount=3 sql="SELECT * FROM \"binary_files\" WHERE \"binary_files\".\"user_id\" IN ($1,$2) AND \"binary_files\".\"deleted_at\" IS NULL"
+[{"ID":1,"CreatedAt":"2021-09-20T00:00:00.041478+09:00","UpdatedAt":"2021-09-20T00:00:00.041478+09:00","DeletedAt":null,"Username":"Alice","BinaryFiles":[{"ID":1,"CreatedAt":"2021-09-20T00:00:00.118119+09:00","UpdatedAt":"2021-09-20T00:00:00.118119+09:00","DeletedAt":null,"UserId":1,"Filename":"files/file1.txt","Body":"SGVsbG8hIEkgYW0gZmlsZSBudW1iZXIgMS4K"},{"ID":2,"CreatedAt":"2021-09-20T00:00:00.118119+09:00","UpdatedAt":"2021-09-20T00:00:00.118119+09:00","DeletedAt":null,"UserId":1,"Filename":"files/file2.txt","Body":"SGVsbG8hIEkgYW0gZmlsZSBudW1iZXIgMi4K"}]},{"ID":3,"CreatedAt":"2021-09-20T00:00:00.282635+09:00","UpdatedAt":"2021-09-20T00:00:00.282635+09:00","DeletedAt":null,"Username":"Bob","BinaryFiles":[{"ID":3,"CreatedAt":"2021-09-20T00:00:00.361274+09:00","UpdatedAt":"2021-09-20T00:00:00.361274+09:00","DeletedAt":null,"UserId":3,"Filename":"files/file3.txt","Body":"SGVsbG8hIEkgYW0gZmlsZSBudW1iZXIgMy4K"}]}]
+0:00AM INF closed connection module=pgx pid=17949
+```
 
 
 
@@ -212,16 +304,11 @@ $ go run sample6b.go
 
 
 
-
-
-
-
-
-[Go]: https://go.dev/
+[GORM]: https://gorm.io/ "GORM - The fantastic ORM library for Golang, aims to be developer friendly."
 [PostgreSQL]: https://www.postgresql.org/ "PostgreSQL: The world's most advanced open source database"
 [ElephantSQL]: https://www.elephantsql.com/ "ElephantSQL - PostgreSQL as a Service"
 [database/sql]: https://pkg.go.dev/database/sql "sql package - database/sql - pkg.go.dev"
 [io]: https://pkg.go.dev/io "io package - io - pkg.go.dev"
 [encoding/json]: https://pkg.go.dev/encoding/json "json package - encoding/json - pkg.go.dev"
-[GORM]: https://gorm.io/ "GORM - The fantastic ORM library for Golang, aims to be developer friendly."
 [github.com/jackc/pgx]: https://github.com/jackc/pgx "jackc/pgx: PostgreSQL driver and toolkit for Go"
+[Go]: https://go.dev/
