@@ -56,7 +56,7 @@ $ go run github.com/a8m/enter@latest ./ent/schema
 
 などとやると er.html ファイルを出力する。中身は [mermaid.js] の記法で書かれた ER 図で，ブラウザで開くと以下のように表示される。
 
-![](https://storage.googleapis.com/zenn-user-upload/0207204cb98bcc2cc5c8335d.png)
+![](/images/books/a-study-in-postgresql/mermaid.png)
 
 （JavaScript で表示を若干いじってるようで，そのまま [mermaid][mermaid.js] 記法のコードを Zenn に持ち込めないのが残念）
 
