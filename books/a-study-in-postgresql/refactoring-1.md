@@ -120,7 +120,10 @@ const (
 func init() {
     //load ${XDG_CONFIG_HOME}/${ServiceName}/env file
     if err := godotenv.Load(config.Path(ServiceName, "env")); err != nil {
-        panic(err)
+        //load .env file
+        if err := godotenv.Load(); err != nil {
+            panic(err)
+        }
     }
 }
 
@@ -144,6 +147,8 @@ func EnableLogFile() bool {
     return strings.EqualFold(os.Getenv("ENABLE_LOGFILE"), "true")
 }
 ```
+
+設定ファイルの読み込みに失敗したら既定の .env ファイルで読み直すようにしてみた。
 
 ## loggr サブパッケージ
 
@@ -395,8 +400,7 @@ $ go run sample2.go
 
 ん，問題なく SELECT 文でエラーになるね（笑）
 
-まぁ，パッケージ間の関係が密すぎてテストが書きにくい（つか書けんな，これ）のはご容赦。もう少し弄りたい気持ちはあるが，今回はこの辺で勘弁してやろう（笑）
-
+まぁ，パッケージ間の関係が密すぎてテストが書きにくい（つか書けんな，これ）のはご容赦。もう少し弄りたい気持ちはあるが，今回は調査だし，この辺で勘弁してやろう（笑）
 
 [Go]: https://go.dev/
 [PostgreSQL]: https://www.postgresql.org/ "PostgreSQL: The world's most advanced open source database"

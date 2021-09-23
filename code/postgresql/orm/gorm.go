@@ -25,7 +25,7 @@ func NewGORM() (*GormContext, error) {
 		Logger: pgxCtx.GetLogger(),
 	}
 	loggr := logger.Discard
-	if env.LogLevel() == env.LevelDebug {
+	if env.LogLevel() >= env.LevelDebug {
 		loggr = logger.Default.LogMode(logger.Info)
 	}
 	gormCtx.Db, err = gorm.Open(postgres.New(postgres.Config{

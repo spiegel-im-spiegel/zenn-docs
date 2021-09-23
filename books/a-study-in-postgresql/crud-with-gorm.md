@@ -409,7 +409,19 @@ tx = gormCtx.GetDb().Session(&gorm.Session{DryRun: true}).Unscoped().Delete(&dat
 となった。ちなみに，検索（SELECT）のときも Unscoped() メソッドを噛ませれば `deleted_at` カラムを無視してくれるらしい。もっとも本当に
 
 ```go:sample9c.go
+// select data for 'Bob 2nd'
+data := model.User{}
+tx := gormCtx.GetDb().WithContext(context.TODO()).Unscoped().Where(&model.User{Username: "Bob 2nd"}).First(&data)
+if tx.Error != nil {
+    gormCtx.GetLogger().Error().Interface("error", errs.Wrap(tx.Error)).Send()
+    return exitcode.Abnormal
+}
+// delete data in users table (dry run)
 tx = gormCtx.GetDb().WithContext(context.TODO()).Unscoped().Delete(&data)
+if tx.Error != nil {
+    gormCtx.GetLogger().Error().Interface("error", errs.Wrap(tx.Error)).Send()
+    return exitcode.Abnormal
+}
 ```
 
 で物理削除しようとしたら
@@ -446,9 +458,9 @@ tx := gormCtx.GetDb().Session(&gorm.Session{DryRun: true}).Exec("UPDATE users SE
 tx := gormCtx.GetDb().Session(&gorm.Session{DryRun: true}).Exec("DELETE FROM users") // delete permanently
 ```
 
-で書いたら行けるようだ。なんだかなぁ。
+と書けば行けるようだ。なんだかなぁ。
 
-## トランアクション処理
+## トランザクション処理
 
 ひとつのトランザクションの中で複数の CRUD 処理を行いたいことも当然ある。 [GORM] では Begin(), Commit(), Rollback() といった伝統的なメソッドも用意されている。
 
@@ -463,9 +475,27 @@ tx.Commit()
 return exitcode.Normal
 ```
 
-しかし [GORM] には Transaction() メソッドが用意されていて，これがかなり秀逸である。これは書いたほうが早いだろう。
+しかし [GORM] には Transaction() メソッドが用意されていて，これがかなり秀逸である。実際にコードを書いたほうが早いだろう。
 
 ```go:sample10.go
+file1 := "files/file1.txt"
+bin1, err := files.GetBinary(file1)
+if err != nil {
+    gormCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Send()
+    return exitcode.Abnormal
+}
+file2 := "files/file2.txt"
+bin2, err := files.GetBinary(file2)
+if err != nil {
+    gormCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Send()
+    return exitcode.Abnormal
+}
+file3 := "files/file3.txt"
+bin3, err := files.GetBinary(file3)
+if err != nil {
+    gormCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Send()
+    return exitcode.Abnormal
+}
 data1 := &model.User{
     Username: "Alice",
     BinaryFiles: []model.BinaryFile{
@@ -494,7 +524,24 @@ if err := gormCtx.GetDb().WithContext(context.TODO()).Transaction(func(tx *gorm.
 }
 ```
 
-これで commit や rollback の鬱陶しい取り回しから解放される。素晴らしい！
+上のコードはバイナリデータを全てメモリ上に保持ってしまってるが，良い子はマネしないように（笑） このコードの実行結果は以下の通り。
+
+```
+$ go run sample10.go 
+0:00AM INF Dialing PostgreSQL server host=hostname module=pgx
+0:00AM INF Exec args=[] commandTag=null module=pgx pid=23629 sql=;
+0:00AM INF Exec args=[] commandTag=QkVHSU4= module=pgx pid=23629 sql=begin
+0:00AM INF Query args=["2021-09-20T00:00:00.57261701+09:00","2021-09-20T00:00:00.57261701+09:00",null,"Alice"] module=pgx pid=23629 rowCount=1 sql="INSERT INTO \"users\" (\"created_at\",\"updated_at\",\"deleted_at\",\"username\") VALUES ($1,$2,$3,$4) RETURNING \"id\""
+0:00AM INF Query args=["2021-09-20T00:00:00.677252677+09:00","2021-09-20T00:00:00.677252677+09:00",null,1,"files/file1.txt","48656c6c6f21204920616d2066696c65206e756d62657220312e0a","2021-09-20T00:00:00.677252677+09:00","2021-09-20T00:00:00.677252677+09:00",null,1,"files/file2.txt","48656c6c6f21204920616d2066696c65206e756d62657220322e0a"] module=pgx pid=23629 rowCount=2 sql="INSERT INTO \"binary_files\" (\"created_at\",\"updated_at\",\"deleted_at\",\"user_id\",\"filename\",\"body\") VALUES ($1,$2,$3,$4,$5,$6),($7,$8,$9,$10,$11,$12) ON CONFLICT (\"id\") DO UPDATE SET \"user_id\"=\"excluded\".\"user_id\" RETURNING \"id\""
+0:00AM INF Query args=["2021-09-20T00:00:00.820487738+09:00","2021-09-20T00:00:00.820487738+09:00",null,"Bob"] module=pgx pid=23629 rowCount=1 sql="INSERT INTO \"users\" (\"created_at\",\"updated_at\",\"deleted_at\",\"username\") VALUES ($1,$2,$3,$4) RETURNING \"id\""
+0:00AM INF Query args=["2021-09-20T00:00:00.915438304+09:00","2021-09-20T00:00:00.915438304+09:00",null,2,"files/file3.txt","48656c6c6f21204920616d2066696c65206e756d62657220332e0a"] module=pgx pid=23629 rowCount=1 sql="INSERT INTO \"binary_files\" (\"created_at\",\"updated_at\",\"deleted_at\",\"user_id\",\"filename\",\"body\") VALUES ($1,$2,$3,$4,$5,$6) ON CONFLICT (\"id\") DO UPDATE SET \"user_id\"=\"excluded\".\"user_id\" RETURNING \"id\""
+0:00AM INF Exec args=[] commandTag=Q09NTUlU module=pgx pid=23629 sql=commit
+0:00AM INF closed connection module=pgx pid=23629
+```
+
+このように commit や rollback に関するハンドリングは Transaction() 側に丸投げでき Transaction() を呼び出した側は error ハンドリングに専念できる。素晴らしい！
+
+トランザクション処理では成功時と失敗時で後始末処理が異なるのが（defer が使えないため）すこぶる鬱陶しいのだが，こうやって一連の処理をリテラル関数で括ってしまえばいいのか。どこぞの try-catch よりはだいぶマシなアイデアかな。これは覚えておこう。
 
 [GORM]: https://gorm.io/ "GORM - The fantastic ORM library for Golang, aims to be developer friendly."
 [PostgreSQL]: https://www.postgresql.org/ "PostgreSQL: The world's most advanced open source database"

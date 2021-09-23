@@ -2,7 +2,7 @@
 title: "GORM による Model (Entity) の設計"
 ---
 
-この節から以下の関係を持つ2つのテーブルを作ってデータの読み書きを試してみることにする。まずは MVC (Model-View-Controller) で言うところの Model の定義から。
+この節から以下の関係を持つ2つのテーブルを作ってデータの読み書きを試してみることにする。
 
 ```mermaid
 erDiagram
@@ -29,7 +29,7 @@ binary_files {
 
 ```
 
-大方の [Go] 製 ORM と同じく [GORM] でも Model 定義は構造体を使う。今回であればこんな感じでどうだろう。
+まずは MVC (Model-View-Controller) で言うところの Model の定義から。大方の [Go] 製 ORM と同じく [GORM] でも Model 定義は構造体を使う。今回であればこんな感じでどうだろう。
 
 ```go
 package model

@@ -4,6 +4,7 @@ title: "GORM で PostgreSQL に接続する"
 
 [GORM] は [Go] 向けの ORM (Object Relational Mapper) ハンドリング・パッケージとしては定番のひとつになっている。
 
+https://gorm.io/
 https://github.com/go-gorm/gorm
 
 ORM としての基本機能はきちんと押さえられていて，その上でテーブル設計や SQL 文構築の自由度が高いのが特徴と言えるだろう。その代わり型の解釈等で挙動が怪しくなる場合があるため，取り回しでは若干の注意を要する（まぁ interface{} 型を使って無理やり汎化してるので仕方ない面はあるのだが）。
@@ -88,9 +89,9 @@ db, err := gorm.Open(postgres.New(postgres.Config{
 })
 ```
 
-が核心部分だね。なお，このコードでは [GORM] の logger は潰してある（nil をセットしても潰せないので注意）。
+が核心部分だね。なお，上のコードでは [GORM] のログ出力は logger.Discard で潰してある（nil をセットしても潰せないので注意）。
 
-[GORM] は専用の logger を持っているのだがショージキ微妙。これなら [github.com/simukti/sqldb-logger] パッケージみたいなのを使ってサードパーティの logger を受け付けるようにして欲しかった。まぁ，でも，デバッグ中に [GORM] の内部状態を知りたいこともあるだろうから，その場合は logger.Default などをセットすればいいだろう。
+[GORM] は専用の logger を持っているのだがショージキ微妙。これなら [github.com/simukti/sqldb-logger] パッケージみたいなのを使ってサードパーティの logger を受け付けるようにして欲しかった。まぁ，でも，デバッグ中に [GORM] の内部状態を知りたいこともあるだろうから，その場合は logger.Default.LogMode(logger.Info) などと詳細情報を出力できるよう設定すればいいだろう。
 
 [Go]: https://go.dev/
 [PostgreSQL]: https://www.postgresql.org/ "PostgreSQL: The world's most advanced open source database"

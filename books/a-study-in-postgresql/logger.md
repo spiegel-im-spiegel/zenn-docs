@@ -70,7 +70,9 @@ $ go run sample0.go | jq .
 }
 ```
 
-どやさ！ ちなみに [github.com/spiegel-im-spiegel/errs] は拙作のエラーハンドリング・パッケージで， MarshalJSON() メソッドを持っているため，エラー詳細を JSON 形式で出力することができる。
+どやさ！ ちなみに [github.com/spiegel-im-spiegel/errs] は拙作のエラーハンドリング・パッケージで， MarshalJSON() メソッドを持っているため，エラー詳細を JSON 形式で出力することができる。また，エラーが発生した関数を保持る機能があるので発生するたびに [errs][github.com/spiegel-im-spiegel/errs].Wrap() 関数でラッピングしていけば（スタック情報をダンプアウトしなくても[^err1]）発生経路を追うことができるというのが自慢である（笑）
+
+[^err1]: 私は「[スタック情報は9割以上がゴミ](https://zenn.dev/spiegel/books/error-handling-in-golang/viewer/error-logging)」という危険思想の持ち主なのであしからず。
 
 [github.com/rs/zerolog] は更に標準出力専用のアダプタも持っているので [io].MultiWriter() 関数を使って
 

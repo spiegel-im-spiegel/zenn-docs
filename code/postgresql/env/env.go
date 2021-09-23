@@ -17,7 +17,10 @@ const (
 func init() {
 	//load ${XDG_CONFIG_HOME}/${ServiceName}/env file
 	if err := godotenv.Load(config.Path(ServiceName, "env")); err != nil {
-		panic(err)
+		//load .env file
+		if err := godotenv.Load(); err != nil {
+			panic(err)
+		}
 	}
 }
 
