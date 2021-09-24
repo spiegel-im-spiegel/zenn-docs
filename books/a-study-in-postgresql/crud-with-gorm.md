@@ -106,7 +106,7 @@ $ go run sample5b.go
 0:00AM INF closed connection module=pgx pid=15111
 ```
 
-という感じに [pgx][github.com/jackc/pgx] レベルのログで正しく SQL 文が発行され coomit まで完了していることが分かる。 [ElephantSQL] のブラウザでも確認できたので，大丈夫だろう。 `binary_files` テーブルのデータが（slice を読み取って）複数ちゃんと作成できてる点に注目してほしい。
+という感じに [pgx][github.com/jackc/pgx] レベルのログで正しく SQL 文が発行され coomit まで完了していることが分かる。 [ElephantSQL] の SQL Browser でも確認できたので，大丈夫だろう。 `binary_files` テーブルのデータが（slice を読み取って）複数ちゃんと作成できてる点に注目してほしい。
 
 ちなみに同じコマンドをもう一度叩くと
 
@@ -541,7 +541,7 @@ $ go run sample10.go
 
 このように commit や rollback に関するハンドリングは Transaction() 側に丸投げでき Transaction() を呼び出した側は error ハンドリングに専念できる。素晴らしい！
 
-トランザクション処理では成功時と失敗時で後始末処理が異なるのが（defer が使えないため）すこぶる鬱陶しいのだが，こうやって一連の処理をリテラル関数で括ってしまえばいいのか。どこぞの try-catch よりはだいぶマシなアイデアかな。これは覚えておこう。
+トランザクション処理では成功時と失敗時で後始末が異なるので（defer が使えないため）すこぶる鬱陶しいのだが，こうやって一連の処理をリテラル関数で括ってしまえばいいのか。どこぞの try-catch よりはだいぶマシなアイデアかな。これは覚えておこう。
 
 [GORM]: https://gorm.io/ "GORM - The fantastic ORM library for Golang, aims to be developer friendly."
 [PostgreSQL]: https://www.postgresql.org/ "PostgreSQL: The world's most advanced open source database"
