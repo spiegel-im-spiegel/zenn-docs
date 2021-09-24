@@ -4,7 +4,7 @@ title: "PostgreSQL に接続する"
 
 では実際に PostgreSQL サービスに接続してみよう。
 
-[Go] の標準パッケージである [database/sql] を使って RDB サービスに接続するには DB の種別ごとに「ドライバ」と呼ばれるパッケージをインポートする必要がある。 [PostgreSQL] の場合は [github.com/lib/pq] が定番として使われることが多かった。
+[Go] の標準パッケージである [database/sql] を使って RDBMS に接続するには DB の種別ごとに「ドライバ」と呼ばれるパッケージをインポートする必要がある。 [PostgreSQL] の場合は [github.com/lib/pq] が定番として使われることが多かった。
 
 ```go
 //go:build run

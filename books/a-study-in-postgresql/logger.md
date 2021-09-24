@@ -46,7 +46,7 @@ $ go run sample0.go
 
 などと出力される。ちょっと分かりにくいから [jq] で整形してみるか。
 
-```
+```json
 $ go run sample0.go | jq .
 {
   "level": "error",

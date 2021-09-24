@@ -11,6 +11,18 @@ title: "ent で CRUD"
 CreateBulk() というメソッドを使えば複数レコードを一気に作成できるとあったので，以下のようなコードを組んだわけさ。
 
 ```go:sample4.go
+import (
+    "context"
+    "fmt"
+    "os"
+    "sample/dbconn"
+    "sample/ent"
+    "sample/files"
+
+    "github.com/spiegel-im-spiegel/errs"
+    "github.com/spiegel-im-spiegel/gocli/exitcode"
+)
+
 func Run() exitcode.ExitCode {
     // get ent context
     entCtx, err := dbconn.NewEnt()
@@ -75,9 +87,20 @@ $ go run sample4.go
 0:00AM INF closed connection module=pgx pid=4263
 ```
 
-エラーになっちゃったよ。よく分からないが，ヘンテコな SQL 文を投げてるように見えるなぁ。どうも one-to-many で入れ子になっているデータ構造をそのまま突っ込んでもダメらしい。しょうがない，地道にやるか。
+エラーになっちゃったよ。ログを眺めてもよく分からないが，ヘンテコな SQL 文を投げてるように見える。どうも one-to-many で入れ子になっているデータ構造をそのまま突っ込んでもダメらしい。しょうがない，地道にやるか。
 
 ```go:sample4-1.go
+import (
+    "context"
+    "fmt"
+    "os"
+    "sample/dbconn"
+    "sample/files"
+
+    "github.com/spiegel-im-spiegel/errs"
+    "github.com/spiegel-im-spiegel/gocli/exitcode"
+)
+
 func Run() exitcode.ExitCode {
     // get ent context
     entCtx, err := dbconn.NewEnt()
@@ -170,7 +193,7 @@ type EntContext struct {
 func (entCtx *EntContext) Transaction(ctx context.Context, fn func(tx *ent.Tx) error) error {
     client := entCtx.GetClient()
     if client == nil {
-        return errs.New("null referenc instance")
+        return errs.New("null reference instance")
     }
     logger := entCtx.GetLogger()
 
@@ -205,6 +228,18 @@ func (entCtx *EntContext) Transaction(ctx context.Context, fn func(tx *ent.Tx) e
 これを踏まえて，先程の sample4-1.go を以下のように書き直す。
 
 ```go:sample4-2.go
+import (
+    "context"
+    "fmt"
+    "os"
+    "sample/dbconn"
+    "sample/ent"
+    "sample/files"
+
+    "github.com/spiegel-im-spiegel/errs"
+    "github.com/spiegel-im-spiegel/gocli/exitcode"
+)
+
 func Run() exitcode.ExitCode {
     // get ent context
     entCtx, err := dbconn.NewEnt()
@@ -271,37 +306,48 @@ $ go run sample4-2.go
 
 ## Read
 
-サクッと全件検索。
+サクッと全件検索。 WithOwned() オプションを付けることで `owned` エッヂに紐づくノード（BinaryFile）のデータも一緒に取得できる。
 
 ```go:sample5.go
+import (
+    "context"
+    "fmt"
+    "os"
+    "sample/dbconn"
+    "sample/files"
+
+    "github.com/spiegel-im-spiegel/errs"
+    "github.com/spiegel-im-spiegel/gocli/exitcode"
+)
+
 func Run() exitcode.ExitCode {
-	// get ent context
-	entCtx, err := dbconn.NewEnt()
-	if err != nil {
-		fmt.Fprintln(os.Stderr, err)
-		return exitcode.Abnormal
-	}
-	defer entCtx.Close()
+    // get ent context
+    entCtx, err := dbconn.NewEnt()
+    if err != nil {
+        fmt.Fprintln(os.Stderr, err)
+        return exitcode.Abnormal
+    }
+    defer entCtx.Close()
 
-	// query all data
-	users, err := entCtx.GetClient().User.Query().WithOwned().All(context.TODO())
-	if err != nil {
-		entCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Send()
-		return exitcode.Abnormal
-	}
+    // query all data
+    users, err := entCtx.GetClient().User.Query().WithOwned().All(context.TODO())
+    if err != nil {
+        entCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Send()
+        return exitcode.Abnormal
+    }
 
-	if err := files.Output(os.Stdout, users); err != nil {
-		entCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Send()
-		return exitcode.Abnormal
-	}
+    if err := files.Output(os.Stdout, users); err != nil {
+        entCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Send()
+        return exitcode.Abnormal
+    }
 
-	return exitcode.Normal
+    return exitcode.Normal
 }
 ```
 
 これを実行すると
 
-```
+```json
 $ go run sample5.go | jq .
 [
   {
@@ -351,7 +397,26 @@ $ go run sample5.go | jq .
 ]
 ```
 
-となる（[jq] で整形済）。 WithOwned() オプションを付けることで `owned` エッヂに紐づくデータも一緒に取得できる。実体テーブルの `binary_files.user_owned` カラム自体は隠蔽されている点に注意。
+となる（[jq] で整形済）。 実体テーブルの `binary_files.user_owned` カラムは隠蔽されている点に注意。ログを見るとこんな感じになっていて JOIN で連結させて取ってきているわけではないようだ。
+
+```
+$ go run sample5.go
+0:00AM INF Dialing PostgreSQL server host=hostname module=pgx
+0:00AM INF Query args=[] module=pgx pid=28651 rowCount=2 sql="SELECT DISTINCT \"users\".\"id\", \"users\".\"username\", \"users\".\"created_at\", \"users\".\"updated_at\" FROM \"users\""
+0:00AM INF Query args=[1,2] module=pgx pid=28651 rowCount=3 sql="SELECT DISTINCT \"binary_files\".\"id\", \"binary_files\".\"filename\", \"binary_files\".\"body\", \"binary_files\".\"created_at\", \"binary_files\".\"updated_at\", \"binary_files\".\"user_owned\" FROM \"binary_files\" WHERE \"user_owned\" IN ($1, $2)"
+0:00AM INF closed connection module=pgx pid=28651
+```
+
+まぁ [GORM] の Preload() オプションも JOIN して取ってきてるわけじゃないし，こんなもんかな。オンライン・ドキュメントによると
+
+>Since a query-builder can load more than one association, it's not possible to load them using one `JOIN` operation. Therefore, `ent` executes additional queries for loading associations. One query for `M2O/O2M` and `O2O` edges, and 2 queries for loading `M2M` edges.
+>
+>Note that, we expect to improve this in the next versions of `ent`.
+(via “[Eager Loading | ent](https://entgo.io/docs/eager-load/)”)
+
+とのこと。今後の活躍にご期待ください，というところだろうか（笑）
+
+## Update
 
 
 

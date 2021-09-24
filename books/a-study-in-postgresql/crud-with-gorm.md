@@ -220,7 +220,7 @@ $ go run sample6b.go
 
 問題なさそうだね。当然ではあるが User.BinaryFiles のフィールドには何も入らないので null になっている。
 
-では User.BinaryFiles にも値を詰めたい場合はどうするかというと Preload() メソッドを使う。
+では User.BinaryFiles にも値を詰めたい場合はどうするかというと Preload() オプションを使う。
 
 ```go:sample7.go
 // select all records (with preload)

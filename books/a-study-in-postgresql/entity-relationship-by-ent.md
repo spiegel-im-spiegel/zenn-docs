@@ -87,12 +87,14 @@ func (BinaryFile) Edges() []ent.Edge {
 
 ## そもそも Edge ってなに？
 
-知ってる方には言わずもながなだが，そもそも Edge ってなに？ って話から。データのグラフ構造を表すときの最小単位が節（node）と枝（edge）である。
+知ってる方には言わずもながなだが，そもそも Edge ってなに？ って話から。
 
 ```mermaid
 graph LR
 A((Node)) -- Edge --> B((Node))
 ```
+
+このように，データのグラフ構造を表すときの最小単位が節（node）と枝（edge）である。
 
 上のコードに当てはめるなら
 
@@ -122,9 +124,9 @@ func (BinaryFile) Edges() []ent.Edge {
 
 となっている。
 
-Unique() オプション付与は `owner` エッヂの相手（From）ノードは唯一のレコードのみが紐づけられることを意味する。 `owned` エッヂには Unique() オプションはないので User (From) と BinaryFile (To) との関係（多重度）は one-to-many (O2M) であることが分かる。このように Unique() 属性を使って O2O, O2M, M2M の多重度を表現できる。
+Unique() オプション付与は `owner` エッヂの相手（From）ノードは唯一のレコードのみが紐づけられることを意味する。 `owned` エッヂには Unique() オプションはないので User (From) と BinaryFile (To) との関係（多重度）は one-to-many (O2M) であることが分かる。このように Unique() オプションを使って O2O, O2M, M2M の多重度を表現できる。
 
-更に Ref() オプションを使ってエッヂ間の関係を記述でき，これを使って foreign key を定義できる。なお Ref() オプションは To 側ノードが From 側ノードへのエッヂ定義としてのみ書ける。
+更に Ref() オプションを使ってエッヂ間の関係を記述でき，これを使って foreign key を定義できる。なお Ref() オプションは To 側ノードが From 側ノードへのエッヂ定義としてのみ書けるようだ。
 
 スキーマ定義を確認するには以下のコマンドを叩くとよい。
 
@@ -256,7 +258,7 @@ func (User) Annotations() []schema.Annotation {
 
 ### Validator は DDL に影響を与えない？
 
-たとえば `users.username` フィールドには組み込み validator を使って MaxLen(63) と定義していたのだが，別に `varchr(63)` とかにはなってくれないらしい。 DDL 側の定義を変更したいなら SchemaType() を使って
+`users.username` フィールドには組み込み validator を使って MaxLen(63) と定義していたのだが， DDL を見ても `varchr(63)` とかにはしてくれないらしい。 DDL 上の型を明示的に変更したいなら SchemaType() を使って
 
 ```go
 // Fields of the User.
@@ -277,7 +279,8 @@ func (User) Fields() []ent.Field {
 
 ### Primary Key の名前と型を変更したい
 
-Primary Key は暗黙的に int 型の `id` フィールドがセットされるが，`id` フィールドを上書き再定義することで名前と型を変更することができるようだ。
+Primary Key としては暗黙的に int 型の `id` フィールドが定義され，それがそのままカラム名になっている。
+`id` フィールドを上書き再定義することで DDL 上のカラム名と型を変更することができるようだ。
 
 ```go
 // Fields of the User.
@@ -296,9 +299,9 @@ func (User) Fields() []ent.Field {
 
 これも今回はしない。
 
-### 外部参照フィールドは NOT NULL にできない？
+### 外部参照カラムは NOT NULL にできない？
 
-どうも Edges() メソッドで定義される外部参照フィールド（今回なら `binary_files.user_owned`）は NOT NULL にできないっぽい。 Required() オプションは DDL に対しては効いてない感じ。元のレコードを削除するときの諸々の不都合を回避したいから？ なお，外部参照フィールドを foreign key にしたくない場合は DDL 生成処理の中で WithForeignKeys() 関数を使って
+Edges() メソッド定義で生成される外部参照カラム（今回なら `binary_files.user_owned`）は NOT NULL にできないっぽい。 Required() オプションは DDL に対しては効いてない感じ。元のレコードを削除するときの諸々の不都合を回避したいから？ なお，外部参照カラムを foreign key にしたくない場合は DDL 生成処理の中で WithForeignKeys() 関数を使って
 
 ```go
 // output DDL
@@ -310,20 +313,20 @@ if err := entCtx.GetClient().Schema.WriteTo(context.TODO(), os.Stdout, , migrate
 
 とすればいいらしい。後述の Create() メソッドでも同様にできる。今回はしない。
 
-### 外部参照フィールドの名前を変えたい
+### 外部参照カラム名を変えたいが...
 
-今回の構成では変えられない。よそのブログ等を見るに From/To を入れ替えて
+今回の構成では変えられない。他所様のブログ等を見るに From/To を入れ替えて
 
 ```mermaid
 graph RL
-BinaryFile((BinaryFile<From>)) -- Edge<owned> --> User((User<To>))
+BinaryFile((BinaryFile<From>)) -- Edge<owner> --> User((User<To>))
 ```
 
 という片方向の関連にすれば Field() オプションを使って Fields() メソッドで定義されたフィールド名に紐づけできるらしい。片方向は面白くないし，今回はそこまで名前に思い入れがあるわけではないので弄らないことにする。
 
 ### 再び DDL を生成する
 
-ここまででスキーマ定義は以下の通り
+ここまでのスキーマ定義は以下の通り
 
 ```go:ent/schema/user.go
 package schema
