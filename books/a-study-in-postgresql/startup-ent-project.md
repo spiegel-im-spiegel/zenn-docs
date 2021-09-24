@@ -204,7 +204,7 @@ func (User) Fields() []ent.Field {
 // Edges of the User.
 func (User) Edges() []ent.Edge {
     return []ent.Edge{
-        edge.To("files", BinaryFile.Type),
+        edge.To("owned", BinaryFile.Type),
     }
 }
 ```
@@ -245,8 +245,9 @@ func (BinaryFile) Fields() []ent.Field {
 func (BinaryFile) Edges() []ent.Edge {
     return []ent.Edge{
         edge.From("owner", User.Type).
-            Ref("files").
-            Unique(),
+            Unique().
+            Required().
+            Ref("owned"),
     }
 }
 ```

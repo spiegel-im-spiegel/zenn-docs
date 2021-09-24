@@ -26,7 +26,6 @@ binary_files {
   timestamp updated_at
   timestamp deleted_at
 }
-
 ```
 
 まずは MVC (Model-View-Controller) で言うところの Model の定義から。大方の [Go] 製 ORM と同じく [GORM] でも Model 定義は構造体を使う。今回であればこんな感じでどうだろう。
