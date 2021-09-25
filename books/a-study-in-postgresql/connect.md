@@ -47,7 +47,7 @@ func main() {
 }
 ```
 
-ただ，最近 [github.com/lib/pq] は活況ではないようで， [github.com/jackc/pgx] パッケージのほうが定番になりつつある（以下 import と Run() 関数のみ挙げておく）。
+ただ，最近は [github.com/jackc/pgx] パッケージのほうが定番になりつつあるようだ（以下 import と Run() 関数のみ挙げておく）。
 
 ```go
 import (

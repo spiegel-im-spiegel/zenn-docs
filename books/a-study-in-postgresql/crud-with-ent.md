@@ -225,6 +225,8 @@ func (entCtx *EntContext) Transaction(ctx context.Context, fn func(tx *ent.Tx) e
 }
 ```
 
+処理の中で panic を拾っているのは SaveX() とかフザけたメソッドに対応するためではなく（メモリ不足など）本当に不測の事態でも最低限 rollback を走らせるようにするため（rollback がまともに動くとは限らないので返り値は無視する）。 Defer が使えないというのは事程左様に面倒くさい。
+
 これを踏まえて，先程の sample4-1.go を以下のように書き直す。
 
 ```go:sample4-2.go
@@ -304,9 +306,9 @@ $ go run sample4-2.go
 
 よーし，うむうむ，よーし。
 
-## Read
+## Read (Query)
 
-サクッと全件検索。 WithOwned() オプションを付けることで `owned` エッヂに紐づくノード（BinaryFile）のデータも一緒に取得できる。
+サクッと全件検索するコードを書いてみた。
 
 ```go:sample5.go
 import (
@@ -345,7 +347,7 @@ func Run() exitcode.ExitCode {
 }
 ```
 
-これを実行すると
+WithOwned() オプションを付けることで `owned` エッヂに紐づくノード（BinaryFile）のデータも一緒に取得できる。これを実行すると
 
 ```json
 $ go run sample5.go | jq .
@@ -414,12 +416,135 @@ $ go run sample5.go
 >Note that, we expect to improve this in the next versions of `ent`.
 (via “[Eager Loading | ent](https://entgo.io/docs/eager-load/)”)
 
-とのこと。今後の活躍にご期待ください，というところだろうか（笑）
+とのこと。 [ent] 先生の次回作にご期待ください，といったところだろうか（笑）
 
 ## Update
 
+Bob が所有する BinaryFile の内容を file4.txt に入れ替える処理。
 
+```go:sample6.go
+import (
+    "context"
+    "fmt"
+    "os"
+    "sample/dbconn"
+    "sample/ent"
+    "sample/ent/binaryfile"
+    "sample/ent/user"
+    "sample/files"
 
+    "github.com/spiegel-im-spiegel/errs"
+    "github.com/spiegel-im-spiegel/gocli/exitcode"
+)
+
+func Run() exitcode.ExitCode {
+    // get ent context
+    entCtx, err := dbconn.NewEnt()
+    if err != nil {
+        fmt.Fprintln(os.Stderr, err)
+        return exitcode.Abnormal
+    }
+    defer entCtx.Close()
+
+    file4 := "files/file4.txt"
+    bin4, err := files.GetBinary(file4)
+    if err != nil {
+        entCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Send()
+        return exitcode.Abnormal
+    }
+
+    // search data and update
+    if err := entCtx.Transaction(context.TODO(), func(tx *ent.Tx) error {
+        ct, err := tx.BinaryFile.Update().Where(
+            binaryfile.HasOwnerWith(user.Username("Bob")),
+        ).SetFilename(file4).SetBody(bin4).Save(context.TODO())
+        if err != nil {
+            return errs.Wrap(err)
+        }
+        if ct <= 0 {
+            return errs.New("not change record", errs.WithContext("username", "Bob"))
+        }
+        return nil
+    }); err != nil {
+        entCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Send()
+        return exitcode.Abnormal
+    }
+
+    return exitcode.Normal
+}
+```
+
+HasOwnerWith() 関数を使って `owner` エッヂの関係を利用しているのがポイント。実行結果は以下の通り。
+
+```
+$ go run sample6.go
+0:00AM INF begining transaction
+0:00AM INF Dialing PostgreSQL server host=hostname module=pgx
+0:00AM INF Exec args=[] commandTag=QkVHSU4= module=pgx pid=31502 sql=begin
+0:00AM INF Exec args=["files/file4.txt","48656c6c6f21204920616d2066696c65206e756d62657220342e0a","Bob"] commandTag=VVBEQVRFIDE= module=pgx pid=31502 sql="UPDATE \"binary_files\" SET \"filename\" = $1, \"body\" = $2 WHERE \"binary_files\".\"user_owned\" IN (SELECT \"users\".\"id\" FROM \"users\" WHERE \"users\".\"username\" = $3)"
+0:00AM INF committing transaction
+0:00AM INF Exec args=[] commandTag=Q09NTUlU module=pgx pid=31502 sql=commit
+0:00AM INF closed connection module=pgx pid=31502
+```
+
+おっ。ちゃんと副問合せを使ってるのか。えらいえらい。
+
+## Delete
+
+sample6.go の Update() メソッドを Delete() に変えれば同じ条件でレコードの削除ができる。
+
+```go:sample7.go
+// search data and delete
+if err := entCtx.Transaction(context.TODO(), func(tx *ent.Tx) error {
+    ct, err := tx.BinaryFile.Delete().Where(
+        binaryfile.HasOwnerWith(user.Username("Bob")),
+    ).Exec(context.TODO())
+    if err != nil {
+        return errs.Wrap(err)
+    }
+    if ct <= 0 {
+        return errs.New("not delete record", errs.WithContext("username", "Bob"))
+    }
+    return nil
+}); err != nil {
+    entCtx.GetLogger().Error().Interface("error", errs.Wrap(err)).Send()
+    return exitcode.Abnormal
+}
+```
+
+実行結果は以下の通り。
+
+```
+$ go run sample7.go
+0:00AM INF begining transaction
+0:00AM INF Dialing PostgreSQL server host=hostname module=pgx
+0:00AM INF Exec args=[] commandTag=QkVHSU4= module=pgx pid=13871 sql=begin
+0:00AM INF Exec args=["Bob"] commandTag=REVMRVRFIDE= module=pgx pid=13871 sql="DELETE FROM \"binary_files\" WHERE \"binary_files\".\"user_owned\" IN (SELECT \"users\".\"id\" FROM \"users\" WHERE \"users\".\"username\" = $1)"
+0:00AM INF committing transaction
+0:00AM INF Exec args=[] commandTag=Q09NTUlU module=pgx pid=13871 sql=commit
+0:00AM INF closed connection module=pgx pid=13871
+```
+
+問題なし。ちなみに
+
+```go:sample7-1.go
+ct, err := tx.BinaryFile.Delete().Exec(context.TODO())
+```
+
+と無条件で Delete() メソッドを実行したらどうなるのかと思ったら。
+
+```
+$ go run sample7-1.go
+0:00AM INF begining transaction
+0:00AM INF Dialing PostgreSQL server host=hostname module=pgx
+0:00AM INF Exec args=[] commandTag=QkVHSU4= module=pgx pid=17631 sql=begin
+0:00AM INF Exec args=[] commandTag=REVMRVRFIDI= module=pgx pid=17631 sql="DELETE FROM \"binary_files\""
+0:00AM INF committing transaction
+0:00AM INF Exec args=[] commandTag=Q09NTUlU module=pgx pid=17631 sql=commit
+0:00AM INF closed connection module=pgx pid=17631
+```
+
+普通に全件削除された。怖い怖い（笑）
 
 [ent]: https://entgo.io/
 [GORM]: https://gorm.io/ "GORM - The fantastic ORM library for Golang, aims to be developer friendly."

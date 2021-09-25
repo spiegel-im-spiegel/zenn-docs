@@ -22,7 +22,7 @@ https://entgo.io/blog/2021/09/01/ent-joins-the-linux-foundation
 
 [GORM] が Model 構造体を interface{} 型で受けて内部で refrect 等を使って頑張っているのに対し [ent] は go generate を使って必要なコードを自動生成するという戦略をとる。コード生成およびそのための定義の記述が若干（いやだいぶ？）手間ではあるが，利用者から見て型安全なコードが書けるのは大きなメリットである。
 
-[ent] はこれまでの SQL ベースの ORM とは一線を画すもので，どちらかというと「データ間のグラフ構造を記述・制御するフレームワーク（SQL も使えるよ）」といった感じだろうか。近年注目されている GraphQL 等を扱いたい場合には有用だろう。ただしこの本では，あくまでも [ent] と [PostgreSQL] との連携と SQL ベースでのデータアクセスを主軸に記述していく。
+[ent] はこれまでの SQL ベースの ORM とは一線を画すもので，どちらかというと「データ間のグラフ構造を記述・制御するフレームワーク」といった感じだろうか。近年注目されている GraphQL 等を扱いたい場合には有用だろう。ただしこの本では，あくまでも [ent] と [PostgreSQL] との連携と SQL ベースでのデータアクセスを主軸に記述していく。
 
 [ent] が公式にサポートしているのは MySQL/MariaDB, [PostgreSQL], SQLite, Gremlin (AWS Neptune) といった辺りのようだ（Gremlin は実験的な実装）。 *[sql][database/sql].DB 型のインスタンスを受け付けるようなので [github.com/jackc/pgx] パッケージも使える。こんな感じ。
 

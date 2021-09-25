@@ -21,5 +21,6 @@ chapters:
   - zerolog-with-ent
   - entity-relationship-by-ent
   - crud-with-ent
+  - conclusion
   - reference
   - colophon
