@@ -1,0 +1,26 @@
+title: "PostgreSQL と ORM と Logging と"
+summary: |-
+  少し前に PostgreSQL サービスに Go でアクセスする方法についてちょっとした調べものをした。そのときの作業メモをブログ記事として残そうと思ったのだが，単ページで収まりそうになかったので Zenn 本の体裁で書き記しておく。体裁は「本」だが，中身はただの作業記録である。ちゃんとした解説をご所望の方にはあしからずご了承のほどを。
+  
+  講釈はいいから動くコードをくれ！ という方には多少なりと参考になるかもしれない。
+topics: ["go", "programming", "postgresql", "orm", "log"]
+published: false
+price: 0 # 有料の場合200〜5000
+# 本に含めるチャプターを順番に並べましょう
+chapters:
+  - intro
+  - dotenv
+  - connect
+  - logger
+  - connect-with-gorm
+  - refactoring-1
+  - models-with-gorm
+  - crud-with-gorm
+  - connect-with-ent
+  - startup-ent-project
+  - zerolog-with-ent
+  - entity-relationship-by-ent
+  - crud-with-ent
+  - conclusion
+  - reference
+  - colophon
