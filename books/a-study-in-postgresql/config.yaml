@@ -4,7 +4,7 @@ summary: |-
   
   講釈はいいから動くコードをくれ！ という方には多少なりと参考になるかもしれない。
 topics: ["go", "programming", "postgresql", "orm", "log"]
-published: false
+published: true
 price: 0 # 有料の場合200〜5000
 # 本に含めるチャプターを順番に並べましょう
 chapters:
