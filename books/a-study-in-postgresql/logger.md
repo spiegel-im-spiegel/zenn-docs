@@ -74,7 +74,7 @@ $ go run sample0.go | jq .
 
 [^err1]: 私は「[スタック情報は9割以上がゴミ](https://zenn.dev/spiegel/books/error-handling-in-golang/viewer/error-logging)」という危険思想の持ち主なのであしからず。
 
-[github.com/rs/zerolog] は更に標準出力専用のアダプタも持っているので [io].MultiWriter() 関数を使って
+[github.com/rs/zerolog] は更にコンソール出力専用のアダプタも持っているので [io].MultiWriter() 関数を使って
 
 ```go:proto/sample4b.go
 func Run() exitcode.ExitCode {
@@ -94,7 +94,7 @@ func Run() exitcode.ExitCode {
 }
 ```
 
-などとすれば，構造化ログはファイルに，標準出力には
+などとすれば，構造化ログはファイルに，コンソールには
 
 ```
 $ go run sample0b.go

@@ -28,7 +28,7 @@ ENABLE_LOGFILE=true
 LOGLEVEL=info
 ```
 
-`ENABLE_LOGFILE` が `true` ならファイルに構造化ログを出力し，標準出力へは [zerolog][github.com/rs/zerolog].ConsoleWriter を使う。また `LOGLEVEL` でログの最低出力レベルを指定する。
+`ENABLE_LOGFILE` が `true` ならファイルに構造化ログを出力し，コンソール（標準出力）へは [zerolog][github.com/rs/zerolog].ConsoleWriter を使う。また `LOGLEVEL` でログの最低出力レベルを指定する。
 
 `LOGLEVEL` を解釈するために以下の列挙型を導入する。
 
