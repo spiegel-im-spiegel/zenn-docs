@@ -8,7 +8,7 @@ title: "構造化 Logger を組み込む"
 
 [github.com/rs/zerolog] パッケージは JSON 形式の構造化ログを出力する。説明するより実際にコードを書いたほうが早いだろう。
 
-```go:sample0.go
+```go:proto/sample4.go
 //go:build run
 // +build run
 
@@ -76,7 +76,7 @@ $ go run sample0.go | jq .
 
 [github.com/rs/zerolog] は更に標準出力専用のアダプタも持っているので [io].MultiWriter() 関数を使って
 
-```go:sample0b.go
+```go:proto/sample4b.go
 func Run() exitcode.ExitCode {
     file, err := os.Create("access.log")
     if err != nil {
@@ -106,7 +106,7 @@ $ go run sample0b.go
 
 Logger 作成処理も関数として切り出してしまおう。
 
-```go
+```go:proto/sample4c.go
 import (
     "fmt"
     "io"
@@ -159,7 +159,6 @@ func UserCacheDir() (string, error) {
 ...
 ```
 
-
 ま，まぁ，最近はログを直接ファイルに吐き出すのは流行りじゃないみたいだし，ちょっとしたツール用ならこれで十分かな[^rotate1]。
 
 [^rotate1]: ログファイルをローテーションさせたければ [github.com/natefinch/lumberjack](https://github.com/natefinch/lumberjack) パッケージを使う手もある。
@@ -168,7 +167,7 @@ func UserCacheDir() (string, error) {
 
 [github.com/jackc/pgx] パッケージは [github.com/rs/zerolog] 用のアダプタを持っていて logger を [github.com/rs/zerolog] に換装することができる。
 
-```go:sample1.go
+```go:proto/sample4d.go
 import (
     "context"
     "fmt"
@@ -228,7 +227,7 @@ func Run() exitcode.ExitCode {
 実はデータベースの中はまだ空っぽなので，これを実行すると
 
 ```
-$ go run sample1.go
+$ go run proto/sample0d.go
 0:00AM INF Dialing PostgreSQL server host=hostname module=pgx
 0:00AM ERR Query args=[] err="ERROR: relation \"tablename\" does not exist (SQLSTATE 42P01)" module=pgx pid=27036 sql="SELECT * FROM tablename"
 0:00AM ERR  error={"Context":{"function":"main.Run"},"Err":{"Msg":"ERROR: relation \"tablename\" does not exist (SQLSTATE 42P01)","Type":"*pgconn.PgError"},"Type":"*errs.Error"}
@@ -239,7 +238,7 @@ $ go run sample1.go
 
 [database/sql] を使いたい場合は stdlib.OpenDB() 関数で [sql][database/sql].DB インスタンスを取得するとよい。
 
-```go:sample2.go
+```go:proto/sample4e.go
 import (
     "context"
     "fmt"

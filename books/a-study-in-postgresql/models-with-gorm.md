@@ -30,7 +30,7 @@ binary_files {
 
 まずは MVC (Model-View-Controller) で言うところの Model の定義から。大方の [Go] 製 ORM と同じく [GORM] でも Model 定義は構造体を使う。今回であればこんな感じでどうだろう。
 
-```go
+```go:orm/model/user.go
 package model
 
 import "gorm.io/gorm"
@@ -40,10 +40,16 @@ type User struct {
     Username    string
     BinaryFiles []BinaryFile // has many (0..N)
 }
+```
+
+```go:orm/model/binary-files.go
+package model
+
+import "gorm.io/gorm"
 
 type BinaryFile struct {
     gorm.Model
-    UserId   uint
+    UserId   string
     Filename string
     Body     []byte
 }
@@ -79,8 +85,8 @@ type Model struct {
 import (
     "fmt"
     "os"
-    "sample/gorm/model"
     "sample/orm"
+    "sample/orm/model"
 
     "github.com/spiegel-im-spiegel/errs"
     "github.com/spiegel-im-spiegel/gocli/exitcode"
@@ -185,7 +191,7 @@ db, err := gorm.Open(postgres.New(postgres.Config{
 
 以上を踏まえて，以下のように書き直してみた。
 
-```go
+```go:orm/model/user.go
 package model
 
 import "gorm.io/gorm"
@@ -195,6 +201,12 @@ type User struct {
     Username    string       `gorm:"size:63;unique;not null"`
     BinaryFiles []BinaryFile // has many (0..N)
 }
+```
+
+```go:orm/model/binary-files.go
+package model
+
+import "gorm.io/gorm"
 
 type BinaryFile struct {
     gorm.Model
@@ -203,6 +215,7 @@ type BinaryFile struct {
     Body     []byte
 }
 ```
+
 
 これでもう一度テーブルを生成してみる。その前にさっき作ったテーブルは手動で DROP しておく。 [gorm][GORM].DB.AutoMigrate() メソッドはテーブル定義の変更もできるが（ただし安全面を考慮してカラムの削除はしない），今回はその辺の検証は割愛する（最初だし）。
 

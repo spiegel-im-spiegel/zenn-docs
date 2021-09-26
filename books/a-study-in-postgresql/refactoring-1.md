@@ -341,7 +341,7 @@ func (gormCtx *GormContext) Close() error {
 }
 ```
 
-これも同じく logger を含めた orm.GormContext を返している。あと env ファイルで `LOGLEVEL` が `debug` と指定されている場合は [GORM] の logger も有効とするようにした。
+これも同じく logger を含めた gorm.GormContext を返している。あと env ファイルで `LOGLEVEL` が `debug` と指定されている場合は [GORM] の logger も有効とするようにした。
 
 ## 起動サンプル
 

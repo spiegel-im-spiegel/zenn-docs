@@ -6,7 +6,7 @@ title: "PostgreSQL に接続する"
 
 [Go] の標準パッケージである [database/sql] を使って RDBMS に接続するには DB の種別ごとに「ドライバ」と呼ばれるパッケージをインポートする必要がある。 [PostgreSQL] の場合は [github.com/lib/pq] が定番として使われることが多かった。
 
-```go
+```go:proto/sample2.go
 //go:build run
 // +build run
 
@@ -49,7 +49,7 @@ func main() {
 
 ただ，最近は [github.com/jackc/pgx] パッケージのほうが定番になりつつあるようだ（以下 import と Run() 関数のみ挙げておく）。
 
-```go
+```go:proto/sample2b.go
 import (
     "database/sql"
     "log"
@@ -76,7 +76,7 @@ func Run() exitcode.ExitCode {
 
 [database/sql] を使わず [github.com/jackc/pgx] パッケージを直に使って接続することもできる。
 
-```go
+```go:proto/sample3.go
 import (
     "context"
     "log"

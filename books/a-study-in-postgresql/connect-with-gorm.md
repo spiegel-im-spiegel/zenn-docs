@@ -23,7 +23,7 @@ SQL 文の方言があるためどんな DB ドライバでも受け付けると
 
 今回であれば stdlib.OpenDB() 関数で生成した [sql][database/sql].DB インスタンスを渡してしまえばよい。こんな感じ。
 
-```go
+```go:sample1.go
 import (
     "fmt"
     "io"

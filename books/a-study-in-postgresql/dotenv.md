@@ -55,7 +55,7 @@ ELEPHANTSQL_URL=postgres://username:password@hostname:port/databasename
 
 これを取り出すコードは以下の通り。
 
-```go
+```go:proto/sample1.go
 //go:build run
 // +build run
 

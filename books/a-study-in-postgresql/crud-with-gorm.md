@@ -34,6 +34,18 @@ func GetBinary(path string) ([]byte, error) {
 これを使って前節の model.User 構造体に値を詰め込んで Create() メソッドをキックする。最初はやっぱり怖いので dry run で試してみる（ファイルは指定のパスに実際にあるものとする）。
 
 ```go:sample5.go
+import (
+    "fmt"
+    "os"
+    "sample/files"
+    "sample/orm"
+    "sample/orm/model"
+
+    "github.com/spiegel-im-spiegel/errs"
+    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "gorm.io/gorm"
+)
+
 func Run() exitcode.ExitCode {
     // create gorm.DB instance for PostgreSQL service
     gormCtx, err := orm.NewGORM()
@@ -253,7 +265,7 @@ $ go run sample7.go
 >Array and slice values encode as JSON arrays, except that []byte encodes as a base64-encoded string, and a nil slice encodes as the null JSON value.
 (via “[json package - encoding/json - pkg.go.dev](https://pkg.go.dev/encoding/json#Marshal)”)
 
-上の結果を更に "Alice" で絞り込みたいなら Where() メソッドが使える。
+上の結果を更に "Alice" で絞り込みたいなら Where() オプションが使える。
 
 ```go:sample7b.go
 // select data for 'Alice' (with preload)
@@ -277,9 +289,9 @@ $ go run sample7b.go
 0:00AM INF closed connection module=pgx pid=26015
 ```
 
-他にも Where() メソッドと Or() メソッドを組み合わせたり Select() メソッドでカラム名を指定したり Table() メソッドでテーブル名を指定したり，更に Order(), Limit(), Offset(), Group(), Having(), Distinct(), Joins() といったメソッドも提供されていて SQL の組み立てに関してはかなり自由度が高い。何なら Raw() メソッドを使って
+他にも Where() オプションと Or() オプションを組み合わせたり Order(), Limit(), Offset(), Group(), Having(), Distinct(), Joins() といったオプションも提供されている。更に Select() や Table() メソッドでカラム名やて0ブル名を直接指定できるなど SQL の組み立てに関してはかなり自由度が高い。何なら Raw() メソッドを使って
 
-```go
+```go:sample7c.go
 var data []model.User
 tx := gormCtx.GetDb().WithContext(context.TODO()).Raw("SELECT id, username FROM users WHERE username = ?", "Alice").Scan(&data)
 ```
@@ -292,7 +304,7 @@ tx := gormCtx.GetDb().WithContext(context.TODO()).Raw("SELECT id, username FROM 
 
 Save() メソッドを使えばレコード全体をまるっと更新してくれる。
 
-```go:sample8b.go
+```go:sample8.go
 // edit and uodate
 var data model.User
 tx := gormCtx.GetDb().WithContext(context.TODO()).Where(&model.User{Username: "Bob"}).First(&data)
@@ -311,7 +323,7 @@ if tx.Error != nil {
 これの実行結果はこんな感じ。
 
 ```
-$ go run sample8b.go 
+$ go run sample8.go 
 8:10PM INF Dialing PostgreSQL server host=hostname module=pgx
 8:10PM INF Exec args=[] commandTag=null module=pgx pid=11183 sql=;
 8:10PM INF Query args=["Bob"] module=pgx pid=11183 rowCount=1 sql="SELECT * FROM \"users\" WHERE \"users\".\"username\" = $1 AND \"users\".\"deleted_at\" IS NULL ORDER BY \"users\".\"id\" LIMIT 1"
@@ -323,9 +335,9 @@ $ go run sample8b.go
 
 Save() メソッドでは引数で与えられた構造体の各フィールド（primary key 以外）を全て更新しようとする。なお `users.deleted_at` については「現在時刻」で更新されている点に注目。
 
-Updates() メソッドを使うと指定したカラムのみを更新できる。
+Save() の代わりに Updates() メソッドを使うと指定したカラムのみを更新できる。
 
-```go:sample8c.go
+```go:sample8b.go
 file4 := "files/file4.txt"
 bin4, err := files.GetBinary(file4)
 if err != nil {
@@ -347,14 +359,12 @@ if tx.Error != nil {
 }
 ```
 
-この例では `Model(&data[0].BinaryFiles[0])` の引数構造体データの primary key フィールドを条件にしている。また，上のコードのように Updates() の引数に構造体データをセットする場合，ゼロ値のフィールドは更新対象にならない（つまりゼロ値への更新は出来ない）ので注意。この場合は map[string]interface{} 型の連想配列を使うとよいだろう。
-
-更に Model() メソッドの引数の構造体が空だと全件が対象になってしまうので注意。この場合は Where() メソッドで条件を指定してやればよい。
+この例では Model() メソッドを使って `Model(&data[0].BinaryFiles[0])` の引数構造体データの primary key フィールドを where 条件にしている。また，上のコードのように Updates() の引数に構造体データをセットする場合，ゼロ値のフィールドは更新対象にならない（つまりゼロ値への更新は出来ない）ので注意。この場合は map[string]interface{} 型の連想配列を使うとよいだろう。 Where() オプションで条件を指定する方法もある。ちなみに Model() メソッドの引数の構造体が空だと全件が対象になってしまうので注意。
 
 実行結果を見てみよう。
 
 ```
-$ go run sample8c.go 
+$ go run sample8b.go 
 9:00PM INF Dialing PostgreSQL server host=hostname module=pgx
 9:00PM INF Exec args=[] commandTag=null module=pgx pid=10480 sql=;
 9:00PM INF Query args=["Bob 2nd"] module=pgx pid=10480 rowCount=1 sql="SELECT * FROM \"users\" WHERE \"users\".\"username\" = $1 AND \"users\".\"deleted_at\" IS NULL"
@@ -438,23 +448,23 @@ $ go run sample9c.go
 0:00AM INF closed connection module=pgx pid=7578
 ```
 
-などと foreign key のせいでエラーになったけどね（笑）
+と foreign key のせいでエラーになったけどね（笑）
 
-ところで，全件削除しようとして
+ところで，全件削除しようとして条件を付けずに
 
 ```go:sample9d.go
 tx := gormCtx.GetDb().Session(&gorm.Session{DryRun: true}).Delete(&model.User{})
 ```
 
-と書いたら [GORM] に “WHERE conditions required” と怒られてエラーになった。安易な全件削除はアカンらしい。でも，明示的に生の SQL 文で
+と書いたら [GORM] に “WHERE conditions required” と怒られてエラーになった。安易な全件削除はアカンらしい。でも，生の SQL 文で
 
-```go
+```go:sample9e.go
 tx := gormCtx.GetDb().Session(&gorm.Session{DryRun: true}).Exec("UPDATE users SET deleted_at=now() WHERE deleted_at IS NULL") // soft delete
 ```
 
 または
 
-```go
+```go:sample9f.go
 tx := gormCtx.GetDb().Session(&gorm.Session{DryRun: true}).Exec("DELETE FROM users") // delete permanently
 ```
 
