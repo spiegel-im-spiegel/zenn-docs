@@ -11,7 +11,7 @@ Spiegel, 2021
 
 [Go] のロゴの取り扱いについては以下の記事が参考になる。
 
-https://blog.golang.org/go-brand
+https://go.dev/blog/go-brand
 
 リポジトリは[こちら](https://github.com/spiegel-im-spiegel/zenn-docs/tree/main/books/a-study-in-postgresql)。
 
