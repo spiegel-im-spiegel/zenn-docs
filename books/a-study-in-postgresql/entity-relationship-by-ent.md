@@ -100,15 +100,15 @@ A((Node)) -- Edge --> B((Node))
 
 ```mermaid
 graph LR
-User((User as From)) -- owned --> BinaryFile((BinaryFile as To))
+User((From#User)) -- owned --> BinaryFile((To#BinaryFile))
 BinaryFile -- owner --> User
 ```
 
-という関係を記述しているわけだ。具体的には From 側ノードでは To 側ノードに対して `owned` エッヂを定義し To 側ノードでは From 側ノードに対して `owner` エッヂを定義している。
+という関係を記述しているわけだ。具体的には From 側ノード User では To 側ノードに対して `owned` エッヂを定義し To 側ノード BinaryFile では From 側ノードに対して `owner` エッヂを定義している。
 
 ちなみに `owner` / `owned` といった Edges() 定義の名称は Fields() 定義の名称（`id` や `username` など）と同じにしてはいけないようで，同じ名前を使いまわすと entc generate コマンドでエラーになったり自動生成したコードがコンパイルエラーになったりした（最初は意味が分からなくてねぇ...）。
 
-さらに BinaryFile 側の Edges() メソッドを見ると
+さらに To 側ノード BinaryFile の Edges() メソッドを見ると
 
 ```go:ent/schema/binaryfile.go
 // Edges of the BinaryFile.
@@ -124,9 +124,9 @@ func (BinaryFile) Edges() []ent.Edge {
 
 となっている。
 
-Unique() オプション付与は `owner` エッヂの相手（From）ノードは唯一のレコードのみ紐づくことを意味する。一方で `owned` エッヂには Unique() オプションはない。これによって User (From) と BinaryFile (To) との関係（多重度）は O2M (one-to-many) であることが分かる。このように Unique() オプションを使って O2O, O2M/M2O, M2M といった多重度を表現できる。
+Unique() オプションは `owner` エッヂの相手（From）ノードは唯一のレコードのみ紐づくことを意味する。一方， From 側ノード User で定義する `owned` エッヂには Unique() オプションはないため User (From) と BinaryFile (To) との関係（多重度）は O2M (one-to-many) であることが分かる。このように Unique() オプションを使って O2O, O2M/M2O, M2M といった多重度を表現できる。
 
-更に Ref() オプションを使ってエッヂ間の関係を記述でき，これによって To 側ノードに foreign key が設定される。なお Ref() オプションは To 側ノードが From 側ノードへのエッヂ定義としてのみ書けるようだ。なので多重度が O2M の場合は To 側ノードを many とする必要がある。
+更に Ref() オプションを使ってエッヂ間の関係を記述でき，これによって To 側ノードに foreign key が設定される。なお Ref() オプションは To 側ノードが From 側ノードへのエッヂ定義としてのみ書けるようだ。
 
 スキーマ定義を確認するには以下のコマンドを叩くとよい。
 
