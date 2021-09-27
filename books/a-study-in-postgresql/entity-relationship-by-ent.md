@@ -85,16 +85,16 @@ func (BinaryFile) Edges() []ent.Edge {
 }
 ```
 
-## そもそも Edge ってなに？
+## そもそもエッヂってなに？
 
-知ってる方には言わずもながなだが，そもそも Edge ってなに？ って話から。
+知ってる方には言わずもながなだが，そもそもエッヂってなに？ って話から。
 
 ```mermaid
 graph LR
 A((Node)) -- Edge --> B((Node))
 ```
 
-このように，データのグラフ構造を表すときの最小単位が節（node）と枝（edge）である。
+このように，データのグラフ構造を表すときの最小単位がノード（節）とエッヂ（枝）である。
 
 上のコードに当てはめるなら
 
@@ -104,7 +104,7 @@ User((User<From>)) -- Edge<owned> --> BinaryFile((BinaryFile<To>))
 BinaryFile -- Edge<owner> --> User
 ```
 
-という関係を記述しているわけだ。具体的には From ノードでは To ノードに対して `owned` エッヂを定義し To ノードでは From ノードに対して `owner` エッヂを定義している。
+という関係を記述しているわけだ。具体的には From 側ノードでは To 側ノードに対して `owned` エッヂを定義し To 側ノードでは From 側ノードに対して `owner` エッヂを定義している。
 
 ちなみに `owner` / `owned` といった Edges() 定義の名称は Fields() 定義の名称（`id` や `username` など）と同じにしてはいけないようで，同じ名前を使いまわすと entc generate コマンドでエラーになったり自動生成したコードがコンパイルエラーになったりした（最初は意味が分からなくてねぇ...）。
 
@@ -124,9 +124,9 @@ func (BinaryFile) Edges() []ent.Edge {
 
 となっている。
 
-Unique() オプション付与は `owner` エッヂの相手（From）ノードは唯一のレコードのみが紐づけられることを意味する。 `owned` エッヂには Unique() オプションはないので User (From) と BinaryFile (To) との関係（多重度）は one-to-many (O2M) であることが分かる。このように Unique() オプションを使って O2O, O2M, M2M の多重度を表現できる。
+Unique() オプション付与は `owner` エッヂの相手（From）ノードは唯一のレコードのみ紐づくことを意味する。一方で `owned` エッヂには Unique() オプションはない。これによって User (From) と BinaryFile (To) との関係（多重度）は one-to-many (O2M) であることが分かる。このように Unique() オプションを使って O2O, O2M, M2M といった多重度を表現できる。
 
-更に Ref() オプションを使ってエッヂ間の関係を記述でき，これを使って foreign key を定義できる。なお Ref() オプションは To 側ノードが From 側ノードへのエッヂ定義としてのみ書けるようだ。
+更に Ref() オプションを使ってエッヂ間の関係を記述でき，これによって To 側ノードに foreign key が設定される。なお Ref() オプションは To 側ノードが From 側ノードへのエッヂ定義としてのみ書けるようだ。
 
 スキーマ定義を確認するには以下のコマンドを叩くとよい。
 
@@ -279,8 +279,7 @@ func (User) Fields() []ent.Field {
 
 ### Primary Key の名前と型を変更したい
 
-Primary Key としては暗黙的に int 型の `id` フィールドが定義され，それがそのままカラム名になっている。
-`id` フィールドを上書き再定義することで DDL 上のカラム名と型を変更することができるようだ。
+Primary Key としては暗黙的に int 型の `id` フィールドが定義され，それがそのままカラム名になっている。これを変更するには `id` フィールドを上書き再定義すればいいらしい。以下は `id` フィールドを `varchr(20)` の `user_id` カラムに変更した状態。
 
 ```go
 // Fields of the User.
@@ -301,7 +300,7 @@ func (User) Fields() []ent.Field {
 
 ### 外部参照カラムは NOT NULL にできない？
 
-Edges() メソッド定義で生成される外部参照カラム（今回なら `binary_files.user_owned`）は NOT NULL にできないっぽい。 Required() オプションは DDL に対しては効いてない感じ。元のレコードを削除するときの諸々の不都合を回避したいから？ なお，外部参照カラムを foreign key にしたくない場合は DDL 生成処理の中で WithForeignKeys() 関数を使って
+Edges() メソッド定義で生成される外部参照カラム（今回なら `binary_files.user_owned`）は NOT NULL にできないっぽい。 Required() オプションは DDL に対しては効いてない感じ。なお，外部参照カラムを foreign key にしたくない場合は DDL 生成処理の中で WithForeignKeys() 関数を使って
 
 ```go
 // output DDL
@@ -322,7 +321,7 @@ graph RL
 BinaryFile((BinaryFile<From>)) -- Edge<owner> --> User((User<To>))
 ```
 
-という片方向の関連にすれば Field() オプションを使って Fields() メソッドで定義されたフィールド名に紐づけできるらしい。片方向は面白くないし，今回はそこまで名前に思い入れがあるわけではないので弄らないことにする。
+という片方向の関連にすれば From ノード側の Edges() メソッドで Field() オプションを使い Fields() メソッドで定義されたフィールド名に紐づけすれば，紐づけされたフィールドは foreign key にできるらしい。片方向では面白くないし，今回はそこまで名前に思い入れがあるわけではないので弄らないことにする。
 
 ### 再び DDL を生成する
 

@@ -24,7 +24,7 @@ https://entgo.io/blog/2021/09/01/ent-joins-the-linux-foundation
 
 [ent] はこれまでの SQL ベースの ORM とは一線を画すもので，どちらかというと「データ間のグラフ構造を記述・制御するフレームワーク」といった感じだろうか。近年注目されている GraphQL 等を扱いたい場合には有用だろう。ただしこの本では，あくまでも [ent] と [PostgreSQL] との連携と SQL ベースでのデータアクセスを主軸に記述していく。
 
-[ent] が公式にサポートしているのは MySQL/MariaDB, [PostgreSQL], SQLite, Gremlin (AWS Neptune) といった辺りのようだ（Gremlin は実験的な実装）。 *[sql][database/sql].DB 型のインスタンスを受け付けるようなので [github.com/jackc/pgx] パッケージも使える。こんな感じ。
+[ent] が公式にサポートしているのは MySQL/MariaDB, [PostgreSQL], SQLite, Gremlin (AWS Neptune) といった辺りのようだ（Gremlin は実験的な実装）。 *[sql][database/sql].DB 型のインスタンスを受け付けるので [github.com/jackc/pgx] パッケージも使える。こんな感じ。
 
 ```go
 //go:build run

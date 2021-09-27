@@ -2,7 +2,7 @@
 title: "参考文献"
 ---
 
-## Go 公式サイト
+## 各種公式サイト
 
 https://www.postgresql.org/
 https://gorm.io/

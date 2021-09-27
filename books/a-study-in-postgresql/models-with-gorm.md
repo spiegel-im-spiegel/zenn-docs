@@ -148,9 +148,9 @@ $ go run sample3b.go
 となっていた。特徴を挙げると
 
 1. テーブル名が複数形（`users`, `binary_files`）になっている
-2. 2つのテーブルとも `id` が bigserial 型で定義されている
-3. `binary_files.user_id` が `users.id` の foreign key として定義されている
-4. `users.username` および `binary_files.filename` が text 型で定義されている
+2. 2つのテーブルとも `id` カラムが bigserial 型で定義されている
+3. `binary_files.user_id` カラムが `users.id` カラムの foreign key として定義されている
+4. `users.username` および `binary_files.filename` 各カラムが text 型で定義されている
 
 といった辺りだろうか。
 
@@ -187,7 +187,7 @@ db, err := gorm.Open(postgres.New(postgres.Config{
 
 と指定すればいいらしいが，これも今回は試さない。
 
-`users.username` と `binary_files.filename` が text 型なのはサイズを指定しなかった私のミスだが，ファイル名はサイズ制限しないほうがいいか。あと両者を not null かつ unique にしないとな。
+`users.username` および `binary_files.filename` 各カラムが text 型なのはサイズを指定しなかった私のミスだが，ファイル名はサイズ制限しないほうがいいか。あと両者を not null かつ unique にしないとな。
 
 以上を踏まえて，以下のように書き直してみた。
 

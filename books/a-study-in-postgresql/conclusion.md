@@ -14,8 +14,10 @@ title: "エンジニアならコードで語れ！"
 
 1. 全ての Gopher は [PostgreSQL] ドライバを [pgx][github.com/jackc/pgx] に乗り換えるべし
 2. もう logger は [zerolog][github.com/rs/zerolog] でいいぢゃん。標準以外の選択肢に [zerolog][github.com/rs/zerolog] を受け付けてくれよ
-3. 既にテーブル設計が完了しているなら [GORM] のほうが扱いやすい
+3. 既にテーブル設計が完了しているなら [GORM] のほうが扱いやすい[^gen1]
 4. 設計要件でデータ間のグラフ構造をより重視するのであれば，要件定義の段階から [ent] でコードを書くべし
+
+[^gen1]: [GORM] と組み合わせて使える [smallnest/gen][github.com/smallnest/gen] といった製品もある。 [smallnest/gen][github.com/smallnest/gen] では [GORM] で利用可能な Model 構造体を生成できる。
 
 といったところだろうか。特に [ent] は目から鱗が落ちた。
 
@@ -34,3 +36,4 @@ title: "エンジニアならコードで語れ！"
 [ent]: https://entgo.io/
 [GORM]: https://gorm.io/ "GORM - The fantastic ORM library for Golang, aims to be developer friendly."
 [github.com/rs/zerolog]: https://github.com/rs/zerolog "rs/zerolog: Zero Allocation JSON Logger"
+[github.com/smallnest/gen]: https://github.com/smallnest/gen "smallnest/gen: Converts a database into gorm structs and RESTful api"

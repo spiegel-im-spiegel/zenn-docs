@@ -133,7 +133,7 @@ $ go run sample5b.go
 0:00AM INF closed connection module=pgx pid=16052
 ```
 
-と `users.username` の一意制約違反でエラーになったのが分かる。よしよし。
+と `users.username` カラムの一意制約違反でエラーになったのが分かる。よしよし。
 
 `users` テーブルのレコードが1つしかないのは寂しいのでもう一つ追加しておくか。
 
@@ -202,7 +202,7 @@ if tx.Error != nil {
 [1.709ms] [rows:0] SELECT * FROM "users" WHERE "users"."deleted_at" IS NULL
 ```
 
-と出ている。 `users.deleted_at` は論理削除フラグとして使われているので NULL なら削除されていないということだ。では，本当に実行してみる。
+と出ている。 `users.deleted_at` カラムは論理削除フラグとして使われているので NULL なら削除されていないということだ。では，本当に実行してみる。
 
 ```go:sample6b.go
 // select all records
@@ -230,9 +230,9 @@ $ go run sample6b.go
 0:00AM INF closed connection module=pgx pid=16676
 ```
 
-問題なさそうだね。当然ではあるが User.BinaryFiles のフィールドには何も入らないので null になっている。
+問題なさそうだね。当然ではあるが User.BinaryFiles フィールドには何も入らないので null になっている。
 
-では User.BinaryFiles にも値を詰めたい場合はどうするかというと Preload() オプションを使う。
+では User.BinaryFiles フィールド以下にも値を詰めたい場合はどうするかというと Preload() オプションを使う。
 
 ```go:sample7.go
 // select all records (with preload)
@@ -289,7 +289,7 @@ $ go run sample7b.go
 0:00AM INF closed connection module=pgx pid=26015
 ```
 
-他にも Where() オプションと Or() オプションを組み合わせたり Order(), Limit(), Offset(), Group(), Having(), Distinct(), Joins() といったオプションも提供されている。更に Select() や Table() メソッドでカラム名やて0ブル名を直接指定できるなど SQL の組み立てに関してはかなり自由度が高い。何なら Raw() メソッドを使って
+他にも Where() オプションと Or() オプションを組み合わせたり Order(), Limit(), Offset(), Group(), Having(), Distinct(), Joins() といったオプションも提供されている。更に Select() や Table() メソッドでカラム名やテーブル名を直接指定できるなど SQL の組み立てに関してはかなり自由度が高い。何なら Raw() メソッドを使って
 
 ```go:sample7c.go
 var data []model.User
@@ -333,9 +333,9 @@ $ go run sample8.go
 8:10PM INF closed connection module=pgx pid=11183
 ```
 
-Save() メソッドでは引数で与えられた構造体の各フィールド（primary key 以外）を全て更新しようとする。なお `users.deleted_at` については「現在時刻」で更新されている点に注目。
+Save() メソッドでは引数で与えられた構造体の各フィールドに対応するカラム（primary key 以外）を全て更新しようとする。なお `users.deleted_at` カラムについては「現在時刻」で更新されている点に注目。
 
-Save() の代わりに Updates() メソッドを使うと指定したカラムのみを更新できる。
+Save() の代わりに Updates() メソッドを使うと値がセットされているフィールドに対応するカラムのみを更新できる。
 
 ```go:sample8b.go
 file4 := "files/file4.txt"
@@ -359,7 +359,7 @@ if tx.Error != nil {
 }
 ```
 
-この例では Model() メソッドを使って `Model(&data[0].BinaryFiles[0])` の引数構造体データの primary key フィールドを where 条件にしている。また，上のコードのように Updates() の引数に構造体データをセットする場合，ゼロ値のフィールドは更新対象にならない（つまりゼロ値への更新は出来ない）ので注意。この場合は map[string]interface{} 型の連想配列を使うとよいだろう。 Where() オプションで条件を指定する方法もある。ちなみに Model() メソッドの引数の構造体が空だと全件が対象になってしまうので注意。
+この例では Model() メソッドを使って `Model(&data[0].BinaryFiles[0])` の引数構造体データの primary key を where 条件にしている。また，上のコードのように Updates() の引数に構造体データをセットする場合，空（ゼロ値）のフィールドは更新対象にならない（つまりゼロ値への更新は出来ない）ので注意。この場合は map[string]interface{} 型の連想配列を使うとよいだろう。条件指定には Where() オプションを使う方法もある。ちなみに Model() メソッドの引数の構造体が空（ゼロ値）だと全件が対象になってしまうので注意。
 
 実行結果を見てみよう。
 
@@ -410,13 +410,13 @@ if tx.Error != nil {
 tx = gormCtx.GetDb().Session(&gorm.Session{DryRun: true}).Unscoped().Delete(&data)
 ```
 
-と Unscoped() メソッドを噛ませればいいようだ。これで
+と Unscoped() オプションを付加すればいいようだ。これで
 
 ```
 [119.670ms] [rows:0] DELETE FROM "users" WHERE "users"."id" = 3
 ```
 
-となった。ちなみに，検索（SELECT）のときも Unscoped() メソッドを噛ませれば `deleted_at` カラムを無視してくれるらしい。もっとも本当に
+となった。ちなみに，検索（SELECT）のときも Unscoped() オプションの付加で `deleted_at` カラムを無視してくれるらしい。もっとも本当に
 
 ```go:sample9c.go
 // select data for 'Bob 2nd'
@@ -472,20 +472,7 @@ tx := gormCtx.GetDb().Session(&gorm.Session{DryRun: true}).Exec("DELETE FROM use
 
 ## トランザクション処理
 
-ひとつのトランザクションの中で複数の CRUD 処理を行いたいことも当然ある。 [GORM] では Begin(), Commit(), Rollback() といった伝統的なメソッドも用意されている。
-
-```go
-tx := gormCtx.GetDb().WithContext(context.TODO()).Begin()
-result := tx.Create(data)
-if result.Error != nil {
-    tx.Rollback()
-    return exitcode.Abnormal
-}
-tx.Commit()
-return exitcode.Normal
-```
-
-しかし [GORM] には Transaction() メソッドが用意されていて，これがかなり秀逸である。実際にコードを書いたほうが早いだろう。
+ひとつのトランザクションの中で複数の CRUD 処理を行いたいことも当然ある。もちろん Begin(), Commit(), Rollback() といった伝統的なメソッドも用意されているが， [GORM] には Transaction() メソッドが用意されていて，これがかなり秀逸である。実際にコードを書いたほうが早いだろう。
 
 ```go:sample10.go
 file1 := "files/file1.txt"
@@ -551,7 +538,7 @@ $ go run sample10.go
 
 このように commit や rollback に関するハンドリングは Transaction() 側に丸投げでき Transaction() を呼び出した側は error ハンドリングに専念できる。素晴らしい！
 
-トランザクション処理では成功時と失敗時で後始末が異なるので（defer が使えないため）すこぶる鬱陶しいのだが，こうやって一連の処理をリテラル関数で括ってしまえばいいのか。どこぞの try-catch よりはだいぶマシなアイデアかな。これは覚えておこう。
+トランザクション処理では成功時と失敗時で後始末が異なる（つまり defer が使えない）のですこぶる鬱陶しいのだが，こうやって一連の処理をリテラル関数で括ってしまえばいいのか。どこぞの try-catch よりはだいぶマシなアイデアかな。これは覚えておこう。
 
 [GORM]: https://gorm.io/ "GORM - The fantastic ORM library for Golang, aims to be developer friendly."
 [PostgreSQL]: https://www.postgresql.org/ "PostgreSQL: The world's most advanced open source database"
