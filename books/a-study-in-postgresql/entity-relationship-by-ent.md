@@ -100,8 +100,8 @@ A((Node)) -- Edge --> B((Node))
 
 ```mermaid
 graph LR
-User((User<From>)) -- Edge<owned> --> BinaryFile((BinaryFile<To>))
-BinaryFile -- Edge<owner> --> User
+User((User as From)) -- owned --> BinaryFile((BinaryFile as To))
+BinaryFile -- owner --> User
 ```
 
 という関係を記述しているわけだ。具体的には From 側ノードでは To 側ノードに対して `owned` エッヂを定義し To 側ノードでは From 側ノードに対して `owner` エッヂを定義している。
@@ -124,9 +124,9 @@ func (BinaryFile) Edges() []ent.Edge {
 
 となっている。
 
-Unique() オプション付与は `owner` エッヂの相手（From）ノードは唯一のレコードのみ紐づくことを意味する。一方で `owned` エッヂには Unique() オプションはない。これによって User (From) と BinaryFile (To) との関係（多重度）は one-to-many (O2M) であることが分かる。このように Unique() オプションを使って O2O, O2M, M2M といった多重度を表現できる。
+Unique() オプション付与は `owner` エッヂの相手（From）ノードは唯一のレコードのみ紐づくことを意味する。一方で `owned` エッヂには Unique() オプションはない。これによって User (From) と BinaryFile (To) との関係（多重度）は O2M (one-to-many) であることが分かる。このように Unique() オプションを使って O2O, O2M/M2O, M2M といった多重度を表現できる。
 
-更に Ref() オプションを使ってエッヂ間の関係を記述でき，これによって To 側ノードに foreign key が設定される。なお Ref() オプションは To 側ノードが From 側ノードへのエッヂ定義としてのみ書けるようだ。
+更に Ref() オプションを使ってエッヂ間の関係を記述でき，これによって To 側ノードに foreign key が設定される。なお Ref() オプションは To 側ノードが From 側ノードへのエッヂ定義としてのみ書けるようだ。なので多重度が O2M の場合は To 側ノードを many とする必要がある。
 
 スキーマ定義を確認するには以下のコマンドを叩くとよい。
 
@@ -314,14 +314,14 @@ if err := entCtx.GetClient().Schema.WriteTo(context.TODO(), os.Stdout, , migrate
 
 ### 外部参照カラム名を変えたいが...
 
-今回の構成では変えられない。他所様のブログ等を見るに From/To を入れ替えて
+今回の構成では変えられない。他所様のブログ等を見るに From/To を入れ替えて（つまり M2O にして）
 
 ```mermaid
 graph RL
-BinaryFile((BinaryFile<From>)) -- Edge<owner> --> User((User<To>))
+BinaryFile((BinaryFile as From)) -- owner --> User((User as To))
 ```
 
-という片方向の関連にすれば From ノード側の Edges() メソッドで Field() オプションを使い Fields() メソッドで定義されたフィールド名に紐づけすれば，紐づけされたフィールドは foreign key にできるらしい。片方向では面白くないし，今回はそこまで名前に思い入れがあるわけではないので弄らないことにする。
+という片方向の関連にすれば From ノード側の Edges() メソッドで Field() オプションを使い Fields() メソッドで定義されたフィールド名に紐づけすれば，紐づけされたフィールドは foreign key にできるらしい。片方向では面白くないし（何故か両方向にできなかった），今回はそこまで名前に思い入れがあるわけではないので弄らないことにする。
 
 ### 再び DDL を生成する
 
