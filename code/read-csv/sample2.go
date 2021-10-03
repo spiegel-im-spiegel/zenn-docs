@@ -12,7 +12,7 @@ import (
 )
 
 func main() {
-	rc := csvdata.New(japanese.ShiftJIS.NewDecoder().Reader(os.Stdin), true)
+	rc := csvdata.NewRows(csvdata.New(japanese.ShiftJIS.NewDecoder().Reader(os.Stdin)), true)
 	for {
 		if err := rc.Next(); err != nil {
 			if errors.Is(err, io.EOF) {
