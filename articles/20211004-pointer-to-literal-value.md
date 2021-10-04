@@ -112,7 +112,7 @@ fmt.Println(&Hello{}.Say())
 // cannot call pointer method on Hello{}
 ```
 
-ではコンパイルエラーになる（`&` のスコープが `Hello{}.Say()` までなのが原因）。
+ではコンパイルエラーになるのでご注意を（`&` のスコープが `Hello{}.Say()` までなのが原因）。
 
 [言語仕様](https://golang.org/ref/spec "The Go Programming Language Specification - The Go Programming Language")をよく読むと
 
