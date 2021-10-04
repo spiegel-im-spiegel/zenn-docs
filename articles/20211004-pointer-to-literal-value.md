@@ -26,7 +26,7 @@ System.out.println("hello".length()); // Outut: 5
 fmt.Println("Hello".String()) // "Hello".String undefined (type string has no field or method String)
 ```
 
-とかやってもコンパイルエラーになるだけだし，以下のように
+とかやっても「そんなメソッドはねーよ！」（←超意訳）と怒られるだけだし，以下のように
 
 ```go
 s := &"Hello" // cannot take the address of "Hello"
