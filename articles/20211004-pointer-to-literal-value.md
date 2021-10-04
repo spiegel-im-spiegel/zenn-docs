@@ -72,11 +72,24 @@ h := new(Hello)
 *h = Hello{}
 ```
 
-と等価だと言うのだ[^mem1]。つまり `h := &Hello{}` は一種の syntax sugar として機能しているらしい。
+と等価だと言うのだ[^mem1]。つまり `h := &Hello{}` は一種の syntax sugar として機能しているらしい。ちなみにメソッドを
 
 [^mem1]: 念のために言うと [Go] では new() や make() といった組み込み関数で確保した領域がヒープ上に作られるとは限らない。最適化によってスタック上に積まれる可能性もある。
 
-これを踏まえて考えると
+
+```go
+func (h Hello) Say() string {
+    return "Hello"
+}
+```
+
+と定義すれば
+
+```go
+fmt.Println(Hello{}.Say()) // Hello
+```
+
+でちゃんと動く。更にメソッドレシーバを
 
 ```go
 func (h *Hello) Say() string {
@@ -84,22 +97,22 @@ func (h *Hello) Say() string {
 }
 ```
 
-とメソッドが定義されているときに
-
-```go
-fmt.Println(&Hello{}.Say())
-// Output:
-// cannot take the address of (&Hello{}).Say()
-// cannot call pointer method on Hello{}
-```
-
-と書くとコンパイルエラーになるのに
+とポインタ型にした場合は
 
 ```go
 fmt.Println((&Hello{}).Say()) // Hello
 ```
 
-と括弧でくくるだけでコンパイルが通る理由が分かる。つまり `(&Hello{})` とすることで Say() メソッドを呼ぶ前にインスタンス化されているわけだ。
+と括弧で明示すれば大丈夫。
+
+
+```go
+fmt.Println(&Hello{}.Say())
+// cannot take the address of (&Hello{}).Say()
+// cannot call pointer method on Hello{}
+```
+
+ではコンパイルエラーになる（`&` のスコープが `Hello{}.Say()` までなのが原因）。
 
 [言語仕様](https://golang.org/ref/spec "The Go Programming Language Specification - The Go Programming Language")をよく読むと
 
