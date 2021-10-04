@@ -12,13 +12,15 @@ https://gpl-reading.connpass.com/event/224161/
 
 からの小ネタ。
 
+## リテラル値のポインタ
+
 たとえば Java なら
 
 ```java
 System.out.println("hello".length()); // Outut: 5
 ```
 
-みたいな記述ができる。 Java に限らず「オブジェクト指向」を謡っているプログラミング言語はリテラル表現をオブジェクトとして評価するため上述のような芸当ができるのだが， [Go] にはこれができない（[Go] では基本型リテラルは[型付けなし定数（untyped constant）](https://zenn.dev/spiegel/articles/20210813-untyped-constant "uint(1) - uint(2) の評価 または型付けなし定数について")として扱われる点に注意）。
+みたいな記述ができる。 Java に限らず「オブジェクト指向」を謡っているプログラミング言語はリテラル表現をオブジェクトとして評価するため上述のような芸当ができるのだが， [Go] にはこれができない（[Go] ではリテラルは[型付けなし定数（untyped constant）](https://zenn.dev/spiegel/articles/20210813-untyped-constant "uint(1) - uint(2) の評価 または型付けなし定数について")として扱われる点に注意）。
 
 そもそもリテラル表現で記述できる基本型は，それに紐づくメソッドを持たないので
 
@@ -76,35 +78,25 @@ h := new(Hello)
 
 [^mem1]: 念のために言うと [Go] では new() や make() といった組み込み関数で確保した領域がヒープ上に作られるとは限らない。最適化によってスタック上に積まれる可能性もある。
 
-
-```go
-func (h Hello) Say() string {
-    return "Hello"
-}
-```
-
-と定義すれば
-
-```go
-fmt.Println(Hello{}.Say()) // Hello
-```
-
-でちゃんと動く。更にメソッドレシーバを
-
 ```go
 func (h *Hello) Say() string {
     return "Hello"
 }
 ```
 
-とポインタ型にした場合は
+とポインタレシーバで定義した場合は
+
+```go
+fmt.Println(Hello{}.Say()) // cannot call pointer method on Hello{}
+```
+
+はダメだが（リテラルでは暗黙的にポインタ型への変換が出来ないため）
 
 ```go
 fmt.Println((&Hello{}).Say()) // Hello
 ```
 
-と括弧で明示すれば大丈夫。
-
+と括弧でくくって明示すればインスタンス化されるのでコンパイルエラーにはならない。なお
 
 ```go
 fmt.Println(&Hello{}.Say())
@@ -128,6 +120,59 @@ fmt.Printf("%p\n", &map[string]string{"foo": "bar"}) // print pointer to map
 ```
 
 もアリということか。今回もひとつ賢くなりました（笑）
+
+## 【おまけ】 リテラル値とメソッド
+
+複合型（composite type）だけでなく基本型を基底型（underlying type）とする型の場合でも，たとえば
+
+```go
+type Name string
+
+func (n Name) Say() string {
+    return strings.Join([]string{"This is", string(n), "speaking!"}, " ")
+}
+```
+
+という型とメソッドがあるとして
+
+```go
+fmt.Println(Name("Hayakawa").Say()) // This is Hayakawa speaking!
+```
+
+は問題なく動く（`Name("Hayakawa")` は関数ではなく型変換（type conversion）なので注意）。でも
+
+```go
+func (n *Name) Say() string {
+    return strings.Join([]string{"This is", string(*n), "speaking!"}, " ")
+}
+```
+
+と，メソッドレシーバをポインタ型にすると
+
+```go
+fmt.Println(Name("Hayakawa").Say())
+// cannot call pointer method on Name("Hayakawa")
+// cannot take the address of Name("Hayakawa")
+```
+
+でも
+
+```go
+fmt.Println((&Name("Hayakawa")).Say())
+// cannot take the address of Name("Hayakawa")
+```
+
+でもコンパイル・エラーになる。前節で述べたように（`&struct{}{}` のような syntax sugar を除き）リテラル表現から直接ポインタ値を得ることは出来ないので，メソッド呼び出し時に暗黙的にポインタ型に変換できないからだ。
+
+もちろん変数に落とし込んでしまえば
+
+````go
+n := Name("Hayakawa")
+fmt.Println(n.Say())    // This is Hayakawa speaking!
+fmt.Println((&n).Say()) // This is Hayakawa speaking!
+````
+
+無問題。ややこしい。
 
 [Go]: https://golang.org/ "The Go Programming Language"
 <!-- eof -->
