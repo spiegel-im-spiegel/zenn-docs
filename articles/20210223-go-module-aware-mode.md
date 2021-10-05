@@ -479,6 +479,8 @@ https://blog.golang.org/go116-module-changes
 https://zenn.dev/nobonobo/articles/4fb018a24f9ee9
 https://future-architect.github.io/articles/20210810a/
 https://future-architect.github.io/articles/20210818a/
+https://zenn.dev/ryo_yamaoka/articles/595cf9e69229f9
+https://zenn.dev/yoske/articles/c90873d7d84732
 
 [go]: https://golang.org/ "The Go Programming Language"
 [git]: https://git-scm.com/ "Git"
