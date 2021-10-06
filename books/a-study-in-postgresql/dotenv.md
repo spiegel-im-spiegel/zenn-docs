@@ -2,7 +2,7 @@
 title: "DSN を環境変数として取り出す"
 ---
 
-[PostgreSQL] の DNS (Data Source Name) は以下のような URI で与えられる。
+[PostgreSQL] の DSN (Data Source Name) は以下のような URI で与えられる。
 
 ```
 postgres://username:password@hostname:port/databasename?option...
