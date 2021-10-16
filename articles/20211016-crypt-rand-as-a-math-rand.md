@@ -14,8 +14,8 @@ published: true # 公開設定（true で公開）
 // A Source represents a source of uniformly-distributed
 // pseudo-random int64 values in the range [0, 1<<63).
 type Source interface {
-	Int63() int64
-	Seed(seed int64)
+    Int63() int64
+    Seed(seed int64)
 }
 
 // A Source64 is a Source that can also generate
@@ -25,8 +25,8 @@ type Source interface {
 // then r.Uint64 returns the result of one call to s.Uint64
 // instead of making two calls to s.Int63.
 type Source64 interface {
-	Source
-	Uint64() uint64
+    Source
+    Uint64() uint64
 }
 ```
 
@@ -40,14 +40,14 @@ func (s Source) Seed(seed int64) {}
 
 // Uint64 method generates a random number in the range [0, 1<<64).
 func (s Source) Uint64() uint64 {
-	b := [8]byte{}
-	ct, _ := rand.Read(b[:])
-	return binary.BigEndian.Uint64(b[:ct])
+    b := [8]byte{}
+    ct, _ := rand.Read(b[:])
+    return binary.BigEndian.Uint64(b[:ct])
 }
 
 // Int63 method generates a random number in the range [0, 1<<63).
 func (s Source) Int63() int64 {
-	return (int64)(s.Uint64() >> 1)
+    return (int64)(s.Uint64() >> 1)
 }
 ```
 
@@ -68,10 +68,10 @@ fmt.Println(rand.New(Source{}).Float64()) // 0.9581627789424901
 package main
 
 import (
-	"crypto/rand"
-	"encoding/binary"
-	"fmt"
-	mrand "math/rand"
+    "crypto/rand"
+    "encoding/binary"
+    "fmt"
+    mrand "math/rand"
 )
 
 type Source struct{}
@@ -81,18 +81,18 @@ func (s Source) Seed(seed int64) {}
 
 // Uint64 method generates a random number in the range [0, 1<<64).
 func (s Source) Uint64() uint64 {
-	b := [8]byte{}
-	ct, _ := rand.Read(b[:])
-	return binary.BigEndian.Uint64(b[:ct])
+    b := [8]byte{}
+    ct, _ := rand.Read(b[:])
+    return binary.BigEndian.Uint64(b[:ct])
 }
 
 // Int63 method generates a random number in the range [0, 1<<63).
 func (s Source) Int63() int64 {
-	return (int64)(s.Uint64() >> 1)
+    return (int64)(s.Uint64() >> 1)
 }
 
 func main() {
-	fmt.Println(mrand.New(Source{}).Float64())
+    fmt.Println(mrand.New(Source{}).Float64())
 }
 ```
 
@@ -105,14 +105,14 @@ func main() {
 package main
 
 import (
-	"fmt"
-	"math/rand"
+    "fmt"
+    "math/rand"
 
-	"github.com/spiegel-im-spiegel/mt/secure"
+    "github.com/spiegel-im-spiegel/mt/secure"
 )
 
 func main() {
-	fmt.Println(rand.New(secure.Source{}).Uint64())
+    fmt.Println(rand.New(secure.Source{}).Uint64())
 }
 ```
 
