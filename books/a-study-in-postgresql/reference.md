@@ -19,6 +19,8 @@ https://future-architect.github.io/articles/20210728a/
 https://zenn.dev/ogataka50/articles/f169e51983df41
 https://qiita.com/tomtwinkle/items/9ba3601e913981b0ac2f
 https://zenn.dev/tkithrta/articles/c6074e0f09eb90
+https://please-sleep.cou929.nu/go-sql-db-connection-pool.html
+https://zenn.dev/ikawaha/articles/20211026-be74411bc714f5
 
 ## 参考図書
 
