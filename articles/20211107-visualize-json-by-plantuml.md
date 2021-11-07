@@ -70,7 +70,7 @@ published: true # 公開設定（true で公開）
 
 これを [PlantUML] で処理すると
 
-[![](/images/visualize-json-by-plantuml/json.png)](/images/visualize-json-by-plantuml/json.png)
+![](/images/visualize-json-by-plantuml/json.png)
 
 てな感じになる。
 
@@ -240,7 +240,7 @@ $ go run sample.go > book.puml
 
 これを [PlantUML] で処理すると
 
-[![](/images/visualize-json-by-plantuml/book.png)](/images/visualize-json-by-plantuml/book.png)
+![](/images/visualize-json-by-plantuml/book.png)
 
 てな感じになる。よーし，うむうむ，よーし。
 
@@ -271,7 +271,7 @@ xmas-fifth-day:
 
 これを [PlantUML] で処理すると
 
-[![](/images/visualize-json-by-plantuml/yaml.png)](/images/visualize-json-by-plantuml/yaml.png)
+![](/images/visualize-json-by-plantuml/yaml.png)
 
 という感じになる。
 
