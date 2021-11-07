@@ -312,6 +312,8 @@ github.com/spiegel-im-spiegel/gpgpdump v0.12.5 h1:9XBGCD3QiDwaHjMFtD1B+cirsqHw3d
 github.com/spiegel-im-spiegel/gpgpdump v0.12.5/go.mod h1:LyYHh7J3uBSif1NhdpVXZa63XzsQ4TRYwqdJfuWnsjI=
 github.com/spiegel-im-spiegel/koyomi v0.1.7 h1:p5jiwXXwIHxacqACZQyi/Mb3IGEXOdQCsT19E2Z4+1c=
 github.com/spiegel-im-spiegel/koyomi v0.1.7/go.mod h1:aCchyVf/h27B8RIRKqGuX/rlJWBwuMrvAl8hqNa1QiE=
+github.com/spiegel-im-spiegel/pa-api v0.9.2 h1:xRutvnCQUmCxVkzi+s0ScGr7FMkH7uNKdh8OmuGMODc=
+github.com/spiegel-im-spiegel/pa-api v0.9.2/go.mod h1:pULVwVTda6pSemxw4si3hhUml8/9jR8zsozZVIYIuTA=
 github.com/stretchr/objx v0.1.0/go.mod h1:HFkY916IF+rwdDfMAkV7OtwuqBVzrE8GR6GFx+wExME=
 github.com/stretchr/testify v1.2.2/go.mod h1:a8OnRcib4nhh0OaRAV+Yts87kKdq0PP7pXfy6kDkUVs=
 github.com/stretchr/testify v1.3.0/go.mod h1:M5WIy9Dh21IEIfnGCwXGc5bZfKNJtfHm1UVUgZn+9EI=

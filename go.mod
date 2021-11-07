@@ -26,6 +26,7 @@ require (
 	github.com/spiegel-im-spiegel/gocli v0.11.0
 	github.com/spiegel-im-spiegel/gpgpdump v0.12.5
 	github.com/spiegel-im-spiegel/koyomi v0.1.7
+	github.com/spiegel-im-spiegel/pa-api v0.9.2
 	golang.org/x/text v0.3.7
 )
 
