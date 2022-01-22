@@ -3,7 +3,7 @@
 [![GitHub repository](https://img.shields.io/badge/repository-zenn--docs-blue)][zenn-docs]
 [![GitHub license](https://img.shields.io/badge/license-CC%20BY--SA-blue)](https://raw.githubusercontent.com/spiegel-im-spiegel/zenn-docs/main/LICENSE.md)
 
-Repogitory for https://zenn.dev/spiegel (powered by [Zenn])
+Repository for https://zenn.dev/spiegel (powered by [Zenn])
 
 ## Links
 
