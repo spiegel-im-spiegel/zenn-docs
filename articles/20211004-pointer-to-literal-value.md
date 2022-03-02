@@ -174,5 +174,46 @@ fmt.Println((&n).Say()) // This is Hayakawa speaking!
 
 無問題。ややこしい。
 
+## 【2022-03-02 追記】 Slice と Map のアドレッシング
+
+Twitter の「[プログラミング言語Go](https://twitter.com/i/communities/1498095077222400000)」コミュニティで教えてもらった話。
+
+本編で map 型リテラルのポインタ値は取得できるという話をしたが
+
+```go
+fmt.Printf("%p\n", &map[string]string{"foo": "bar"}) // print pointer to map
+```
+
+角括弧（`[ ]`）を使って取得した要素のポインタ値は取得できずコンパイルエラーになる。
+
+```go
+fmt.Printf("%v", map[string]int{"foo": 1, "bar": 2}["foo"])  // 1
+fmt.Printf("%p", &map[string]int{"foo": 1, "bar": 2}["foo"]) // cannot take the address of map[string]int{...}["foo"]
+```
+
+実はこれ，リテラル云々は関係なく map 型の仕様である。
+
+```go
+m := map[string]int{"foo": 1, "bar": 2}
+fmt.Printf("%p", &m["foo"]) // cannot take the address of m["foo"]
+```
+
+これについて書籍『[プログラミング言語Go](https://www.amazon.co.jp/dp/B099928SJD)』の4.3章では以下のように説明している。
+
+>マップの要素のアドレスが得られない理由の一つは、マップが大きくなる際に既存の要素が再びハッシングされて新たなメモリ位置へ移動するかもしれず、アドレスが無効になる可能性があるからです。
+>（『[プログラミング言語Go](https://www.amazon.co.jp/dp/B099928SJD)』4.3章）
+
+何かのきっかけで map の各要素の相対位置がランダムに変わっちゃうから要素のポインタ値は取れないよ，ということらしい。
+
+一方で slice のほうは各要素の相対位置が決まってるので
+
+```go
+s := []int{1, 2, 3}
+fmt.Printf("%p\n", &s[0])              // print pointer to element in slice
+fmt.Printf("%p\n", &[]int{1, 2, 3}[0]) // print pointer to element in slice
+```
+
+通常の変数に対してもリテラルに対しても要素へのポインタ値を取ることができる。
+
 [Go]: https://golang.org/ "The Go Programming Language"
 <!-- eof -->
