@@ -48,7 +48,7 @@ x := uint(-1) // constant -1 overflows uint
 
 とコンパイルエラーになる。
 
-`uint(1) - uint(2)` は符号なし整数同士の引き算ぢゃないか！ と思われるかもしれないが，実際のコンパイラの挙動としては，リテラル値の部分を `1 - 2` と型付けなし定数として評価してから `uint` 型にキャストされる。最適化というやつだ。なので
+`uint(1) - uint(2)` は符号なし整数同士の引き算ぢゃないか！ と思われるかもしれないが，実際のコンパイラの挙動としては，リテラル値の部分を `1 - 2` と型付けなし定数として評価してから `uint` 型にキャストされるようだ。最適化というやつだ。なので
 
 ```go
 x := uint(1) - uint(2) // constant -1 overflows uint
@@ -100,6 +100,17 @@ fmt.Println(18446744073709551615) // constant 18446744073709551615 overflows int
 以下の書籍の3.6.2章で「型付けなし定数」について詳しく解説されている。ご参照あれ！
 
 https://www.amazon.co.jp/dp/B099928SJD
+
+## 【2022-03-13 追記】おまけのクイズ
+
+Twitter の TL で[見かけたクイズ](https://twitter.com/hajimehoshi/status/1501595416730947586)を紹介する。以下のコードを実行するとどうなるでしょう。
+
+```go
+fmt.Println(1 % 2.0)
+fmt.Println(int(1) % 2.0)
+```
+
+この記事を読んだならもう分かるよね（笑） 答え合わせは[こちら](https://go.dev/play/p/Y3rH2HJS3iT)。
 
 [Go]: https://golang.org/ "The Go Programming Language"
 <!-- eof -->
