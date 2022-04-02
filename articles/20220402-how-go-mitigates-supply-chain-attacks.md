@@ -54,7 +54,7 @@ https://zenn.dev/spiegel/articles/20210223-go-module-aware-mode
 
 https://go.dev/blog/module-mirror-launch
 
-インポートされるモジュールはこれらのサービスを経由しハッシュ値も記録・照会されるため，真っさらの状態からパッケージをインポートする場合でも（以前に誰かがインポートしたものであれば）ある程度の完全性を担保してくれる[^disable]。
+ダウンロードされるモジュールはこれらのサービスを経由しハッシュ値も記録・照会されるため，真っさらの状態からパッケージをインポートする場合でも（以前に誰かがインポートしたものであれば）ある程度の完全性を担保してくれる[^disable]。
 
 ![](https://go.dev/blog/module-mirror-launch/sumdb-protocol.png)
 *via [Module Mirror and Checksum Database Launched - The Go Programming Language](https://go.dev/blog/module-mirror-launch)*
