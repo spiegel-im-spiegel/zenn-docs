@@ -19,8 +19,8 @@ import (
 
     "github.com/joho/godotenv"
     _ "github.com/lib/pq"
-    "github.com/spiegel-im-spiegel/gocli/config"
-    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "github.com/goark/gocli/config"
+    "github.com/goark/gocli/exitcode"
 )
 
 func init() {
@@ -57,8 +57,8 @@ import (
 
     _ "github.com/jackc/pgx/v4/stdlib"
     "github.com/joho/godotenv"
-    "github.com/spiegel-im-spiegel/gocli/config"
-    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "github.com/goark/gocli/config"
+    "github.com/goark/gocli/exitcode"
 )
 
 func Run() exitcode.ExitCode {
@@ -84,8 +84,8 @@ import (
 
     "github.com/jackc/pgx/v4/pgxpool"
     "github.com/joho/godotenv"
-    "github.com/spiegel-im-spiegel/gocli/config"
-    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "github.com/goark/gocli/config"
+    "github.com/goark/gocli/exitcode"
 )
 
 func Run() exitcode.ExitCode {

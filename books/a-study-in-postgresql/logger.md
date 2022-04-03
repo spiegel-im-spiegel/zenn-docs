@@ -18,8 +18,8 @@ import (
     "os"
 
     "github.com/rs/zerolog"
-    "github.com/spiegel-im-spiegel/errs"
-    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "github.com/goark/errs"
+    "github.com/goark/gocli/exitcode"
 )
 
 func Run() exitcode.ExitCode {
@@ -70,7 +70,7 @@ $ go run sample0.go | jq .
 }
 ```
 
-どやさ！ ちなみに [github.com/spiegel-im-spiegel/errs] は拙作のエラーハンドリング・パッケージで， MarshalJSON() メソッドを持っているため，エラー詳細を JSON 形式で出力することができる。また，エラーが発生した関数を保持る機能があるので発生するたびに [errs][github.com/spiegel-im-spiegel/errs].Wrap() 関数でラッピングしていけば（スタック情報をダンプアウトしなくても[^err1]）発生経路を追うことができるというのが自慢である（笑）
+どやさ！ ちなみに [github.com/goark/errs] は拙作のエラーハンドリング・パッケージで， MarshalJSON() メソッドを持っているため，エラー詳細を JSON 形式で出力することができる。また，エラーが発生した関数を保持る機能があるので発生するたびに [errs][github.com/goark/errs].Wrap() 関数でラッピングしていけば（スタック情報をダンプアウトしなくても[^err1]）発生経路を追うことができるというのが自慢である（笑）
 
 [^err1]: 私は「[スタック情報は9割以上がゴミ](https://zenn.dev/spiegel/books/error-handling-in-golang/viewer/error-logging)」という危険思想の持ち主なのであしからず。
 
@@ -114,9 +114,9 @@ import (
     "time"
 
     "github.com/rs/zerolog"
-    "github.com/spiegel-im-spiegel/errs"
-    "github.com/spiegel-im-spiegel/gocli/cache"
-    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "github.com/goark/errs"
+    "github.com/goark/gocli/cache"
+    "github.com/goark/gocli/exitcode"
 )
 
 func CreateLogger() zerolog.Logger {
@@ -139,7 +139,7 @@ func CreateLogger() zerolog.Logger {
 }
 ```
 
-この例では，あらかじめ ~/.cache/elephantsql/ ディレクトリを作っておいて，その中の access.YYYYMMDD.log ファイルにログを追記するようにしている。 cache.Path() は拙作の [github.com/spiegel-im-spiegel/gocli]/cache パッケージの関数で，内部で [os].UserCacheDir() を使ってキャッシュ用ディレクトリを取得している。
+この例では，あらかじめ ~/.cache/elephantsql/ ディレクトリを作っておいて，その中の access.YYYYMMDD.log ファイルにログを追記するようにしている。 cache.Path() は拙作の [github.com/goark/gocli]/cache パッケージの関数で，内部で [os].UserCacheDir() を使ってキャッシュ用ディレクトリを取得している。
 
 ```go:os/file.go
 // UserCacheDir returns the default root directory to use for user-specific
@@ -180,10 +180,10 @@ import (
     "github.com/jackc/pgx/v4/pgxpool"
     "github.com/joho/godotenv"
     "github.com/rs/zerolog"
-    "github.com/spiegel-im-spiegel/errs"
-    "github.com/spiegel-im-spiegel/gocli/cache"
-    "github.com/spiegel-im-spiegel/gocli/config"
-    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "github.com/goark/errs"
+    "github.com/goark/gocli/cache"
+    "github.com/goark/gocli/config"
+    "github.com/goark/gocli/exitcode"
 )
 
 func Run() exitcode.ExitCode {
@@ -251,10 +251,10 @@ import (
     "github.com/jackc/pgx/v4/stdlib"
     "github.com/joho/godotenv"
     "github.com/rs/zerolog"
-    "github.com/spiegel-im-spiegel/errs"
-    "github.com/spiegel-im-spiegel/gocli/cache"
-    "github.com/spiegel-im-spiegel/gocli/config"
-    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "github.com/goark/errs"
+    "github.com/goark/gocli/cache"
+    "github.com/goark/gocli/config"
+    "github.com/goark/gocli/exitcode"
 )
 
 func Run() exitcode.ExitCode {
@@ -304,6 +304,6 @@ https://pod.hatenablog.com/entry/2020/09/30/073034
 [os]: https://pkg.go.dev/os "os package - os - pkg.go.dev"
 [github.com/jackc/pgx]: https://github.com/jackc/pgx "jackc/pgx: PostgreSQL driver and toolkit for Go"
 [github.com/rs/zerolog]: https://github.com/rs/zerolog "rs/zerolog: Zero Allocation JSON Logger"
-[github.com/spiegel-im-spiegel/errs]: https://github.com/spiegel-im-spiegel/errs "spiegel-im-spiegel/errs: Error handling for Golang"
-[github.com/spiegel-im-spiegel/gocli]: https://github.com/spiegel-im-spiegel/gocli "spiegel-im-spiegel/gocli: Minimal Packages for Command-Line Interface"
+[github.com/goark/errs]: https://github.com/goark/errs "goark/errs: Error handling for Golang"
+[github.com/goark/gocli]: https://github.com/goark/gocli "goark/gocli: Minimal Packages for Command-Line Interface"
 [github.com/simukti/sqldb-logger]: https://github.com/simukti/sqldb-logger "simukti/sqldb-logger: A logger for Go SQL database driver without modifying existing *sql.DB stdlib usage."

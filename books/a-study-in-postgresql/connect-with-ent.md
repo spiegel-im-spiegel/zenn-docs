@@ -42,8 +42,8 @@ import (
     "github.com/jackc/pgx/v4"
     "github.com/jackc/pgx/v4/log/zerologadapter"
     "github.com/jackc/pgx/v4/stdlib"
-    "github.com/spiegel-im-spiegel/errs"
-    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "github.com/goark/errs"
+    "github.com/goark/gocli/exitcode"
 )
 
 func Run() exitcode.ExitCode {

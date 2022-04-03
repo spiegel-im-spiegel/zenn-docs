@@ -74,7 +74,7 @@ import (
     "entgo.io/ent/dialect"
     "entgo.io/ent/dialect/sql"
     "github.com/rs/zerolog"
-    "github.com/spiegel-im-spiegel/errs"
+    "github.com/goark/errs"
 )
 
 type EntContext struct {
@@ -142,8 +142,8 @@ import (
     "os"
     "sample/dbconn"
 
-    "github.com/spiegel-im-spiegel/errs"
-    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "github.com/goark/errs"
+    "github.com/goark/gocli/exitcode"
 )
 
 func Run() exitcode.ExitCode {

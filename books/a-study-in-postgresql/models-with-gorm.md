@@ -88,8 +88,8 @@ import (
     "sample/orm"
     "sample/orm/model"
 
-    "github.com/spiegel-im-spiegel/errs"
-    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "github.com/goark/errs"
+    "github.com/goark/gocli/exitcode"
     "gorm.io/gorm"
 )
 

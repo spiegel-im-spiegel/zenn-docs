@@ -15,7 +15,7 @@ import (
     "io"
     "os"
 
-    "github.com/spiegel-im-spiegel/errs"
+    "github.com/goark/errs"
 )
 
 func GetBinary(path string) ([]byte, error) {
@@ -41,8 +41,8 @@ import (
     "sample/orm"
     "sample/orm/model"
 
-    "github.com/spiegel-im-spiegel/errs"
-    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "github.com/goark/errs"
+    "github.com/goark/gocli/exitcode"
     "gorm.io/gorm"
 )
 
@@ -168,7 +168,7 @@ import (
     "io"
     "os"
 
-    "github.com/spiegel-im-spiegel/errs"
+    "github.com/goark/errs"
 )
 
 func Output(dst io.Writer, src interface{}) error {

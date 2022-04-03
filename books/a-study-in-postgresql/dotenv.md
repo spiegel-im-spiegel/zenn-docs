@@ -67,8 +67,8 @@ import (
     "os"
 
     "github.com/joho/godotenv"
-    "github.com/spiegel-im-spiegel/gocli/config"
-    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "github.com/goark/gocli/config"
+    "github.com/goark/gocli/exitcode"
 )
 
 func Run() exitcode.ExitCode {
@@ -86,13 +86,13 @@ func main() {
 }
 ```
 
-拙作の [github.com/spiegel-im-spiegel/gocli] パッケージは CLI アプリケーションを作る際の細々とした機能を収録している。たとえば
+拙作の [github.com/goark/gocli] パッケージは CLI アプリケーションを作る際の細々とした機能を収録している。たとえば
 
 ```go
 path := config.Path("elephantsql", "env") //get '~/.config/elephantsql/env' path string
 ```
 
-と書けば ~/.config/elephantsql/env ファイルのパスを取得できる（実際にアクセスするわけではない）。 [github.com/spiegel-im-spiegel/gocli] パッケージの使い方については以下の拙文を参考にどうぞ。
+と書けば ~/.config/elephantsql/env ファイルのパスを取得できる（実際にアクセスするわけではない）。 [github.com/goark/gocli] パッケージの使い方については以下の拙文を参考にどうぞ。
 
 https://text.baldanders.info/release/gocli-package-for-golang/
 
@@ -115,4 +115,4 @@ init() 関数内ではエラーを返す先がないので panic() を投げる�
 [database/sql]: https://pkg.go.dev/database/sql "sql package - database/sql - pkg.go.dev"
 [os]: https://pkg.go.dev/os "os package - os - pkg.go.dev"
 [github.com/joho/godotenv]: https://github.com/joho/godotenv "joho/godotenv: A Go port of Ruby's dotenv library (Loads environment variables from `.env`.)"
-[github.com/spiegel-im-spiegel/gocli]: https://github.com/spiegel-im-spiegel/gocli "spiegel-im-spiegel/gocli: Minimal Packages for Command-Line Interface"
+[github.com/goark/gocli]: https://github.com/goark/gocli "goark/gocli: Minimal Packages for Command-Line Interface"

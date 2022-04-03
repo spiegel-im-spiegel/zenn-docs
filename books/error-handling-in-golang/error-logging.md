@@ -12,7 +12,7 @@ title: "ぼくがかんがえたさいきょうのえらーろぐ"
 
 エラーが発生した際に利用者が最も欲しい情報は「どうすればいいのか？」である。そのためのヒントとして「何故エラーが起こったのか？」も欲しいわけだ。
 
-たとえば，コマンドライン・ツールのフレームワークを提供する [spf13/cobra] は利用者がコマンド入力を間違えた際に正しいコマンドを推測して教えてくれる。[私が公開しているコマンドライン・ツール](https://github.com/spiegel-im-spiegel/gpgpdump "spiegel-im-spiegel/gpgpdump: OpenPGP packet visualizer")だとこんな感じ。
+たとえば，コマンドライン・ツールのフレームワークを提供する [spf13/cobra] は利用者がコマンド入力を間違えた際に正しいコマンドを推測して教えてくれる。[私が公開しているコマンドライン・ツール](https://github.com/goark/gpgpdump "goark/gpgpdump: OpenPGP packet visualizer")だとこんな感じ。
 
 ```
 $ gpgpdump http
@@ -34,9 +34,9 @@ Run 'gpgpdump --help' for usage.
 
 ...というわけで，そろそろ「ぼくがかんがえたさいきょうのえらーろぐ」の出番だ（笑）
 
-## [spiegel-im-spiegel/errs][errs]
+## [goark/errs][errs]
 
-[spiegel-im-spiegel/errs][errs] は自作のエラーハンドリンク・パッケージで，他で公開している自作のコマンドライン・ツールの中で主に使っているが，一応は汎用で使えるよう構成している。主な特徴は以下の通り。
+[goark/errs][errs] は自作のエラーハンドリンク・パッケージで，他で公開している自作のコマンドライン・ツールの中で主に使っているが，一応は汎用で使えるよう構成している。主な特徴は以下の通り。
 
 - [errors] 標準パッケージと置き換え可能（[errs].Is(), [errs].As() 等の関数が用意されている）
 - [errs].WithContext() 関数を使って任意のコンテキスト情報を付加できる。付加した情報は map[string]interface{} 型の連想配列で保持される 
@@ -56,7 +56,7 @@ import (
     "fmt"
     "os"
 
-    "github.com/spiegel-im-spiegel/errs"
+    "github.com/goark/errs"
 )
 
 func checkFileOpen(path string) error {
@@ -111,7 +111,7 @@ $ go run sample5.go | jq .
 
 ## [rs/zerolog][zerolog] を使って構造化ログを出力する
 
-[rs/zerolog][zerolog] ロギング・パッケージはパフォーマンスがよく，しかも JSON 形式でログを出力する優れものである。これを拙作の [spiegel-im-spiegel/errs][errs] と組み合わせることを考える。
+[rs/zerolog][zerolog] ロギング・パッケージはパフォーマンスがよく，しかも JSON 形式でログを出力する優れものである。これを拙作の [goark/errs][errs] と組み合わせることを考える。
 
 こんな感じでどうだろう。
 
@@ -169,7 +169,7 @@ $ go run sample6.go | jq -s .
 [for]: https://golang.org/ref/spec#For_statements "The Go Programming Language Specification - The Go Programming Language"
 [spf13/cobra]: https://github.com/spf13/cobra "spf13/cobra: A Commander for modern Go CLI interactions"
 [jq]: https://stedolan.github.io/jq/
-[errs]: https://github.com/spiegel-im-spiegel/errs "spiegel-im-spiegel/errs: Error handling for Golang"
+[errs]: https://github.com/goark/errs "goark/errs: Error handling for Golang"
 [errors]: https://golang.org/pkg/errors/ "errors - The Go Programming Language"
 [json]: https://golang.org/pkg/encoding/json/ "json - The Go Programming Language"
 [zerolog]: https://github.com/rs/zerolog "rs/zerolog: Zero Allocation JSON Logger"

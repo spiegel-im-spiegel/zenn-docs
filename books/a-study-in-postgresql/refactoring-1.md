@@ -110,7 +110,7 @@ import (
     "github.com/jackc/pgx/v4"
     "github.com/joho/godotenv"
     "github.com/rs/zerolog"
-    "github.com/spiegel-im-spiegel/gocli/config"
+    "github.com/goark/gocli/config"
 )
 
 const (
@@ -165,8 +165,8 @@ import (
     "time"
 
     "github.com/rs/zerolog"
-    "github.com/spiegel-im-spiegel/errs"
-    "github.com/spiegel-im-spiegel/gocli/cache"
+    "github.com/goark/errs"
+    "github.com/goark/gocli/cache"
 )
 
 func New() *zerolog.Logger {
@@ -211,7 +211,7 @@ import (
     "github.com/jackc/pgx/v4/log/zerologadapter"
     "github.com/jackc/pgx/v4/stdlib"
     "github.com/rs/zerolog"
-    "github.com/spiegel-im-spiegel/errs"
+    "github.com/goark/errs"
 )
 
 type PgxContext struct {
@@ -280,7 +280,7 @@ import (
     "sample/env"
 
     "github.com/rs/zerolog"
-    "github.com/spiegel-im-spiegel/errs"
+    "github.com/goark/errs"
     "gorm.io/driver/postgres"
     "gorm.io/gorm"
     "gorm.io/gorm/logger"
@@ -358,8 +358,8 @@ import (
     "os"
     "sample/orm"
 
-    "github.com/spiegel-im-spiegel/errs"
-    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "github.com/goark/errs"
+    "github.com/goark/gocli/exitcode"
 )
 
 func Run() exitcode.ExitCode {

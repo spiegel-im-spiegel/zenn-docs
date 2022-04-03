@@ -19,8 +19,8 @@ import (
     "sample/ent"
     "sample/files"
 
-    "github.com/spiegel-im-spiegel/errs"
-    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "github.com/goark/errs"
+    "github.com/goark/gocli/exitcode"
 )
 
 func Run() exitcode.ExitCode {
@@ -97,8 +97,8 @@ import (
     "sample/dbconn"
     "sample/files"
 
-    "github.com/spiegel-im-spiegel/errs"
-    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "github.com/goark/errs"
+    "github.com/goark/gocli/exitcode"
 )
 
 func Run() exitcode.ExitCode {
@@ -182,7 +182,7 @@ import (
     "entgo.io/ent/dialect"
     "entgo.io/ent/dialect/sql"
     "github.com/rs/zerolog"
-    "github.com/spiegel-im-spiegel/errs"
+    "github.com/goark/errs"
 )
 
 type EntContext struct {
@@ -238,8 +238,8 @@ import (
     "sample/ent"
     "sample/files"
 
-    "github.com/spiegel-im-spiegel/errs"
-    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "github.com/goark/errs"
+    "github.com/goark/gocli/exitcode"
 )
 
 func Run() exitcode.ExitCode {
@@ -318,8 +318,8 @@ import (
     "sample/dbconn"
     "sample/files"
 
-    "github.com/spiegel-im-spiegel/errs"
-    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "github.com/goark/errs"
+    "github.com/goark/gocli/exitcode"
 )
 
 func Run() exitcode.ExitCode {
@@ -433,8 +433,8 @@ import (
     "sample/ent/user"
     "sample/files"
 
-    "github.com/spiegel-im-spiegel/errs"
-    "github.com/spiegel-im-spiegel/gocli/exitcode"
+    "github.com/goark/errs"
+    "github.com/goark/gocli/exitcode"
 )
 
 func Run() exitcode.ExitCode {
