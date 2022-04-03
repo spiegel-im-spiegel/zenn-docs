@@ -7,7 +7,8 @@ published: true # 公開設定（true で公開）
 ---
 
 :::message
-[Go 1.17 リリース](https://blog.golang.org/go1.17 "Go 1.17 is released - The Go Blog")に合わせて【バージョン 1.17 改訂版】とした（2021-08-21）
+[Go 1.17 リリース](https://go.dev/blog/go1.17 "Go 1.17 is released - The Go Programming Language")に合わせて【バージョン 1.17 改訂版】とした（2021-08-21）
+[Go 1.18](https://go.dev/blog/go1.18 "Go 1.18 is released! - The Go Programming Language") から追加・変更になった機能について追記した（2022-04-03）
 :::
 
 [Go] のモジュールについては[自ブログ](https://text.baldanders.info/golang/ "プログラミング言語 Go | text.Baldanders.info")でもよく話題にするのだが，差分情報が多く内容が分散しているため，ここの Zenn でまとめておく。なお，この記事では vendoring 機能については言及しないのであしからず[^vdr1]。
@@ -45,31 +46,35 @@ go get または go mod tidy コマンドを使ってあらかじめ外部パッ
 
 パッケージが [git] 等のバージョン管理ツールで管理されている場合はバージョン（またはリビジョン）ごとに異なるモジュールと見なされる。つまりモジュールの実体は「パッケージ(s)＋バージョン」ということになる。
 
-モジュールのバージョンがバージョン管理ツールのリビジョンと連動している関係上，基本的には「1リポジトリ＝1モジュール」である（ひとつのリポジトリに複数の go.mod ファイルを配置することで複数のモジュールを構成することは可能だが，管理がめちゃめちゃ煩雑になる）。
+モジュールのバージョンがバージョン管理ツールのリビジョンと連動している関係上，基本的には「1リポジトリ＝1モジュール」である。
 
-モジュール名は次節で示すように go.mod ファイルで管理されるが，外部パッケージへの物理パスとモジュール名が同じであれば，モジュール対応モードへの移行にあたってソース・コードを書き換える必要はない。
+:::message
+[Go 1.18](https://go.dev/blog/go1.18 "Go 1.18 is released! - The Go Programming Language") から [workspace mode](https://go.dev/doc/tutorial/workspaces "Tutorial: Getting started with multi-module workspaces - The Go Programming Language") が導入された。これにより，ひとつのリポジトリ内で複数のモジュールを関連付けて扱うことが容易になる。 Workspace mode については本記事の範囲から外れるため [kimuson13](https://zenn.dev/kimuson13) さんの「[Go1.18からのWorkspace modeをさっそく使ってみた](https://zenn.dev/kimuson13/articles/go-workspace-mode-impressions)」などを参考にどうぞ。
+:::
+
+モジュール名は後述する go.mod ファイルで管理されるが，外部パッケージへの物理パスとモジュール名が同じであれば，モジュール対応モードへの移行にあたってソース・コードを書き換える必要はない。
 
 ## パッケージへの物理パスとモジュール名
 
-たとえば，モジュール対応モードにおいて外部パッケージ github.com/spiegel-im-spiegel/pa-api/entity をインポートするには，ソース・コードにて以下のようにインポート宣言を記述する。
+たとえば，モジュール対応モードにおいて外部パッケージ github.com/goark/pa-api/entity をインポートするには，ソース・コードにて以下のようにインポート宣言を記述する。
 
 ```go
-import "github.com/spiegel-im-spiegel/pa-api/entity"
+import "github.com/goark/pa-api/entity"
 ```
 
 GOPATH モードではインポート宣言で指定されたパスがそのままパッケージへの物理パスを指しているが，モジュール対応モードではちょっと複雑な処理を行っている。具体的には
 
-1. 宣言されたパスを解釈して [https://github.com/spiegel-im-spiegel/pa-api][spiegel-im-spiegel/pa-api] にあるリポジトリの指定リビジョンをフェッチする（リビジョンは自パッケージの go.mod ファイルで指定されたバージョンから類推する）
-2. フェッチしたリポジトリにある go.mod ファイルからモジュール名 `github.com/spiegel-im-spiegel/pa-api` を取得する（go.mod ファイルがない場合は物理パスがそのままモジュール名となる）
+1. 宣言されたパスを解釈して [https://github.com/goark/pa-api][goark/pa-api] にあるリポジトリの指定リビジョンをフェッチする（リビジョンは自パッケージの go.mod ファイルで指定されたバージョンから類推する）
+2. フェッチしたリポジトリにある go.mod ファイルからモジュール名 `github.com/goark/pa-api` を取得する（go.mod ファイルがない場合は物理パスがそのままモジュール名となる）
 3. 宣言されたパスとモジュール名からサブディレクトリ entity を該当のパッケージと解釈してインポートする
 
 といった感じにパッケージの解釈とインポートを行う。したがって，モジュール名とパッケージへの物理パスはなるべく合わせた方が（外部パッケージを利用する側から見ても）面倒が少ない。ただし，後述する[バージョン管理](#semantic-versioning-%E3%81%AB%E3%82%88%E3%82%8B%E3%83%90%E3%83%BC%E3%82%B8%E3%83%A7%E3%83%B3%E7%AE%A1%E7%90%86)の都合上，どうしても両者が乖離してしまうことがある。
 
-[spiegel-im-spiegel/pa-api]: https://github.com/spiegel-im-spiegel/pa-api "spiegel-im-spiegel/pa-api: APIs for Amazon Product Advertising API v5 by Golang"
+[goark/pa-api]: https://github.com/goark/pa-api "goark/pa-api: APIs for Amazon Product Advertising API v5 by Golang"
 
 ## モジュール関連の環境変数
 
-詳しくは以下が参考になる。
+[Go] の環境変数全般について詳しくは [tennashi](https://zenn.dev/tennashi) さんの以下が参考になる。
 
 https://zenn.dev/tennashi/articles/3b87a8d924bc9c43573e
 
@@ -151,14 +156,14 @@ $ go clean -modcache
 新たに go.mod ファイルを作成するには，以下のコマンドを叩く。
 
 ```
-$ go mod init github.com/spiegel-im-spiegel/pa-api
-go: creating new go.mod: module github.com/spiegel-im-spiegel/pa-api
+$ go mod init github.com/goark/pa-api
+go: creating new go.mod: module github.com/goark/pa-api
 ```
 
-これでモジュール名 github.com/spiegel-im-spiegel/pa-api としてカレント・ディレクトリ直下に go.mod ファイルが作成される。中身はこんな感じ。
+これでモジュール名 github.com/goark/pa-api としてカレント・ディレクトリ直下に go.mod ファイルが作成される。中身はこんな感じ。
 
 ```markup:go.mod
-module github.com/spiegel-im-spiegel/pa-api
+module github.com/goark/pa-api
 
 go 1.17
 ```
@@ -229,14 +234,14 @@ module example.com/mod
 go.sum ファイルにはインポートするモジュールの SHA-256 チェックサム値が格納されている。たとえば go.mod ファイルで `require` ディレクティブが
 
 ```markup:go.mod
-require github.com/spiegel-im-spiegel/errs v1.0.2
+require github.com/goark/errs v1.1.0
 ```
 
 と指定されている場合， go.sum ファイルの内容は
 
 ```markup:go.sum
-github.com/spiegel-im-spiegel/errs v1.0.2 h1:v4amEwRDqRWjKHOILQnJSovYhZ4ZttEnBBXNXEzS6Sc=
-github.com/spiegel-im-spiegel/errs v1.0.2/go.mod h1:UoasJYYujMcdkbT9USv8dfZWoMyaY3btqQxoLJImw0A=
+github.com/goark/errs v1.1.0 h1:FKnyw4LVyRADIjM8Nj0Up6r0/y5cfADvZAd1E+tthXE=
+github.com/goark/errs v1.1.0/go.mod h1:TtaPEoadm2mzqzfXdkkfpN2xuniCFm2q4JH+c1qzaqw=
 ```
 
 といった感じになる。
@@ -251,16 +256,16 @@ go.sum ファイルの内容はインポートするモジュールの完全性�
 
 ```
 $ go test ./...
-main.go:9:2: no required module provides package github.com/spiegel-im-spiegel/cov19jpn/chart; to add it:
-    go get github.com/spiegel-im-spiegel/cov19jpn/chart
+main.go:9:2: no required module provides package github.com/goark/cov19jpn/chart; to add it:
+    go get github.com/goark/cov19jpn/chart
 ```
 
 とか
 
 ```
 $ go test ./...
-go: github.com/spiegel-im-spiegel/cov19jpn@v0.2.0: missing go.sum entry; to add it:
-    go mod download github.com/spiegel-im-spiegel/cov19jpn
+go: github.com/goark/cov19jpn@v0.3.0: missing go.sum entry; to add it:
+    go mod download github.com/goark/cov19jpn
 ```
 
 みたいなエラーが出たりする。 go.mod および go.sum ファイルをいい感じに更新したいのであれば
@@ -373,7 +378,7 @@ import "github.com/mattn/jvgrep/v5/mmap"
 
 などとモジュール名をベースに指定する必要がある[^pasth1]。
 
-[^pasth1]: バージョン 1.16 から import 時の相対パス指定は原則禁止になったので注意。同一リポジトリ内に複数のモジュールがある場合は go.mod ファイルで `replace` ディレクティブを使うとよい。
+[^pasth1]: バージョン 1.16 から import 時の相対パス指定は原則禁止になったので注意。同一リポジトリ内に複数のモジュールがある場合は go.mod ファイルで `replace` ディレクティブを使うか [Go] 1.18 から導入された [workspace mode](https://go.dev/doc/tutorial/workspaces "Tutorial: Getting started with multi-module workspaces - The Go Programming Language") を使うとよい。
 
 ## 特定バージョンのモジュールをビルド&インストール&実行する
 
@@ -436,32 +441,11 @@ go install: github.com/spiegel-im-spiegel/gnkf@v0.3.0 (in github.com/spiegel-im-
 ```
 
 とほほ orz
-
-こういうときは go install ではなく go get コマンドを使えば取り敢えず大丈夫なようだ（ただし [Go] 1.17 では警告が出る）。
-
-```
-$ go get github.com/spiegel-im-spiegel/gnkf@v0.3.0
-go get: installing executables with 'go get' in module mode is deprecated.
-	Use 'go install pkg@version' instead.
-	For more information, see https://golang.org/doc/go-get-install-deprecation
-	or run 'go help get' or 'go help install'.
-```
 :::
 
 ## go get はオワコン？
 
-go install および go run の機能拡張の代わりに go get は機能制限される予定である。バージョン 1.17 では警告のみだが， 1.18 からは go get によるビルド&インストールはできなくなるそうだ（go get -u 相当の機能に限定）。
-
-```
-$ go version
-go version go1.17 linux/amd64
-
-$ go get github.com/mattn/jvgrep/v5@latest
-go get: installing executables with 'go get' in module mode is deprecated.
-    Use 'go install pkg@version' instead.
-    For more information, see https://golang.org/doc/go-get-install-deprecation
-    or run 'go help get' or 'go help install'.
-```
+go install および go run の機能拡張の代わりに go get は機能制限される。バージョン 1.18 からは go get によるビルド&インストールはできなくなった（go get -u 相当の機能に限定）。
 
 go get コマンドは元々 $GOPATH ディレクトリ下に指定した外部パッケージを組み込むための仕組みである。
 
@@ -482,7 +466,7 @@ https://future-architect.github.io/articles/20210818a/
 https://zenn.dev/ryo_yamaoka/articles/595cf9e69229f9
 https://zenn.dev/yoske/articles/c90873d7d84732
 
-[go]: https://golang.org/ "The Go Programming Language"
+[go]: https://go.dev/ "The Go Programming Language"
 [git]: https://git-scm.com/ "Git"
 [semantic versioning]: http://semver.org/ "Semantic Versioning 2.0.0 | Semantic Versioning"
 [github]: https://github.com/

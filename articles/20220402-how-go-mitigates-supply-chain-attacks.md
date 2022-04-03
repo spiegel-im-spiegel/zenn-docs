@@ -78,7 +78,9 @@ https://go.dev/blog/module-mirror-launch
 >It is an explicit security design goal of the Go toolchain that neither fetching nor building code will let that code execute, even if it is untrusted and malicious. This is different from most other ecosystems, many of which have first-class support for running code at package fetch time. These “post-install” hooks have been used in the past as the most convenient way to turn a compromised dependency into compromised developer machines, and to worm through module authors.
 *(via [How Go Mitigates Supply Chain Attacks](https://go.dev/blog/supply-chain))*
 
-[Go] の実行時バイナリがダイナミックリンク等を必要とせずモノリシックな構造になっているのはセキュリティ上の意味もあるということやね。
+[Go] の実行バイナリがダイナミックリンク等を必要とせずモノリシックな構造になっているのはセキュリティ上の意味もあるということやね[^embed]。
+
+[^embed]: ダイナミックリンクのような仕組みが全く使えないというわけではない。たとえば「[Goで多数実行ファイルでディスク使用量を削減する](https://zenn.dev/nobonobo/articles/a8c07284247b64)」といったやり方もある。 [Go] のモノリシックな構造は計算機リソースが潤沢な現在では有効な割り切りだと思うが，組込みシステムでは計算機リソースの制約が大きい場合も多く，その辺のリスク・トレードオフについて頭を悩ませることになるだろう。
 
 ### “A little copying is better than a little dependency”
 
