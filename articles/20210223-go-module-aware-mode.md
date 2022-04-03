@@ -74,7 +74,7 @@ GOPATH モードではインポート宣言で指定されたパスがそのま�
 
 ## モジュール関連の環境変数
 
-[Go] の環境変数全般について詳しくは [tennashi](https://zenn.dev/tennashi) さんの以下が参考になる。
+[Go] の環境変数全般について詳しくは [tennashi](https://zenn.dev/tennashi) さんの記事が参考になる。
 
 https://zenn.dev/tennashi/articles/3b87a8d924bc9c43573e
 
