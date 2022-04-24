@@ -10,9 +10,9 @@ published: true # 公開設定（true で公開）
 
 https://zenn.dev/spiegel/articles/20210302-reading-csv-data
 
-という記事を書いたのだが，その後色々あって Excel や LibreOffice Calc のファイルも同じように扱いたいと思い，拙作の [github.com/spiegel-im-spiegel/csvdata][spiegel-im-spiegel/csvdata] パッケージを改造することにした。取るに足らないパッケージでも残しておくものである（笑）
+という記事を書いたのだが，その後色々あって Excel や LibreOffice Calc のファイルも同じように扱いたいと思い，拙作の [github.com/goark/csvdata][goark/csvdata] パッケージを改造することにした。取るに足らないパッケージでも残しておくものである（笑）
 
-https://github.com/spiegel-im-spiegel/csvdata/releases/tag/v0.3.0
+https://github.com/goark/csvdata/releases/tag/v0.3.0
 
 [前の記事](https://zenn.dev/spiegel/articles/20210302-reading-csv-data "CSV データを読み込むパッケージを書いてみた")と比べてみると，以前は
 
@@ -28,7 +28,7 @@ rc := csvdata.NewRows(csvdata.New(strings.NewReader(planets)), true)
 
 と New() 関数を2段階に分けた。
 
-外側の [csvdata][spiegel-im-spiegel/csvdata].NewRows() 関数の引数を
+外側の [csvdata][goark/csvdata].NewRows() 関数の引数を
 
 ```go:rows.go
 //RowsReader is interface type for reading columns in a row.
@@ -52,8 +52,8 @@ package exceldata_test
 import (
     "fmt"
 
-    "github.com/spiegel-im-spiegel/csvdata"
-    "github.com/spiegel-im-spiegel/csvdata/exceldata"
+    "github.com/goark/csvdata"
+    "github.com/goark/csvdata/exceldata"
 )
 
 func ExampleNew() {
@@ -90,8 +90,8 @@ package calcdata_test
 import (
     "fmt"
 
-    "github.com/spiegel-im-spiegel/csvdata"
-    "github.com/spiegel-im-spiegel/csvdata/calcdata"
+    "github.com/goark/csvdata"
+    "github.com/goark/csvdata/calcdata"
 )
 
 func ExampleNew() {
@@ -130,4 +130,4 @@ https://github.com/knieriem/odf
 これで [CSV にいちいち変換](https://zenn.dev/spiegel/articles/20210516-excel-to-csv "Go で簡単 Excel → CSV 変換")しなくても直接扱えるようになったよ。めでたし
 
 [Go]: https://golang.org/ "The Go Programming Language"
-[spiegel-im-spiegel/csvdata]: https://github.com/spiegel-im-spiegel/csvdata "spiegel-im-spiegel/csvdata: Reading CSV Data"
+[goark/csvdata]: https://github.com/goark/csvdata "goark/csvdata: Reading CSV Data"

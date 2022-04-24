@@ -7,7 +7,7 @@ import (
 	"io"
 	"os"
 
-	"github.com/spiegel-im-spiegel/csvdata"
+	"github.com/goark/csvdata"
 	"golang.org/x/text/encoding/japanese"
 )
 

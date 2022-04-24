@@ -6,11 +6,11 @@ topics: ["go", "programming"] # タグ。["markdown", "rust", "aws"] のよう�
 published: true # 公開設定（true で公開）
 ---
 
-## [spiegel-im-spiegel/csvdata][csvdata] パッケージ
+## [goark/csvdata][csvdata] パッケージ
 
 標準パッケージに [encoding/csv][csv] というのがあって [RFC 4180] に従って処理してくれるのだが， [encoding/csv][csv] 自体は基本的な機能しか用意されてないため，毎回ゴチャゴチャと周辺コード（とテスト）を書いていくのが面倒くさくなってきたんだよね。
 
-ちうわけで [encoding/csv][csv] 標準パッケージに機能をちょい足しした [spiegel-im-spiegel/csvdata][csvdata] という小さいパッケージを書いてみた。
+ちうわけで [encoding/csv][csv] 標準パッケージに機能をちょい足しした [goark/csvdata][csvdata] という小さいパッケージを書いてみた。
 
 たとえば，こんな感じの CSV ファイルがあるとして
 
@@ -25,8 +25,6 @@ published: true # 公開設定（true で公開）
 以下のように読み込み処理を書く。
 
 ```go:sample.go
-// +build run
-
 package main
 
 import (
@@ -37,7 +35,7 @@ import (
     "os"
     "strings"
 
-    "github.com/spiegel-im-spiegel/csvdata"
+    "github.com/goark/csvdata"
 )
 
 //go:embed sample.csv
@@ -110,7 +108,7 @@ rt := csvdata.New(tsvReader, true).WithComma('\t')
 
 [Go] 1.16 で登場した [embed] 標準パッケージと `//go:embed` ディレクティブは本当に素晴らしくて，これを使えばテストデータを用意するのが格段に楽になる。テスト準備データとして CSV や JSON ファイルを用意し，今回作ったようなパッケージでさくっと読んでテストに食わせるなんてケースがこれから増えるんじゃないかと夢想する。
 
-とりあえず COVID-2019 関連の CSV データ読み込み処理を [spiegel-im-spiegel/csvdata][csvdata] パッケージで置き換えていくことにしよう。
+とりあえず COVID-2019 関連の CSV データ読み込み処理を [goark/csvdata][csvdata] パッケージで置き換えていくことにしよう。
 
 ## 【付録】 Shift-JIS エンコーディングの CSV データを読み込む
 
@@ -119,10 +117,17 @@ Excel 等でエクスポートした CSV ファイルの場合，文字エンコ
 つまり先程の sample.go のコードの [csvdata].New() 関数をこんな感じに書き換える。
 
 ```go
+// Reading CSV data from os.Stdin
 rc := csvdata.New(japanese.ShiftJIS.NewDecoder().Reader(os.Stdin), true)
 ```
 
 こうすれば CSV データを必要なだけ読み込みつつ処理できる。
+
+## 【追記】 Excel ファイルにも対応した
+
+https://zenn.dev/spiegel/articles/20211003-excel-as-a-csv
+
+これに伴って内部構成を変更した。
 
 ## 参考
 
@@ -133,5 +138,5 @@ https://text.baldanders.info/golang/embeded-filesystem/
 [csv]: https://golang.org/pkg/encoding/csv/ "csv - The Go Programming Language"
 [embed]: https://golang.org/pkg/embed/ "embed - The Go Programming Language"
 [RFC 4180]: https://tools.ietf.org/html/rfc4180 "RFC 4180 - Common Format and MIME Type for Comma-Separated Values (CSV) Files"
-[csvdata]: https://github.com/spiegel-im-spiegel/csvdata "spiegel-im-spiegel/csvdata: Reading CSV Data]"
+[csvdata]: https://github.com/goark/csvdata "goark/csvdata: Reading CSV Data]"
 <!-- eof -->
