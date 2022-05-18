@@ -220,21 +220,21 @@ $ sudo add-apt-repository "deb [arch=$(dpkg --print-architecture) signed-by=/etc
 
 気ィつけなはれや！
 
-## 【おまけ】pgAdmin 4 のインストール【後日更新予定】
+## 【おまけ】pgAdmin 4 のインストール
 
-PostgreSQL サービス管理者の味方 [pgAdmin] を APT でインストールする場合も公開鍵のインポートを行う必要がある。 [Ubuntu] 22.04 LTS に対応するバージョンは出てないが，やるとすればこんな感じだろうか（出力先ファイル名は適当）。
+PostgreSQL サービス管理者の味方 [pgAdmin] を APT でインストールする場合も公開鍵のインポートを行う必要がある。 [Ubuntu] 22.04 LTS に対応する v6.9 が出てたので対応してみる。こんな感じだろうか（出力先ファイル名は適当）。
 
 ```
 $ sudo curl -fsSL https://www.pgadmin.org/static/packages_pgadmin_org.pub -o /etc/apt/keyrings/pgadmin-4-key.asc
 ```
 
-とすると，リポジトリの登録は
+リポジトリの登録は
 
 ```
 $ sudo sh -c 'echo "deb [signed-by=/etc/apt/keyrings/pgadmin-4-key.asc] https://ftp.postgresql.org/pub/pgadmin/pgadmin4/apt/$(lsb_release -cs) pgadmin4 main" > /etc/apt/sources.list.d/pgadmin4.list'
 ```
 
-って感じかな。次のバージョンが出たら試してみよう。
+って感じ。あとはいつもどおりに update して upgrade すれば無問題。
 
 [Debian]: https://www.debian.org/ "Debian -- The Universal Operating System"
 [Ubuntu]: https://www.ubuntu.com/ "The leading operating system for PCs, IoT devices, servers and the cloud | Ubuntu"
@@ -242,4 +242,3 @@ $ sudo sh -c 'echo "deb [signed-by=/etc/apt/keyrings/pgadmin-4-key.asc] https://
 [Install Docker Engine on Ubuntu]: https://docs.docker.com/engine/install/ubuntu/ "Install Docker Engine on Ubuntu | Docker Documentation"
 [gpgpdump]: https://github.com/goark/gpgpdump "goark/gpgpdump: OpenPGP packet visualizer"
 [pgAdmin]: https://www.pgadmin.org/ "pgAdmin - PostgreSQL Tools"
-<!-- eof -->
