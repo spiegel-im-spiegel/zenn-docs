@@ -6,6 +6,12 @@ topics: ["go", "security"] # タグ。["markdown", "rust", "aws"] のように�
 published: true # 公開設定（true で公開）
 ---
 
+:::message
+**【2022-08-03 追記】** [Go] 1.19 で [os/exec] 標準パッケージの挙動が変わり，この記事で述べる脆弱性を標準パッケージで回避できるようになった。詳しくは以下の拙文を参照のこと。
+
+- [Go 1.19 で os/exec パッケージの挙動が変わった話 | text.Baldanders.info](https://text.baldanders.info/golang/exec-package-in-go119/)
+:::
+
 ## Windows 環境における外部コマンド起動に関する脆弱性
 
 先日 [Git for Windows] 2.29.2 (2) がリリースされたのだが，この中で [Git LFS] の脆弱性の修正が行われている。
