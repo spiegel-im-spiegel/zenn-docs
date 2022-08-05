@@ -179,15 +179,15 @@ jobs:
 [![Actions Status](https://github.com/{user}/{repo}/workflows/{action}/badge.svg)](https://github.com/{user}/{repo}/actions)
 ```
 
-たとえば リポジトリ [`https://github.com/spiegel-im-spiegel/koyomi`](https://github.com/spiegel-im-spiegel/koyomi) であれば
+たとえば リポジトリ [`https://github.com/goark/koyomi`](https://github.com/goark/koyomi) であれば
 
 ```markdown
-[![lint status](https://github.com/spiegel-im-spiegel/koyomi/workflows/lint/badge.svg)](https://github.com/spiegel-im-spiegel/koyomi/actions)
+[![lint status](https://github.com/goark/koyomi/workflows/lint/badge.svg)](https://github.com/goark/koyomi/actions)
 ```
 
 とすれば
 
-[![lint status](https://github.com/spiegel-im-spiegel/koyomi/workflows/lint/badge.svg)](https://github.com/spiegel-im-spiegel/koyomi/actions)
+[![lint status](https://github.com/goark/koyomi/workflows/lint/badge.svg)](https://github.com/goark/koyomi/actions)
 
 のように表示される。ちなみに `{action}` の名前は YAML のファイル名ではなく先頭行の `name` 項目に対応している。
 
