@@ -79,7 +79,7 @@ License Apache-2.0
 
 まだ正式リリースではないようだが，使えるレベルに達してると思う。上手く利用していただきたい。
 
-## 【付録】 Software Package Data Exchange
+## 【付録1】 Software Package Data Exchange
 
 （[リクエスト](https://twitter.com/fu7mu4/status/1556141959755886593)にお応えして）
 
@@ -99,5 +99,16 @@ https://spdx.org/licenses/
 *(via “[SPDX Becomes Internationally Recognized Standard for Software Bill of Materials](https://www.linuxfoundation.org/press-release/spdx-becomes-internationally-recognized-standard-for-software-bill-of-materials/)”)*
 
 SPDX ライセンス識別子はソフトウェア部品表を構成する情報のひとつとして使えるわけだ。 [SPDX のリポジトリ](https://github.com/spdx)に C や [Go] による製品の[部品表サンプル](https://github.com/spdx/spdx-examples)がある。参考になれば幸いである。
+
+## 【付録2】 Depm: Go 言語用モジュール依存関係可視化ツール
+
+手前味噌で申し訳ないが [Go] のモジュール/パッケージの依存関係を可視化するツールを公開している。
+
+https://github.com/goark/depm
+https://text.baldanders.info/release/dependency-graph-for-golang-modules/
+
+これを使って各モジュール/パッケージのライセンス情報も取得できる。というかライセンス情報を取得するために [github.com/google/licenseclassifier](https://github.com/google/licenseclassifier) パッケージを使ってるんだけどね。
+
+よろしかったらこちらもどうぞ。
 
 [Go]: https://go.dev/ "The Go Programming Language"
