@@ -79,4 +79,25 @@ License Apache-2.0
 
 まだ正式リリースではないようだが，使えるレベルに達してると思う。上手く利用していただきたい。
 
+## 【付録】 Software Package Data Exchange
+
+（[リクエスト](https://twitter.com/fu7mu4/status/1556141959755886593)にお応えして）
+
+先ほどの `Apache-2.0` だが，これは SPDX (Software Package Data Exchange) のライセンス識別子と呼ばれるものである。
+
+https://spdx.dev/
+
+ちなみに SPDX は [ISO/IEC 5962:2021](https://www.iso.org/standard/81870.html) として[標準化](https://www.linuxfoundation.org/press-release/spdx-becomes-internationally-recognized-standard-for-software-bill-of-materials/ "SPDX Becomes Internationally Recognized Standard for Software Bill of Materials - Linux Foundation")されたそうな。
+
+SPDX ライセンス識別子の一覧は以下のページで確認することができる。
+
+https://spdx.org/licenses/
+
+ソフトウェア・サプライチェーンを構成する際に SPDX ソフトウェア部品表 (software bills of materials; SBOMs) を利用することで情報の共通化を図ることができる。
+
+> Between eighty and ninety percent (80%-90%) of a modern application is assembled from open source software components. An SBOM accounts for the software components contained in an application — open source, proprietary, or third-party — and details their provenance, license, and security attributes. SBOMs are used as a part of a foundational practice to track and trace components across software supply chains. SBOMs also help to proactively identify software issues and risks and establish a starting point for their remediation.
+*(via “[SPDX Becomes Internationally Recognized Standard for Software Bill of Materials](https://www.linuxfoundation.org/press-release/spdx-becomes-internationally-recognized-standard-for-software-bill-of-materials/)”)*
+
+SPDX ライセンス識別子はソフトウェア部品表を構成する情報のひとつとして使えるわけだ。 [SPDX のリポジトリ](https://github.com/spdx)に C や [Go] による製品の[部品表サンプル](https://github.com/spdx/spdx-examples)がある。参考になれば幸いである。
+
 [Go]: https://go.dev/ "The Go Programming Language"
