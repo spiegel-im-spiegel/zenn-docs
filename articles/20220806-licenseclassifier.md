@@ -6,6 +6,8 @@ topics: ["go", "programming"] # タグ。["markdown", "rust", "aws"] のよう�
 published: true # 公開設定（true で公開）
 ---
 
+## ライセンスファイルからライセンスを推定する
+
 たとえばリポジトリ直下に LICENSE というファイルがあるとして，このファイルが実際に何のライセンスを指しているか機械的に調べる方法はないだろうか。実は Google による [Go] パッケージが公開されている[^g1]。
 
 [^g1]: ただし README.md には “This is not an official Google product” とあり Google 公式パッケージではないことが明記されている。ご注意を。
