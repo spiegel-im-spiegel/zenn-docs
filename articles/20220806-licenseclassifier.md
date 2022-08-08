@@ -102,6 +102,12 @@ https://spdx.org/licenses/
 
 SPDX ライセンス識別子はソフトウェア部品表を構成する情報のひとつとして使えるわけだ。 [SPDX のリポジトリ](https://github.com/spdx)に C や [Go] による製品の[部品表サンプル](https://github.com/spdx/spdx-examples)がある。参考になれば幸いである。
 
+### ソフトウェア部品表とセキュリティ・リスク管理
+
+ソフトウェア部品表とセキュリティ・リスク管理について興味深い文章があったので紹介しておく。
+
+https://yamdas.hatenablog.com/entry/20220808/open-source-security
+
 ## 【付録2】 Depm: Go 言語用モジュール依存関係可視化ツール
 
 手前味噌で申し訳ないが [Go] のモジュール/パッケージの依存関係を可視化するツールを公開している。
