@@ -67,6 +67,12 @@ func main() {
 |   [シェルソート] | $\mathrm{O}(n \log^2 n)$ | $\mathrm{O}(n^2)$      | &mdash;                |
 |     [挿入ソート] | $\mathrm{O}(n)$          | $\mathrm{O}(n^2)$      | $\mathrm{O}(n^2)$      |
 
+## 参考
+
+[Go] 1.19 で採用された Pattern-defeating Quicksort を紹介するスライドです。
+
+@[speakerdeck](8fd0d86b1f704c8ea542e3e96a26d0d4)
+
 [Go]: https://golang.org/ "The Go Programming Language"
 [sort]: https://pkg.go.dev/sort "sort package · go.dev"
 [クイックソート]: https://en.wikipedia.org/wiki/Quicksort
