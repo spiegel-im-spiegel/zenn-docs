@@ -66,9 +66,9 @@ func (pd Date) String() string {
 	return fmt.Sprintf("%d年%d月%v", pd.Year(), pd.Month(), pd.Period())
 }
 
-// Duration returns Duration value from left to right.
-func (left Date) Duration(right Date) Duration {
-	return Duration(int(right) - int(left))
+// Duration returns Duration value from start to end.
+func (start Date) Duration(end Date) Duration {
+	return Duration(int(end) - int(start))
 }
 
 // Add returns result value of add operation.
