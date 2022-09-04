@@ -180,7 +180,7 @@ func main() {
 var n int = 4.56 // cannot use 4.56 (untyped float constant) as int value in variable declaration (truncated)
 ```
 
-この場合はリテラル値を一度変数に落とし込めば整数型にキャストできる（小数点以下切り捨て）。
+この場合はリテラル値を一度変数に落とし込めば整数型に変換できる（小数点以下切り捨て）。
 
 ```go
 package main
@@ -232,7 +232,7 @@ func main() {
 var f float64 = 1.23 + 4.56i // cannot use 1.23 + 4.56i (untyped complex constant (1.23 + 4.56i)) as float64 value in variable declaration (overflows)
 ```
 
-もちろん変数に落とし込んでからのキャストもできない（そもそも複素数型から浮動小数点数型への変換ができないので）。
+もちろん変数に落とし込んでからの変換もできない（そもそも複素数型から浮動小数点数型への変換ができないので）。
 
 ```go
 c := 1.23 + 4.56i
