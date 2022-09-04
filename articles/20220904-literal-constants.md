@@ -79,7 +79,9 @@ func main() {
 
 ## 定数のリテラル表現
 
-定数のリテラル表現には以下の5つがある。
+定数のリテラル表現には以下の5つがある[^c1]。
+
+[^c1]: 他に真偽値を表す true/false や iota などがあるが，この記事では割愛する。なお iota については拙文「[定数生成器 iota についてちゃんと書く](https://text.baldanders.info/golang/iota-constant-generator/)」を参考にどうぞ。
 
 1. [整数リテラル（integer literal）](https://go.dev/ref/spec#Integer_literals)
 2. [浮動小数点数リテラル（floating-point literal）](https://go.dev/ref/spec#Floating-point_literals)
