@@ -51,7 +51,7 @@ https://future-architect.github.io/articles/20220216a/
 まずリポジトリのルート直下に go.work ファイルを作ってみる。こんな感じでどうだろう。
 
 ```
-$ go work . mysqldrv pgdrv
+$ go work init . mysqldrv pgdrv
 ```
 
 これで
