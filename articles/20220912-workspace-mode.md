@@ -30,9 +30,9 @@ sshql
 
 ちなみに mysqldrv および pgdrv パッケージは親の sshql パッケージに依存している。これら3つのパッケージを別々のモジュールにしたのは，ルートの go.mod ファイルに各ドライバの外部パッケージを混ぜたくなかったから。モジュールを分けることで
 
-https://github.com/goark/sshql/blob/main/go.mod
-https://github.com/goark/sshql/blob/main/mysqldrv/go.mod
-https://github.com/goark/sshql/blob/main/pgdrv/go.mod
+https://github.com/goark/sshql/blob/v0.1.3/go.mod
+https://github.com/goark/sshql/blob/mysqldrv/v0.1.3/mysqldrv/go.mod
+https://github.com/goark/sshql/blob/pgdrv/v0.1.3/pgdrv/go.mod
 
 という感じにドライバ用のパッケージをきれいに分離することができる。
 
@@ -56,7 +56,7 @@ $ go work init . mysqldrv pgdrv
 
 これで
 
-https://github.com/goark/sshql/blob/main/go.work
+https://github.com/goark/sshql/blob/v0.1.3/go.work
 
 というファイルができた。どうやらこれでカレントの sshql モジュールと配下の mysqldrv, pgdrv モジュールを認識することができるっぽい。
 
