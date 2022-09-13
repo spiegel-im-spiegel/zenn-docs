@@ -28,7 +28,11 @@ sshql
     └── go.sum
 ```
 
-ちなみに mysqldrv および pgdrv パッケージは親の sshql パッケージに依存している。これら3つのパッケージを別々のモジュールにしたのは，ルートの go.mod ファイルに各ドライバの外部パッケージを混ぜたくなかったから。モジュールを分けることで
+ちなみに mysqldrv および pgdrv パッケージは親の sshql パッケージに依存している。また mysqldrv と pgdrv の間には関係はない。 UML 図で書くとこんな感じかな。
+
+![](/images/workspace-mode/sshql.png)
+
+これら3つのパッケージを別々のモジュールにしたのは，ルートの go.mod ファイルに各ドライバの外部パッケージを混ぜたくなかったから。モジュールを分けることで
 
 https://github.com/goark/sshql/blob/v0.1.3/go.mod
 https://github.com/goark/sshql/blob/mysqldrv/v0.1.3/mysqldrv/go.mod
