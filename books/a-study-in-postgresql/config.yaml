@@ -22,5 +22,7 @@ chapters:
   - entity-relationship-by-ent
   - crud-with-ent
   - conclusion
+  - connect-over-ssh
+  - wrap-sql-in-kra
   - reference
   - colophon

@@ -22,8 +22,4 @@ https://zenn.dev/tkithrta/articles/c6074e0f09eb90
 https://please-sleep.cou929.nu/go-sql-db-connection-pool.html
 https://zenn.dev/ikawaha/articles/20211026-be74411bc714f5
 
-## 参考図書
-
-https://www.amazon.co.jp/dp/4621300253
-
 [Go]: https://go.dev/
