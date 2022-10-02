@@ -1,6 +1,8 @@
 # [zenn-docs] -- Document Environment for [zenn.dev][Zenn]
 
-[![GitHub repository](https://img.shields.io/badge/repository-zenn--docs-blue)][zenn-docs]
+[![Articles](https://badgen.org/img/zenn/spiegel/articles?style=plastic)](https://zenn.dev/spiegel)
+[![Books](https://badgen.org/img/zenn/spiegel/books?style=plastic)](https://zenn.dev/spiegel?tab=books)
+[![Likes](https://badgen.org/img/zenn/spiegel/likes?style=plastic)](https://zenn.dev/spiegel)
 [![GitHub license](https://img.shields.io/badge/license-CC%20BY--SA-blue)](https://raw.githubusercontent.com/spiegel-im-spiegel/zenn-docs/main/LICENSE.md)
 
 Repository for https://zenn.dev/spiegel (powered by [Zenn])
