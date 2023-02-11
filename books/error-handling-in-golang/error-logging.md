@@ -170,7 +170,7 @@ $ go run sample6.go | jq -s .
 [spf13/cobra]: https://github.com/spf13/cobra "spf13/cobra: A Commander for modern Go CLI interactions"
 [jq]: https://stedolan.github.io/jq/
 [errs]: https://github.com/goark/errs "goark/errs: Error handling for Golang"
-[errors]: https://golang.org/pkg/errors/ "errors - The Go Programming Language"
-[json]: https://golang.org/pkg/encoding/json/ "json - The Go Programming Language"
+[errors]: https://pkg.go.dev/errors/ "errors - The Go Programming Language"
+[json]: https://pkg.go.dev/encoding/json/ "json - The Go Programming Language"
 [zerolog]: https://github.com/rs/zerolog "rs/zerolog: Zero Allocation JSON Logger"
 <!-- eof -->

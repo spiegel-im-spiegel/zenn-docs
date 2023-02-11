@@ -2,6 +2,11 @@
 title: "エラーの階層化"
 ---
 
+:::message
+[Go] 1.20 から複数エラーをもつインスタンスを扱えるようになった。詳しくは「[複数のエラーを扱う](./multi-error)」を参照のこと。
+:::
+
+
 ## 階層化エラーの導入
 
 [Go] 1.13 から [errors] 等の標準パッケージでエラーの階層化が取り入れられた。具体的には Unwrap() 関数の導入である。
@@ -121,10 +126,10 @@ $ go run sample2.go
 これで，エラーメッセージを解析するしかなかった [fmt].Errorf() 関数もだいぶ「使える」ようになっただろう（笑）
 
 [Go]: https://golang.org/ "The Go Programming Language"
-[io]: https://golang.org/pkg/io/ "io - The Go Programming Language"
-[errors]: https://golang.org/pkg/errors/ "errors - The Go Programming Language"
-[os]: https://golang.org/pkg/os/ "os - The Go Programming Language"
-[fmt]: https://golang.org/pkg/fmt/ "fmt - The Go Programming Language"
+[io]: https://pkg.go.dev/io/ "io - The Go Programming Language"
+[errors]: https://pkg.go.dev/errors/ "errors - The Go Programming Language"
+[os]: https://pkg.go.dev/os/ "os - The Go Programming Language"
+[fmt]: https://pkg.go.dev/fmt/ "fmt - The Go Programming Language"
 [conversion]: https://golang.org/ref/spec#Conversions "The Go Programming Language Specification - The Go Programming Language"
 [type assertion]: https://golang.org/ref/spec#Type_assertions "The Go Programming Language Specification - The Go Programming Language"
 <!-- eof -->

@@ -158,7 +158,7 @@ func main() {
 [Go]: https://golang.org/ "The Go Programming Language"
 [if]: https://golang.org/ref/spec#If_statements "The Go Programming Language Specification - The Go Programming Language"
 [defer]: https://golang.org/ref/spec#Defer_statements "The Go Programming Language Specification - The Go Programming Language"
-[errors]: https://golang.org/pkg/errors/ "errors - The Go Programming Language"
-[os]: https://golang.org/pkg/os/ "os - The Go Programming Language"
-[fmt]: https://golang.org/pkg/fmt/ "fmt - The Go Programming Language"
+[errors]: https://pkg.go.dev/errors/ "errors - The Go Programming Language"
+[os]: https://pkg.go.dev/os/ "os - The Go Programming Language"
+[fmt]: https://pkg.go.dev/fmt/ "fmt - The Go Programming Language"
 <!-- eof -->

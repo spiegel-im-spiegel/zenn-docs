@@ -1,5 +1,5 @@
 ---
-title: "【付録】 Panic と Recover"
+title: "【付録1】 Panic と Recover"
 ---
 
 ゼロ除算を行ったり配列などで領域外を参照・設定しようとしたりヒープメモリが不足したり... 等々，致命的なエラーが発生する場合がある。
@@ -157,5 +157,5 @@ exit status 2
 
 [Go]: https://golang.org/ "The Go Programming Language"
 [defer]: https://golang.org/ref/spec#Defer_statements "The Go Programming Language Specification - The Go Programming Language"
-[bytes]: https://golang.org/pkg/bytes/ "bytes - The Go Programming Language"
+[bytes]: https://pkg.go.dev/bytes/ "bytes - The Go Programming Language"
 <!-- eof -->

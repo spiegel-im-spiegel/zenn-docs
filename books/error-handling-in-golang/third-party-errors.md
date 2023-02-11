@@ -122,7 +122,7 @@ if err := result.ErrorOrNil(); err != nil {
 - [errgroup · pkg.go.dev](https://pkg.go.dev/golang.org/x/sync/errgroup) : 個人的には [hashicorp/go-multierror] のほうがオススメ
 
 [Go]: https://golang.org/ "The Go Programming Language"
-[errors]: https://golang.org/pkg/errors/ "errors - The Go Programming Language"
+[errors]: https://pkg.go.dev/errors/ "errors - The Go Programming Language"
 [pkg/errors]: https://github.com/pkg/errors "pkg/errors: Simple error handling primitives"
 [hashicorp/go-multierror]: https://github.com/hashicorp/go-multierror "hashicorp/go-multierror: A Go (golang) package for representing a list of errors as a single error."
 [golang.org/x/xerrors]: https://pkg.go.dev/golang.org/x/xerrors "xerrors · pkg.go.dev"
