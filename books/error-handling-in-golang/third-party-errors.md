@@ -66,6 +66,10 @@ if err != nil {
 【2021-07-14 追記】 [pkg/errors] パッケージの Unwrap() メソッドには一部[不具合](https://github.com/pkg/errors/issues/223 "Unwrap doesn't return the base error · Issue #223 · pkg/errors")が残っているようです。ご注意を。
 :::
 
+:::message alert
+【2023-02-13 追記】 [pkg/errors] パッケージは 2021-12-01 にアーカイブ化されメンテナンスされなくなった模様。 v1.0 まで到達しなかったのね。
+:::
+
 ## [hashicorp/go-multierror]
 
 コンテナ操作や goroutine を使った並行処理などで複数のエラーをまとめて処理する場合がある。複数のエラーをまとめて扱えるサードパーティ・パッケージはいくつかあるが，個人的には [hashicorp/go-multierror] がシンプルでお気に入りである。

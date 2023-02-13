@@ -2,7 +2,7 @@
 title: "【付録2】 複数のエラーを扱う"
 ---
 
-コンテナ操作や並行処理など，単一のエラーではなく複数のエラーをまとめて処理したい場合がある。サードパーティでは [hashicorp/go-multierror] など複数エラーを扱うパッケージがあるが， 2023年2月にリリースされた [Go] 1.20 から標準で複数エラーを扱えるようになった。
+コンテナ操作や並行処理など，単一のエラーではなく複数のエラーをまとめて処理したい場合がある。サードパーティでは [hashicorp/go-multierror] など複数エラーを扱うパッケージがあるが，2023年2月にリリースされた [Go] 1.20 から標準で複数エラーを扱えるようになった。
 
 ## [errors].Is() および [errors].As() 関数の拡張
 
@@ -42,7 +42,7 @@ func Is(err, target error) bool {
 }
 ```
 
-と拡張されている。 Unwrap() error と Unwrap() []error を型 switch を使って検査しているのがおわかりだろうか。 [errors].As() 関数関数についても同様の拡張がされている。
+と拡張されている。 Unwrap() error と Unwrap() []error を型 switch を使って検査しているのがお分かりだろうか。 [errors].As() 関数関数についても同様の拡張がされている。
 
 ここで Unwrap() error と Unwrap() []error は，メソッドとして同時に定義できない点に注意。さらに既存の [errors].Unwrap() 関数は原因エラーが単一の場合（Unwrap() error メソッドを備えている）にのみ値を返し Unwrap() []error メソッドに対応した関数は用意されていないらしい。
 
@@ -50,15 +50,15 @@ func Is(err, target error) bool {
 
 ```go
 func Unwraps(err error) []error {
-    if err != nil {
-        if es, ok := err.(interface {
-            Unwrap() []error
-        }); ok {
-            return es.Unwrap()
-        }
+    if err == nil {
+        return nil
     }
-    e := errors.Unwrap(err)
-    if e != nil {
+    if es, ok := err.(interface {
+        Unwrap() []error
+    }); ok {
+        return es.Unwrap()
+    }
+    if e := errors.Unwrap(err); e != nil {
         return []error{e}
     }
     return nil
