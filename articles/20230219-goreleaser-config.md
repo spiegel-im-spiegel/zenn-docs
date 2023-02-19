@@ -6,7 +6,7 @@ topics: ["go"] # タグ。["markdown", "rust", "aws"] のように指定する
 published: true # 公開設定（true で公開）
 ---
 
-私は [GoReleaser] を使って [GitHub] に対してビルドとデプロイを行っているのだが[^ga1]，ビルド用の設定ファイル .goreleaser.yml については最初の頃に作ったのを（ほとんど設定を変えずに）使いまわしていた。で， [Go] 1.20 が[出た](https://text.baldanders.info/release/2023/02/go-1_20-is-released/ "Go 1.20 がリリースされた")のをきっかけに「RICS-V 用のバイナリも追加しよう」と色気を出したのだが，実際に手元で動かしてみたら，いくつかの設定が DEPRECATED になってるらしい。
+私は [GoReleaser] を使って [GitHub] にあるリポジトリに対してビルドとデプロイを行っているのだが[^ga1]，ビルド用の設定ファイル .goreleaser.yml については最初の頃に作ったのを（ほとんど設定を変えずに）使いまわしていた。で， [Go] 1.20 が[出た](https://text.baldanders.info/release/2023/02/go-1_20-is-released/ "Go 1.20 がリリースされた")のをきっかけに「RISC-V 用のバイナリも追加しよう」と色気を出したのだが，実際に手元で動かしてみたら，いくつかの設定が DEPRECATED になってることに気がついた。
 
 [^ga1]: 詳しくは拙文「[GitHub Actions で Go パッケージの CI 作業を一通り行う](https://zenn.dev/spiegel/articles/20200929-using-golangci-lint-action)」を参照のこと。
 
