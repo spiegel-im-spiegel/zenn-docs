@@ -49,7 +49,7 @@ $ goreleaser release --snapshot --skip-publish --clean
 DEPRECATED: `archives.rlcp` will be the default soon, check https://goreleaser.com/deprecations#archivesrlcp for more info
 ```
 
-これも指示された Web ページを見ると
+これも指示された Web ページを見ると以下のように書かれていた。
 
 > This is not so much a deprecation property (yet), as it is a default behavior change.
 > 
