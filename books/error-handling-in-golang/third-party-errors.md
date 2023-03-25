@@ -72,7 +72,7 @@ if err != nil {
 
 ## [cockroachdb/errors] 【2023-03-26 追記】
 
-メンテナンスが止まった [pkg/errors] パッケージの代替として作られたものらしい。最近なにかと問題になっている PII (Personally Identifiable Information) のスクリーニングとかできるらしい。 DB アクセスや Web アプリケーションでログを吐く際には，これを検討してみてもいいかもしれない。
+メンテナンスが止まった [pkg/errors] パッケージの代替として作られたものらしい。最近なにかと問題になっている PII (Personally Identifiable Information) のスクリーニングとかできるそうだ。 DB アクセスや Web アプリケーションでログを吐く際には，これを検討してみてもいいかもしれない。
 
 ## [hashicorp/go-multierror]
 
