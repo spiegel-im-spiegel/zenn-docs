@@ -70,7 +70,7 @@ if err != nil {
 【2023-02-13 追記】 [pkg/errors] パッケージは 2021-12-01 にアーカイブ化されメンテナンスされなくなった模様。 v1.0 まで到達しなかったのね。
 :::
 
-## 【2023-03-26 追記】 [cockroachdb/errors]
+## [cockroachdb/errors] 【2023-03-26 追記】
 
 メンテナンスが止まった [pkg/errors] パッケージの代替として作られたものらしい。最近なにかと問題になっている PII (Personally Identifiable Information) のスクリーニングとかできるらしい。 DB アクセスや Web アプリケーションでログを吐く際には，これを検討してみてもいいかもしれない。
 
@@ -116,6 +116,10 @@ if err := result.ErrorOrNil(); err != nil {
 
 簡単・便利！
 
+:::message
+[Go] 1.20 から標準 [errors] でも複数エラーを扱えるようになった。詳しくは「[複数のエラーを扱う](./multi-error)」を参照のこと。
+:::
+
 ## [golang.org/x/xerrors]
 
 [errors] 標準パッケージで追加された階層エラー機能の[元ネタ](https://go.googlesource.com/proposal/+/master/design/29934-error-values.md "Proposal: Go 2 Error Inspection")的なパッケージで今でも割と使われているが，可能であれば [errors] 標準パッケージへ移行すべきだろう。
@@ -123,7 +127,7 @@ if err := result.ErrorOrNil(); err != nil {
 [golang.org/x/xerrors] パッケージにあって [errors] 標準パッケージにない機能として `%+v` 書式を使ったスタック情報の吐き出しがあるが，これについては先に紹介した [pkg/errors] のほうが設計がシンプルでお勧めである。併せて検討していただきたい。
 
 :::message alert
-【2023-03-26 追記】 現在 [xerrors][golang.org/x/xerrors].As(), [xerrors][golang.org/x/xerrors].Is(), [xerrors][golang.org/x/xerrors].Unwrap() といった主要関数が deprecated となっている。また Go 1.20 以降のマルチエラーにも対応していないため，標準 [errors] 等に置き換えることを検討してほしい。
+【2023-03-26 追記】 現在 [xerrors][golang.org/x/xerrors].As(), [xerrors][golang.org/x/xerrors].Is(), [xerrors][golang.org/x/xerrors].Unwrap() といった主要関数が deprecated となっている。また Go 1.20 以降のマルチエラーにも対応していないため，できるだけ標準 [errors] 等に置き換えることを検討してほしい。
 :::
 
 ## その他の汎用エラー・パッケージ
