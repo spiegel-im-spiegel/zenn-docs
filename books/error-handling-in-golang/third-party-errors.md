@@ -138,5 +138,5 @@ if err := result.ErrorOrNil(); err != nil {
 [pkg/errors]: https://github.com/pkg/errors "pkg/errors: Simple error handling primitives"
 [hashicorp/go-multierror]: https://github.com/hashicorp/go-multierror "hashicorp/go-multierror: A Go (golang) package for representing a list of errors as a single error."
 [golang.org/x/xerrors]: https://pkg.go.dev/golang.org/x/xerrors "xerrors · pkg.go.dev"
-[cockroachdb/errors] https://github.com/cockroachdb/errors "cockroachdb/errors: Go error library with error portability over the network"
+[cockroachdb/errors]: https://github.com/cockroachdb/errors "cockroachdb/errors: Go error library with error portability over the network"
 <!-- eof -->
