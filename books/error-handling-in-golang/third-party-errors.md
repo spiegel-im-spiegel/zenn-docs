@@ -70,6 +70,10 @@ if err != nil {
 【2023-02-13 追記】 [pkg/errors] パッケージは 2021-12-01 にアーカイブ化されメンテナンスされなくなった模様。 v1.0 まで到達しなかったのね。
 :::
 
+## 【2023-03-26 追記】 [cockroachdb/errors]
+
+メンテナンスが止まった [pkg/errors] パッケージの代替として作られたものらしい。最近なにかと問題になっている PII (Personally Identifiable Information) のスクリーニングとかできるらしい。 DB アクセスや Web アプリケーションでログを吐く際には，これを検討してみてもいいかもしれない。
+
 ## [hashicorp/go-multierror]
 
 コンテナ操作や goroutine を使った並行処理などで複数のエラーをまとめて処理する場合がある。複数のエラーをまとめて扱えるサードパーティ・パッケージはいくつかあるが，個人的には [hashicorp/go-multierror] がシンプルでお気に入りである。
@@ -118,6 +122,10 @@ if err := result.ErrorOrNil(); err != nil {
 
 [golang.org/x/xerrors] パッケージにあって [errors] 標準パッケージにない機能として `%+v` 書式を使ったスタック情報の吐き出しがあるが，これについては先に紹介した [pkg/errors] のほうが設計がシンプルでお勧めである。併せて検討していただきたい。
 
+:::message alert
+【2023-03-26 追記】 現在 [xerrors][golang.org/x/xerrors].As(), [xerrors][golang.org/x/xerrors].Is(), [xerrors][golang.org/x/xerrors].Unwrap() といった主要関数が deprecated となっている。また Go 1.20 以降のマルチエラーにも対応していないため，標準 [errors] 等に置き換えることを検討してほしい。
+:::
+
 ## その他の汎用エラー・パッケージ
 
 以下はネット等で見かけた汎用エラー・パッケージを列挙していく。私自身が試したわけではないので機能・性能のほどは保証しかねるけど，気になるものがあれば是非とも試してみて欲しい。
@@ -130,4 +138,5 @@ if err := result.ErrorOrNil(); err != nil {
 [pkg/errors]: https://github.com/pkg/errors "pkg/errors: Simple error handling primitives"
 [hashicorp/go-multierror]: https://github.com/hashicorp/go-multierror "hashicorp/go-multierror: A Go (golang) package for representing a list of errors as a single error."
 [golang.org/x/xerrors]: https://pkg.go.dev/golang.org/x/xerrors "xerrors · pkg.go.dev"
+[cockroachdb/errors] https://github.com/cockroachdb/errors "cockroachdb/errors: Go error library with error portability over the network"
 <!-- eof -->
