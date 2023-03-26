@@ -8,5 +8,5 @@ title: "はじめに"
 
 私が [Go] のエラーハンドリングについて最初に記事にしたのは[2015年](https://text.baldanders.info/golang/error-handling/ "エラー・ハンドリングについて（追記あり）")のことだが，あれから [Go] も少しずつ変わってるし，私も当時よりは多少なりと理解が進んだと思うので，今まで書き散らかした駄文を「全部入り」で本の形にしてみようと思う。
 
-[Go]: https://golang.org/ "The Go Programming Language"
+[Go]: https://go.dev/ "The Go Programming Language"
 <!-- eof -->

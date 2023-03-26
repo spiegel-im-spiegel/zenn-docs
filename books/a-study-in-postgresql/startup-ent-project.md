@@ -29,7 +29,7 @@ go get: installing executables with 'go get' in module mode is deprecated.
     or run 'go help get' or 'go help install'.
 ```
 
-と[警告](https://golang.org/doc/go-get-install-deprecation "Deprecation of 'go get' for installing executables - The Go Programming Language")が表示される。
+と[警告](https://go.dev/doc/go-get-install-deprecation "Deprecation of 'go get' for installing executables - The Go Programming Language")が表示される。
 
 これで準備できたので初期コードを生成してみる。
 

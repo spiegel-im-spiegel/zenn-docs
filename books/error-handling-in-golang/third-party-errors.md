@@ -137,7 +137,7 @@ if err := result.ErrorOrNil(); err != nil {
 - [morikuni/failure: failure is a utility package for handling application errors.](https://github.com/morikuni/failure)
 - [errgroup · pkg.go.dev](https://pkg.go.dev/golang.org/x/sync/errgroup) : 個人的には [hashicorp/go-multierror] のほうがオススメ
 
-[Go]: https://golang.org/ "The Go Programming Language"
+[Go]: https://go.dev/ "The Go Programming Language"
 [errors]: https://pkg.go.dev/errors/ "errors - The Go Programming Language"
 [pkg/errors]: https://github.com/pkg/errors "pkg/errors: Simple error handling primitives"
 [hashicorp/go-multierror]: https://github.com/hashicorp/go-multierror "hashicorp/go-multierror: A Go (golang) package for representing a list of errors as a single error."

@@ -155,7 +155,7 @@ exit status 2
 
 開発中はともかく，バイナリを公にリリースする際に（たとえ Docker 上でビルドするにしても）開発環境のパスが丸見えなのはどうかと思うので，リリース用ビルドのスクリプトに `-trimpath` オプションを付けてビルドするよう手を加えておくといいだろう。
 
-[Go]: https://golang.org/ "The Go Programming Language"
-[defer]: https://golang.org/ref/spec#Defer_statements "The Go Programming Language Specification - The Go Programming Language"
+[Go]: https://go.dev/ "The Go Programming Language"
+[defer]: https://go.dev/ref/spec#Defer_statements "The Go Programming Language Specification - The Go Programming Language"
 [bytes]: https://pkg.go.dev/bytes/ "bytes - The Go Programming Language"
 <!-- eof -->

@@ -165,8 +165,8 @@ $ go run sample6.go | jq -s .
 
 [rs/zerolog][zerolog] を使えばログを再利用しやすくなるので，是非とも活用していきたいところである。
 
-[Go]: https://golang.org/ "The Go Programming Language"
-[for]: https://golang.org/ref/spec#For_statements "The Go Programming Language Specification - The Go Programming Language"
+[Go]: https://go.dev/ "The Go Programming Language"
+[for]: https://go.dev/ref/spec#For_statements "The Go Programming Language Specification - The Go Programming Language"
 [spf13/cobra]: https://github.com/spf13/cobra "spf13/cobra: A Commander for modern Go CLI interactions"
 [jq]: https://stedolan.github.io/jq/
 [errs]: https://github.com/goark/errs "goark/errs: Error handling for Golang"

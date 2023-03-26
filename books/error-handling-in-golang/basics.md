@@ -28,7 +28,7 @@ fn main() {
 
 「例外」の問題は “goto” と同じと言える[^goto1]。
 
-[^goto1]: ちなみに [Go] の `goto` や ラベル付きの `break`, `continue` は[飛び先に制約](https://golang.org/test/goto.go)があり，どこにでもジャンプできるわけではない。
+[^goto1]: ちなみに [Go] の `goto` や ラベル付きの `break`, `continue` は[飛び先に制約](https://go.dev/test/goto.go)があり，どこにでもジャンプできるわけではない。
 
 「例外」では，あるオブジェクトに関する記述が少なくとも2つ（たとえば try と catch）下手をすると3つ以上のスコープに分割されてしまう。しかもオブジェクトの状態ごと大域脱出するため，その状態（の可能性）の後始末をスコープ間で漏れなく矛盾なく記述しきらなければならない。この一連に不備があれば，バグやリークやその他の脆弱性のもとになる。考えるだけで面倒である。
 
@@ -155,9 +155,9 @@ func main() {
 
 のように，その場で作ったエラーメッセージをエラー・インスタンスとして扱うこともできる。
 
-[Go]: https://golang.org/ "The Go Programming Language"
-[if]: https://golang.org/ref/spec#If_statements "The Go Programming Language Specification - The Go Programming Language"
-[defer]: https://golang.org/ref/spec#Defer_statements "The Go Programming Language Specification - The Go Programming Language"
+[Go]: https://go.dev/ "The Go Programming Language"
+[if]: https://go.dev/ref/spec#If_statements "The Go Programming Language Specification - The Go Programming Language"
+[defer]: https://go.dev/ref/spec#Defer_statements "The Go Programming Language Specification - The Go Programming Language"
 [errors]: https://pkg.go.dev/errors/ "errors - The Go Programming Language"
 [os]: https://pkg.go.dev/os/ "os - The Go Programming Language"
 [fmt]: https://pkg.go.dev/fmt/ "fmt - The Go Programming Language"

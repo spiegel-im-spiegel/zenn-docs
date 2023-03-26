@@ -125,11 +125,11 @@ $ go run sample2.go
 
 これで，エラーメッセージを解析するしかなかった [fmt].Errorf() 関数もだいぶ「使える」ようになっただろう（笑）
 
-[Go]: https://golang.org/ "The Go Programming Language"
+[Go]: https://go.dev/ "The Go Programming Language"
 [io]: https://pkg.go.dev/io/ "io - The Go Programming Language"
 [errors]: https://pkg.go.dev/errors/ "errors - The Go Programming Language"
 [os]: https://pkg.go.dev/os/ "os - The Go Programming Language"
 [fmt]: https://pkg.go.dev/fmt/ "fmt - The Go Programming Language"
-[conversion]: https://golang.org/ref/spec#Conversions "The Go Programming Language Specification - The Go Programming Language"
-[type assertion]: https://golang.org/ref/spec#Type_assertions "The Go Programming Language Specification - The Go Programming Language"
+[conversion]: https://go.dev/ref/spec#Conversions "The Go Programming Language Specification - The Go Programming Language"
+[type assertion]: https://go.dev/ref/spec#Type_assertions "The Go Programming Language Specification - The Go Programming Language"
 <!-- eof -->

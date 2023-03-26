@@ -7,7 +7,6 @@ title: "参考文献"
 https://www.postgresql.org/
 https://gorm.io/
 https://entgo.io/
-https://golang.org/
 https://go.dev/
 
 ## きっと参考になるサイト・ページ

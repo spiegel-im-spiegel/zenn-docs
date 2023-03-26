@@ -4,17 +4,15 @@ title: "参考文献"
 
 ## 公式サイト
 
-https://golang.org/
-
-https://golang.org/ref/spec
-
 https://go.dev/
 
-https://blog.golang.org/defer-panic-and-recover
+https://go.dev/ref/spec
+
+https://go.dev/blog/defer-panic-and-recover
 
 ## 参考図書
 
 https://www.amazon.co.jp/dp/4621300253
 
-[Go]: https://golang.org/ "The Go Programming Language"
+[Go]: https://go.dev/ "The Go Programming Language"
 <!-- eof -->

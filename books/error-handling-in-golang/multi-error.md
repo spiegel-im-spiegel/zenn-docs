@@ -6,7 +6,7 @@ title: "【付録2】 複数のエラーを扱う"
 
 ## [errors].Is() および [errors].As() 関数の拡張
 
-[Go] 1.13 から「[エラーの階層化](./layered-error)」をサポートするためにエラーインスタンスに対して Unwrap() error メソッドがの有無を検査するようになったが， 1.20 ではこれに加えて Unwrap() []error メソッドも対象となった。たとえば [errors].Is() 関数は
+[Go] 1.13 から「[エラーの階層化](./layered-error)」をサポートするためにエラーインスタンスに対して Unwrap() error メソッドの有無を検査するようになったが， 1.20 ではこれに加えて Unwrap() []error メソッドも対象となった。たとえば [errors].Is() 関数は
 
 ```go:errors/wrap.go
 func Is(err, target error) bool {
@@ -130,11 +130,11 @@ Error is EOF ? > true
 
 `%w` を複数使えるようになったのは嬉しい。これでより柔軟なエラーハンドリングができるようになるだろう。
 
-[Go]: https://golang.org/ "The Go Programming Language"
+[Go]: https://go.dev/ "The Go Programming Language"
 [errors]: https://pkg.go.dev/errors/ "errors - The Go Programming Language"
 [fmt]: https://pkg.go.dev/fmt/ "fmt - The Go Programming Language"
 [os]: https://pkg.go.dev/os/ "os - The Go Programming Language"
-[io]: https://golang.org/pkg/io/ "io - The Go Programming Language"
+[io]: https://go.dev/pkg/io/ "io - The Go Programming Language"
 [hashicorp/go-multierror]: https://github.com/hashicorp/go-multierror "hashicorp/go-multierror: A Go (golang) package for representing a list of errors as a single error."
 [errs]: https://github.com/goark/errs "goark/errs: Error handling for Golang"
 <!-- eof -->
