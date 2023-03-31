@@ -11,7 +11,7 @@ published: true # 公開設定（true で公開）
 週末に SSH 越しに RDBMS サービスにアクセスする [Go] パッケージをリリースしたのだが
 
 https://github.com/goark/sshql
-https://text.baldanders.info/release/2022/09/sql-over-ssh/
+https://text.baldanders.info/release/sshql/
 
 このパッケージは3つのモジュールで構成されている。ディレクトリ構造はこんな感じ。
 
