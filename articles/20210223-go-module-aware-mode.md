@@ -49,7 +49,7 @@ go get または go mod tidy コマンドを使ってあらかじめ外部パッ
 モジュールのバージョンがバージョン管理ツールのリビジョンと連動している関係上，基本的には「1リポジトリ＝1モジュール」である。
 
 :::message
-[Go 1.18](https://go.dev/blog/go1.18 "Go 1.18 is released! - The Go Programming Language") から [workspace mode](https://go.dev/doc/tutorial/workspaces "Tutorial: Getting started with multi-module workspaces - The Go Programming Language") が導入された。これにより，ひとつのリポジトリ内で複数のモジュールを関連付けて扱うことが容易になる。 Workspace mode については本記事の範囲から外れるため [kimuson13](https://zenn.dev/kimuson13) さんの「[Go1.18からのWorkspace modeをさっそく使ってみた](https://zenn.dev/kimuson13/articles/go-workspace-mode-impressions)」などを参考にどうぞ。
+[Go 1.18](https://go.dev/blog/go1.18 "Go 1.18 is released! - The Go Programming Language") から [workspace mode](https://go.dev/doc/tutorial/workspaces "Tutorial: Getting started with multi-module workspaces - The Go Programming Language") が導入された。これにより，ひとつのリポジトリ内で複数のモジュールを関連付けて扱うことが容易になる。 Workspace mode については本記事の範囲から外れるため「[Go1.18からのWorkspace modeをさっそく使ってみた](https://zenn.dev/kimuson13/articles/go-workspace-mode-impressions)」や「[Go 1.18集中連載 Workspacesモードを試してみた](https://future-architect.github.io/articles/20220216a/)」などの記事を参考にどうぞ。
 :::
 
 モジュール名は後述する go.mod ファイルで管理されるが，外部パッケージへの物理パスとモジュール名が同じであれば，モジュール対応モードへの移行にあたってソース・コードを書き換える必要はない。
@@ -198,6 +198,10 @@ module golang.org/x/tools/gopls
 
 replace golang.org/x/tools => ../
 ```
+
+:::message
+単一リポジトリで複数モジュールを運用する場合や非公開のローカルパッケージを組み合わせて開発を行う場合は `replace` ディレクティブを使うのではなく， [Go 1.18](https://go.dev/blog/go1.18 "Go 1.18 is released! - The Go Programming Language") から導入された [workspace mode](https://go.dev/doc/tutorial/workspaces "Tutorial: Getting started with multi-module workspaces - The Go Programming Language") を利用することをお勧めする。単一リポジトリで複数モジュールを運用する例として拙文の「[単一リポジトリで複数モジュールを扱いたい](https://zenn.dev/spiegel/articles/20220912-workspace-mode)」も参考にどうぞ。
+:::
 
 `retract` ディレクティブはバージョン 1.16 から導入されたもので
 
@@ -378,7 +382,7 @@ import "github.com/mattn/jvgrep/v5/mmap"
 
 などとモジュール名をベースに指定する必要がある[^pasth1]。
 
-[^pasth1]: バージョン 1.16 から import 時の相対パス指定は原則禁止になったので注意。同一リポジトリ内に複数のモジュールがある場合は go.mod ファイルで `replace` ディレクティブを使うか [Go] 1.18 から導入された [workspace mode](https://go.dev/doc/tutorial/workspaces "Tutorial: Getting started with multi-module workspaces - The Go Programming Language") を使うとよい。
+[^pasth1]: バージョン 1.16 から import 時の相対パス指定は原則禁止になったので注意。同一リポジトリ内に複数のモジュールがある場合は [Go] 1.18 から導入された [workspace mode](https://go.dev/doc/tutorial/workspaces "Tutorial: Getting started with multi-module workspaces - The Go Programming Language") を使うとよい。
 
 ## 特定バージョンのモジュールをビルド&インストール&実行する
 
@@ -457,14 +461,16 @@ go get コマンドは元々 $GOPATH ディレクトリ下に指定した外部�
 
 ## 参考
 
-https://golang.org/ref/mod
-https://golang.org/doc/modules/developing
-https://blog.golang.org/go116-module-changes
+https://go.dev/ref/mod
+https://go.dev/doc/modules/developing
+https://go.dev/blog/go116-module-changes
 https://zenn.dev/nobonobo/articles/4fb018a24f9ee9
 https://future-architect.github.io/articles/20210810a/
 https://future-architect.github.io/articles/20210818a/
+https://future-architect.github.io/articles/20220216a/
 https://zenn.dev/ryo_yamaoka/articles/595cf9e69229f9
 https://zenn.dev/yoske/articles/c90873d7d84732
+https://zenn.dev/nobonobo/articles/1d4afb9f4e8873
 
 [go]: https://go.dev/ "The Go Programming Language"
 [git]: https://git-scm.com/ "Git"
