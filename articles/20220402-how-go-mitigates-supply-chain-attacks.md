@@ -86,7 +86,9 @@ https://go.dev/blog/module-mirror-launch
 
 これって [Go] のことわざなんだそうな。何かあちこちにケンカ売ってる気がするが（笑）
 
-https://www.youtube.com/clip/UgkxWCEmMJFW0-TvSMzcMEAHZcpt2FsVXP65
+https://www.youtube.com/watch?v=PAAkCSZUG1c
+
+（この公演の9分30秒のあたり）
 
 最重要ポイントはこれかな。
 
