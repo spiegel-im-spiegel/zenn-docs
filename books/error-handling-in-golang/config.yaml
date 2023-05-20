@@ -25,5 +25,6 @@ chapters:
   - error-logging
   - panics
   - multi-error
+  - idiom-of-error-handling
   - reference
   - colophon
