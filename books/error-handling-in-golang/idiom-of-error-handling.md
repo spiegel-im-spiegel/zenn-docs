@@ -100,7 +100,9 @@ func checkFileOpen(path string) error {
 
 ラッピングされたエラーは [errors].Is() または [errors].As() 関数で捕捉可能である。詳しくは[4章](./layered-error "エラーの階層化")および[付録2](./multi-error "【付録2】 複数のエラーを扱う")を参照のこと。そうそう，[拙作の errs パッケージ]("./error-logging" "ぼくがかんがえたさいきょうのえらーろぐ")もよろしく（笑）
 
+## 参考
 
+https://zenn.dev/nobonobo/articles/a7f41596220a1b
 
 [Go]: https://go.dev/ "The Go Programming Language"
 [errors]: https://pkg.go.dev/errors/ "errors - The Go Programming Language"
