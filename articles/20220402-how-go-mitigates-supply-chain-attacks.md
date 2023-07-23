@@ -99,6 +99,11 @@ https://www.youtube.com/watch?v=PAAkCSZUG1c
 
 ## 参考
 
+https://security.googleblog.com/2023/04/supply-chain-security-for-go-part-1.html
+https://security.googleblog.com/2023/06/supply-chain-security-for-go-part-2.html
+https://security.googleblog.com/2023/07/supply-chain-security-for-go-part-3.html
+https://google.github.io/osv.dev/
+https://github.com/google/osv-scanner
 https://www.amazon.co.jp/dp/B07FSBHS2V
 
 [Go]: https://go.dev/ "The Go Programming Language"
