@@ -96,7 +96,7 @@ func main() {
 }
 ```
 
-というわけで，これをパッケージ化することにした。といっても，たったこれだけの機能のためにリポジトリを作るのはもったいないので，拙作の疑似乱数パッケージ [github.com/spiegel-im-spiegel/mt] のオマケ機能として組み込んでみた。こんな感じに使える。
+というわけで，これをパッケージ化することにした。といっても，たったこれだけの機能のためにリポジトリを作るのはもったいないので，拙作の疑似乱数パッケージ [github.com/goark/mt] のオマケ機能として組み込んでみた。こんな感じに使える。
 
 ```go
 //go:build run
@@ -108,7 +108,7 @@ import (
     "fmt"
     "math/rand"
 
-    "github.com/spiegel-im-spiegel/mt/secure"
+    "github.com/goark/mt/secure"
 )
 
 func main() {
@@ -123,5 +123,4 @@ https://text.baldanders.info/release/mersenne-twister-by-golang/
 [Go]: https://golang.org/ "The Go Programming Language"
 [crypto/rand]: https://pkg.go.dev/crypto/rand "rand package - crypto/rand - pkg.go.dev"
 [math/rand]: https://pkg.go.dev/math/rand "rand package - math/rand - pkg.go.dev"
-[github.com/spiegel-im-spiegel/mt]: https://github.com/spiegel-im-spiegel/mt "spiegel-im-spiegel/mt: Mersenne Twister; Pseudo Random Number Generator, Implemented by Golang"
-<!-- eof -->
+[github.com/goark/mt]: https://github.com/goark/mt "goark/mt: Mersenne Twister; Pseudo Random Number Generator, Implemented by Golang"
