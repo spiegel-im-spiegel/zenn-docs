@@ -8,7 +8,7 @@ published: true # 公開設定（true で公開）
 
 他所様のブログ記事などを見るに [Go] の学習を始める際に躓きがちなのが interface と nil と slice なのではないかと思う。 [Interface](https://zenn.dev/spiegel/articles/20201129-interface-types-in-golang "Interface 型の使いどころ【Go】") と [nil](https://zenn.dev/spiegel/articles/20201010-ni-is-not-nil "nil == nil でないとき（または Go プログラマは息をするように依存を注入する）") については以前に書いた拙文を見ていただくとして，配列とスライスについては Zenn で書いてなかったな，と思い立ち記事にしてみることにした。なんちうあざとい（笑）
 
-とはいえ，スライスは配列との関係が分かればさほど難しくない。以降からひとつずつ見ていくことにしよう。なお，記事中の図は “[Go Slices: usage and internals](https://blog.golang.org/slices-intro)” から拝借している。つか（英語不得手でないなら）そっちの記事を見た方が早いんだけどね。
+とはいえ，スライスは配列との関係が分かればさほど難しくない。以降からひとつずつ見ていくことにしよう。なお，記事中の図は “[Go Slices: usage and internals](https://go.dev/blog/slices-intro)” から拝借している。つか（英語不得手でないなら）そっちの記事を見た方が早いんだけどね。
 
 
 ## 配列（Array）
@@ -36,8 +36,8 @@ func main() {
 
 変数 `ary` を図で表すならこんな感じ。
 
-![](https://blog.golang.org/slices-intro/slice-array.png)
-*via “[Go Slices: usage and internals - The Go Blog](https://blog.golang.org/slices-intro)”*
+![](https://go.dev/blog/slices-intro/slice-array.png)
+*via “[Go Slices: usage and internals - The Go Blog](https://go.dev/blog/slices-intro)”*
 
 ポイントは型名が `[4]int` の固定長データである点。配列の型や数が異なれば異なる型として扱われる。
 
@@ -152,8 +152,8 @@ func main() {
 
 の3つの状態を属性として持つオブジェクトである。図にするとこんな感じ。
 
-![](https://blog.golang.org/slices-intro/slice-struct.png)
-*via “[Go Slices: usage and internals - The Go Blog](https://blog.golang.org/slices-intro)”*
+![](https://go.dev/blog/slices-intro/slice-struct.png)
+*via “[Go Slices: usage and internals - The Go Blog](https://go.dev/blog/slices-intro)”*
 
 ここで
 
@@ -163,8 +163,8 @@ slc1 := ary1[:]
 
 は以下のように図示できる。
 
-![](https://blog.golang.org/slices-intro/slice-1.png)
-*via “[Go Slices: usage and internals - The Go Blog](https://blog.golang.org/slices-intro)”*
+![](https://go.dev/blog/slices-intro/slice-1.png)
+*via “[Go Slices: usage and internals - The Go Blog](https://go.dev/blog/slices-intro)”*
 
 スライスを使えば配列（またはスライス）の一部を切り出すことができる。たとえば
 
@@ -174,8 +174,8 @@ slc2 := ary1[2:4]
 
 とすると
 
-![](https://blog.golang.org/slices-intro/slice-2.png)
-*via “[Go Slices: usage and internals - The Go Blog](https://blog.golang.org/slices-intro)”*
+![](https://go.dev/blog/slices-intro/slice-2.png)
+*via “[Go Slices: usage and internals - The Go Blog](https://go.dev/blog/slices-intro)”*
 
 という感じに切り出される（元の配列が切り詰められているわけではないので注意）。さらにこの `slc2` に対して
 
@@ -185,8 +185,8 @@ slc3 := sl2[:cap(slc2)]
 
 とすると
 
-![](https://blog.golang.org/slices-intro/slice-3.png)
-*via “[Go Slices: usage and internals - The Go Blog](https://blog.golang.org/slices-intro)”*
+![](https://go.dev/blog/slices-intro/slice-3.png)
+*via “[Go Slices: usage and internals - The Go Blog](https://go.dev/blog/slices-intro)”*
 
 という感じに取り出せる。
 
@@ -339,6 +339,90 @@ func main() {
 }
 ```
 
+### slices 標準パッケージを使う【2023-08-10 追記】
+
+[Go] 1.21 から [slices] 標準パッケージが追加された。これはスライスの操作を Generics を使って定義したもので，たとえばスライスの複製や比較を行うメソッドは
+
+```go
+// Clone returns a copy of the slice.
+// The elements are copied using assignment, so this is a shallow clone.
+func Clone[S ~[]E, E any](s S) S {
+    // Preserve nil in case it matters.
+    if s == nil {
+        return nil
+    }
+    return append(S([]E{}), s...)
+}
+```
+
+```go
+// Equal reports whether two slices are equal: the same length and all
+// elements equal. If the lengths are different, Equal returns false.
+// Otherwise, the elements are compared in increasing index order, and the
+// comparison stops at the first unequal pair.
+// Floating point NaNs are not considered equal.
+func Equal[S ~[]E, E comparable](s1, s2 S) bool {
+    if len(s1) != len(s2) {
+        return false
+    }
+    for i := range s1 {
+        if s1[i] != s2[i] {
+            return false
+        }
+    }
+    return true
+}
+```
+
+といった感じに定義されている。これを使えば前節のコードは
+
+```go:sampe9b.go
+package main
+
+import (
+    "fmt"
+    "slices"
+)
+
+func main() {
+    slc1 := []int{0, 1, 2, 3, 4}
+    slc2 := slc1
+    slc3 := slices.Clone(slc1)
+    fmt.Printf("Pointer: %p , Refer: %p , Value: %v\n", &slc1, &slc1[0], slc1)
+    fmt.Printf("Pointer: %p , Refer: %p , Value: %v\n", &slc2, &slc2[0], slc2)
+    fmt.Printf("Pointer: %p , Refer: %p , Value: %v\n", &slc3, &slc3[0], slc3)
+    // Output:
+    // Pointer: 0xc000010018 , Refer: 0xc000072000 , Value: [0 1 2 3 4]
+    // Pointer: 0xc000010030 , Refer: 0xc000072000 , Value: [0 1 2 3 4]
+    // Pointer: 0xc000010048 , Refer: 0xc000072030 , Value: [0 1 2 3 4]
+}
+```
+
+```go:sample10c.go
+package main
+
+import (
+    "fmt"
+    "slices"
+)
+
+func main() {
+    slc1 := []int{0, 1, 2, 3, 4}
+    slc2 := []int{0, 1, 2, 3, 4}
+    if slices.Equal(slc1, slc2) {
+        fmt.Println("slc1 == slc2: true")
+    } else {
+        fmt.Println("slc1 == slc2: false")
+    }
+    // Output
+    // slc1 == slc2: true
+}
+```
+
+と書き直すことができる。他にも有用なメソッドがあるので確認してみてほしい。
+
+[slices]: https://pkg.go.dev/slices "slices package - slices - Go Packages"
+
 ## というわけで
 
 配列とスライスの関係を頭に入れて上手く使い分ければ（C/C++ の配列などに比べれば）簡単に安全にこれらを扱うことができるだろう。色々と試して欲しい。
@@ -348,5 +432,5 @@ func main() {
 https://text.baldanders.info/golang/array-and-slice/
 https://slide.baldanders.info/shimane-go-2020-02-13/
 
-[Go]: https://golang.org/ "The Go Programming Language"
+[Go]: https://go.dev/ "The Go Programming Language"
 <!-- eof -->
