@@ -60,7 +60,7 @@ func main() {
 
 https://zenn.dev/spiegel/articles/20211016-crypt-rand-as-a-math-rand
 
-という記事を書いたが， ChaCha8 疑似乱数生成器は暗号技術的にセキュア（「予測困難性」要件を満たす）と言えるので，上の記事のような変換をしなくてもよくなった。なお [math/rand] パッケージのトップレベル関数群を使う場合は [rand][math/rand].Seed() メソッドを呼んでしまうと従来の（セキュアでない）疑似乱数生成器を使うようになっているので要注意である。つか，可能であれば [math/rand] は使わないほうがいいと思う。
+という記事を書いたが， ChaCha8 疑似乱数生成器は暗号技術的にセキュア（「予測困難性」要件を満たす）と言えるので，上の記事のような変換をしなくてもよくなった。なお [math/rand] パッケージのトップレベル関数群を使う場合は [rand][math/rand].Seed() メソッドを呼んでしまうと従来の（セキュアでない）疑似乱数生成器を使うので要注意である。つか，可能であれば [math/rand] は使わないほうがいいと思う。
 
 [rand][math/rand/v2].N() は [math/rand/v2] パッケージで新たに追加された関数で Generics になっている。定義は以下の通り。
 
@@ -106,7 +106,9 @@ func main() {
 }
 ```
 
-なお，この方法で作成した疑似乱数生成器（[rand][math/rand/v2].ChaCha8）は並行的に安全（concurrency safe）ではないため，並行処理下で使用する場合は注意が必要である。まぁ，流石に [panic を吐いてコケる](https://text.baldanders.info/golang/pseudo-random-number-generator/ "Go の疑似乱数生成器は並行的に安全ではないらしい")まではないみたいだけど。ランタイムに組み込まれた ChaCha8 疑似乱数生成器はちゃんと排他処理を行っているので並行処理下で使いまくっても大丈夫である。 [math/rand] および [math/rand/v2] パッケージのトップレベル関数群も同様。
+なお，この方法で作成した疑似乱数生成器（[rand][math/rand/v2].ChaCha8）は並行的に安全（concurrency safe）ではないため，並行処理下で使用する場合は注意が必要である。まぁ，流石に [panic を吐いてコケる](https://text.baldanders.info/golang/pseudo-random-number-generator/ "Go の疑似乱数生成器は並行的に安全ではないらしい")まではないみたいだけど。
+
+ランタイムに組み込まれた ChaCha8 疑似乱数生成器はちゃんと排他処理を行っているので並行処理下で使いまくっても大丈夫である。 [math/rand] および [math/rand/v2] パッケージのトップレベル関数群も同様。
 
 ## PCG 疑似乱数生成器を Source として構成する
 
