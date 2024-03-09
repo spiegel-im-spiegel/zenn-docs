@@ -185,42 +185,36 @@ func makeSeedLaggedFibonacci() int64 {
 }
 
 var seedChaCha8 = makeSeedChaCha8()
-var seedPCG1, seedPCG2 = makeSeedPPCG()
-var seedLaggedFibonacci = makeSeedLaggedFibonacci()
-var count = 1000000
+var seed1, seed2 = makeSeedPPCG()
+var seed3 = makeSeedLaggedFibonacci()
 
 func BenchmarkRandomChaCha8(b *testing.B) {
     rnd := rand.New(rand.NewChaCha8(seedChaCha8))
+    b.ResetTimer()
     for i := 0; i < b.N; i++ {
-        for range count {
-            _ = rnd.IntN(1000)
-        }
+        _ = rnd.IntN(1000)
     }
 }
 
 func BenchmarkRandomChaCha8runtime(b *testing.B) {
     for i := 0; i < b.N; i++ {
-        for range count {
-            _ = rand.IntN(1000)
-        }
+        _ = rand.IntN(1000)
     }
 }
 
 func BenchmarkRandomPCG(b *testing.B) {
-    rnd := rand.New(rand.NewPCG(seedPCG1, seedPCG2))
+    rnd := rand.New(rand.NewPCG(seed1, seed2))
+    b.ResetTimer()
     for i := 0; i < b.N; i++ {
-        for range count {
-            _ = rnd.IntN(1000)
-        }
+        _ = rnd.IntN(1000)
     }
 }
 
 func BenchmarkRandomLaggedFibonacci(b *testing.B) {
-    rnd := rand.New(oldrand.NewSource(seedLaggedFibonacci).(rand.Source))
+    rnd := rand.New(oldrand.NewSource(seed3).(rand.Source))
+    b.ResetTimer()
     for i := 0; i < b.N; i++ {
-        for range count {
-            _ = rnd.IntN(1000)
-        }
+        _ = rnd.IntN(1000)
     }
 }
 ```
@@ -242,26 +236,100 @@ goos: linux
 goarch: amd64
 pkg: randoms
 cpu: AMD Ryzen 5 PRO 4650G with Radeon Graphics
-BenchmarkRandomChaCha8-12                     184       6389731 ns/op           1 B/op           0 allocs/op
-BenchmarkRandomChaCha8runtime-12              151       7874495 ns/op           0 B/op           0 allocs/op
-BenchmarkRandomPCG-12                         297       4062647 ns/op           0 B/op           0 allocs/op
-BenchmarkRandomLaggedFibonacci-12             355       3376871 ns/op          15 B/op           0 allocs/op
+BenchmarkRandomChaCha8-12                187543412             6.321 ns/op           0 B/op           0 allocs/op
+BenchmarkRandomChaCha8runtime-12         157618582             7.584 ns/op           0 B/op           0 allocs/op
+BenchmarkRandomPCG-12                    292268949             4.071 ns/op           0 B/op           0 allocs/op
+BenchmarkRandomLaggedFibonacci-12        336787878             3.599 ns/op           0 B/op           0 allocs/op
 PASS
-ok      randoms    6.974s
+ok      randoms    6.983s
 ```
 
 分かりにくいので表にまとめる。
 
 | 関数名 | 実行時間 (ns) | Alloc サイズ(Byte) | Alloc 回数 |
 | --- | ---: | ---: | ---: |
-| `BenchmarkRandomChaCha8` | 6,389,731 | 1 | 0 |
-| `BenchmarkRandomChaCha8runtime` | 7,874,495 | 0 | 0 |
-| `BenchmarkRandomPCG` | 4,062,647 | 0 | 0 |
-| `BenchmarkRandomLaggedFibonacci` | 3,376,871 | 15 | 0 |
-
-実際には乱数取得処理をループで100万回ずつ回してるので，本当の1回あたりの実行時間は上の表の100万分の1である。
+| `BenchmarkRandomChaCha8` | 6.321 | 0 | 0 |
+| `BenchmarkRandomChaCha8runtime` | 7.584 | 0 | 0 |
+| `BenchmarkRandomPCG` | 4.071 | 0 | 0 |
+| `BenchmarkRandomLaggedFibonacci` | 3.599 | 0 | 0 |
 
 ChaCha8 疑似乱数生成器が（相対的に）遅いのは予想通りだけど PCG より [math/rand] の疑似乱数生成器のほうが速いんだな。科学技術シミュレーションなどでは疑似乱数生成器の速さも求められる。上手く使っていきたいものである。
+
+## 【付録】 Mersenne Twister
+
+私が趣味で作った [Mersenne Twister 疑似乱数生成器](https://github.com/goark/mt "goark/mt: Mersenne Twister; Pseudo Random Number Generator, Implemented by Golang")を [math/rand/v2] で使えるよう修正したバージョンを公開した。たとえば Mersenne Twister を使って標準正規分布する値を1万個生成する場合は，こんな感じに書ける。
+
+```go:sample4.go
+package main
+
+import (
+    "fmt"
+    "math"
+    "math/rand/v2"
+
+    "github.com/goark/mt/v2/mt19937"
+)
+
+func main() {
+    rnd := rand.New(mt19937.New(rand.Int64()))
+    points := []float64{}
+    max := 0.0
+    min := 1.0
+    sum := 0.0
+    for range 10000 {
+        point := rnd.NormFloat64()
+        points = append(points, point)
+        min = math.Min(min, point)
+        max = math.Max(max, point)
+        sum += point
+    }
+    n := float64(len(points))
+    ave := sum / n
+    d2 := 0.0
+    for _, p := range points {
+        d2 += (p - ave) * (p - ave)
+    }
+    fmt.Println("           minimum: ", min)
+    fmt.Println("           maximum: ", max)
+    fmt.Println("           average: ", ave)
+    fmt.Println("standard deviation: ", math.Sqrt(d2/n))
+}
+```
+
+これを実行すると，こんな感じの出力になる。
+
+```
+$ go run sample4.go
+           minimum:  -4.465497509270884
+           maximum:  4.409945906326592
+           average:  0.010399867661332784
+standard deviation:  1.0027323703801945
+```
+
+んー。それっぽいかな（笑） これもベンチマークを取って標準の疑似乱数生成器と比較してみよう。
+
+
+```go
+func BenchmarkRandomMT(b *testing.B) {
+    rnd := rand.New(mt19937.New(seed3))
+    b.ResetTimer()
+    for i := 0; i < b.N; i++ {
+        _ = rnd.IntN(1000)
+    }
+}
+```
+
+結果の一覧表だけ挙げておく。
+
+| 関数名 | 実行時間 (ns) | Alloc サイズ(Byte) | Alloc 回数 |
+| --- | ---: | ---: | ---: |
+| `BenchmarkRandomChaCha8` | 6.336 | 0 | 0 |
+| `BenchmarkRandomChaCha8runtime` | 7.568 | 0 | 0 |
+| `BenchmarkRandomPCG` | 4.041 | 0 | 0 |
+| `BenchmarkRandomLaggedFibonacci` | 3.558 | 0 | 0 |
+| `BenchmarkRandomMT` | 4.892 | 0 | 0 |
+
+これ微妙に遅いんだよなぁ。 Mersenne Twister は改良版のアルゴリズムが色々あるはずなのだが，拙作では最初期のアルゴリズムのみ実装している。
 
 ## 参考
 

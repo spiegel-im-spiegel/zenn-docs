@@ -1,10 +1,12 @@
-package main
+package randoms
 
 import (
 	crnd "crypto/rand"
 	oldrand "math/rand"
 	"math/rand/v2"
 	"testing"
+
+	"github.com/goark/mt/mt19937"
 )
 
 func makeSeedChaCha8() [32]byte {
@@ -22,41 +24,43 @@ func makeSeedLaggedFibonacci() int64 {
 }
 
 var seedChaCha8 = makeSeedChaCha8()
-var seedPCG1, seedPCG2 = makeSeedPPCG()
-var seedLaggedFibonacci = makeSeedLaggedFibonacci()
-var count = 1000000
+var seed1, seed2 = makeSeedPPCG()
+var seed3 = makeSeedLaggedFibonacci()
 
 func BenchmarkRandomChaCha8(b *testing.B) {
 	rnd := rand.New(rand.NewChaCha8(seedChaCha8))
+	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		for range count {
-			_ = rnd.IntN(1000)
-		}
+		_ = rnd.IntN(1000)
 	}
 }
 
 func BenchmarkRandomChaCha8runtime(b *testing.B) {
 	for i := 0; i < b.N; i++ {
-		for range count {
-			_ = rand.IntN(1000)
-		}
+		_ = rand.IntN(1000)
 	}
 }
 
 func BenchmarkRandomPCG(b *testing.B) {
-	rnd := rand.New(rand.NewPCG(seedPCG1, seedPCG2))
+	rnd := rand.New(rand.NewPCG(seed1, seed2))
+	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		for range count {
-			_ = rnd.IntN(1000)
-		}
+		_ = rnd.IntN(1000)
 	}
 }
 
 func BenchmarkRandomLaggedFibonacci(b *testing.B) {
-	rnd := rand.New(oldrand.NewSource(seedLaggedFibonacci).(rand.Source))
+	rnd := rand.New(oldrand.NewSource(seed3).(rand.Source))
+	b.ResetTimer()
 	for i := 0; i < b.N; i++ {
-		for range count {
-			_ = rnd.IntN(1000)
-		}
+		_ = rnd.IntN(1000)
+	}
+}
+
+func BenchmarkRandomMT(b *testing.B) {
+	rnd := rand.New(mt19937.New(seed3))
+	b.ResetTimer()
+	for i := 0; i < b.N; i++ {
+		_ = rnd.IntN(1000)
 	}
 }
