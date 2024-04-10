@@ -13,6 +13,14 @@ https://github.com/spiegel-im-spiegel/gorm-sample
 
 ## ElephantSQL の利用
 
+:::message alert
+ElephantSQL は 2024-05-01 以降は新規ユーザの受け入れを停止し 2025-01-27 (現地時間) を以ってサービスを終了するとのこと。
+
+- [End of Life Announcement | ElephantSQL](https://www.elephantsql.com/blog/end-of-life-announcement.html)
+
+新しい遊び場を探さなきゃ...
+:::
+
 今回 [PostgreSQL] について調べるにあたって（仕事に絡まない）手頃な PaaS がないかとググってみたら [ElephantSQL] というのがよさそうである。
 
 https://www.elephantsql.com/
